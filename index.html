@@ -2,9 +2,14 @@
 <html lang="te">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0a0000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>🎵 యేసు పాటలు</title>
 <style>
+html{background:#0a0000 !important;}
 /* ═══ BLACK RED GOLD THEME ═══ */
 :root{
   --gold:#f5c518;--red:#c0392b;--red2:#e74c3c;
@@ -330,7 +335,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 .vr-btn.stop{background:linear-gradient(135deg,var(--red),var(--red2));}
 .vr-speed{background:var(--deep);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:8px;font-size:0.78rem;outline:none;}
 </style>
-<script src="https://js.puter.com/v2/"></script>
+
 </head>
 <body>
 
@@ -347,7 +352,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <div class="tbi">📅 <b id="tbDate">--</b></div>
     <div class="tbi">🕐 <b id="tbTime">--</b></div>
     <div class="tbi">🌤️ <b id="tbWeather">--</b></div>
-    <div class="tbi">📍 <b id="tbLoc">--</b></div>
+    <div class="tbi" onclick="getWeatherLocation()" style="cursor:pointer;" title="Tap to refresh location">📍 <b id="tbLoc">Tap📍</b></div>
   </div>
   <div class="promise-box" onclick="newPromise()">
     <p id="promiseText">లోడవుతోంది...</p>
@@ -899,26 +904,56 @@ function newPromise(){
 }
 
 function getWeatherLocation(){
-  if(!navigator.geolocation){return;}
-  navigator.geolocation.getCurrentPosition(function(pos){
-    var lat=pos.coords.latitude,lon=pos.coords.longitude;
-    fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json')
-    .then(function(r){return r.json();})
-    .then(function(d){
-      var city=(d.address&&(d.address.city||d.address.town||d.address.village||d.address.county))||'--';
-      document.getElementById('tbLoc').textContent=city;
-      return fetch('https://wttr.in/'+encodeURIComponent(city)+'?format=j1');
-    })
-    .then(function(r){return r.json();})
-    .then(function(w){
-      var cc=w.current_condition&&w.current_condition[0];
-      if(cc){
-        var desc=(cc.weatherDesc&&cc.weatherDesc[0]&&cc.weatherDesc[0].value)||'';
-        var icon=desc.toLowerCase().includes('sun')||desc.toLowerCase().includes('clear')?'☀️':desc.toLowerCase().includes('rain')?'🌧️':desc.toLowerCase().includes('cloud')?'☁️':desc.toLowerCase().includes('thunder')?'⛈️':'🌤️';
-        document.getElementById('tbWeather').textContent=icon+' '+cc.temp_C+'°C';
+  var locEl=document.getElementById('tbLoc');
+  var wxEl=document.getElementById('tbWeather');
+  if(locEl)locEl.textContent='🔄';
+
+  if(!navigator.geolocation){
+    if(locEl)locEl.textContent='GPS లేదు';
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    function(pos){
+      var lat=pos.coords.latitude,lon=pos.coords.longitude;
+      // Use Open-Meteo for weather (no API key needed, reliable)
+      fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json&accept-language=te')
+      .then(function(r){return r.json();})
+      .then(function(d){
+        var city=(d.address&&(d.address.city||d.address.town||d.address.village||d.address.county||d.address.state_district))||'Location';
+        if(locEl)locEl.textContent=city;
+        // Open-Meteo weather — free, no key, works in apps
+        return fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current_weather=true');
+      })
+      .then(function(r){return r.json();})
+      .then(function(w){
+        if(w.current_weather){
+          var temp=Math.round(w.current_weather.temperature);
+          var code=w.current_weather.weathercode;
+          var icon=code<=1?'☀️':code<=3?'🌤️':code<=48?'☁️':code<=67?'🌧️':code<=77?'❄️':code<=82?'🌦️':'⛈️';
+          if(wxEl)wxEl.textContent=icon+' '+temp+'°C';
+        }
+      })
+      .catch(function(){
+        if(wxEl)wxEl.textContent='🌤️';
+      });
+    },
+    function(err){
+      // Permission denied or error
+      if(locEl){
+        if(err.code===1){
+          locEl.innerHTML='<span onclick="showLocHelp()" style="cursor:pointer;color:#f5c518;text-decoration:underline;">📍 Allow</span>';
+        } else {
+          locEl.textContent='📍--';
+        }
       }
-    }).catch(function(){});
-  },function(){});
+    },
+    {timeout:10000, maximumAge:300000, enableHighAccuracy:false}
+  );
+}
+
+function showLocHelp(){
+  toast('Chrome: ⋮ Menu → Site Settings → Location → Allow చేయి');
 }
 
 // ═══ DARK MODE ═══
@@ -953,7 +988,12 @@ function play(i,nav){
   var fr=document.getElementById('ytf'),ph=document.getElementById('nvph');
   document.getElementById('welcomeCard').style.display='none';
   document.getElementById('nowCard').style.display='block';
-  if(id){fr.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';fr.style.display='block';ph.style.display='none';}
+  if(id){
+    // APK WebView compatible YouTube embed
+    fr.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin='+encodeURIComponent(window.location.origin);
+    fr.style.display='block';
+    ph.style.display='none';
+  }
   else{fr.style.display='none';fr.src='';ph.style.display='flex';}
   document.getElementById('nowTitle').textContent=s.t;
   document.getElementById('ytBtn').href=s.y||'#';
@@ -1688,46 +1728,82 @@ function vrChangeSpeed(){
 
 // Load voices on init and when voices change — called from window.onload
 function vrInit(){
-  if(window.speechSynthesis){
-    window.speechSynthesis.onvoiceschanged=vrLoadVoices;
-    setTimeout(vrLoadVoices,500);
+  if(!window.speechSynthesis){
+    // WebView లో speechSynthesis late load అవుతుంది — retry
+    var retries=0;
+    var check=setInterval(function(){
+      retries++;
+      if(window.speechSynthesis){
+        clearInterval(check);
+        window.speechSynthesis.onvoiceschanged=vrLoadVoices;
+        vrLoadVoices();
+      } else if(retries>20){
+        clearInterval(check);
+        var st=document.getElementById('vrStatus');
+        if(st)st.textContent='⚠️ Voice support లేదు — Chrome browser లో try చేయి';
+      }
+    },500);
+    return;
   }
+  window.speechSynthesis.onvoiceschanged=vrLoadVoices;
+  // Multiple timeouts — voices sometimes load late in WebView
+  setTimeout(vrLoadVoices,500);
+  setTimeout(vrLoadVoices,1500);
+  setTimeout(vrLoadVoices,3000);
 }
 
 // Voice Recorder
 function toggleRecording(){
   if(mediaRec&&mediaRec.state==='recording'){
     mediaRec.stop();
-  } else {
-    navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
-      recChunks=[];
-      mediaRec=new MediaRecorder(stream);
-      mediaRec.ondataavailable=function(e){recChunks.push(e.data);};
-      mediaRec.onstop=function(){
-        var blob=new Blob(recChunks,{type:'audio/webm'});
-        var url=URL.createObjectURL(blob);
-        recCount++;
-        var div=document.createElement('div');
-        div.style.cssText='background:rgba(192,57,43,0.1);border:1px solid var(--rborder);border-radius:10px;padding:8px;margin-top:8px;';
-        div.innerHTML='<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">'
-          +'<span style="color:var(--gold);font-size:0.78rem;">🎙️ Voice Note '+recCount+'</span>'
-          +'<audio controls src="'+url+'" style="height:32px;flex:1;min-width:140px;"></audio>'
-          +'<a href="'+url+'" download="VoiceNote'+recCount+'.webm" '
-          +'style="background:linear-gradient(135deg,var(--red),var(--gold));color:#000;padding:5px 10px;border-radius:12px;font-size:0.75rem;font-weight:700;text-decoration:none;">⬇️ Save</a>'
-          +'</div>';
-        document.getElementById('recordings').appendChild(div);
-        document.getElementById('recStatus').textContent='Saved! ✅';
-        setTimeout(function(){document.getElementById('recStatus').textContent='';},2000);
-        document.getElementById('recBtn').className='rec-btn idle';
-        document.getElementById('recBtn').textContent='🎙️ Record';
-        stream.getTracks().forEach(function(t){t.stop();});
-      };
-      mediaRec.start();
-      document.getElementById('recBtn').className='rec-btn recording';
-      document.getElementById('recBtn').textContent='⏹ Stop';
-      document.getElementById('recStatus').textContent='Recording...';
-    }).catch(function(){toast('⚠️ Microphone permission kaavali!');});
+    return;
   }
+  // Check if getUserMedia supported
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    toast('⚠️ ఈ app లో microphone support లేదు');
+    return;
+  }
+  navigator.mediaDevices.getUserMedia({audio:true})
+  .then(function(stream){
+    recChunks=[];
+    // Use supported format
+    var mimeType='audio/webm';
+    if(!MediaRecorder.isTypeSupported('audio/webm')){
+      mimeType=MediaRecorder.isTypeSupported('audio/mp4')?'audio/mp4':'';
+    }
+    mediaRec=mimeType?new MediaRecorder(stream,{mimeType:mimeType}):new MediaRecorder(stream);
+    mediaRec.ondataavailable=function(e){if(e.data.size>0)recChunks.push(e.data);};
+    mediaRec.onstop=function(){
+      var blob=new Blob(recChunks,{type:mediaRec.mimeType||'audio/webm'});
+      var url=URL.createObjectURL(blob);
+      recCount++;
+      var div=document.createElement('div');
+      div.style.cssText='background:rgba(192,57,43,0.1);border:1px solid var(--rborder);border-radius:10px;padding:8px;margin-top:8px;';
+      div.innerHTML='<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">'
+        +'<span style="color:var(--gold);font-size:0.78rem;">🎙️ Voice Note '+recCount+'</span>'
+        +'<audio controls src="'+url+'" style="height:32px;flex:1;min-width:140px;"></audio>'
+        +'<a href="'+url+'" download="VoiceNote'+recCount+'.webm" '
+        +'style="background:linear-gradient(135deg,var(--red),var(--gold));color:#000;padding:5px 10px;border-radius:12px;font-size:0.75rem;font-weight:700;text-decoration:none;">⬇️ Save</a>'
+        +'</div>';
+      document.getElementById('recordings').appendChild(div);
+      document.getElementById('recStatus').textContent='Saved! ✅';
+      setTimeout(function(){document.getElementById('recStatus').textContent='';},2000);
+      document.getElementById('recBtn').className='rec-btn idle';
+      document.getElementById('recBtn').textContent='🎙️ Record';
+      stream.getTracks().forEach(function(t){t.stop();});
+    };
+    mediaRec.start(100); // collect data every 100ms
+    document.getElementById('recBtn').className='rec-btn recording';
+    document.getElementById('recBtn').textContent='⏹ Stop';
+    document.getElementById('recStatus').textContent='🔴 Recording...';
+  })
+  .catch(function(err){
+    if(err.name==='NotAllowedError'||err.name==='PermissionDeniedError'){
+      toast('⚠️ Microphone permission: App Settings → Permissions → Microphone → Allow');
+    } else {
+      toast('⚠️ Microphone పని చేయడం లేదు: '+err.message);
+    }
+  });
 }
 
 
@@ -1738,13 +1814,32 @@ async function sendAI2(){
   var q=inp.value.trim();if(!q)return;inp.value='';
   var msgs=document.getElementById('aiMessages2');
   var um=document.createElement('div');um.className='ai-msg user';um.textContent=q;msgs.appendChild(um);
-  var bm=document.createElement('div');bm.className='ai-msg bot';bm.textContent='⏳ Thinking...';msgs.appendChild(bm);
+  var bm=document.createElement('div');bm.className='ai-msg bot';bm.innerHTML='<span style="opacity:0.6">⏳ thinking...</span>';msgs.appendChild(bm);
   msgs.scrollTop=msgs.scrollHeight;
-  var ctx='You are a helpful Telugu Christian Bible assistant. Answer in Telugu when possible. Keep answers simple, clear and encouraging. If asked about Bible verses or stories, reference exact Bible references.';
+
+  var ctx='You are a Telugu Christian Bible assistant. Always answer in Telugu language. Keep answers short (3-4 sentences max), clear and encouraging. Add relevant Bible verse references.';
+
   try{
-    var res=await puter.ai.chat(ctx+'\n\nUser: '+q,{model:'gpt-4o-mini'});
-    bm.textContent=res||'Sorry, try again.';
-  }catch(e){bm.textContent='⚠️ AI ippudu unavailable. Internet check cheyyi!';}
+    var resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:400,
+        system:ctx,
+        messages:[{role:'user',content:q}]
+      })
+    });
+    var data=await resp.json();
+    var text=data&&data.content&&data.content[0]&&data.content[0].text;
+    if(text){
+      bm.textContent=text;
+    } else {
+      bm.textContent='⚠️ Response రాలేదు. మళ్ళీ try చేయండి.';
+    }
+  }catch(e){
+    bm.textContent='⚠️ Internet connection check చేయండి. 🙏';
+  }
   msgs.scrollTop=msgs.scrollHeight;
 }
 
