@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>🎵 యేసు పాటలు</title>
+<style>
+/* ═══ BLACK RED GOLD THEME ═══ */
+:root{
+  --gold:#f5c518;--red:#c0392b;--red2:#e74c3c;
+  --deep:#0a0a0a;--card:#141414;--mid:#1a1a1a;--card2:#1e1e1e;
+  --text:#f0e6d3;--sub:#888;--border:rgba(245,197,24,0.25);
+  --rborder:rgba(192,57,43,0.4);--btn-bg:rgba(255,255,255,0.08);
+}
+body.light{
+  --deep:#fff8f0;--card:#ffffff;--mid:#fff0e6;--card2:#fff5ee;
+  --text:#1a0a00;--sub:#8b4513;--border:rgba(192,57,43,0.25);
+  --rborder:rgba(192,57,43,0.35);--btn-bg:rgba(192,57,43,0.08);
+}
+body.light .top-bar{background:linear-gradient(135deg,#fff0e0,#ffe4cc);border-bottom:1px solid rgba(192,57,43,0.3);}
+body.light nav{background:#ffe8d6;border-bottom:2px solid var(--red);box-shadow:0 3px 15px rgba(192,57,43,0.15);}
+body.light .nav-top h1{color:var(--red);text-shadow:none;}
+body.light .nav-btns button{color:var(--red);border-color:rgba(192,57,43,0.3);background:rgba(192,57,43,0.06);}
+body.light .nav-btns button.active{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;}
+body.light .promise-box{background:rgba(192,57,43,0.06);border-left:3px solid var(--red);}
+body.light .promise-box p{color:#5a0a00;}
+body.light .song-item{background:#fff;border-color:rgba(192,57,43,0.15);}
+body.light .song-item:hover,.song-item.cur{border-color:var(--red);}
+body.light .sthumb-ph{background:linear-gradient(135deg,#ffe0d0,#ffd0b8);}
+body.light .test-card{background:#fff;border-color:rgba(192,57,43,0.2);}
+body.light .ql-card{background:#fff;border-color:rgba(192,57,43,0.15);}
+body.light .back-btn{background:linear-gradient(135deg,#fff0e6,#ffe4d0);border-color:var(--red);color:var(--red);}
+body.light .now-card{background:#fff;border-color:rgba(192,57,43,0.2);}
+body.light .welcome-card{background:linear-gradient(135deg,#fff5ee,#ffe8d6);border-color:rgba(192,57,43,0.3);}
+body.light .contact-card{background:linear-gradient(135deg,#fff5ee,#ffe8d6);border-color:rgba(192,57,43,0.3);}
+body.light .help-section{background:#fff;border-color:rgba(192,57,43,0.2);}
+body.light .jesus-section{background:#fff;border-color:rgba(192,57,43,0.15);}
+body.light .miracle-item{background:rgba(192,57,43,0.04);}
+body.light .parable-item{background:rgba(192,57,43,0.04);}
+body.light .parallel-grid{background:#fff;border-color:rgba(192,57,43,0.2);}
+body.light .par-col:first-child{border-right:1px solid rgba(192,57,43,0.2);}
+body.light .vt{color:#1a0a00;}
+body.light .reader-header{background:#fff5ee;border-color:rgba(192,57,43,0.25);}
+body.light .book-item{background:#fff;border-color:rgba(192,57,43,0.15);}
+body.light .book-item h4{color:#1a0a00;}
+body.light .chap-btn{background:#fff;border-color:rgba(192,57,43,0.2);color:#1a0a00;}
+body.light #toast{background:linear-gradient(135deg,var(--red),#8b0000);}
+body.light .fab{background:linear-gradient(135deg,var(--red),var(--gold));}
+body.light .lyrics-body{color:#1a0a00;}
+body.light .s244-item{background:#fff;border-color:rgba(192,57,43,0.12);}
+body.light .s244-title{color:#1a0a00;}
+body.light ::-webkit-scrollbar-thumb{background:var(--red);}
+body.light .dark-toggle{background:rgba(192,57,43,0.08);border-color:rgba(192,57,43,0.3);color:var(--red);}
+body.light .jesus-btn{background:rgba(192,57,43,0.1);border-color:var(--red);color:var(--red);}
+body.light .help-btn{background:rgba(192,57,43,0.08);border-color:var(--red);color:var(--red);}
+body.light .tbi{color:#8b4513;}
+body.light .tbi b{color:#1a0a00;}
+body.light .section-title{color:var(--red);}
+body.light .bible-section-title{color:var(--red);}
+body.light .copyright{border-top:1px solid rgba(192,57,43,0.2);}
+body.light input,body.light textarea{background:#fff5ee !important;color:#1a0a00 !important;border-color:rgba(192,57,43,0.2) !important;}
+body.light .search-row input{background:#fff !important;}
+body.light .folderGrid .ql-card,body.light #folderGrid .ql-card{background:#fff;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{background:var(--deep);color:var(--text);font-family:'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden;transition:background 0.3s,color 0.3s;}
+
+/* ═══ BEAUTIFUL BACKGROUND ═══ */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(192,57,43,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(245,197,24,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(139,0,0,0.12) 0%, transparent 70%),
+    linear-gradient(160deg,#080000 0%,#0d0303 40%,#050505 70%,#0a0000 100%);
+  animation:bgPulse 8s ease-in-out infinite alternate;
+}
+body.light::before{
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(192,57,43,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(245,197,24,0.08) 0%, transparent 55%),
+    linear-gradient(160deg,#fff8f0 0%,#fff0e6 50%,#fff5ee 100%);
+  animation:none;
+}
+@keyframes bgPulse{
+  0%{opacity:1;}
+  50%{opacity:0.85;}
+  100%{opacity:1;}
+}
+
+/* Floating cross particles */
+body::after{
+  content:'✝';position:fixed;bottom:-60px;left:50%;transform:translateX(-50%);
+  font-size:180px;color:rgba(192,57,43,0.04);z-index:-1;
+  animation:floatCross 12s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes floatCross{
+  0%{transform:translateX(-50%) translateY(0) rotate(-3deg);opacity:0.04;}
+  100%{transform:translateX(-50%) translateY(-30px) rotate(3deg);opacity:0.07;}
+}
+
+/* SPLASH */
+#splash{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.7s;}
+.cross-anim{font-size:5rem;animation:pulse 1.5s infinite;filter:drop-shadow(0 0 20px #c0392b);}
+#splash h1{font-size:2rem;color:var(--gold);margin:14px 0 4px;text-shadow:0 0 20px rgba(245,197,24,0.5);}
+#splash p{color:#888;font-size:0.9rem;}
+.bar{width:220px;height:4px;background:#1a1a1a;border-radius:4px;margin-top:28px;overflow:hidden;}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:4px;animation:load 2s forwards;}
+@keyframes load{from{width:0}to{width:100%}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+
+/* TOP BAR */
+.top-bar{background:linear-gradient(135deg,#050505,#0f0808);border-bottom:1px solid var(--rborder);padding:7px 12px;}
+.top-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:5px;}
+.tbi{display:flex;align-items:center;gap:3px;color:var(--sub);font-size:0.72rem;}
+.tbi b{color:var(--text);font-weight:500;}
+.promise-box{background:rgba(192,57,43,0.08);border-left:3px solid var(--red);padding:6px 10px;border-radius:0 8px 8px 0;cursor:pointer;transition:background 0.2s;}
+.promise-box:hover{background:rgba(192,57,43,0.14);}
+.promise-box p{font-size:0.78rem;color:var(--text);line-height:1.5;font-style:italic;}
+.promise-box small{color:var(--gold);font-size:0.7rem;}
+
+/* NAV */
+nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;position:sticky;top:0;z-index:100;box-shadow:0 3px 15px rgba(192,57,43,0.3);}
+.nav-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:6px;}
+.nav-top h1{font-size:1rem;color:var(--gold);white-space:nowrap;text-shadow:0 0 10px rgba(245,197,24,0.3);}
+.nav-top-btns{display:flex;gap:5px;flex-shrink:0;}
+.dark-toggle{background:var(--btn-bg);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:15px;cursor:pointer;font-size:0.75rem;}
+.jesus-btn{background:rgba(192,57,43,0.2);border:1px solid var(--red);color:var(--gold);padding:5px 10px;border-radius:15px;cursor:pointer;font-size:0.75rem;font-weight:600;}
+.help-btn{background:rgba(245,197,24,0.12);border:1px solid var(--gold);color:var(--gold);padding:5px 10px;border-radius:15px;cursor:pointer;font-size:0.75rem;}
+.contact-btn{background:linear-gradient(135deg,var(--red),var(--red2));border:none;color:#fff;padding:5px 10px;border-radius:15px;cursor:pointer;font-size:0.75rem;font-weight:600;box-shadow:0 2px 8px rgba(192,57,43,0.4);}
+.nav-btns{display:flex;gap:5px;overflow-x:auto;padding-bottom:2px;}
+.nav-btns::-webkit-scrollbar{display:none;}
+.nav-btns button{background:var(--btn-bg);border:1px solid rgba(245,197,24,0.3);color:var(--gold);padding:7px 11px;border-radius:18px;font-size:0.75rem;cursor:pointer;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
+.nav-btns button.active{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border-color:var(--red);box-shadow:0 2px 8px rgba(192,57,43,0.4);}
+.nav-btns button:hover:not(.active){background:rgba(245,197,24,0.15);border-color:var(--gold);color:#fff;}
+
+.page{display:none;padding:10px 10px;max-width:640px;margin:0 auto;padding-bottom:100px;}
+.page.active{display:block;}
+
+/* HOME */
+.welcome-card{position:relative;overflow:hidden;border-radius:22px;margin-bottom:14px;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:36px 20px 28px;}
+.welcome-card .wicon{font-size:3.2rem;margin-bottom:10px;filter:drop-shadow(0 0 18px rgba(192,57,43,0.9)) drop-shadow(0 0 40px rgba(245,197,24,0.4));animation:pulse 2.5s ease-in-out infinite;}
+.welcome-card h2{color:#fff;font-size:1.4rem;margin-bottom:8px;font-weight:800;letter-spacing:0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.8);}
+.welcome-card p{color:rgba(255,255,255,0.7);font-size:0.85rem;line-height:1.7;}
+.start-btn{display:inline-flex;align-items:center;gap:6px;margin-top:18px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;padding:12px 30px;border-radius:30px;font-weight:800;font-size:0.9rem;cursor:pointer;border:none;box-shadow:0 4px 20px rgba(192,57,43,0.5),0 0 0 1px rgba(245,197,24,0.3);letter-spacing:0.3px;}
+.now-card{background:var(--card);border:1px solid var(--rborder);border-radius:18px;overflow:hidden;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,0,0,0.5);}
+.video-container{position:relative;width:100%;padding-top:56.25%;background:#000;}
+.video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.no-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a0505,#050505);color:#444;}
+.song-meta{padding:14px 16px;}
+.song-meta h2{font-size:1.05rem;color:var(--gold);margin-bottom:10px;}
+.action-btns{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.abtn{display:inline-flex;align-items:center;gap:4px;padding:7px 12px;border-radius:20px;font-size:0.76rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;white-space:nowrap;}
+.abtn:active{transform:scale(0.95);}
+.abtn-yt{background:linear-gradient(135deg,#8b0000,#c0392b);color:#fff;box-shadow:0 2px 8px rgba(192,57,43,0.4);}
+.abtn-dl{background:linear-gradient(135deg,#1a5c2a,#27ae60);color:#fff;}
+.abtn-wa{background:linear-gradient(135deg,#128c3e,#25d366);color:#fff;}
+.abtn-pr{background:linear-gradient(135deg,#4a0080,#9c27b0);color:#fff;}
+.abtn-ly{background:linear-gradient(135deg,#b35c00,#f39c12);color:#fff;}
+.fav-btn{background:none;border:none;font-size:1.4rem;cursor:pointer;padding:0;margin-left:auto;filter:drop-shadow(0 0 5px rgba(192,57,43,0.5));}
+.lyrics-wrap{border-top:1px solid var(--rborder);}
+.lyrics-head{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;}
+.lyrics-head span{font-size:0.85rem;color:var(--sub);}
+.tog-btn{background:none;border:1px solid var(--border);color:var(--sub);padding:4px 12px;border-radius:12px;font-size:0.75rem;cursor:pointer;}
+.lyrics-body{padding:4px 16px 16px;max-height:260px;overflow-y:auto;font-size:0.95rem;line-height:2.1;white-space:pre-wrap;color:var(--text);}
+.lyrics-body.hidden{display:none;}
+
+/* SONGS LIST */
+.search-row{position:relative;margin-bottom:12px;}
+.search-row input{width:100%;padding:12px 42px 12px 16px;background:var(--card);border:1px solid var(--border);border-radius:30px;color:var(--text);font-size:0.95rem;outline:none;font-family:inherit;transition:border-color 0.2s;}
+.search-row input:focus{border-color:var(--red);}
+.search-row .sicon{position:absolute;right:15px;top:50%;transform:translateY(-50%);color:var(--sub);}
+.tabs{display:flex;gap:6px;margin-bottom:12px;}
+.tab{padding:7px 14px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--sub);font-size:0.82rem;cursor:pointer;transition:all 0.2s;}
+.tab.active{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border-color:var(--red);box-shadow:0 2px 8px rgba(192,57,43,0.3);}
+.song-item{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:13px;padding:12px 14px;margin-bottom:9px;display:flex;align-items:center;gap:13px;cursor:pointer;transition:all 0.2s;}
+.song-item:hover{border-color:var(--gold);background:var(--card2);}
+.song-item.cur{border-color:var(--red);border-left:3px solid var(--red);background:var(--card2);box-shadow:0 2px 10px rgba(192,57,43,0.2);}
+.sthumb{width:54px;height:54px;border-radius:9px;object-fit:cover;flex-shrink:0;}
+.sthumb-ph{width:54px;height:54px;border-radius:9px;background:linear-gradient(135deg,#1a0505,#0a0505);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;border:1px solid var(--rborder);}
+.sinfo{flex:1;min-width:0;}
+.sinfo h3{font-size:0.93rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px;color:var(--text);}
+.sinfo small{font-size:0.73rem;color:var(--sub);}
+.playing-dot{display:inline-block;width:7px;height:7px;background:var(--red);border-radius:50%;margin-left:6px;animation:blink 1s infinite;box-shadow:0 0 5px var(--red);}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.sbtns{display:flex;gap:3px;}
+.ibtn{background:none;border:none;color:var(--sub);font-size:0.95rem;cursor:pointer;padding:5px;border-radius:7px;}
+.ibtn:hover{color:var(--gold);}
+
+/* 244 SONGS */
+.s244-item{background:var(--card);border:1px solid rgba(255,255,255,0.05);border-radius:11px;padding:11px 13px;margin-bottom:7px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.s244-item:hover{border-color:var(--gold);background:var(--card2);}
+.s244-num{width:34px;height:34px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0;}
+.s244-title{flex:1;font-size:0.9rem;color:var(--text);}
+.s244-play{color:var(--red);font-size:1.1rem;flex-shrink:0;}
+
+/* LINKS */
+.section-title{color:var(--gold);font-size:0.95rem;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rborder);}
+.ql-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.ql-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px 12px;cursor:pointer;transition:all 0.2s;text-align:center;text-decoration:none;display:block;}
+.ql-card:hover{border-color:var(--red);background:var(--card2);transform:translateY(-2px);box-shadow:0 4px 15px rgba(192,57,43,0.2);}
+.ql-card .qi{font-size:2.2rem;margin-bottom:7px;}
+.ql-card h3{color:var(--gold);font-size:0.85rem;margin-bottom:3px;}
+.ql-card p{color:var(--sub);font-size:0.7rem;line-height:1.4;}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#1a0505,#0f0505);border:1.5px solid var(--red);color:var(--gold);padding:9px 18px;border-radius:20px;cursor:pointer;margin-bottom:14px;font-size:0.85rem;font-weight:700;box-shadow:0 2px 10px rgba(192,57,43,0.3);}
+.back-btn:hover{background:var(--red);color:#fff;}
+
+/* CONTACT */
+.contact-card{background:linear-gradient(135deg,#0f0505,#1a0808);border:1px solid var(--rborder);border-radius:18px;padding:24px 20px;text-align:center;box-shadow:0 4px 20px rgba(192,57,43,0.2);}
+.contact-photo{width:130px;height:160px;border-radius:16px;overflow:hidden;margin:0 auto 16px;border:2px solid var(--red);box-shadow:0 4px 20px rgba(192,57,43,0.4);background:linear-gradient(135deg,#1a0505,#0a0505);display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.contact-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.contact-name{color:var(--gold);font-size:1.3rem;font-weight:700;margin-bottom:4px;text-shadow:0 0 10px rgba(245,197,24,0.3);}
+.contact-sub{color:var(--sub);font-size:0.82rem;margin-bottom:20px;}
+.contact-btns{display:flex;flex-direction:column;gap:10px;}
+.cbtn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:14px;border:none;cursor:pointer;font-size:0.95rem;font-weight:600;transition:all 0.2s;text-decoration:none;}
+.cbtn:active{transform:scale(0.97);}
+.cbtn-call{background:linear-gradient(135deg,#1a5c2a,#27ae60);color:#fff;}
+.cbtn-wa{background:linear-gradient(135deg,#128c3e,#25d366);color:#fff;}
+.cbtn-mail{background:linear-gradient(135deg,#1a3a6b,#2980b9);color:#fff;}
+.cbtn-ig{background:linear-gradient(135deg,#8b0038,#e1306c);color:#fff;}
+
+/* BIBLE */
+.bible-section-title{color:var(--gold);font-size:1rem;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rborder);}
+.testament-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.test-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:18px 12px;cursor:pointer;transition:all 0.2s;text-align:center;}
+.test-card:hover{border-color:var(--red);box-shadow:0 4px 15px rgba(192,57,43,0.2);}
+.test-card .ti{font-size:2.2rem;margin-bottom:8px;}
+.test-card h3{color:var(--gold);font-size:0.88rem;margin-bottom:4px;}
+.test-card p{color:var(--sub);font-size:0.73rem;}
+.books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px;}
+.book-item{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 12px;cursor:pointer;transition:all 0.2s;}
+.book-item:hover{border-color:var(--red);background:var(--card2);}
+.book-item h4{font-size:0.82rem;margin-bottom:2px;color:var(--text);}
+.book-item small{font-size:0.7rem;color:var(--sub);}
+.chap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(50px,1fr));gap:6px;}
+.chap-btn{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px 4px;cursor:pointer;font-size:0.85rem;color:var(--text);transition:all 0.2s;text-align:center;}
+.chap-btn:hover{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border-color:var(--red);}
+.reader-header{background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:12px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+.reader-header h3{color:var(--gold);font-size:0.9rem;}
+.rnav-btns{display:flex;gap:6px;}
+.rnav{background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;padding:6px 16px;border-radius:10px;font-size:0.8rem;cursor:pointer;font-weight:700;}
+.parallel-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--card);border:1px solid var(--rborder);border-radius:14px;overflow:hidden;}
+.par-col{padding:10px 10px 16px;}
+.par-col:first-child{border-right:1px solid var(--rborder);}
+.par-col h5{font-size:0.72rem;color:var(--gold);text-align:center;padding:6px 0 10px;border-bottom:1px solid var(--rborder);margin-bottom:8px;letter-spacing:1px;}
+.verse-row{display:flex;gap:5px;padding:5px 2px;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.3s,border-left 0.2s;border-radius:6px;border-left:3px solid transparent;}
+.verse-row.vr-reading{
+  background:linear-gradient(90deg,rgba(156,39,176,0.25),rgba(192,57,43,0.15));
+  border-left:3px solid #9c27b0;
+  border-radius:6px;
+}
+.verse-row.vr-reading .vn{color:#ce93d8 !important;}
+.verse-row.vr-reading .vt{color:#fff !important;font-weight:500;}
+.verse-row.vr-done{background:rgba(192,57,43,0.06);}
+.vn{color:var(--red);font-size:0.68rem;font-weight:700;min-width:16px;flex-shrink:0;margin-top:2px;}
+.vt{font-size:0.8rem;line-height:1.65;flex:1;color:var(--text);}
+.loading-msg{padding:24px;text-align:center;color:var(--sub);font-size:0.85rem;}
+
+/* HELP */
+.help-section{background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:16px;margin-bottom:12px;}
+.help-section h3{color:var(--gold);margin-bottom:12px;font-size:1rem;}
+.help-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);align-items:flex-start;}
+.help-item:last-child{border:none;}
+.help-icon{font-size:1.5rem;flex-shrink:0;width:36px;text-align:center;}
+.help-text h4{font-size:0.88rem;margin-bottom:3px;color:var(--gold);}
+.help-text p{font-size:0.78rem;color:var(--sub);line-height:1.5;}
+
+/* JESUS PAGE */
+.jesus-header{background:linear-gradient(135deg,#0a0000,#1a0505,#0a0000);border:1px solid var(--red);border-radius:18px;padding:24px 20px;text-align:center;margin-bottom:16px;box-shadow:0 4px 25px rgba(192,57,43,0.4);}
+.jesus-section{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px;margin-bottom:12px;}
+.jesus-section h3{margin-bottom:10px;font-size:1rem;}
+.jesus-section p,.jesus-section div{font-size:0.88rem;line-height:1.9;color:var(--text);}
+.miracle-item{padding:10px;background:rgba(192,57,43,0.07);border-radius:10px;margin-bottom:8px;border-left:2px solid var(--red);}
+.miracle-item b{color:var(--red);}
+.parable-item{padding:10px;background:rgba(245,197,24,0.06);border-radius:10px;margin-bottom:8px;border-left:2px solid var(--gold);}
+.parable-item b{color:var(--gold);}
+.quote-item{border-left:3px solid var(--red);padding:8px 12px;margin-bottom:8px;background:rgba(192,57,43,0.05);border-radius:0 8px 8px 0;}
+
+/* MISC */
+.empty{text-align:center;padding:60px 20px;color:var(--sub);}
+.empty .eico{font-size:3rem;margin-bottom:12px;}
+.copyright{text-align:center;padding:16px;color:var(--sub);font-size:0.75rem;border-top:1px solid var(--rborder);margin-top:8px;}
+.copyright span{color:var(--gold);}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--red),#8b0000);color:#fff;padding:11px 22px;border-radius:25px;font-size:0.85rem;z-index:9999;opacity:0;transition:opacity 0.3s;white-space:nowrap;box-shadow:0 4px 16px rgba(192,57,43,0.5);}
+#toast.on{opacity:1;}
+.fab{position:fixed;bottom:22px;right:18px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;width:54px;height:54px;border-radius:50%;font-size:1.6rem;cursor:pointer;box-shadow:0 4px 20px rgba(192,57,43,0.5);display:flex;align-items:center;justify-content:center;transition:transform 0.2s;z-index:60;}
+.fab:hover{transform:scale(1.1);}
+.fab.off{display:none;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px;}
+
+/* HIGHLIGHT */
+.hl-yellow{background:#ffd700;color:#000;border-radius:3px;padding:0 2px;}
+.hl-green{background:#00c853;color:#000;border-radius:3px;padding:0 2px;}
+.hl-red{background:#e53935;color:#fff;border-radius:3px;padding:0 2px;}
+
+/* NIGHT READER */
+.night-reader{background:#0a0500 !important;filter:sepia(0.3) brightness(0.85);}
+.night-reader .vt{color:#f5deb3 !important;}
+
+/* NOTES PANEL */
+.notes-panel{background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;margin-top:10px;}
+.notes-panel h4{color:var(--gold);margin-bottom:10px;font-size:0.9rem;}
+.notes-panel textarea{width:100%;min-height:100px;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px 12px;font-size:0.88rem;font-family:inherit;outline:none;resize:vertical;}
+.notes-save-btn{margin-top:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;padding:8px 20px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;width:100%;}
+
+/* VOICE RECORDER */
+.rec-btn{padding:8px 16px;border-radius:20px;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;}
+.rec-btn.idle{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;}
+.rec-btn.recording{background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;animation:blink 1s infinite;}
+
+/* AI CHAT */
+.ai-msg{padding:9px 13px;border-radius:14px;margin-bottom:8px;font-size:0.85rem;line-height:1.6;max-width:90%;}
+.ai-msg.bot{background:rgba(192,57,43,0.12);border:1px solid var(--rborder);color:var(--text);align-self:flex-start;}
+.ai-msg.user{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;margin-left:auto;border-radius:14px 14px 4px 14px;}
+.ai-input-row{display:flex;gap:8px;}
+.ai-input-row input{flex:1;background:var(--deep);border:1px solid var(--border);border-radius:20px;color:var(--text);padding:10px 14px;font-size:0.88rem;font-family:inherit;outline:none;}
+.ai-send-btn{background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;padding:10px 16px;border-radius:20px;font-size:1rem;cursor:pointer;font-weight:700;}
+
+/* HISTORY PAGE */
+.hist-item{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;}
+.hist-item:hover{border-color:var(--gold);background:var(--card2);}
+.hist-item h4{color:var(--gold);font-size:0.88rem;margin-bottom:4px;}
+.hist-item p{color:var(--sub);font-size:0.75rem;}
+.hist-empty{text-align:center;padding:40px 20px;color:var(--sub);}
+
+/* AI VOICE READER */
+.voice-reader-bar{background:var(--card);border:1px solid var(--rborder);border-radius:12px;padding:10px 14px;margin-top:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.vr-btn{background:linear-gradient(135deg,#4a0080,#9c27b0);color:#fff;border:none;padding:8px 14px;border-radius:20px;cursor:pointer;font-size:0.82rem;font-weight:600;}
+.vr-btn.stop{background:linear-gradient(135deg,var(--red),var(--red2));}
+.vr-speed{background:var(--deep);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:8px;font-size:0.78rem;outline:none;}
+</style>
+<script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+
+<div id="splash">
+  <div class="cross-anim">✝</div>
+  <h1>🎵 యేసు పాటలు</h1>
+  <p>Songs + Bible + Lyrics</p>
+  <div class="bar"><div class="bar-fill"></div></div>
+</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-row">
+    <div class="tbi">📅 <b id="tbDate">--</b></div>
+    <div class="tbi">🕐 <b id="tbTime">--</b></div>
+    <div class="tbi">🌤️ <b id="tbWeather">--</b></div>
+    <div class="tbi">📍 <b id="tbLoc">--</b></div>
+  </div>
+  <div class="promise-box" onclick="newPromise()">
+    <p id="promiseText">లోడవుతోంది...</p>
+    <small id="promiseRef"></small>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-top">
+    <h1>🎵 యేసు పాటలు</h1>
+    <div class="nav-top-btns">
+      <button class="contact-btn" onclick="go('contact')" style="background:linear-gradient(135deg,#25d366,#128c3e);">📞 Contact</button>
+      <button class="jesus-btn" onclick="go('jesus')">✝ Jesus</button>
+      <button class="help-btn" onclick="go('help')">❓</button>
+      <button class="help-btn" onclick="go('ai')" style="background:rgba(245,197,24,0.15);border-color:var(--gold);color:var(--gold);">🤖 AI</button>
+      <button class="dark-toggle" id="darkBtn" onclick="toggleDark()">☀️ Light</button>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button id="nb-home" class="active" onclick="go('home')">🏠</button>
+    <button id="nb-bible" onclick="go('bible')">📖 Bible</button>
+    <button id="nb-links" onclick="go('links')">🔗 Links</button>
+    <button id="nb-list" onclick="go('list')">🎵 Songs</button>
+    <button id="nb-s244" onclick="go('s244')">🎼 244</button>
+    <button id="nb-fav" onclick="go('fav')">❤️ Favs</button>
+    <button id="nb-hist" onclick="go('hist')">🕐 History</button>
+    <button id="nb-add" onclick="go('add')">➕ Add</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="homePage" class="page active">
+  <div id="welcomeCard" class="welcome-card">
+
+    <!-- Real 4K background image — picks best available -->
+    <div id="bannerBg" style="position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;
+      background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80');
+      transition:opacity 0.8s;"></div>
+
+    <!-- Dark overlay to keep text readable -->
+    <div style="position:absolute;inset:0;z-index:1;
+      background:linear-gradient(180deg,
+        rgba(0,0,0,0.55) 0%,
+        rgba(30,0,0,0.45) 40%,
+        rgba(0,0,0,0.75) 85%,
+        rgba(0,0,0,0.92) 100%);"></div>
+
+    <!-- Gold top border -->
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;z-index:3;
+      background:linear-gradient(90deg,transparent 0%,#f5c518 30%,#c0392b 50%,#f5c518 70%,transparent 100%);"></div>
+
+    <!-- Bottom border -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:1px;z-index:3;
+      background:linear-gradient(90deg,transparent,rgba(245,197,24,0.4),transparent);"></div>
+
+    <!-- Change bg button -->
+    <button onclick="changeBanner()" style="position:absolute;top:10px;right:10px;z-index:4;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:4px 10px;border-radius:20px;font-size:0.68rem;cursor:pointer;">🖼️ Change</button>
+
+    <!-- Sparkles -->
+    <div style="position:absolute;top:15%;left:8%;width:3px;height:3px;background:#f5c518;border-radius:50%;box-shadow:0 0 8px #f5c518;animation:blink 2s infinite;z-index:2;"></div>
+    <div style="position:absolute;top:22%;right:10%;width:2px;height:2px;background:#fff;border-radius:50%;box-shadow:0 0 6px #fff;animation:blink 3s infinite 1s;z-index:2;"></div>
+    <div style="position:absolute;bottom:30%;left:15%;width:2px;height:2px;background:#f5c518;border-radius:50%;box-shadow:0 0 5px #f5c518;animation:blink 2.5s infinite 0.5s;z-index:2;"></div>
+
+    <!-- Content -->
+    <div style="position:relative;z-index:4;">
+      <div class="wicon" style="text-shadow:0 0 30px rgba(245,197,24,0.6),0 0 60px rgba(192,57,43,0.4);">✝</div>
+      <h2 style="text-shadow:0 2px 8px rgba(0,0,0,0.9);">యేసు పాటలు కి స్వాగతం!</h2>
+      <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:8px 0 6px;flex-wrap:wrap;">
+        <span style="background:rgba(192,57,43,0.4);backdrop-filter:blur(8px);border:1px solid rgba(192,57,43,0.6);color:#ffaa88;padding:3px 10px;border-radius:20px;font-size:0.72rem;">🎵 Songs</span>
+        <span style="background:rgba(245,197,24,0.2);backdrop-filter:blur(8px);border:1px solid rgba(245,197,24,0.4);color:#f5c518;padding:3px 10px;border-radius:20px;font-size:0.72rem;">📖 Bible</span>
+        <span style="background:rgba(100,100,255,0.2);backdrop-filter:blur(8px);border:1px solid rgba(100,100,255,0.4);color:#aab4ff;padding:3px 10px;border-radius:20px;font-size:0.72rem;">🤖 AI</span>
+        <span style="background:rgba(0,200,83,0.15);backdrop-filter:blur(8px);border:1px solid rgba(0,200,83,0.3);color:#69f0ae;padding:3px 10px;border-radius:20px;font-size:0.72rem;">🔊 Voice</span>
+      </div>
+      <p style="margin-top:6px;text-shadow:0 1px 4px rgba(0,0,0,0.9);">YouTube video + Lyrics కలిసి చూడవచ్చు<br><span style="font-size:0.72rem;opacity:0.65;">Telugu Christian Songs • యేసు పాటలు</span></p>
+      <button class="start-btn" onclick="go('list')">🎵 Songs చూడు</button>
+    </div>
+  </div>
+  <div class="now-card" id="nowCard" style="display:none">
+    <div class="video-container">
+      <div class="no-video-ph" id="nvph"><div style="font-size:3rem">🎵</div></div>
+      <iframe id="ytf" style="display:none" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="song-meta">
+      <h2 id="nowTitle"></h2>
+      <div class="action-btns">
+        <a class="abtn abtn-yt" id="ytBtn" href="#" target="_blank">▶ YouTube</a>
+        <a class="abtn abtn-dl" id="dlBtn" href="#" target="_blank">⬇ Download</a>
+        <button class="abtn abtn-wa" onclick="shareWA()">💬 Share</button>
+        <button class="abtn abtn-pr" onclick="printLyrics()">🖨️</button>
+        <button class="fav-btn" id="favBtn" onclick="toggleFav()">🤍</button>
+      </div>
+    </div>
+    <div class="lyrics-wrap" id="lyrWrap" style="display:none">
+      <div class="lyrics-head">
+        <span>📝 Lyrics</span>
+        <div style="display:flex;gap:6px;">
+          <button class="tog-btn" onclick="go('list')" style="border-color:var(--red);color:var(--red);">← Songs</button>
+          <button class="tog-btn" id="togBtn" onclick="toggleLyrics()">Hide</button>
+        </div>
+      </div>
+      <div class="lyrics-body" id="lyrBody"></div>
+    </div>
+  </div>
+  <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు • Jesus Songs</div>
+</div>
+
+<!-- SONGS -->
+<div id="listPage" class="page">
+  <div class="tabs">
+    <button class="tab active" onclick="setTab('all',this)">అన్నీ</button>
+    <button class="tab" onclick="setTab('fav',this)">❤️ Favorites</button>
+  </div>
+  <div class="search-row"><input id="srch" type="text" placeholder="పాట వెతకండి..." oninput="renderList()"><span class="sicon">🔍</span></div>
+  <div id="songList"></div>
+</div>
+
+<!-- 244 SONGS -->
+<div id="s244Page" class="page">
+  <div style="margin-bottom:12px;"><h2 style="color:var(--gold);font-size:1rem;margin-bottom:4px;">🎼 తెలుగు క్రైస్తవ గీతాలు</h2><p style="color:var(--sub);font-size:0.8rem;">244 పాటలు — Click చేయండి YouTube లో వినడానికి</p></div>
+  <div class="search-row"><input id="srch244" type="text" placeholder="పాట వెతకండి..." oninput="filter244()"><span class="sicon">🔍</span></div>
+  <div id="count244" style="color:var(--sub);font-size:0.8rem;margin-bottom:10px;"></div>
+  <div id="grid244"></div>
+</div>
+
+<!-- LINKS -->
+<div id="linksPage" class="page">
+  <div id="linksMain">
+    <p class="section-title">📂 Folders</p>
+    <div class="ql-grid">
+      <div class="ql-card" onclick="showFolder('lyrics')"><div class="qi">🎼</div><h3>Lyrics Sites</h3><p>Christian lyrics</p></div>
+      <div class="ql-card" onclick="showFolder('testimonies')"><div class="qi">🙏</div><h3>Testimonies</h3><p>Telugu testimony channels</p></div>
+      <div class="ql-card" onclick="showFolder('shortfilms')"><div class="qi">🎬</div><h3>Short Films</h3><p>Christian short films</p></div>
+      <div class="ql-card" onclick="go('contact')"><div class="qi">📞</div><h3>Contact Vicky</h3><p>Call, WhatsApp, Email</p></div>
+    </div>
+    <p class="section-title">⚡ Quick Links</p>
+    <div class="ql-grid">
+      <a class="ql-card" href="https://sajeevavahini.com/telugubible/" target="_blank"><div class="qi">📚</div><h3>Telugu Bible</h3><p>Sajeeva Vahini</p></a>
+      <a class="ql-card" href="https://www.bible.com" target="_blank"><div class="qi">✝</div><h3>YouVersion</h3><p>Bible App</p></a>
+      <a class="ql-card" href="https://newpipe.net" target="_blank"><div class="qi">⬇️</div><h3>NewPipe</h3><p>YouTube download</p></a>
+      <a class="ql-card" href="https://www.instagram.com/mr_venka_tesh?igsh=bnM2eWRtMzA3dWcy" target="_blank"><div class="qi">📸</div><h3>Instagram</h3><p>@mr_venka_tesh</p></a>
+    </div>
+  </div>
+  <div id="folderView" style="display:none">
+    <button class="back-btn" onclick="closeFolder()">← Back</button>
+    <p id="folderTitle" class="section-title"></p>
+    <div class="ql-grid" id="folderGrid"></div>
+  </div>
+</div>
+
+<!-- BIBLE -->
+<div id="biblePage" class="page">
+  <div id="bHome">
+    <h2 class="bible-section-title">✝ పవిత్ర బైబిల్ — Telugu + KJV English</h2>
+    <div class="testament-grid">
+      <div class="test-card" onclick="showT('OT')"><div class="ti">📜</div><h3>పాత నిబంధన</h3><p>Old Testament • 39 Books</p></div>
+      <div class="test-card" onclick="showT('NT')"><div class="ti">✝</div><h3>క్రొత్త నిబంధన</h3><p>New Testament • 27 Books</p></div>
+    </div>
+    <!-- Telugu Reader buttons -->
+    <p style="color:var(--gold);font-size:0.85rem;margin-bottom:8px;">📖 Telugu Bible Reader — Click చేయండి</p>
+    <div class="testament-grid">
+      <div class="test-card" onclick="showBReader('OT')" style="background:linear-gradient(135deg,#002200,#003300);border-color:#27ae60;">
+        <div class="ti">📜</div><h3 style="color:#2ecc71;">OT Reader</h3><p style="color:#27ae60;">పాత నిబంధన Telugu</p>
+      </div>
+      <div class="test-card" onclick="showBReader('NT')" style="background:linear-gradient(135deg,#000d1a,#001a33);border-color:#3498db;">
+        <div class="ti" style="color:#3498db;">✝</div><h3 style="color:#3498db;">NT Reader</h3><p style="color:#2980b9;">క్రొత్త నిబంధన Telugu</p>
+      </div>
+    </div>
+  </div>
+  <div id="bBooks" style="display:none"><button class="back-btn" onclick="bBack('home')">← Back</button><h3 id="bTestTitle" class="bible-section-title"></h3><div class="books-grid" id="booksGrid"></div></div>
+  <div id="bChaps" style="display:none"><button class="back-btn" onclick="bBack('books')">← Back</button><h3 id="bBookTitle" class="bible-section-title"></h3><div class="chap-grid" id="chapGrid"></div></div>
+  <div id="bReader" style="display:none">
+    <button class="back-btn" onclick="bBack('chaps')">← Back</button>
+    <div class="reader-header">
+      <h3 id="readerTitle"></h3>
+      <div class="rnav-btns"><button class="rnav" onclick="prevC()">◀</button><button class="rnav" onclick="nextC()">▶</button></div>
+    </div>
+
+    <!-- Controls Bar -->
+    <div style="background:var(--card);border:1px solid var(--rborder);border-radius:12px;padding:10px 12px;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+      <!-- Font Family -->
+      <select id="fontFamily" onchange="applyFont()" style="background:var(--deep);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:8px;font-size:0.78rem;outline:none;">
+        <option value="'Segoe UI',sans-serif">Default</option>
+        <optgroup label="── Telugu Fonts ──">
+          <option value="'Noto Sans Telugu',sans-serif">Noto Sans Telugu</option>
+          <option value="'Noto Serif Telugu',serif">Noto Serif Telugu</option>
+          <option value="'Tiro Telugu',serif">Tiro Telugu</option>
+          <option value="'Ramabhadra',sans-serif">Ramabhadra</option>
+          <option value="'Ramaraja',sans-serif">Ramaraja</option>
+          <option value="'Peddana',sans-serif">Peddana</option>
+          <option value="'NTR',sans-serif">NTR</option>
+          <option value="'Mandali',sans-serif">Mandali</option>
+          <option value="'Tenali Ramakrishna',sans-serif">Tenali Ramakrishna</option>
+        </optgroup>
+        <optgroup label="── English Fonts ──">
+          <option value="Georgia,serif">Georgia</option>
+          <option value="'Times New Roman',serif">Times New Roman</option>
+          <option value="Arial,sans-serif">Arial</option>
+          <option value="Verdana,sans-serif">Verdana</option>
+        </optgroup>
+      </select>
+      <!-- Font Size -->
+      <button onclick="changeFontSize(-1)" style="background:var(--red);color:#fff;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;font-weight:700;">−</button>
+      <span id="fontSizeLabel" style="color:var(--gold);font-size:0.82rem;min-width:24px;text-align:center;">16</span>
+      <button onclick="changeFontSize(1)" style="background:var(--red);color:#fff;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;font-weight:700;">+</button>
+      <!-- Night Mode -->
+      <button id="nightBtn" onclick="toggleNight()" style="background:rgba(255,150,0,0.15);border:1px solid orange;color:orange;padding:5px 10px;border-radius:12px;cursor:pointer;font-size:0.78rem;">🌙 Night</button>
+      <!-- Highlight -->
+      <span style="color:var(--gold);font-size:0.78rem;">🖊️</span>
+      <button onclick="setHL('yellow')" style="background:#ffd700;border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;" title="Yellow"></button>
+      <button onclick="setHL('green')" style="background:#00c853;border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;" title="Green"></button>
+      <button onclick="setHL('red')" style="background:#e53935;border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;" title="Red"></button>
+      <button onclick="setHL('')" style="background:var(--btn-bg);border:1px solid var(--border);color:var(--sub);padding:4px 8px;border-radius:8px;cursor:pointer;font-size:0.72rem;">Clear</button>
+    </div>
+
+    <!-- Parallel Bible -->
+    <div class="parallel-grid" id="bReaderGrid">
+      <div class="par-col"><h5>తెలుగు 🇮🇳</h5><div id="teCol"></div></div>
+      <div class="par-col"><h5>KJV ENGLISH 🇬🇧</h5><div id="enCol"></div></div>
+    </div>
+
+    <!-- Notes -->
+    <div class="notes-panel">
+      <h4>📝 Notes — <span id="notesRef" style="color:var(--sub);font-size:0.8rem;"></span></h4>
+      <textarea id="bibleNotes" placeholder="ఇక్కడ notes రాయండి..."></textarea>
+      <button class="notes-save-btn" onclick="saveNote()">💾 Save Note</button>
+    </div>
+
+    <!-- AI Voice Reader -->
+    <div style="background:linear-gradient(135deg,#0a0020,#150030);border:1px solid rgba(156,39,176,0.4);border-radius:16px;padding:14px;margin-top:10px;">
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <span style="color:#ce93d8;font-size:0.88rem;font-weight:700;">🔊 Voice Reader</span>
+        <span id="vrStatus" style="color:var(--sub);font-size:0.68rem;max-width:160px;text-align:right;"></span>
+      </div>
+
+      <!-- Telugu Voice — Male / Female split -->
+      <div style="margin-bottom:10px;">
+        <div style="color:#ce93d8;font-size:0.7rem;margin-bottom:5px;font-weight:600;">🇮🇳 Telugu Voice</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div>
+            <div style="color:rgba(100,180,255,0.8);font-size:0.65rem;margin-bottom:3px;">👨 Male</div>
+            <select id="vrTeMale" style="width:100%;background:#0d001a;border:1px solid rgba(100,150,255,0.35);color:#b0c4ff;padding:6px 5px;border-radius:8px;font-size:0.7rem;outline:none;">
+              <option>Loading...</option>
+            </select>
+          </div>
+          <div>
+            <div style="color:rgba(255,150,200,0.8);font-size:0.65rem;margin-bottom:3px;">👩 Female</div>
+            <select id="vrTeFemale" style="width:100%;background:#0d001a;border:1px solid rgba(255,100,180,0.35);color:#ffb3d9;padding:6px 5px;border-radius:8px;font-size:0.7rem;outline:none;">
+              <option>Loading...</option>
+            </select>
+          </div>
+        </div>
+        <!-- Active gender toggle -->
+        <div style="display:flex;gap:6px;margin-top:7px;">
+          <button id="vrTeGenderM" onclick="vrSetTeGender('male')" style="flex:1;padding:6px;border-radius:8px;border:1.5px solid rgba(100,150,255,0.5);background:rgba(100,150,255,0.2);color:#b0c4ff;font-size:0.72rem;cursor:pointer;font-weight:600;">👨 Male use చేయి</button>
+          <button id="vrTeGenderF" onclick="vrSetTeGender('female')" style="flex:1;padding:6px;border-radius:8px;border:1.5px solid rgba(255,100,180,0.5);background:rgba(255,100,180,0.15);color:#ffb3d9;font-size:0.72rem;cursor:pointer;font-weight:600;">👩 Female use చేయి</button>
+        </div>
+      </div>
+
+      <!-- English Voice — Male / Female split -->
+      <div style="margin-bottom:10px;">
+        <div style="color:#ce93d8;font-size:0.7rem;margin-bottom:5px;font-weight:600;">🇬🇧 English Voice</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div>
+            <div style="color:rgba(100,180,255,0.8);font-size:0.65rem;margin-bottom:3px;">👨 Male</div>
+            <select id="vrEnMale" style="width:100%;background:#0d001a;border:1px solid rgba(100,150,255,0.35);color:#b0c4ff;padding:6px 5px;border-radius:8px;font-size:0.7rem;outline:none;">
+              <option>Loading...</option>
+            </select>
+          </div>
+          <div>
+            <div style="color:rgba(255,150,200,0.8);font-size:0.65rem;margin-bottom:3px;">👩 Female</div>
+            <select id="vrEnFemale" style="width:100%;background:#0d001a;border:1px solid rgba(255,100,180,0.35);color:#ffb3d9;padding:6px 5px;border-radius:8px;font-size:0.7rem;outline:none;">
+              <option>Loading...</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:7px;">
+          <button id="vrEnGenderM" onclick="vrSetEnGender('male')" style="flex:1;padding:6px;border-radius:8px;border:1.5px solid rgba(100,150,255,0.5);background:rgba(100,150,255,0.2);color:#b0c4ff;font-size:0.72rem;cursor:pointer;font-weight:600;">👨 Male use చేయి</button>
+          <button id="vrEnGenderF" onclick="vrSetEnGender('female')" style="flex:1;padding:6px;border-radius:8px;border:1.5px solid rgba(255,100,180,0.5);background:rgba(255,100,180,0.15);color:#ffb3d9;font-size:0.72rem;cursor:pointer;font-weight:600;">👩 Female use చేయి</button>
+        </div>
+      </div>
+
+      <!-- Speed + Pitch -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+        <span style="color:var(--sub);font-size:0.7rem;">⚡ Speed</span>
+        <select id="vrSpeed" style="background:#0d001a;border:1px solid rgba(156,39,176,0.3);color:var(--text);padding:5px 7px;border-radius:7px;font-size:0.7rem;outline:none;">
+          <option value="0.6">0.6x Very Slow</option>
+          <option value="0.8">0.8x Slow</option>
+          <option value="1" selected>1x Normal</option>
+          <option value="1.2">1.2x Fast</option>
+          <option value="1.5">1.5x Faster</option>
+          <option value="1.8">1.8x Very Fast</option>
+        </select>
+        <span style="color:var(--sub);font-size:0.7rem;">🎵 Pitch</span>
+        <select id="vrPitch" style="background:#0d001a;border:1px solid rgba(156,39,176,0.3);color:var(--text);padding:5px 7px;border-radius:7px;font-size:0.7rem;outline:none;">
+          <option value="0.7">Low (Male feel)</option>
+          <option value="1" selected>Normal</option>
+          <option value="1.3">High (Female feel)</option>
+        </select>
+      </div>
+
+      <!-- Play Buttons -->
+      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px;">
+        <button id="vrPlayBtn" onclick="vrPlay()" style="flex:1;background:linear-gradient(135deg,#4a0080,#9c27b0);color:#fff;border:none;padding:10px 10px;border-radius:18px;cursor:pointer;font-size:0.8rem;font-weight:700;min-width:80px;">▶ Telugu</button>
+        <button id="vrEngBtn" onclick="vrPlayEn()" style="flex:1;background:linear-gradient(135deg,#1a3a6b,#2980b9);color:#fff;border:none;padding:10px 10px;border-radius:18px;cursor:pointer;font-size:0.8rem;font-weight:700;min-width:80px;">▶ English</button>
+        <button id="vrStopBtn" onclick="vrStop()" style="display:none;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:10px 10px;border-radius:18px;cursor:pointer;font-size:0.8rem;font-weight:700;">⏹ Stop</button>
+        <button onclick="vrPreviewTe()" style="background:rgba(156,39,176,0.2);border:1px solid rgba(156,39,176,0.4);color:#ce93d8;padding:9px 10px;border-radius:18px;cursor:pointer;font-size:0.75rem;">🔈 Test</button>
+      </div>
+
+      <!-- Progress bar -->
+      <div id="vrProgressWrap" style="display:none;">
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;height:5px;overflow:hidden;">
+          <div id="vrProgressBar" style="height:100%;background:linear-gradient(90deg,#9c27b0,#f5c518);width:0%;transition:width 0.4s;border-radius:10px;"></div>
+        </div>
+        <div id="vrVerseLabel" style="color:#ce93d8;font-size:0.7rem;margin-top:4px;text-align:center;"></div>
+      </div>
+    </div>
+
+    <!-- Sound Recorder -->
+    <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;margin-top:10px;">
+      <h4 style="color:var(--gold);margin-bottom:10px;font-size:0.9rem;">🎙️ Voice Notes</h4>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <button id="recBtn" class="rec-btn idle" onclick="toggleRecording()">🎙️ Record</button>
+        <span id="recStatus" style="color:var(--sub);font-size:0.8rem;"></span>
+      </div>
+      <div id="recordings" style="margin-top:8px;"></div>
+    </div>
+
+  </div>
+  <div id="bReaderSites" style="display:none">
+    <button class="back-btn" onclick="bBack('home')">← Back</button>
+    <p id="bReaderTitle" class="bible-section-title"></p>
+    <div id="readerSites" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;"></div>
+    <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:24px;text-align:center;"><div style="font-size:2.5rem;margin-bottom:12px;">📖</div><p style="color:var(--gold);font-size:0.95rem;margin-bottom:8px;">పై buttons press చేయండి</p><p style="color:var(--sub);font-size:0.82rem;">Telugu Bible browser లో open అవుతుంది</p></div>
+  </div>
+</div>
+
+<!-- JESUS -->
+<div id="jesusPage" class="page">
+  <div class="jesus-header">
+    <div style="font-size:3.5rem;margin-bottom:10px;filter:drop-shadow(0 0 20px rgba(192,57,43,0.8));">✝</div>
+    <h1 style="color:var(--gold);font-size:1.4rem;margin-bottom:6px;">యేసు క్రీస్తు ఎవరు?</h1>
+    <p style="color:#ffaa88;font-size:0.9rem;">Who is Jesus Christ?</p>
+    <p style="color:var(--sub);font-size:0.8rem;margin-top:8px;">దేవుని కుమారుడు • లోక రక్షకుడు • Son of God • Saviour</p>
+  </div>
+
+  <div class="jesus-section">
+    <h3 style="color:var(--gold);">🌟 జననం / Birth</h3>
+    <p>రోమా చక్రవర్తి అగస్తు కైసరు జనాభా లెక్క తీయమని ఆజ్ఞ ఇచ్చాడు. యోసేపు తన భార్య మరియతో కలిసి నజరేతు నుండి బేత్లెహేముకు వెళ్ళాడు. సత్రంలో చోటు లేకపోవడంతో పశువుల శాలలో యేసు పుట్టాడు. మరియ ఆయనను గుడ్డలతో చుట్టి యావురిలో పరుండ బెట్టింది.<br><br>
+    దేవదూత కాపరులకు కనిపించి <i>"భయపడకుడి — నేడు దావీదు పట్టణమున మీకు రక్షకుడు పుట్టాడు, ఆయనే క్రీస్తు అయిన ప్రభువు"</i> అని చెప్పాడు. పరలోక సైన్యం <i>"ఉన్నత స్థలములలో దేవునికి మహిమ, భూమిపై సమాధానము"</i> అని స్తుతించింది. తూర్పు దేశపు జ్ఞానులు నక్షత్రమును అనుసరించి వచ్చి బంగారము, సాంబ్రాణి, గోపరసము కానుకలు సమర్పించారు.<br><br>
+    <span style="color:var(--sub);font-size:0.82rem;">Caesar Augustus ordered a census. Joseph and Mary traveled from Nazareth to Bethlehem. With no room at the inn, Jesus was born in a stable and laid in a manger. An angel told shepherds "Fear not — today in David's city a Saviour is born, Christ the Lord." A heavenly host praised God. Wise men from the East followed a star and offered gold, frankincense and myrrh.</span><br><br>
+    <span style="color:var(--red);font-size:0.8rem;">📖 లూకా 2:1-20, మత్తయి 2:1-12</span></p>
+  </div>
+
+  <div class="jesus-section">
+    <h3 style="color:#2ecc71;">📢 సువార్త / The Gospel</h3>
+    <p>యేసు 30 సంవత్సరముల వయసులో యోర్దాను నదిలో యోహాను చేత బాప్తిస్మం పొందాడు. పరిశుద్ధాత్మ పావురము రూపంలో దిగివచ్చింది. పరలోకము నుండి <i>"ఇతడు నా ప్రియ కుమారుడు, ఇతనియందు నేను సంతోషించుచున్నాను"</i> అను వాక్యం వినిపించింది.<br><br>
+    పరిశుద్ధాత్మ ఆయనను అరణ్యానికి నడిపించింది. 40 పగళ్ళు, 40 రాత్రులు ఉపవాసముండాడు. సాతాను 3 విధాలుగా శోధించాడు — ప్రతిసారీ యేసు <i>"లిఖించబడియున్నది"</i> అని దేవుని వాక్యంతో జయించాడు. తర్వాత గలిలయలో <i>"కాలము సంపూర్ణమైనది, దేవుని రాజ్యము సమీపించింది, మారుమనస్సు పొందుడి"</i> అని ప్రకటించాడు. 12 మందిని శిష్యులుగా పిలిచాడు.<br><br>
+    <span style="color:var(--sub);font-size:0.82rem;">At 30 Jesus was baptized in the Jordan. The Holy Spirit descended as a dove, a voice said "This is My beloved Son." Led into the wilderness He fasted 40 days. Satan tempted Him 3 times — each time Jesus overcame with "It is written." Then He preached "Repent for the kingdom of God is near" and called 12 disciples.</span><br><br>
+    <span style="color:#2ecc71;font-size:0.8rem;">📖 మత్తయి 3-4, మార్కు 1:14-20</span></p>
+  </div>
+
+  <div class="jesus-section">
+    <h3 style="color:#3498db;">✨ అద్భుత కార్యాలు / Miracles</h3>
+    <div class="miracle-item"><b>🍷 నీటిని ద్రాక్షారసంగా మార్చడం / Water into Wine</b><p style="margin-top:4px;font-size:0.82rem;">కానా పెండ్లిలో ద్రాక్షారసం అయిపోయింది. యేసు 6 రాతి తొట్టెలను నీటితో నింపమన్నాడు — అవి ద్రాక్షారసంగా మారాయి. మొదటి అద్భుతం.<br><span style="color:var(--sub);">At Cana's wedding water became wine — His first miracle. John 2:1-11</span></p></div>
+    <div class="miracle-item"><b>🐟 జాలరులతో చేపలు / Miraculous Catch</b><p style="margin-top:4px;font-size:0.82rem;">పేతురు రాత్రంతా చేపలు పట్టలేదు. యేసు "లోతులో వలలు వేయుడి" అన్నాడు — రెండు నావలు మునగేంత చేపలు వచ్చాయి! పేతురు "నేను పాపిని" అన్నాడు — యేసు "ఇకపై మనుష్యులను పట్టెదవు" అన్నాడు.<br><span style="color:var(--sub);">Peter fished all night in vain. Jesus said "Cast nets deeper" — boats nearly sank with fish! Luke 5:1-11</span></p></div>
+    <div class="miracle-item"><b>👁️ పుట్టు గుడ్డివానికి చూపు / Blind Man Healed</b><p style="margin-top:4px;font-size:0.82rem;">యేసు మట్టి కలిపి కన్నులకు పూసి "సీలోయాముకు వెళ్ళి కడుగుకొమ్ము" అన్నాడు — అతడు చూపు పొందాడు.<br><span style="color:var(--sub);">Jesus made mud, put it on the man's eyes, said "Go wash in Siloam" — he came back seeing. John 9:1-12</span></p></div>
+    <div class="miracle-item"><b>🌊 తుఫాను శాంతింపజేయడం / Calming the Storm</b><p style="margin-top:4px;font-size:0.82rem;">గొప్ప తుఫాను వచ్చింది — యేసు నిద్రపోతున్నాడు. శిష్యులు లేపారు. యేసు "సమాధానముగా ఉండుము" అన్నాడు — అంతట ప్రశాంతత కలిగింది.<br><span style="color:var(--sub);">"Peace, be still" — the storm immediately ceased. Mark 4:35-41</span></p></div>
+    <div class="miracle-item"><b>🍞 5000 మందికి భోజనం / Feeding 5000</b><p style="margin-top:4px;font-size:0.82rem;">5 రొట్టెలు, 2 చేపలతో 5000 మందికి తినిపించాడు — 12 గంపలు మిగిలాయి!<br><span style="color:var(--sub);">5 loaves + 2 fish fed 5000 with 12 baskets left over! John 6:1-14</span></p></div>
+    <div class="miracle-item"><b>🚶 నీటిపై నడవడం / Walking on Water</b><p style="margin-top:4px;font-size:0.82rem;">యేసు నీటిపై నడుస్తూ వచ్చాడు. పేతురు కూడా నడిచాడు కానీ భయపడి మునిగాడు — యేసు పట్టుకున్నాడు.<br><span style="color:var(--sub);">Peter walked on water but sank in fear — Jesus caught him. Matthew 14:22-33</span></p></div>
+    <div class="miracle-item"><b>💀 లాజరును బ్రతికించడం / Raising Lazarus</b><p style="margin-top:4px;font-size:0.82rem;">4 రోజుల తర్వాత సమాధి ముందు యేసు కన్నీళ్ళు కార్చాడు. "లాజరూ బయటికి రా!" అని పిలిచాడు — లాజరు జీవంతో వచ్చాడు!<br><span style="color:var(--sub);">"Lazarus come forth!" — and he walked out alive after 4 days! John 11:1-44</span></p></div>
+    <div class="miracle-item"><b>🤚 చేయి ఎండినవాడిని బాగుచేయడం / Withered Hand</b><p style="margin-top:4px;font-size:0.82rem;">శబ్బాతు నాడు సమాజమందిరంలో "చేయి చాపుము" అన్నాడు — చేయి బాగైంది.<br><span style="color:var(--sub);">"Stretch out your hand" — completely restored on the Sabbath. Mark 3:1-6</span></p></div>
+  </div>
+
+  <div class="jesus-section">
+    <h3 style="color:var(--gold);">📖 ఉపమానాలు / Parables</h3>
+    <div class="parable-item"><b>🐑 పోగొట్టుకున్న గొర్రె / Lost Sheep (లూకా 15:3-7)</b><p style="margin-top:4px;font-size:0.82rem;">100 గొర్రెలలో ఒకటి పోతే 99 వదిలి వెదికాడు. దొరికినప్పుడు సంతోషంతో భుజాన వేసుకున్నాడు. పశ్చాత్తాపించే ఒక్క పాపి గురించి పరలోకంలో మహా సంతోషం కలుగుతుంది.<br><span style="color:var(--sub);">Left 99 to find 1 lost sheep — great joy in heaven over one sinner who repents.</span></p></div>
+    <div class="parable-item"><b>💰 తండ్రి-కుమారుడు / Prodigal Son (లూకా 15:11-32)</b><p style="margin-top:4px;font-size:0.82rem;">కుమారుడు ఆస్తి తీసుకొని వెళ్ళిపోయాడు, పేదవాడై తిరిగి వచ్చాడు. తండ్రి దూరంగా చూసే పరుగెత్తి ముద్దుపెట్టుకున్నాడు — దేవుని ప్రేమ చిత్రీకరణ.<br><span style="color:var(--sub);">Father saw son returning from far off, ran and embraced him — picture of God's welcoming love.</span></p></div>
+    <div class="parable-item"><b>🌱 విత్తనాల ఉపమానం / Sower (మత్తయి 13:1-23)</b><p style="margin-top:4px;font-size:0.82rem;">విత్తనం 4 చోట్ల పడింది — దారిపక్కన, రాతినేలపై, ముండ్లలో, మంచి నేలపై (100 రెట్లు ఫలించింది). విత్తనం = దేవుని వాక్యం, నేల = హృదయం.<br><span style="color:var(--sub);">Seed on good soil yielded 100-fold. Seed = God's Word, Soil = our heart.</span></p></div>
+    <div class="parable-item"><b>🏠 బుద్ధిమంతుడు-మూఢుడు / Wise Builder (మత్తయి 7:24-27)</b><p style="margin-top:4px;font-size:0.82rem;">బండపై కట్టినవాడు తుఫానులో నిలిచాడు, ఇసుకపై కట్టినవాడు పడిపోయాడు. యేసు మాటలు విని పాటించువాడు బుద్ధిమంతుడు.<br><span style="color:var(--sub);">Built on rock stood firm in storm. Hearing and obeying Jesus = wise builder.</span></p></div>
+    <div class="parable-item"><b>🕯️ పది కన్యకలు / Ten Virgins (మత్తయి 25:1-13)</b><p style="margin-top:4px;font-size:0.82rem;">5 మంది అదనపు నూనె తెచ్చారు, 5 మంది తెచ్చుకోలేదు. అర్ధరాత్రి పెండ్లికుమారుడు వచ్చినప్పుడు నూనె లేనివారు లోపలికి రాలేకపోయారు — సిద్ధంగా ఉండాలి.<br><span style="color:var(--sub);">5 wise had extra oil, 5 foolish didn't — be ready for Jesus' return.</span></p></div>
+    <div class="parable-item"><b>🤲 మంచి సమరయుడు / Good Samaritan (లూకా 10:25-37)</b><p style="margin-top:4px;font-size:0.82rem;">దొంగలకు కొట్టబడినవాడిని యాజకుడు, లేవీయుడు వదిలి వెళ్ళారు. సమరయుడు గాయాలు కట్టి, సత్రంలో చేర్చాడు, డబ్బు చెల్లించాడు. "నీవు వెళ్ళి ఆలాగే చేయుము."<br><span style="color:var(--sub);">Samaritan helped the wounded man — priest and Levite passed by. "Go and do likewise."</span></p></div>
+  </div>
+
+  <div class="jesus-section" style="background:linear-gradient(135deg,#0f0000,#1a0505);border-color:var(--red);">
+    <h3 style="color:var(--red);">✝ సిలువ / Crucifixion</h3>
+    <p>యూదా 30 వెండి నాణేలకు యేసును అప్పగించాడు. గెత్సేమనేలో యేసు ప్రార్థించాడు — <i>"తండ్రీ నీకు ఇష్టమైతే ఈ పాత్రను నా యొద్ద నుండి తొలగించుము — అయినను నా చిత్తముకాదు, నీ చిత్తమే జరుగుగాక."</i> సైనికులు ఆయనను పట్టుకున్నారు. పిలాతు నిర్దోషి అని తెలిసినా సిలువ వేయించాడు.<br><br>
+    యేసు సిలువపై <i>"నా దేవా నా దేవా నన్నేల విడిచితివి?"</i> అని మొఱ్ఱపెట్టాడు. <i>"తండ్రీ నీ చేతికి నా ఆత్మను అప్పగించుకొనుచున్నాను"</i> అని చెప్పి ప్రాణం వదిలాడు. దేవాలయ తెర రెండుగా చినిగింది. భూకంపం వచ్చింది. ఆయన రక్తం మన పాపాలను కడిగివేస్తుంది.<br><br>
+    <span style="color:var(--sub);font-size:0.82rem;">Judas betrayed Jesus for 30 silver coins. In Gethsemane Jesus prayed "Not my will but Yours." Pilate knew He was innocent but crucified Him. On the cross Jesus cried "My God why have You forsaken Me?" then "Father into Your hands I commit My spirit." The temple veil tore, earthquake came. His blood washes our sins.</span><br><br>
+    <span style="color:var(--red);font-size:0.8rem;">📖 మత్తయి 26-27</span></p>
+  </div>
+
+  <div class="jesus-section" style="background:linear-gradient(135deg,#002200,#003300);border-color:#27ae60;">
+    <h3 style="color:#2ecc71;">🌅 పునరుత్థానం / Resurrection</h3>
+    <p>మూడు రోజుల తర్వాత స్త్రీలు సమాధికి వచ్చారు — రాయి తొలగింది, సమాధి ఖాళీగా ఉంది! దేవదూత <i>"ఆయన ఇక్కడ లేడు — లేచాడు!"</i> అన్నాడు. యేసు మగ్దలేనే మరియకు, శిష్యులకు కనిపించాడు. వారితో తిన్నాడు, మాట్లాడాడు.<br><br>
+    ఎమ్మాయికి వెళ్తున్న ఇద్దరు శిష్యులకు కనిపించి లేఖనాలు వివరించాడు. "మీరు వెళ్ళి అన్ని జాతులను శిష్యులుగా చేయుడి" అని మహా సేనలిచ్చి 40 రోజుల తర్వాత పరలోకానికి వెళ్ళాడు. ఇది క్రైస్తవ విశ్వాసానికి పునాది!<br><br>
+    <span style="color:var(--sub);font-size:0.82rem;">After 3 days women found the empty tomb. An angel said "He is not here — He has risen!" Jesus appeared to Mary Magdalene, disciples, ate with them. He gave the Great Commission "Go make disciples of all nations" and ascended to heaven after 40 days. This is the foundation of Christian faith!</span><br><br>
+    <span style="color:#2ecc71;font-size:0.8rem;">📖 లూకా 24, మత్తయి 28</span></p>
+  </div>
+
+  <div class="jesus-section">
+    <h3 style="color:var(--gold);">💬 యేసు చెప్పిన మాటలు / Words of Jesus</h3>
+    <div class="quote-item"><p style="font-style:italic;color:var(--gold);">"నేనే మార్గమును, సత్యమును, జీవమును అయి యున్నాను."</p><p style="color:var(--sub);font-size:0.78rem;margin-top:3px;">"I am the way, the truth, and the life." — యోహాను 14:6</p></div>
+    <div class="quote-item"><p style="font-style:italic;color:var(--gold);">"అలసిపోయి భారము మోయువారందరూ నా యొద్దకు రండి, నేను మీకు విశ్రాంతి ఇచ్చెదను."</p><p style="color:var(--sub);font-size:0.78rem;margin-top:3px;">"Come to me all who are weary, I will give you rest." — మత్తయి 11:28</p></div>
+    <div class="quote-item"><p style="font-style:italic;color:var(--gold);">"దేవుడు లోకమును ఎంతో ప్రేమించెను గనుక ఆయన తన అద్వితీయ కుమారుని అనుగ్రహించెను."</p><p style="color:var(--sub);font-size:0.78rem;margin-top:3px;">"For God so loved the world He gave His only Son." — యోహాను 3:16</p></div>
+    <div class="quote-item"><p style="font-style:italic;color:var(--gold);">"నేను వచ్చినది జీవము కలిగించుటకును, సమృద్ధిగా కలిగించుటకును వచ్చితిని."</p><p style="color:var(--sub);font-size:0.78rem;margin-top:3px;">"I came that they may have life and have it abundantly." — యోహాను 10:10</p></div>
+  </div>
+
+  <div class="jesus-section" style="background:linear-gradient(135deg,#0a0a00,#1a1a05);border-color:var(--gold);text-align:center;">
+    <div style="font-size:2.5rem;margin-bottom:10px;">🙏</div>
+    <h3 style="color:var(--gold);margin-bottom:12px;">రక్షణ పొందడం ఎలా? / How to be Saved?</h3>
+    <div style="text-align:left;font-size:0.85rem;line-height:1.9;">
+      <p>✅ <b style="color:var(--gold);">విశ్వసించు</b> — యేసు దేవుని కుమారుడని నమ్ము<br><span style="color:var(--sub);font-size:0.8rem;">Believe — Jesus is the Son of God</span></p>
+      <p style="margin-top:6px;">✅ <b style="color:var(--gold);">పశ్చాత్తాపము</b> — పాపాలు ఒప్పుకొని క్షమించమని కోరు<br><span style="color:var(--sub);font-size:0.8rem;">Repent — Confess sins and ask forgiveness</span></p>
+      <p style="margin-top:6px;">✅ <b style="color:var(--gold);">అంగీకరించు</b> — యేసును ప్రభువుగా హృదయంలో చేర్చుకో<br><span style="color:var(--sub);font-size:0.8rem;">Accept — Invite Jesus as Lord into your heart</span></p>
+      <p style="margin-top:6px;">✅ <b style="color:var(--gold);">బాప్తిస్మం</b> — నీటిలో బాప్తిస్మం పొందు<br><span style="color:var(--sub);font-size:0.8rem;">Be Baptized — in water as commanded</span></p>
+    </div>
+    <div style="margin-top:14px;padding:12px;background:rgba(245,197,24,0.08);border-radius:10px;font-size:0.82rem;font-style:italic;color:var(--gold);">
+      "నీ నోటితో యేసు ప్రభువని అంగీకరించి... రక్షింపబడతావు"<br>
+      <span style="color:var(--sub);font-size:0.78rem;">"Confess Jesus is Lord... you will be saved" — రోమీయులు 10:9</span>
+    </div>
+  </div>
+  <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు • Jesus Songs</div>
+</div>
+
+<!-- HELP -->
+<div id="helpPage" class="page">
+  <div class="help-section">
+    <h3>❓ App ఉపయోగించడం ఎలా? / How to Use</h3>
+    <div class="help-item"><div class="help-icon">🏠</div><div class="help-text"><h4>Home</h4><p>YouTube video + Lyrics ఇక్కడ చూడవచ్చు / Watch video + read lyrics here</p></div></div>
+    <div class="help-item"><div class="help-icon">🎵</div><div class="help-text"><h4>Songs</h4><p>మీ పాటల జాబితా / Your saved songs list — tap to play</p></div></div>
+    <div class="help-item"><div class="help-icon">➕</div><div class="help-text"><h4>Add</h4><p>YouTube link + lyrics add cheyyi / Add YouTube link and lyrics</p></div></div>
+    <div class="help-item"><div class="help-icon">📖</div><div class="help-text"><h4>Bible</h4><p>Telugu + English parallel / Read Telugu + KJV parallel</p></div></div>
+    <div class="help-item"><div class="help-icon">✝</div><div class="help-text"><h4>యేసు</h4><p>యేసు గురించి complete info / Complete info about Jesus</p></div></div>
+    <div class="help-item"><div class="help-icon">❤️</div><div class="help-text"><h4>Favs</h4><p>Home లో ❤️ press cheyyi / Press ❤️ on home to save favorites</p></div></div>
+    <div class="help-item"><div class="help-icon">🖨️📥</div><div class="help-text"><h4>Print / Download</h4><p>Lyrics print or .txt ga download cheyyi / Print or download lyrics as .txt</p></div></div>
+    <div class="help-item"><div class="help-icon">📅</div><div class="help-text"><h4>Daily Promise</h4><p>Top lo rojuvari Bible verse / Daily Bible verse on top — click for new verse</p></div></div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contactPage" class="page">
+  <div class="contact-card">
+    <div class="contact-photo">
+      <img src="vicky.jpg" alt="Vicky" onload="this.style.display='block'" onerror="this.style.display='none';this.parentElement.innerHTML='✝';" style="display:none;width:100%;height:100%;object-fit:cover;object-position:top;">
+    </div>
+    <div class="contact-name">Vicky</div>
+    <div class="contact-sub">నన్ను సంప్రదించండి • Get in Touch</div>
+    <div class="contact-btns">
+      <a class="cbtn cbtn-call" href="tel:+916383833990">📞 Call చేయండి</a>
+      <a class="cbtn cbtn-wa" href="https://wa.me/916383833990?text=Hello%20Vicky!" target="_blank">💬 WhatsApp Message</a>
+      <a class="cbtn cbtn-mail" href="/cdn-cgi/l/email-protection#4628242e27213f273023282d273223352e06212b272f2a6825292b" target="_blank">📧 Email పంపండి</a>
+      <a class="cbtn cbtn-ig" href="https://www.instagram.com/mr_venka_tesh?igsh=bnM2eWRtMzA3dWcy" target="_blank">📸 Instagram Follow</a>
+    </div>
+  </div>
+  <div class="copyright" style="margin-top:16px;">© 2026 <span>Vicky</span> — యేసు పాటలు • Jesus Songs</div>
+</div>
+
+
+
+<!-- AI PAGE -->
+<div id="aiPage" class="page">
+  <div style="background:linear-gradient(135deg,#0a0a00,#1a1a05);border:1px solid var(--gold);border-radius:18px;padding:16px;margin-bottom:12px;">
+    <h2 style="color:var(--gold);margin-bottom:4px;">🤖 AI Bible Assistant</h2>
+    <p style="color:var(--sub);font-size:0.8rem;">Bible గురించి Telugu లో doubt అడగండి • Free AI</p>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;">
+    <div id="aiMessages2" style="min-height:300px;max-height:450px;overflow-y:auto;margin-bottom:12px;">
+      <div class="ai-msg bot">నమస్కారం! 🙏 Bible గురించి, యేసు గురించి, క్రైస్తవ విశ్వాసం గురించి ఏమైనా అడగండి!</div>
+    </div>
+    <div class="ai-input-row">
+      <input id="aiInput2" type="text" placeholder="మీ doubt ఇక్కడ రాయండి..." onkeydown="if(event.key==='Enter')sendAI2()">
+      <button class="ai-send-btn" onclick="sendAI2()">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORY PAGE -->
+<div id="histPage" class="page">
+  <div style="background:linear-gradient(135deg,#0a0505,#1a0808);border:1px solid var(--rborder);border-radius:18px;padding:16px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">
+    <div>
+      <h2 style="color:var(--gold);font-size:1rem;margin-bottom:3px;">🕐 Recently Read</h2>
+      <p style="color:var(--sub);font-size:0.75rem;">Bible chapters + Saved notes</p>
+    </div>
+    <button onclick="clearHistory()" style="background:rgba(192,57,43,0.2);border:1px solid var(--red);color:var(--red);padding:6px 12px;border-radius:12px;cursor:pointer;font-size:0.75rem;">🗑️ Clear</button>
+  </div>
+  <div id="histList"></div>
+</div>
+
+<!-- FAV -->
+<div id="favPage" class="page"><div id="favList"></div></div>
+
+<!-- ADD -->
+<div id="addPage" class="page">
+  <div style="background:var(--card);border:1px solid var(--rborder);border-radius:18px;padding:20px;">
+    <h2 id="formH" style="color:var(--gold);margin-bottom:18px;font-size:1.1rem;">➕ కొత్త పాట Add చేయి</h2>
+    <div style="margin-bottom:15px;"><label style="display:block;font-size:0.8rem;color:var(--sub);margin-bottom:7px;">పాట పేరు *</label><input id="fT" placeholder="Ex: కృపామయుడా" style="width:100%;background:var(--deep);border:1px solid var(--border);border-radius:11px;color:var(--text);padding:11px 13px;font-size:0.95rem;font-family:inherit;outline:none;"></div>
+    <div style="margin-bottom:15px;"><label style="display:block;font-size:0.8rem;color:var(--sub);margin-bottom:7px;">YouTube Link *</label><input id="fY" placeholder="https://www.youtube.com/watch?v=..." style="width:100%;background:var(--deep);border:1px solid var(--border);border-radius:11px;color:var(--text);padding:11px 13px;font-size:0.95rem;font-family:inherit;outline:none;"></div>
+    <div style="margin-bottom:15px;"><label style="display:block;font-size:0.8rem;color:var(--sub);margin-bottom:7px;">Lyrics (Telugu)</label><textarea id="fL" placeholder="ఇక్కడ lyrics రాయి..." style="width:100%;background:var(--deep);border:1px solid var(--border);border-radius:11px;color:var(--text);padding:11px 13px;font-size:0.95rem;font-family:inherit;outline:none;min-height:150px;resize:vertical;"></textarea></div>
+    <div style="display:flex;gap:8px;">
+      <button onclick="save()" style="flex:1;padding:11px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;border-radius:25px;font-size:0.9rem;font-weight:700;cursor:pointer;">💾 Save</button>
+      <button id="cancelBtn" onclick="cancelEdit()" style="display:none;flex:1;padding:11px;background:var(--btn-bg);color:var(--text);border:1px solid var(--border);border-radius:25px;font-size:0.9rem;cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<button class="fab" id="fab" onclick="go('add')">➕</button>
+<div id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ═══ BIBLE DATA ═══
+var OT=[{n:"ఆదికాండము",e:"Genesis",c:50,id:"GEN"},{n:"నిర్గమకాండము",e:"Exodus",c:40,id:"EXO"},{n:"లేవీయకాండము",e:"Leviticus",c:27,id:"LEV"},{n:"సంఖ్యాకాండము",e:"Numbers",c:36,id:"NUM"},{n:"ద్వితీయోపదేశకాండము",e:"Deuteronomy",c:34,id:"DEU"},{n:"యెహోషువ",e:"Joshua",c:24,id:"JOS"},{n:"న్యాయాధిపతులు",e:"Judges",c:21,id:"JDG"},{n:"రూతు",e:"Ruth",c:4,id:"RUT"},{n:"1 సమూయేలు",e:"1 Samuel",c:31,id:"1SA"},{n:"2 సమూయేలు",e:"2 Samuel",c:24,id:"2SA"},{n:"1 రాజులు",e:"1 Kings",c:22,id:"1KI"},{n:"2 రాజులు",e:"2 Kings",c:25,id:"2KI"},{n:"1 దినవృత్తాంతములు",e:"1 Chronicles",c:29,id:"1CH"},{n:"2 దినవృత్తాంతములు",e:"2 Chronicles",c:36,id:"2CH"},{n:"ఎజ్రా",e:"Ezra",c:10,id:"EZR"},{n:"నెహెమ్యా",e:"Nehemiah",c:13,id:"NEH"},{n:"ఎస్తేరు",e:"Esther",c:10,id:"EST"},{n:"యోబు",e:"Job",c:42,id:"JOB"},{n:"కీర్తనలు",e:"Psalms",c:150,id:"PSA"},{n:"సామెతలు",e:"Proverbs",c:31,id:"PRO"},{n:"ప్రసంగి",e:"Ecclesiastes",c:12,id:"ECC"},{n:"పరమగీతము",e:"Song of Solomon",c:8,id:"SNG"},{n:"యెషయా",e:"Isaiah",c:66,id:"ISA"},{n:"యిర్మియా",e:"Jeremiah",c:52,id:"JER"},{n:"విలాపవాక్యములు",e:"Lamentations",c:5,id:"LAM"},{n:"యెహెజ్కేలు",e:"Ezekiel",c:48,id:"EZK"},{n:"దానియేలు",e:"Daniel",c:12,id:"DAN"},{n:"హోషేయ",e:"Hosea",c:14,id:"HOS"},{n:"యోవేలు",e:"Joel",c:3,id:"JOL"},{n:"ఆమోసు",e:"Amos",c:9,id:"AMO"},{n:"ఓబద్యా",e:"Obadiah",c:1,id:"OBA"},{n:"యోనా",e:"Jonah",c:4,id:"JON"},{n:"మీకా",e:"Micah",c:7,id:"MIC"},{n:"నహూము",e:"Nahum",c:3,id:"NAM"},{n:"హబక్కూకు",e:"Habakkuk",c:3,id:"HAB"},{n:"జెఫన్యా",e:"Zephaniah",c:3,id:"ZEP"},{n:"హగ్గయి",e:"Haggai",c:2,id:"HAG"},{n:"జెకర్యా",e:"Zechariah",c:14,id:"ZEC"},{n:"మలాకీ",e:"Malachi",c:4,id:"MAL"}];
+var NT=[{n:"మత్తయి",e:"Matthew",c:28,id:"MAT"},{n:"మార్కు",e:"Mark",c:16,id:"MRK"},{n:"లూకా",e:"Luke",c:24,id:"LUK"},{n:"యోహాను",e:"John",c:21,id:"JHN"},{n:"అపొస్తలుల కార్యములు",e:"Acts",c:28,id:"ACT"},{n:"రోమీయులకు",e:"Romans",c:16,id:"ROM"},{n:"1 కొరింథీయులకు",e:"1 Corinthians",c:16,id:"1CO"},{n:"2 కొరింథీయులకు",e:"2 Corinthians",c:13,id:"2CO"},{n:"గలతీయులకు",e:"Galatians",c:6,id:"GAL"},{n:"ఎఫెసీయులకు",e:"Ephesians",c:6,id:"EPH"},{n:"ఫిలిప్పీయులకు",e:"Philippians",c:4,id:"PHP"},{n:"కొలొస్సయులకు",e:"Colossians",c:4,id:"COL"},{n:"1 థెస్సలొనీకయులకు",e:"1 Thessalonians",c:5,id:"1TH"},{n:"2 థెస్సలొనీకయులకు",e:"2 Thessalonians",c:3,id:"2TH"},{n:"1 తిమోతికి",e:"1 Timothy",c:6,id:"1TI"},{n:"2 తిమోతికి",e:"2 Timothy",c:4,id:"2TI"},{n:"తీతుకు",e:"Titus",c:3,id:"TIT"},{n:"ఫిలేమోనుకు",e:"Philemon",c:1,id:"PHM"},{n:"హెబ్రీయులకు",e:"Hebrews",c:13,id:"HEB"},{n:"యాకోబు",e:"James",c:5,id:"JAS"},{n:"1 పేతురు",e:"1 Peter",c:5,id:"1PE"},{n:"2 పేతురు",e:"2 Peter",c:3,id:"2PE"},{n:"1 యోహాను",e:"1 John",c:5,id:"1JN"},{n:"2 యోహాను",e:"2 John",c:1,id:"2JN"},{n:"3 యోహాను",e:"3 John",c:1,id:"3JN"},{n:"యూదా",e:"Jude",c:1,id:"JUD"},{n:"ప్రకటన",e:"Revelation",c:22,id:"REV"}];
+
+var READER_SITES={OT:[{n:'ఆదికాండము',url:'https://sajeevavahini.com/telugubible/index.aspx?b=1&c=1'},{n:'నిర్గమకాండము',url:'https://sajeevavahini.com/telugubible/index.aspx?b=2&c=1'},{n:'కీర్తనలు',url:'https://sajeevavahini.com/telugubible/index.aspx?b=19&c=1'},{n:'సామెతలు',url:'https://sajeevavahini.com/telugubible/index.aspx?b=20&c=1'},{n:'యెషయా',url:'https://sajeevavahini.com/telugubible/index.aspx?b=23&c=1'}],NT:[{n:'మత్తయి',url:'https://sajeevavahini.com/telugubible/index.aspx?b=40&c=1'},{n:'యోహాను',url:'https://sajeevavahini.com/telugubible/index.aspx?b=43&c=1'},{n:'అపొస్తలుల కార్యములు',url:'https://sajeevavahini.com/telugubible/index.aspx?b=44&c=1'},{n:'రోమీయులకు',url:'https://sajeevavahini.com/telugubible/index.aspx?b=45&c=1'},{n:'ప్రకటన',url:'https://sajeevavahini.com/telugubible/index.aspx?b=66&c=1'}]};
+
+var FOLDERS={lyrics:[{qi:'🎼',n:'Christian Lyricz',p:'Telugu lyrics',url:'https://christianlyricz.com/'},{qi:'🎵',n:'Hosanna Songs (240)',p:'హోసన్నా lyrics',url:'https://www.christiandatahouse.com/p/hosanna-all-songs.html?m=1'},{qi:'🕊️',n:'Songs of Zion',p:'Zion songs',url:'https://songsofzion.org/'},{qi:'⛪',n:'Way to Church',p:'Church resources',url:'https://waytochurch.com/'}],testimonies:[{qi:'🙏',n:'Brother Joshi',p:'Telugu testimonies',url:'https://youtube.com/@brotherjoshi2876'},{qi:'💡',n:'Lamp Ministries',p:'Lamp Ministries',url:'https://youtube.com/@lampministries'},{qi:'✝',n:'Telugu Testimonies',p:'Telugu Christian',url:'https://youtube.com/@teluguchristiantestimonies1945'},{qi:'🔥',n:'Elisha Eliya',p:'Elisha Eliya',url:'https://youtube.com/@elishaeliya'}],shortfilms:[{qi:'🎬',n:'AAG Team Works',p:'Christian short films',url:'https://youtube.com/@aagteamworks'},{qi:'⛪',n:'JCC Church Official',p:'JCC Church',url:'https://youtube.com/@jcchurchofficial'},{qi:'🤝',n:'We With God',p:'We With God',url:'https://youtube.com/@wewithgod'},{qi:'🕊️',n:'Prabhu Deevena',p:'Prabhu Deevena',url:'https://youtube.com/@prabhudeevena'}]};
+var FOLDER_TITLES={lyrics:'🎼 Lyrics Sites',testimonies:'🙏 Testimonies',shortfilms:'🎬 Short Films'};
+
+var PROMISES=[{t:"యెహోవా నా కాపరి, నాకు లేమి కలుగదు.",r:"కీర్తన 23:1"},{t:"నేను నిన్ను విడువను, నిన్ను వదలిపోను.",r:"హెబ్రీయులు 13:5"},{t:"నేను నీకు మేలు చేయుటకే నా ఆలోచనలు.",r:"యిర్మియా 29:11"},{t:"ప్రభువు నా వెలుగు, నా రక్షణ; నేను ఎవనికి భయపడుదును?",r:"కీర్తన 27:1"},{t:"నీ మార్గమును యెహోవాకు అప్పగించుము, ఆయనయందు నమ్మికయుంచుము.",r:"కీర్తన 37:5"},{t:"నీ సమస్త చింతలను ఆయనమీద వేయుము, ఆయన మీకు పోషించును.",r:"1 పేతురు 5:7"},{t:"యేసు చెప్పెను నేనే మార్గమును సత్యమును జీవమును అయి యున్నాను.",r:"యోహాను 14:6"},{t:"ఆయన యందు బలము పొందుచు సమస్తమును చేయగలను.",r:"ఫిలిప్పీ 4:13"},{t:"దేవుడు ప్రేమ స్వరూపి.",r:"1 యోహాను 4:8"},{t:"యెహోవా నాకు సహాయకుడు, నేను భయపడను.",r:"హెబ్రీయులు 13:6"},{t:"సొంత వివేచనమీద ఆనుకొనకు, నీ సర్వమార్గములలో ఆయనను అనుసరించుము.",r:"సామెతలు 3:5-6"},{t:"నా కృప నీకు చాలును, బలహీనత యందే నా శక్తి సంపూర్ణమగును.",r:"2 కొరింథీ 12:9"},{t:"ఆయన వాక్యము దీపము, ఆయన ఉపదేశము వెలుగు.",r:"సామెతలు 6:23"},{t:"ఆనందముగా ఉండుడి, నిరంతరము ప్రార్థన చేయుడి.",r:"1 థెస్స 5:16-17"},{t:"యెహోవా నీకు ముందు నడచువాడు, ఆయన నీతో ఉంటాడు.",r:"ద్వితీయ 31:8"},{t:"మంచిని చేయుటయందు విసుకబడకుడి, తగిన కాలమందు మీరు కోయుదురు.",r:"గలతీ 6:9"},{t:"నా బలమునకు మూలమైన యెహోవాను నేను ప్రేమించెదను.",r:"కీర్తన 18:1"},{t:"ప్రార్థనలో నిలుకడగా ఉండుడి, కృతజ్ఞతాస్తుతులు చేయుచు మేల్కొనుడి.",r:"కొలొస్స 4:2"},{t:"దేవుని యందు నమ్మిక యుంచువాడు ఎవరైనను సిగ్గుపడడు.",r:"రోమీయులు 10:11"},{t:"నీవు నన్ను వెదికితివి నాలో ఉన్నావు, నీ కుడి చేయి నన్ను పట్టుకుంది.",r:"యెషయా 41:13"}];
+
+var SONGS244=[[1,"కృపామయుడా"],[2,"ఆనందయాత్ర"],[3,"నూతన యెరుషలేము"],[4,"ఎగురుచున్నది"],[5,"స్తుతి పాత్రుడా"],[6,"నా ప్రియుడా"],[7,"శాశ్వతమైనది"],[8,"యేసయ్యా నాప్రియా!"],[9,"నా ప్రాణప్రియుడవు"],[10,"ప్రాణేశ్వర"],[11,"నీతివాగులకొరకు"],[12,"యేసురాజు రాజులరాజే"],[13,"ఓ ప్రభువా"],[14,"వందనము"],[15,"ప్రభువా నీలో జీవించుట"],[16,"మాధుర్యమే"],[17,"ఏమని వర్ణింతు"],[18,"నా ప్రాణప్రియుడా"],[19,"నిత్యుడా నీ సన్నిధి"],[20,"త్రియేక దేవుడైన"],[21,"యేసు అను నామమే"],[22,"కృపయే నేటివరకు"],[23,"దేవా నా అర్థధ్వని"],[24,"ఆనందమే"],[25,"ప్రేమయూ"],[26,"ఆనందం యేసుతో"],[27,"నా వేదనలో"],[28,"కృపానిధి నీవే ప్రభు"],[29,"పోరాటం"],[30,"కృపయే నేటివరకు"],[31,"నా ప్రియుడు యేసు"],[32,"నా స్తుతిపాత్రుడా"],[33,"స్తుతి సింహాసనా"],[34,"అనాదిలో"],[35,"స్తుతికి పాత్రుడా"],[36,"ప్రభువా నీ సముఖము"],[37,"నేడో రేపో"],[38,"నిత్యుడగు నా తండ్రి"],[39,"నీ కృప బాహుళ్యమే"],[40,"నా యేసు రాజా"],[41,"నా ప్రాణ ఆత్మ"],[42,"నన్ను విడువక"],[43,"నూతన యెరుషలేమే"],[44,"యేసయ్యా నా నిరీక్షణా"],[45,"ఎవరున్నారు"],[46,"ఆశ్చర్యకరుడా నీదు కృపా"],[47,"యుద్ధ వీరులం"],[48,"ఆనందయాత్ర"],[49,"నా జీవితం నీకంకితం"],[50,"సూర్యుని ధరించి"],[51,"పాడెద నేనొక"],[52,"ఆదరణకర్తవు"],[53,"ఆకాంక్షతో"],[54,"ఇంతగ నన్ను"],[55,"శ్రీమంతుడా"],[56,"స్తుతి స్తోత్రములు"],[57,"అబ్రహాము దేవుడవు"],[58,"స్తుతి గానమా"],[59,"యెడబాయని"],[60,"యేసయ్యా నీవేనాకని"],[61,"కృపా సత్య సంపూర్ణుడా"],[62,"ఆనందింతు నీలో"],[63,"నీ కృప నాకు చాలును"],[64,"నీ ప్రేమే నన్ను"],[65,"సర్వాంగసుందరా"],[66,"స్తుతి పాత్రుడా"],[67,"రాజుల రాజుల రాజు"],[68,"యేసు రక్షము"],[69,"ప్రేమామృతం"],[70,"యేసయ్యా నీ కృపా"],[71,"యేసయ్యా నా హృదయ"],[72,"నాకెంతో ఆనందం"],[73,"వేలుళ్లలో బహుఘనుడా"],[74,"నా విమోచకుడా"],[75,"అగ్నిమందించు"],[76,"నా దీపము"],[77,"నా మార్గమునకు"],[78,"యెహోవాయే నా కాపరిగా"],[79,"ప్రేమా ప్రేమా"],[80,"ప్రేమా - ప్రేమా"],[81,"సిలువలో ఆ సిలువలో"],[82,"ఆరని ప్రేమ ఇది"],[83,"వినలేదా నీవు"],[84,"రక్తం యేసు రక్తం"],[85,"కృపలను తలంచుచు"],[86,"పదివేలలోని"],[87,"సుగుణాల సంపన్నుడా"],[88,"కలువరిగిరిలో"],[89,"నీ ముఖము"],[90,"నా జీవిత భాగస్వామివి"],[91,"నా యేసయ్యా"],[92,"దేవా నా దేవుడవు"],[93,"సరిరారెవ్వరూ"],[94,"యూదా స్తుతిగోత్రపు"],[95,"భూమ్యాకాశములు"],[96,"దేవా నీ కృప నిరంతరం"],[97,"నేనెందుకని"],[98,"యేసయ్యా నా హృదయాభి"],[99,"వర్లల్లెదము"],[100,"నమ్మదగినవాడవు"],[101,"నిరంతరం"],[102,"నా హృదయాన"],[103,"కృపామయుడా"],[104,"అత్యున్నత సింహాసనం"],[105,"జీవించుచున్నది"],[106,"నేను యేసుని చూచే"],[107,"నా ప్రాణమా నాలో"],[108,"ఆనందమే పరమానందమే"],[109,"మనసెరిగిన"],[110,"విశ్వాసము లేకుండా"],[111,"నా గీతారాధనలో"],[112,"నిత్యాశ్రయదుర్గమైన"],[113,"ప్రవహించుచున్నది"],[114,"నా యేసయ్యా నీ దివ్య"],[115,"నిన్న నేడు నిరంతరం"],[116,"నీవుగాక ఎవరున్నారు"],[117,"ఎవరు సమీపించలేని"],[118,"పరుగెత్తడా"],[119,"ఉత్సాహగానము"],[120,"ఎన్నెన్నో మేళ్ళను"],[121,"చూచుచున్న దేవుడవు"],[122,"నా అర్పణలు"],[123,"నా జీవితాన"],[124,"నా ప్రార్థనలన్నీ"],[125,"కృపానిధి"],[126,"నీ కృప నిత్యముందును"],[127,"మనసా! నీప్రియుడు"],[128,"విజయ గీతము"],[129,"సాగిపోదును"],[130,"జ్యోతిర్మయుడా"],[131,"ఆశ్రయ దుర్గము నీవని"],[132,"వందనాలు - వందనాలు"],[133,"మహోఘనుడవు"],[134,"అదిగదిగో పరలోకము"],[135,"లేమ్ము తెజరిల్లము"],[136,"పాడనా"],[137,"స్తుతి గానమే"],[138,"శాశ్వతమైనది నీతో"],[139,"అడగకమునుపే"],[140,"సర్వాధికారివి"],[141,"నా స్తుతులపైన"],[142,"ప్రభువా నీ కలువరి"],[143,"దీనుడా అజేయుడా"],[144,"ఆశ్రయ దుర్గమా"],[145,"నా హృదయమెంతో"],[146,"సర్వలోక నివాసులారా"],[147,"సర్వయుగములలో"],[148,"మహోన్నతుడా"],[149,"శారోను వనములో"],[150,"ఆత్మ పరిశుద్ధాత్ముడా"],[151,"నాలోన అనుభవంవున"],[152,"యేసయ్యా! నను"],[153,"సద్గుణ శీలుడా"],[154,"అనురాగాలు కురిపించే"],[155,"సాత్వికుడా"],[156,"ఆశ్చర్య కరుడా"],[157,"నిండు మనస్సుతో"],[158,"నీ బాహుబలము"],[159,"ఆర్తాటముతో"],[160,"రాజాధి రాజ"],[161,"అల్లా ఓమెగయైన"],[162,"మహిమ స్వరూపుడా"],[163,"త్రేజీవాసుల"],[164,"సృష్టికర్తవైన"],[165,"వెళ్లులో బహుఘనుడా"],[166,"జీవప్రదాతవు"],[167,"నీతిన్యాయములు"],[168,"కృపాక్షేమము"],[169,"సర్వోన్నతుడా"],[170,"నా హృదయములో"],[171,"యేసయ్యా కనికరపూర్ణుడా"],[172,"నజరేయుడా"],[173,"నా ఆత్మీయ యాత్రలో"],[174,"మధురం మధురం"],[175,"నీవేనా సంతోషగానము"],[176,"నా జీవం నీ కృపలో"],[177,"సజీవుడవైన యేసయ్యా"],[178,"అవధులే లేనిది"],[179,"విజయ శీలుడా"],[180,"ఆరాధన స్తుతి ఆరాధన"],[181,"దయగల హృదయుడవు"],[182,"పరిశుద్ధడవై"],[183,"ప్రేమాంబుధి"],[184,"సన్మతించెను"],[185,"నిజమైన ద్రాక్షావల్లి"],[186,"నీతో నా జీవితం"],[187,"విలువైనది"],[188,"గొప్ప దేవుడా"],[189,"నా నీతి సూర్యుడా"],[190,"ఊహాలు నాదు ఊటలు"],[191,"సుమధుర స్వరముల"],[192,"చిరకాల స్నేహం"],[193,"మహో మహిమతో"],[194,"పర్వతములు తొలగిన"],[195,"నీ ప్రేమ నాలో"],[196,"నీ ప్రేమ నాలో"],[197,"కలవరపడి"],[198,"నాలో నివసించే"],[199,"వినరండి నా ప్రియుని"],[200,"నూతన గీతము"],[201,"పాటలతోనే పయనం"],[202,"ఆనందం నీలోనే"],[203,"నీవే కృపాధారము"],[204,"దివినేలు స్తోత్రార్తుడా"],[205,"నా యెదుట నీవు"],[206,"కృపగలదేవా"],[207,"ఎవరో నన్నిలా మార్చినది"],[208,"అమరుడవు నీవు"],[209,"నా దాగుచోటు నీవే"],[210,"నీవే హృదయసారధి"],[211,"ఘనమైనవి నీ కార్యములు"],[212,"కరుణాసంపన్నుడా"],[213,"నేను వెళ్ళే మార్గము"],[214,"పాడెద స్తుతిగానము"],[215,"మహాదానందమైన"],[216,"కృపా - కృపా"],[217,"అతిసుందరుడవు"],[218,"ప్రేమే శాశ్వతమైన"],[219,"స్తుతి పాడుటకే"],[220,"మదిలోన నీరూపం"],[221,"జంటితేనె"],[222,"బహు సౌందర్య సీయోనులో"],[223,"ఎదో ఆశ నాలో"],[224,"జయసంకేతమా"],[225,"గగనము చీల్చుకొని"],[226,"నాకొఱక నీ ప్రణాళిక"],[227,"అతిపరిశుద్ధుడా"],[228,"రక్తం జయం యేసు రక్తం జయం"],[229,"నూతనమైన కృప"],[230,"సిలువలో వేలాడే"],[231,"కరుణాసాగర"],[232,"నీకేగ నా స్తుతిమాలిక"],[233,"నీవే శ్రావ్య సదనము"],[234,"ఆకాశము వైపు"],[235,"పరిమళతైలం నీవే"],[236,"ప్రేమపూర్ణుడా"],[237,"జగములనేలే"],[238,"రాజ జగమెరిగిన"],[239,"జగమంతా"],[240,"అక్షయుడా"],[241,"ఆశ్రయుడా"],[242,"కురిసింది తొలకరి వాన"],[243,"ఊహాకందని"],[244,"యేసయ్యా నా ప్రాణమా"]];
+
+// ═══ STATE ═══
+var S=JSON.parse(localStorage.getItem('ns7')||'[]');
+var F=JSON.parse(localStorage.getItem('nf7')||'[]');
+var C=parseInt(localStorage.getItem('nc7')||'-1');
+var dark=localStorage.getItem('dm7')!=='false';
+var eId=null,tab='all',lOpen=true,curBL=[],curBI=0,curCI=0;
+
+// ═══ TOP BAR ═══
+var DAYS=['ఆదివారం','సోమవారం','మంగళవారం','బుధవారం','గురువారం','శుక్రవారం','శనివారం'];
+var MONTHS=['జనవరి','ఫిబ్రవరి','మార్చి','ఏప్రిల్','మే','జూన్','జులై','ఆగస్టు','సెప్టెంబర్','అక్టోబర్','నవంబర్','డిసెంబర్'];
+
+function updateDateTime(){
+  var now=new Date();
+  document.getElementById('tbDate').textContent=DAYS[now.getDay()]+', '+now.getDate()+' '+MONTHS[now.getMonth()];
+  var h=now.getHours(),m=now.getMinutes(),ap=h>=12?'PM':'AM';
+  h=h%12||12;
+  document.getElementById('tbTime').textContent=h+':'+(m<10?'0'+m:m)+' '+ap;
+}
+
+function getDayPromise(){return PROMISES[new Date().getDate()%PROMISES.length];}
+
+function newPromise(){
+  var r=PROMISES[Math.floor(Math.random()*PROMISES.length)];
+  document.getElementById('promiseText').textContent=r.t;
+  document.getElementById('promiseRef').textContent='— '+r.r;
+}
+
+function getWeatherLocation(){
+  if(!navigator.geolocation){return;}
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var lat=pos.coords.latitude,lon=pos.coords.longitude;
+    fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var city=(d.address&&(d.address.city||d.address.town||d.address.village||d.address.county))||'--';
+      document.getElementById('tbLoc').textContent=city;
+      return fetch('https://wttr.in/'+encodeURIComponent(city)+'?format=j1');
+    })
+    .then(function(r){return r.json();})
+    .then(function(w){
+      var cc=w.current_condition&&w.current_condition[0];
+      if(cc){
+        var desc=(cc.weatherDesc&&cc.weatherDesc[0]&&cc.weatherDesc[0].value)||'';
+        var icon=desc.toLowerCase().includes('sun')||desc.toLowerCase().includes('clear')?'☀️':desc.toLowerCase().includes('rain')?'🌧️':desc.toLowerCase().includes('cloud')?'☁️':desc.toLowerCase().includes('thunder')?'⛈️':'🌤️';
+        document.getElementById('tbWeather').textContent=icon+' '+cc.temp_C+'°C';
+      }
+    }).catch(function(){});
+  },function(){});
+}
+
+// ═══ DARK MODE ═══
+function toggleDark(){
+  dark=!dark;
+  document.body.classList.toggle('light',!dark);
+  document.getElementById('darkBtn').textContent=dark?'☀️ Light':'🌙 Dark';
+  localStorage.setItem('dm7',dark);
+}
+
+// ═══ NAV ═══
+function go(p){
+  document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
+  document.querySelectorAll('.nav-btns button').forEach(function(x){x.classList.remove('active');});
+  document.getElementById(p+'Page').classList.add('active');
+  var nb=document.getElementById('nb-'+p);if(nb)nb.classList.add('active');
+  document.getElementById('fab').classList.toggle('off',['add','bible','links','contact','help','s244','jesus','ai','hist'].includes(p));
+  if(p==='hist')renderHistory();
+  if(p==='list')renderList();
+  if(p==='fav')renderFav();
+}
+
+// ═══ SONGS ═══
+function ytId(u){var m=(u||'').match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);return m?m[1]:null;}
+function thumb(id){return'https://img.youtube.com/vi/'+id+'/mqdefault.jpg';}
+
+function play(i,nav){
+  if(nav===undefined)nav=true;
+  var s=S[i];if(!s)return;
+  C=i;localStorage.setItem('nc7',i);
+  var id=ytId(s.y||'');
+  var fr=document.getElementById('ytf'),ph=document.getElementById('nvph');
+  document.getElementById('welcomeCard').style.display='none';
+  document.getElementById('nowCard').style.display='block';
+  if(id){fr.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';fr.style.display='block';ph.style.display='none';}
+  else{fr.style.display='none';fr.src='';ph.style.display='flex';}
+  document.getElementById('nowTitle').textContent=s.t;
+  document.getElementById('ytBtn').href=s.y||'#';
+  // Multiple download options - popup menu
+  document.getElementById('dlBtn').onclick=function(e){
+    e.preventDefault();
+    if(!id){toast('⚠️ YouTube link ledu!');return;}
+    var ytUrl='https://www.youtube.com/watch?v='+id;
+    var songTitle=S[C]?S[C].t:'';
+    var menu=document.getElementById('dlMenu');
+    if(menu){menu.remove();return;}
+
+    // Auto copy YouTube URL to clipboard
+    function copyUrl(){
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(ytUrl).catch(function(){});
+      } else {
+        var ta=document.createElement('textarea');
+        ta.value=ytUrl;ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';
+        document.body.appendChild(ta);ta.select();
+        try{document.execCommand('copy');}catch(err){}
+        document.body.removeChild(ta);
+      }
+    }
+    copyUrl();
+
+    var m=document.createElement('div');
+    m.id='dlMenu';
+    m.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:flex-end;justify-content:center;';
+    m.innerHTML=
+      '<div style="background:#0f0505;border:1px solid var(--gold);border-radius:20px 20px 0 0;padding:20px 16px 32px;width:100%;max-width:480px;">'
+
+        // Handle bar
+        +'<div style="width:40px;height:4px;background:rgba(255,255,255,0.2);border-radius:4px;margin:0 auto 16px;"></div>'
+
+        // Song name
+        +'<div style="color:var(--gold);font-size:0.9rem;font-weight:700;margin-bottom:4px;text-align:center;">⬇️ Download</div>'
+        +'<div style="color:var(--sub);font-size:0.75rem;text-align:center;margin-bottom:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">🎵 '+songTitle+'</div>'
+
+        // Copied badge
+        +'<div style="background:rgba(0,200,83,0.15);border:1px solid #00c853;border-radius:10px;padding:8px 12px;margin-bottom:14px;display:flex;align-items:center;gap:8px;">'
+          +'<span>📋</span>'
+          +'<div><div style="color:#00e676;font-size:0.78rem;font-weight:700;">Link copied!</div>'
+          +'<div style="color:var(--sub);font-size:0.68rem;margin-top:1px;">'+ytUrl+'</div></div>'
+        +'</div>'
+
+        // NewPipe — BEST option (highlighted)
+        +'<div style="color:var(--sub);font-size:0.72rem;margin-bottom:6px;">⭐ BEST — App లో save అవుతుంది</div>'
+        +'<a href="newpipe://'+ytUrl+'" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,rgba(0,120,255,0.2),rgba(0,80,200,0.15));border:2px solid #2196f3;border-radius:14px;margin-bottom:10px;text-decoration:none;" onclick="document.getElementById(\'dlMenu\').remove()">'
+          +'<div style="width:42px;height:42px;background:linear-gradient(135deg,#1565c0,#2196f3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">⬇️</div>'
+          +'<div><div style="color:#90caf9;font-size:0.9rem;font-weight:700;">NewPipe</div>'
+          +'<div style="color:var(--sub);font-size:0.72rem;">Phone లో directly download — ads లేవు</div></div>'
+        +'</a>'
+
+        // VLC
+        +'<a href="vlc://'+ytUrl+'" style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.4);border-radius:12px;margin-bottom:8px;text-decoration:none;" onclick="document.getElementById(\'dlMenu\').remove()">'
+          +'<div style="width:36px;height:36px;background:linear-gradient(135deg,#e65100,#ff9800);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎬</div>'
+          +'<div><div style="color:#ffb74d;font-size:0.85rem;font-weight:600;">VLC Player</div>'
+          +'<div style="color:var(--sub);font-size:0.7rem;">VLC తో play/download చేయవచ్చు</div></div>'
+        +'</a>'
+
+        // Separator
+        +'<div style="color:var(--sub);font-size:0.72rem;margin:10px 0 6px;">🌐 Browser లో download (link already copied)</div>'
+
+        // Browser options — compact
+        +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px;">'
+          +[
+            ['https://www.y2mate.com/en872/youtube/'+id,'🎵 Y2Mate'],
+            ['https://ezmp3.cc/?url='+encodeURIComponent(ytUrl),'🎧 EzMP3'],
+            ['https://loader.to/?url='+encodeURIComponent(ytUrl),'🔊 Loader.to'],
+            ['https://snapsave.app/?url='+encodeURIComponent(ytUrl),'📱 SnapSave']
+          ].map(function(s){
+            return'<a href="'+s[0]+'" target="_blank" style="display:flex;align-items:center;justify-content:center;padding:9px 6px;background:rgba(255,255,255,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:10px;color:var(--text);text-decoration:none;font-size:0.78rem;font-weight:600;gap:4px;" onclick="document.getElementById(\'dlMenu\').remove()">'+s[1]+'</a>';
+          }).join('')
+        +'</div>'
+
+        // NewPipe install hint
+        +'<div style="background:rgba(33,150,243,0.08);border:1px solid rgba(33,150,243,0.25);border-radius:10px;padding:8px 10px;margin-bottom:12px;">'
+          +'<div style="color:#90caf9;font-size:0.72rem;">💡 NewPipe install లేదా?</div>'
+          +'<a href="https://newpipe.net" target="_blank" style="color:#64b5f6;font-size:0.7rem;" onclick="document.getElementById(\'dlMenu\').remove()">newpipe.net నుండి install చేయండి →</a>'
+        +'</div>'
+
+        +'<button onclick="document.getElementById(\'dlMenu\').remove()" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--sub);padding:10px;border-radius:12px;cursor:pointer;font-size:0.82rem;">✕ Close</button>'
+      +'</div>';
+
+    document.body.appendChild(m);
+    toast('📋 Link copied!');
+    // Close on backdrop click
+    m.addEventListener('click',function(ev){
+      if(ev.target===m)m.remove();
+    });
+  };
+  document.getElementById('favBtn').textContent=F.includes(s.id)?'❤️':'🤍';
+  var lw=document.getElementById('lyrWrap');
+  if(s.l){lw.style.display='block';document.getElementById('lyrBody').textContent=s.l;document.getElementById('lyrBody').classList.remove('hidden');lOpen=true;document.getElementById('togBtn').textContent='Hide';}
+  else lw.style.display='none';
+  if(nav)go('home');renderList();
+}
+
+function shareWA(){
+  if(C<0||!S[C])return;
+  var s=S[C];
+  var txt=encodeURIComponent('🎵 *'+s.t+'*\n\n'+(s.l?s.l.substring(0,300)+'\n\n':'')+'🔗 '+(s.y||''));
+  window.open('https://wa.me/?text='+txt,'_blank');
+}
+
+function printLyrics(){
+  if(C<0||!S[C]||!S[C].l){toast('⚠️ Lyrics లేవు!');return;}
+  var s=S[C];
+  var w=window.open('','_blank');
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+s.t+'</title><style>body{font-family:sans-serif;padding:30px;max-width:600px;margin:0 auto;line-height:2;}h1{color:#c0392b;margin-bottom:20px;}pre{white-space:pre-wrap;font-size:1rem;}</style></head><body><h1>✝ '+s.t+'</h1><pre>'+s.l+'</pre><p style="margin-top:20px;color:#999;font-size:0.8rem;">© 2026 Vicky — యేసు పాటలు</p><script>window.onload=function(){window.print();}<\/script></body></html>');
+  w.document.close();
+}
+
+function downloadLyrics(){
+  if(C<0||!S[C]||!S[C].l){toast('⚠️ Lyrics లేవు!');return;}
+  var s=S[C];
+  var blob=new Blob(['✝ '+s.t+'\n\n'+s.l+'\n\n© 2026 Vicky — యేసు పాటలు'],{type:'text/plain;charset=utf-8'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download=s.t+'.txt';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  toast('📥 Lyrics downloaded!');
+}
+
+function toggleFav(){
+  if(C<0||!S[C])return;
+  var id=S[C].id;
+  if(F.includes(id)){F=F.filter(function(f){return f!==id;});document.getElementById('favBtn').textContent='🤍';toast('తొలగించబడింది');}
+  else{F.push(id);document.getElementById('favBtn').textContent='❤️';toast('❤️ Favorites కి add!');}
+  localStorage.setItem('nf7',JSON.stringify(F));renderList();renderFav();
+}
+
+function toggleLyrics(){
+  lOpen=!lOpen;
+  document.getElementById('lyrBody').classList.toggle('hidden',!lOpen);
+  document.getElementById('togBtn').textContent=lOpen?'Hide':'Show';
+}
+
+function renderList(){
+  var q=(document.getElementById('srch')&&document.getElementById('srch').value||'').toLowerCase();
+  var el=document.getElementById('songList');if(!el)return;
+  var fl=S.filter(function(s){return s.t.toLowerCase().includes(q)&&(tab==='all'||(tab==='fav'&&F.includes(s.id)));});
+  if(!fl.length){el.innerHTML='<div class="empty"><div class="eico">'+(q?'🔍':'🎵')+'</div><p>'+(q?'కనిపించలేదు':'Songs add చేయి ➕')+'</p></div>';return;}
+  el.innerHTML=fl.map(function(s){
+    var ri=S.indexOf(s);var id=ytId(s.y||'');var th=id?thumb(id):null;var cur=ri===C;
+    return'<div class="song-item'+(cur?' cur':'')+'" onclick="play('+ri+')">'+(th?'<img class="sthumb" src="'+th+'" loading="lazy">':'<div class="sthumb-ph">🎵</div>')+'<div class="sinfo"><h3>'+s.t+(cur?'<span class="playing-dot"></span>':'')+'</h3><small>'+(F.includes(s.id)?'❤️ ':'')+(s.l?'Lyrics ✓':'No lyrics')+'</small></div><div class="sbtns" onclick="event.stopPropagation()"><button class="ibtn" onclick="editS('+ri+')">✏️</button><button class="ibtn" onclick="delS('+ri+')">🗑️</button></div></div>';
+  }).join('');
+}
+
+function setTab(t,el){tab=t;document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});el.classList.add('active');renderList();}
+
+function renderFav(){
+  var el=document.getElementById('favList');if(!el)return;
+  var fs=S.filter(function(s){return F.includes(s.id);});
+  if(!fs.length){el.innerHTML='<div class="empty"><div class="eico">🤍</div><p>Favorites లేవు</p></div>';return;}
+  el.innerHTML=fs.map(function(s){
+    var ri=S.indexOf(s);var th=ytId(s.y||'')?thumb(ytId(s.y)):null;
+    return'<div class="song-item" onclick="play('+ri+')">'+(th?'<img class="sthumb" src="'+th+'" loading="lazy">':'<div class="sthumb-ph">🎵</div>')+'<div class="sinfo"><h3>'+s.t+'</h3><small>❤️ Favorite</small></div></div>';
+  }).join('');
+}
+
+function render244(list){
+  var el=document.getElementById('grid244');if(!el)return;
+  var cd=document.getElementById('count244');if(cd)cd.textContent=list.length+' పాటలు';
+  if(!list.length){el.innerHTML='<div class="empty"><div class="eico">🔍</div><p>కనిపించలేదు</p></div>';return;}
+  el.innerHTML=list.map(function(item){
+    var q=encodeURIComponent(item[1]+' telugu christian song');
+    return'<a class="s244-item" href="https://www.youtube.com/results?search_query='+q+'" target="_blank"><div class="s244-num">'+item[0]+'</div><div class="s244-title">'+item[1]+'</div><div class="s244-play">▶</div></a>';
+  }).join('');
+}
+
+function filter244(){
+  var q=(document.getElementById('srch244')&&document.getElementById('srch244').value||'').toLowerCase();
+  render244(q?SONGS244.filter(function(s){return s[1].toLowerCase().includes(q);}):SONGS244);
+}
+
+function showFolder(f){
+  document.getElementById('linksMain').style.display='none';
+  document.getElementById('folderView').style.display='block';
+  document.getElementById('folderTitle').textContent=FOLDER_TITLES[f];
+  document.getElementById('folderGrid').innerHTML=FOLDERS[f].map(function(i){
+    return'<a class="ql-card" href="'+i.url+'" target="_blank"><div class="qi">'+i.qi+'</div><h3>'+i.n+'</h3><p>'+i.p+'</p></a>';
+  }).join('');
+}
+function closeFolder(){document.getElementById('linksMain').style.display='block';document.getElementById('folderView').style.display='none';}
+
+// ═══ BIBLE ═══
+function showT(t){
+  var list=t==='OT'?OT:NT;curBL=list;
+  document.getElementById('bTestTitle').textContent=t==='OT'?'📜 పాత నిబంధన — Old Testament':'✝ క్రొత్త నిబంధన — New Testament';
+  document.getElementById('booksGrid').innerHTML=list.map(function(b,i){return'<div class="book-item" onclick="showChaps('+i+')"><h4>'+b.n+'</h4><small>'+b.e+' • '+b.c+' ch</small></div>';}).join('');
+  document.getElementById('bHome').style.display='none';document.getElementById('bBooks').style.display='block';document.getElementById('bChaps').style.display='none';document.getElementById('bReader').style.display='none';document.getElementById('bReaderSites').style.display='none';
+}
+
+function showChaps(i){
+  curBI=i;var b=curBL[i];
+  document.getElementById('bBookTitle').textContent=b.n+' / '+b.e;
+  var html='';for(var j=1;j<=b.c;j++)html+='<button class="chap-btn" onclick="readChap('+j+')">'+j+'</button>';
+  document.getElementById('chapGrid').innerHTML=html;
+  document.getElementById('bBooks').style.display='none';document.getElementById('bChaps').style.display='block';
+}
+
+// Telugu book name mapping for aruljohn API
+// aruljohn Bible — Capitalized filenames
+var TE_BOOKS={
+  GEN:'Genesis',EXO:'Exodus',LEV:'Leviticus',NUM:'Numbers',DEU:'Deuteronomy',
+  JOS:'Joshua',JDG:'Judges',RUT:'Ruth','1SA':'1Samuel','2SA':'2Samuel',
+  '1KI':'1Kings','2KI':'2Kings','1CH':'1Chronicles','2CH':'2Chronicles',
+  EZR:'Ezra',NEH:'Nehemiah',EST:'Esther',JOB:'Job',PSA:'Psalms',PRO:'Proverbs',
+  ECC:'Ecclesiastes',SNG:'SongofSolomon',ISA:'Isaiah',JER:'Jeremiah',
+  LAM:'Lamentations',EZK:'Ezekiel',DAN:'Daniel',HOS:'Hosea',JOL:'Joel',
+  AMO:'Amos',OBA:'Obadiah',JON:'Jonah',MIC:'Micah',NAM:'Nahum',HAB:'Habakkuk',
+  ZEP:'Zephaniah',HAG:'Haggai',ZEC:'Zechariah',MAL:'Malachi',
+  MAT:'Matthew',MRK:'Mark',LUK:'Luke',JHN:'John',ACT:'Acts',ROM:'Romans',
+  '1CO':'1Corinthians','2CO':'2Corinthians',GAL:'Galatians',EPH:'Ephesians',
+  PHP:'Philippians',COL:'Colossians','1TH':'1Thessalonians','2TH':'2Thessalonians',
+  '1TI':'1Timothy','2TI':'2Timothy',TIT:'Titus',PHM:'Philemon',HEB:'Hebrews',
+  JAS:'James','1PE':'1Peter','2PE':'2Peter','1JN':'1John','2JN':'2John',
+  '3JN':'3John',JUD:'Jude',REV:'Revelation'
+};
+
+function parseAruljohn(data, chap){
+  // aruljohn format: {book, chapters:[{chapter:N, verses:[{verse,text}]}]}
+  var chapters = data.chapters || data;
+  if(!Array.isArray(chapters)) return null;
+  var chapObj = chapters.find(function(c){ return c.chapter == chap; });
+  if(!chapObj) chapObj = chapters[chap-1];
+  if(!chapObj) return null;
+  var verses = chapObj.verses || chapObj;
+  if(!Array.isArray(verses)) return null;
+  return verses;
+}
+
+function readChap(chap){
+  curCI=chap;var b=curBL[curBI];
+  document.getElementById('readerTitle').textContent=b.n+' / '+b.e+' — Ch '+chap;
+  document.getElementById('bChaps').style.display='none';
+  document.getElementById('bReader').style.display='block';
+  var te=document.getElementById('teCol'),en=document.getElementById('enCol');
+  te.innerHTML=en.innerHTML='<div class="loading-msg">⏳ Loading...</div>';
+  vrStop();
+  loadNote();
+  addHistory(b.n, b.e, chap, '');
+
+  var bookName=TE_BOOKS[b.id]||(b.e?b.e.replace(/\s/g,''):b.id);
+
+  // Telugu Bible — try multiple sources with fallback
+  var teUrls=[
+    'https://cdn.jsdelivr.net/gh/aruljohn/Bible-telugu@main/'+bookName+'.json',
+    'https://raw.githubusercontent.com/aruljohn/Bible-telugu/main/'+bookName+'.json',
+    'https://cdn.jsdelivr.net/gh/aruljohn/Bible-telugu@master/'+bookName+'.json',
+  ];
+  // KJV English
+  var enUrl='https://cdn.jsdelivr.net/gh/aruljohn/Bible-kjv@master/'+bookName+'.json';
+
+  // Load Telugu with fallback
+  function tryTeUrl(idx){
+    if(idx>=teUrls.length){te.innerHTML='<div class="loading-msg">⚠️ Telugu Bible load కాలేదు. Internet check చేయండి.</div>';return;}
+    fetch(teUrls[idx])
+    .then(function(r){
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      return r.json();
+    })
+    .then(function(data){
+      var verses=parseAruljohn(data,chap);
+      if(verses&&verses.length){
+        te.innerHTML=verses.map(function(v,i){
+          var txt=typeof v==='string'?v:(v.text||v.t||'');
+          return'<div class="verse-row" data-vi="'+i+'"><span class="vn">'+(v.verse||i+1)+'</span><span class="vt">'+txt+'</span></div>';
+        }).join('');
+      } else {
+        tryTeUrl(idx+1);
+      }
+    })
+    .catch(function(){tryTeUrl(idx+1);});
+  }
+  tryTeUrl(0);
+
+  // Load KJV English
+  fetch(enUrl)
+  .then(function(r){
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r.json();
+  })
+  .then(function(data){
+    var verses = parseAruljohn(data, chap);
+    if(verses && verses.length){
+      en.innerHTML=verses.map(function(v,i){
+        var txt = typeof v === 'string' ? v : (v.text||v.t||'');
+        return'<div class="verse-row" data-vi="'+i+'"><span class="vn">'+(v.verse||i+1)+'</span><span class="vt">'+txt+'</span></div>';
+      }).join('');
+    } else {
+      en.innerHTML='<div class="loading-msg">⚠️ English data ledu</div>';
+    }
+  })
+  .catch(function(e){en.innerHTML='<div class="loading-msg">⚠️ Load failed: '+e.message+'</div>';});
+}
+
+var bFontSize=16,nightMode=false,hlColor='yellow',mediaRec=null,recChunks=[],recCount=0;
+
+function applyFont(){
+  var ff=document.getElementById('fontFamily').value;
+  document.getElementById('teCol').style.fontFamily=ff;
+  document.getElementById('enCol').style.fontFamily=ff;
+}
+
+function changeFontSize(d){
+  bFontSize=Math.min(30,Math.max(10,bFontSize+d));
+  document.getElementById('fontSizeLabel').textContent=bFontSize;
+  ['teCol','enCol'].forEach(function(id){
+    document.getElementById(id).style.fontSize=bFontSize+'px';
+  });
+}
+
+function toggleNight(){
+  nightMode=!nightMode;
+  var grid=document.getElementById('bReaderGrid');
+  var btn=document.getElementById('nightBtn');
+  grid.classList.toggle('night-reader',nightMode);
+  btn.textContent=nightMode?'☀️ Day':'🌙 Night';
+  btn.style.color=nightMode?'#ffd700':'orange';
+}
+
+function setHL(color){hlColor=color;}
+
+function applyHighlight(){
+  var sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||sel.toString().trim()==='')return;
+  var range=sel.getRangeAt(0);
+  var span=document.createElement('span');
+  if(hlColor){span.className='hl-'+hlColor;}
+  else{
+    // Clear — remove highlight spans
+    var frag=range.extractContents();
+    frag.querySelectorAll('span[class^="hl-"]').forEach(function(s){
+      var t=document.createTextNode(s.textContent);
+      s.parentNode.replaceChild(t,s);
+    });
+    range.insertNode(frag);
+    sel.removeAllRanges();
+    return;
+  }
+  try{range.surroundContents(span);}catch(e){}
+  sel.removeAllRanges();
+}
+
+// Listen for selection in Bible reader
+document.addEventListener('mouseup',function(){
+  if(document.getElementById('bReader').style.display!=='none'){
+    applyHighlight();
+  }
+});
+
+function saveNote(){
+  if(!curBL[curBI])return;
+  var key='note_'+curBL[curBI].id+'_'+curCI;
+  var val=document.getElementById('bibleNotes').value;
+  localStorage.setItem(key,val);
+  toast('✅ Note saved!');
+  // Save to history
+  addHistory(curBL[curBI].n, curBL[curBI].e, curCI, val);
+}
+
+function loadNote(){
+  if(!curBL[curBI])return;
+  var key='note_'+curBL[curBI].id+'_'+curCI;
+  document.getElementById('bibleNotes').value=localStorage.getItem(key)||'';
+  document.getElementById('notesRef').textContent=curBL[curBI].n+' Ch '+curCI;
+}
+
+// ═══ HISTORY ═══
+function addHistory(tName, eName, chap, note){
+  var hist=JSON.parse(localStorage.getItem('bibleHist')||'[]');
+  var entry={book:tName,bookE:eName,chap:chap,note:note?note.substring(0,80):'',time:new Date().toLocaleString('te-IN')};
+  hist=hist.filter(function(h){return !(h.book===tName&&h.chap===chap);});
+  hist.unshift(entry);
+  if(hist.length>50)hist=hist.slice(0,50);
+  localStorage.setItem('bibleHist',JSON.stringify(hist));
+}
+
+function renderHistory(){
+  var hist=JSON.parse(localStorage.getItem('bibleHist')||'[]');
+  var el=document.getElementById('histList');
+  if(!hist.length){
+    el.innerHTML='<div class="hist-empty"><div style="font-size:2.5rem;margin-bottom:10px;">📖</div><p>ఇంకా ఏ chapter చదవలేదు</p></div>';
+    return;
+  }
+  el.innerHTML=hist.map(function(h){
+    return'<div class="hist-item" onclick="openHistItem(\''+h.book+'\',\''+h.bookE+'\','+h.chap+')">'
+      +'<h4>📖 '+h.book+' / '+h.bookE+' — Ch '+h.chap+'</h4>'
+      +'<p>🕐 '+h.time+(h.note?' &nbsp;|&nbsp; 📝 '+h.note:'')+'</p>'
+      +'</div>';
+  }).join('');
+}
+
+function openHistItem(tName, eName, chap){
+  // Find book in OT/NT
+  var allBooks=OT.concat(NT);
+  var bIdx=allBooks.findIndex(function(b){return b.n===tName||b.e===eName;});
+  if(bIdx<0)return;
+  curBL=allBooks;curBI=bIdx;
+  go('bible');
+  setTimeout(function(){readChap(chap);},100);
+}
+
+function clearHistory(){
+  localStorage.removeItem('bibleHist');
+  renderHistory();
+  toast('History cleared');
+}
+
+// ═══ VOICE READER ═══
+var vrUtterance=null,vrSpeaking=false,vrVerses=[],vrVerseIdx=0,vrLang='te';
+var vrTeGender='female',vrEnGender='male'; // defaults
+
+// Comprehensive gender detection
+function vrDetectGender(v){
+  var n=v.name.toLowerCase();
+  // Strong female indicators
+  var fem=['female','woman','girl','aditi','lekha','priya','sapna','heera','zira','wavenet-a','wavenet-c','wavenet-e','neural-a','aria','jenny','sonia','libby','susan','clara','paulina','natasha','ekaterina','anna','helena','ioana','zosia','petra','tülay','nikos','alice'];
+  // Strong male indicators
+  var mal=['male','man','ravi','hemant','kiran','arjun','raj','kumar','wavenet-b','wavenet-d','wavenet-f','neural-b','guy','ryan','davis','mark','jason','tony','jorge','carlos','pablo','liam','stefan','maxim','oskar','pita'];
+  if(fem.some(function(h){return n.includes(h);}))return'female';
+  if(mal.some(function(h){return n.includes(h);}))return'male';
+  // WaveNet voice naming pattern: A,C,E = female; B,D,F = male
+  var wm=n.match(/wavenet-([a-f])/);
+  if(wm){var ch=wm[1];return['a','c','e'].includes(ch)?'female':'male';}
+  // Neural voice pattern
+  var nm=n.match(/neural-([a-f])/);
+  if(nm){var nc=nm[1];return['a','c','e'].includes(nc)?'female':'male';}
+  return'unknown';
+}
+
+// Populate voice dropdowns
+function vrLoadVoices(){
+  if(!window.speechSynthesis)return;
+  var voices=window.speechSynthesis.getVoices();
+  if(!voices.length){setTimeout(vrLoadVoices,300);return;}
+
+  var teMaleS=document.getElementById('vrTeMale');
+  var teFemS=document.getElementById('vrTeFemale');
+  var enMaleS=document.getElementById('vrEnMale');
+  var enFemS=document.getElementById('vrEnFemale');
+  if(!teMaleS)return;
+
+  // Filter
+  var teAll=voices.filter(function(v){return v.lang.startsWith('te');});
+  var enAll=voices.filter(function(v){return v.lang.startsWith('en');});
+
+  // Fallback Telugu: hi/kn/ta/mr
+  if(!teAll.length){
+    teAll=voices.filter(function(v){
+      return v.lang.startsWith('hi')||v.lang.startsWith('kn')||v.lang.startsWith('ta')||v.lang.startsWith('mr');
+    });
+  }
+
+  // Sort: Google ⭐ first, then Microsoft 💎
+  function sortQ(arr){
+    return arr.slice().sort(function(a,b){
+      var as=(a.name.includes('Google')?10:0)+(a.name.includes('Microsoft')?5:0);
+      var bs=(b.name.includes('Google')?10:0)+(b.name.includes('Microsoft')?5:0);
+      return bs-as;
+    });
+  }
+
+  teAll=sortQ(teAll);
+  enAll=sortQ(enAll);
+
+  // Split male/female
+  function splitGender(arr){
+    var male=[],female=[],unk=[];
+    arr.forEach(function(v){
+      var g=vrDetectGender(v);
+      if(g==='male')male.push(v);
+      else if(g==='female')female.push(v);
+      else unk.push(v);
+    });
+    // Split unknowns — alternate male/female
+    unk.forEach(function(v,i){if(i%2===0)male.push(v);else female.push(v);});
+    return{male:male,female:female};
+  }
+
+  var teSplit=splitGender(teAll);
+  var enSplit=splitGender(enAll);
+
+  // If only 1 Telugu voice (like "Telugu India"), put it in BOTH male & female
+  // so user can still choose — just same voice with different pitch
+  if(teAll.length===1){
+    teSplit.male=[teAll[0]];
+    teSplit.female=[teAll[0]];
+  }
+  if(enAll.length===1){
+    enSplit.male=[enAll[0]];
+    enSplit.female=[enAll[0]];
+  }
+
+  function voiceName(v){
+    var badge=v.name.includes('Google')?'⭐ ':v.name.includes('Microsoft')?'💎 ':'';
+    return badge+v.name.replace('Google ','').replace('Microsoft ','').substring(0,24);
+  }
+
+  function fillSelect(sel,arr,fallbackMsg){
+    if(!sel)return;
+    sel.innerHTML=arr.length
+      ? arr.map(function(v,i){return'<option value="'+i+'">'+voiceName(v)+'</option>';}).join('')
+      : '<option value="-1">'+fallbackMsg+'</option>';
+    sel._voices=arr;
+  }
+
+  fillSelect(teMaleS, teSplit.male,  '⚠️ Telugu Male ledu');
+  fillSelect(teFemS,  teSplit.female, '⚠️ Telugu Female ledu');
+  fillSelect(enMaleS, enSplit.male,  '⚠️ English Male ledu');
+  fillSelect(enFemS,  enSplit.female, '⚠️ English Female ledu');
+
+  // Show install guide if only 1 Telugu voice
+  var stEl=document.getElementById('vrStatus');
+  if(stEl){
+    if(teAll.length<=1){
+      stEl.innerHTML='⚠️ 1 Telugu voice మాత్రమే — <a onclick="vrShowInstallGuide()" style="color:#ce93d8;text-decoration:underline;cursor:pointer;">More install చేయి ▶</a>';
+    } else {
+      stEl.textContent='🇮🇳 '+teSplit.male.length+'M+'+teSplit.female.length+'F  🇬🇧 '+enSplit.male.length+'M+'+enSplit.female.length+'F';
+    }
+  }
+
+  vrUpdateGenderBtns();
+}
+
+function vrShowInstallGuide(){
+  var m=document.createElement('div');
+  m.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;';
+  m.innerHTML='<div style="background:#0a0020;border:1px solid #9c27b0;border-radius:18px;padding:20px;max-width:340px;width:100%;">'
+    +'<h3 style="color:#ce93d8;margin-bottom:14px;font-size:1rem;">🔊 More Telugu Voices Install చేయి</h3>'
+    +'<div style="background:rgba(156,39,176,0.1);border-radius:10px;padding:12px;margin-bottom:10px;">'
+    +'<div style="color:#f5c518;font-size:0.8rem;font-weight:700;margin-bottom:8px;">Android Phone:</div>'
+    +'<div style="color:rgba(255,255,255,0.8);font-size:0.78rem;line-height:1.8;">'
+    +'1️⃣ Settings → General Management<br>'
+    +'2️⃣ Language & Input → Text-to-Speech<br>'
+    +'3️⃣ Google TTS Engine → Settings ⚙️<br>'
+    +'4️⃣ Install voice data → Telugu<br>'
+    +'5️⃣ <b style="color:#69f0ae;">Telugu (India)</b> download చేయండి<br>'
+    +'6️⃣ App refresh చేయండి'
+    +'</div></div>'
+    +'<div style="background:rgba(33,150,243,0.1);border-radius:10px;padding:10px;margin-bottom:14px;">'
+    +'<div style="color:#90caf9;font-size:0.75rem;">💡 Tip: Google TTS లో <b>Male + Female</b> రెండూ download చేస్తే separate voices వస్తాయి!</div>'
+    +'</div>'
+    +'<button onclick="this.closest(\'div[style*=fixed]\').remove()" style="width:100%;background:linear-gradient(135deg,#4a0080,#9c27b0);color:#fff;border:none;padding:11px;border-radius:12px;cursor:pointer;font-size:0.88rem;font-weight:700;">✓ అర్థమైంది</button>'
+    +'</div>';
+  document.body.appendChild(m);
+  m.addEventListener('click',function(e){if(e.target===m)m.remove();});
+}
+
+var vrTeGenderState='female',vrEnGenderState='male';
+
+function vrSetTeGender(g){
+  vrTeGenderState=g;
+  vrUpdateGenderBtns();
+}
+function vrSetEnGender(g){
+  vrEnGenderState=g;
+  vrUpdateGenderBtns();
+}
+function vrUpdateGenderBtns(){
+  var tm=document.getElementById('vrTeGenderM');
+  var tf=document.getElementById('vrTeGenderF');
+  var em=document.getElementById('vrEnGenderM');
+  var ef=document.getElementById('vrEnGenderF');
+  if(tm){
+    tm.style.background=vrTeGenderState==='male'?'rgba(100,150,255,0.45)':'rgba(100,150,255,0.1)';
+    tm.style.borderColor=vrTeGenderState==='male'?'#6496ff':'rgba(100,150,255,0.3)';
+  }
+  if(tf){
+    tf.style.background=vrTeGenderState==='female'?'rgba(255,100,180,0.4)':'rgba(255,100,180,0.1)';
+    tf.style.borderColor=vrTeGenderState==='female'?'#ff64b4':'rgba(255,100,180,0.3)';
+  }
+  if(em){
+    em.style.background=vrEnGenderState==='male'?'rgba(100,150,255,0.45)':'rgba(100,150,255,0.1)';
+    em.style.borderColor=vrEnGenderState==='male'?'#6496ff':'rgba(100,150,255,0.3)';
+  }
+  if(ef){
+    ef.style.background=vrEnGenderState==='female'?'rgba(255,100,180,0.4)':'rgba(255,100,180,0.1)';
+    ef.style.borderColor=vrEnGenderState==='female'?'#ff64b4':'rgba(255,100,180,0.3)';
+  }
+}
+
+function vrGetVoice(type){
+  var gender=type==='te'?vrTeGenderState:vrEnGenderState;
+  var selId=type==='te'?(gender==='male'?'vrTeMale':'vrTeFemale'):(gender==='male'?'vrEnMale':'vrEnFemale');
+  var sel=document.getElementById(selId);
+  if(!sel||!sel._voices||!sel._voices.length){
+    // fallback to other gender
+    var fbId=type==='te'?(gender==='male'?'vrTeFemale':'vrTeMale'):(gender==='male'?'vrEnFemale':'vrEnMale');
+    var fb=document.getElementById(fbId);
+    return fb&&fb._voices&&fb._voices.length?fb._voices[parseInt(fb.value)||0]:null;
+  }
+  return sel._voices[parseInt(sel.value)||0]||sel._voices[0];
+}
+
+function vrSpeakText(text,lang){
+  if(!window.speechSynthesis){toast('⚠️ Voice Reader ఈ browser లో support లేదు!');return;}
+  vrStop();
+  // Get verse rows from correct column
+  var col=lang==='te'?document.getElementById('teCol'):document.getElementById('enCol');
+  if(!col){toast('⚠️ Chapter load avvaledhu!');return;}
+  var rows=col.querySelectorAll('.verse-row');
+  if(!rows.length){toast('⚠️ Chapter load avvaledhu!');return;}
+  vrVerses=Array.from(rows);
+  vrVerseIdx=0;vrLang=lang;
+  // Clear old highlights
+  vrClearHL(lang);
+  vrSpeakNext();
+}
+
+function vrClearHL(lang){
+  var cols=lang?[lang==='te'?'teCol':'enCol']:['teCol','enCol'];
+  cols.forEach(function(cid){
+    var c=document.getElementById(cid);
+    if(!c)return;
+    c.querySelectorAll('.verse-row').forEach(function(r){
+      r.classList.remove('vr-reading','vr-done');
+    });
+  });
+}
+
+function vrHighlightVerse(idx,lang){
+  var col=document.getElementById(lang==='te'?'teCol':'enCol');
+  if(!col)return;
+  var rows=col.querySelectorAll('.verse-row');
+  rows.forEach(function(r,i){
+    r.classList.remove('vr-reading');
+    if(i<idx)r.classList.add('vr-done');
+    else r.classList.remove('vr-done');
+  });
+  if(rows[idx]){
+    rows[idx].classList.add('vr-reading');
+    // Auto scroll to verse
+    rows[idx].scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+
+function vrSpeakNext(){
+  if(vrVerseIdx>=vrVerses.length){
+    vrClearHL(vrLang);
+    vrDone();
+    return;
+  }
+  var row=vrVerses[vrVerseIdx];
+  var vtEl=row.querySelector('.vt');
+  var text=vtEl?vtEl.innerText||vtEl.textContent:'';
+  if(!text.trim()){vrVerseIdx++;vrSpeakNext();return;}
+
+  // Highlight current verse
+  vrHighlightVerse(vrVerseIdx,vrLang);
+
+  // Update label
+  var vn=row.querySelector('.vn');
+  var verseNum=vn?vn.textContent:'';
+  var lbl=document.getElementById('vrVerseLabel');
+  if(lbl)lbl.textContent='🔊 Verse '+verseNum+' of '+vrVerses.length;
+
+  // Progress bar
+  var pct=Math.round((vrVerseIdx/vrVerses.length)*100);
+  var bar=document.getElementById('vrProgressBar');
+  if(bar)bar.style.width=pct+'%';
+
+  vrUtterance=new SpeechSynthesisUtterance(text);
+  var voice=vrGetVoice(vrLang);
+  if(voice)vrUtterance.voice=voice;
+  vrUtterance.lang=vrLang==='te'?(voice?voice.lang:'te-IN'):(voice?voice.lang:'en-US');
+  vrUtterance.rate=parseFloat(document.getElementById('vrSpeed').value)||1;
+  vrUtterance.pitch=parseFloat(document.getElementById('vrPitch').value)||1;
+
+  vrUtterance.onend=function(){
+    vrVerseIdx++;
+    vrSpeakNext();
+  };
+  vrUtterance.onerror=function(e){
+    if(e.error==='interrupted')return;
+    vrVerseIdx++;
+    vrSpeakNext();
+  };
+
+  window.speechSynthesis.speak(vrUtterance);
+  vrSpeaking=true;
+
+  // Show controls
+  document.getElementById('vrStopBtn').style.display='inline-block';
+  document.getElementById('vrPlayBtn').style.opacity='0.5';
+  document.getElementById('vrEngBtn').style.opacity='0.5';
+  document.getElementById('vrProgressWrap').style.display='block';
+  document.getElementById('vrStatus').textContent='🔊 Playing...';
+}
+
+function vrPlay(){
+  vrSpeakText('','te');
+}
+
+function vrPlayEn(){
+  vrSpeakText('','en');
+}
+
+function vrPreviewTe(){
+  if(!window.speechSynthesis)return;
+  vrStop();
+  var voice=vrGetVoice('te');
+  var u=new SpeechSynthesisUtterance('నమస్కారం! ఇది మీ Telugu voice sample.');
+  if(voice){u.voice=voice;u.lang=voice.lang;}
+  else u.lang='te-IN';
+  u.rate=parseFloat(document.getElementById('vrSpeed').value)||1;
+  u.pitch=parseFloat(document.getElementById('vrPitch').value)||1;
+  window.speechSynthesis.speak(u);
+}
+
+function vrStop(){
+  if(window.speechSynthesis)window.speechSynthesis.cancel();
+  vrDone();
+}
+
+function vrDone(){
+  vrSpeaking=false;
+  vrClearHL(vrLang);
+  var s=document.getElementById('vrStopBtn');if(s)s.style.display='none';
+  var p=document.getElementById('vrPlayBtn');if(p)p.style.opacity='1';
+  var e=document.getElementById('vrEngBtn');if(e)e.style.opacity='1';
+  var pw=document.getElementById('vrProgressWrap');if(pw)pw.style.display='none';
+  var bar=document.getElementById('vrProgressBar');if(bar)bar.style.width='0%';
+  var st=document.getElementById('vrStatus');if(st)st.textContent='';
+}
+
+function vrChangeSpeed(){
+  if(vrSpeaking){var l=vrLang;vrStop();if(l==='te')vrPlay();else vrPlayEn();}
+}
+
+// Load voices on init and when voices change — called from window.onload
+function vrInit(){
+  if(window.speechSynthesis){
+    window.speechSynthesis.onvoiceschanged=vrLoadVoices;
+    setTimeout(vrLoadVoices,500);
+  }
+}
+
+// Voice Recorder
+function toggleRecording(){
+  if(mediaRec&&mediaRec.state==='recording'){
+    mediaRec.stop();
+  } else {
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+      recChunks=[];
+      mediaRec=new MediaRecorder(stream);
+      mediaRec.ondataavailable=function(e){recChunks.push(e.data);};
+      mediaRec.onstop=function(){
+        var blob=new Blob(recChunks,{type:'audio/webm'});
+        var url=URL.createObjectURL(blob);
+        recCount++;
+        var div=document.createElement('div');
+        div.style.cssText='background:rgba(192,57,43,0.1);border:1px solid var(--rborder);border-radius:10px;padding:8px;margin-top:8px;';
+        div.innerHTML='<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">'
+          +'<span style="color:var(--gold);font-size:0.78rem;">🎙️ Voice Note '+recCount+'</span>'
+          +'<audio controls src="'+url+'" style="height:32px;flex:1;min-width:140px;"></audio>'
+          +'<a href="'+url+'" download="VoiceNote'+recCount+'.webm" '
+          +'style="background:linear-gradient(135deg,var(--red),var(--gold));color:#000;padding:5px 10px;border-radius:12px;font-size:0.75rem;font-weight:700;text-decoration:none;">⬇️ Save</a>'
+          +'</div>';
+        document.getElementById('recordings').appendChild(div);
+        document.getElementById('recStatus').textContent='Saved! ✅';
+        setTimeout(function(){document.getElementById('recStatus').textContent='';},2000);
+        document.getElementById('recBtn').className='rec-btn idle';
+        document.getElementById('recBtn').textContent='🎙️ Record';
+        stream.getTracks().forEach(function(t){t.stop();});
+      };
+      mediaRec.start();
+      document.getElementById('recBtn').className='rec-btn recording';
+      document.getElementById('recBtn').textContent='⏹ Stop';
+      document.getElementById('recStatus').textContent='Recording...';
+    }).catch(function(){toast('⚠️ Microphone permission kaavali!');});
+  }
+}
+
+
+
+// AI Bible Assistant
+async function sendAI2(){
+  var inp=document.getElementById('aiInput2');
+  var q=inp.value.trim();if(!q)return;inp.value='';
+  var msgs=document.getElementById('aiMessages2');
+  var um=document.createElement('div');um.className='ai-msg user';um.textContent=q;msgs.appendChild(um);
+  var bm=document.createElement('div');bm.className='ai-msg bot';bm.textContent='⏳ Thinking...';msgs.appendChild(bm);
+  msgs.scrollTop=msgs.scrollHeight;
+  var ctx='You are a helpful Telugu Christian Bible assistant. Answer in Telugu when possible. Keep answers simple, clear and encouraging. If asked about Bible verses or stories, reference exact Bible references.';
+  try{
+    var res=await puter.ai.chat(ctx+'\n\nUser: '+q,{model:'gpt-4o-mini'});
+    bm.textContent=res||'Sorry, try again.';
+  }catch(e){bm.textContent='⚠️ AI ippudu unavailable. Internet check cheyyi!';}
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function prevC(){if(curCI>1)readChap(curCI-1);else if(curBI>0){curBI--;readChap(curBL[curBI].c);}}
+function nextC(){var b=curBL[curBI];if(curCI<b.c)readChap(curCI+1);else if(curBI<curBL.length-1){curBI++;readChap(1);}}
+
+function showBReader(type){
+  var sites=READER_SITES[type];
+  document.getElementById('bReaderTitle').textContent=type==='OT'?'📜 పాత నిబంధన Reader':'✝ క్రొత్త నిబంధన Reader';
+  document.getElementById('readerSites').innerHTML=sites.map(function(s){
+    return'<a href="'+s.url+'" target="_blank" style="text-decoration:none;display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--rborder);color:var(--gold);padding:8px 14px;border-radius:20px;font-size:0.82rem;">📖 '+s.n+'</a>';
+  }).join('');
+  document.getElementById('bHome').style.display='none';document.getElementById('bBooks').style.display='none';document.getElementById('bChaps').style.display='none';document.getElementById('bReader').style.display='none';document.getElementById('bReaderSites').style.display='block';
+}
+
+function bBack(to){
+  document.getElementById('bHome').style.display=to==='home'?'block':'none';
+  document.getElementById('bBooks').style.display=to==='books'?'block':'none';
+  document.getElementById('bChaps').style.display=to==='chaps'?'block':'none';
+  document.getElementById('bReader').style.display='none';document.getElementById('bReaderSites').style.display='none';
+}
+
+// ═══ CRUD ═══
+function save(){
+  var t=document.getElementById('fT').value.trim(),y=document.getElementById('fY').value.trim(),l=document.getElementById('fL').value.trim();
+  if(!t){toast('⚠️ పాట పేరు రాయి!');return;}if(!y){toast('⚠️ YouTube link paste చేయి!');return;}if(!ytId(y)){toast('⚠️ Valid YouTube link కాదు!');return;}
+  if(eId!==null){var i=S.findIndex(function(s){return s.id===eId;});if(i>=0)S[i]=Object.assign({},S[i],{t:t,y:y,l:l});eId=null;document.getElementById('formH').textContent='➕ కొత్త పాట Add చేయి';document.getElementById('cancelBtn').style.display='none';toast('✅ Update అయింది!');if(C>=0&&S[C])play(C,false);}
+  else{S.push({id:Date.now().toString(),t:t,y:y,l:l});toast('✅ పాట add అయింది!');}
+  localStorage.setItem('ns7',JSON.stringify(S));['fT','fY','fL'].forEach(function(id){document.getElementById(id).value='';});renderList();go('list');
+}
+
+function editS(i){var s=S[i];if(!s)return;eId=s.id;document.getElementById('fT').value=s.t;document.getElementById('fY').value=s.y;document.getElementById('fL').value=s.l||'';document.getElementById('formH').textContent='✏️ పాట Edit చేయి';document.getElementById('cancelBtn').style.display='block';go('add');}
+function cancelEdit(){eId=null;['fT','fY','fL'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('formH').textContent='➕ కొత్త పాట Add చేయి';document.getElementById('cancelBtn').style.display='none';go('list');}
+function delS(i){
+  if(!confirm('"'+S[i].t+'" delete చేయాలా?'))return;
+  var id=S[i].id;
+  if(C===i){C=-1;localStorage.removeItem('nc7');document.getElementById('ytf').src='';document.getElementById('ytf').style.display='none';document.getElementById('nvph').style.display='flex';document.getElementById('nowCard').style.display='none';document.getElementById('welcomeCard').style.display='block';}
+  else if(C>i){C--;localStorage.setItem('nc7',C);}
+  F=F.filter(function(f){return f!==id;});S.splice(i,1);
+  localStorage.setItem('ns7',JSON.stringify(S));localStorage.setItem('nf7',JSON.stringify(F));
+  renderList();renderFav();toast('🗑️ Delete అయింది');
+}
+
+// ═══ DEFAULT SONGS ═══
+var DS=[
+  {id:'d1',t:'అత్యున్నత సింహాసనముపై',y:'https://youtu.be/j0XibB3CBnM',l:`అత్యున్నత సింహాసనముపై – ఆసీనుడవైన దేవా
+అత్యంత ప్రేమా స్వరూపివి నీవే
+ఆరాధింతును నిన్నే (2)
+ఆహాహా.. హల్లెలూయా – ఆహాహా.. హల్లెలూయా (3)
+ఆహాహా.. హల్లెలూయా – ఆహాహా.. ఆమెన్
+
+ఆశ్చర్యకరుడా స్తోత్రం
+ఆలోచనకర్త స్తోత్రం
+బలమైన దేవా నిత్యుడవగు తండ్రి
+సమాధాన అధిపతి స్తోత్రం (2)  ||ఆహాహా||
+
+కృపా సత్య సంపూర్ణుడా స్తోత్రం
+కృపతో రక్షించితివే స్తోత్రం
+నీ రక్తమిచ్చి విమోచించినావు
+నా రక్షణకర్త స్తోత్రం (2)  ||ఆహాహా||
+
+స్తుతులపై ఆసీనుడా స్తోత్రం
+సంపూర్ణుడా నీకు స్తోత్రం
+మా ప్రార్థనలు ఆలకించువాడా
+మా ప్రధాన యాజకుడా స్తోత్రం (2)  ||ఆహాహా||
+
+మృత్యుంజయుడా స్తోత్రం
+మహాఘనుడా స్తోత్రం
+మమ్మును కొనిపోవ త్వరలో రానున్న
+మేఘ వాహనుడా స్తోత్రం (2)  ||ఆహాహా||
+
+ఆమెన్ అనువాడా స్తోత్రం
+అల్ఫా ఒమేగా స్తోత్రం
+అగ్ని జ్వాలలవంటి కన్నులు గలవాడా
+అత్యున్నతుడా స్తోత్రం (2)  ||ఆహాహా||`},
+
+  {id:'d2',t:'ఓ ప్రభువా',y:'https://youtu.be/Rk2UK6HX-Vg',l:`ఓ ప్రభువా… ఓ ప్రభువా…
+నీవే నా మంచి కాపరివి (4)  ||ఓ ప్రభువా||
+
+దారి తప్పిన నన్నును నీవు
+వెదకి వచ్చి రక్షించితివి (2)
+నిత్య జీవము నిచ్చిన దేవా (2)
+నీవే నా మంచి కాపరివి (4)  ||ఓ ప్రభువా||
+
+నీవు ప్రేమించిన గొర్రెలన్నిటిని
+ఎల్లపుడు చేయి విడువక (2)
+అంతము వరకు కాపాడు దేవా (2)
+నీవే నా మంచి కాపరివి (4)  ||ఓ ప్రభువా||
+
+ప్రధాన కాపరిగా నీవు నాకై
+ప్రత్యక్షమగు ఆ ఘడియలలో (2)
+నన్ను నీవు మరువని దేవా (2)
+నీవే నా మంచి కాపరివి (4)  ||ఓ ప్రభువా||`},
+
+  {id:'d3',t:'రాజా నీ సన్నిధిలోనే',y:'https://youtu.be/gsGgIOAnFAw',l:`రాజా నీ సన్నిధిలోనే ఉంటానయ్యా
+మనసారా ఆరాధిస్తూ బ్రతికేస్తానయ్యా (2)
+నేనుండలేనయ్యా నే బ్రతుకలేనయ్యా (2)
+నీవే లేకుండా నేనుండలేనయ్యా
+నీ తోడే లేకుండా నే బ్రతుకలేనయ్యా (2)  ||రాజా||
+
+నీ సన్నిధానములో సంపూర్ణ సంతోషం
+ఆరాధించుకొనే విలువైన అవకాశం (2)
+కోల్పోయినవన్ని నాకు ఇచ్చుటకును
+బాధల నుండి బ్రతికించుటకును (2)
+నీవే రాకపోతే నేనేమైపోదునో (2)  ||నేనుండలేనయ్యా||
+
+ఒంటరి పోరు నన్ను విసిగించినా
+మనుషులెల్లరు నన్ను తప్పుపట్టినా (2)
+ఒంటరివాడే వేయి మంది అన్నావు
+నేనున్నానులే భయపడకు అన్నావు (2)
+నేనంటే నీకు ఇంత ప్రేమ ఏంటయ్యా (2)  ||నేనుండలేనయ్యా||
+
+ఊపిరాగేవరకు నీతోనే జీవిస్తా
+ఏ దారిలో నడిపినా నీ వెంటే నడిచొస్తా (2)
+విశ్వానికి కర్త నీవే నా గమ్యము
+నీ బాటలో నడుచుట నాకెంతో ఇష్టము (2)
+నిన్ను మించిన దేవుడే లేడయ్యా (2)  ||నేనుండలేనయ్యా||`},
+
+  {id:'d4',t:'సుగుణాల సంపన్నుడా',y:'https://youtu.be/n5bN7KYz3P4',l:`సుగుణాల సంపన్నుడా – స్తుతి గానాల వారసుడా
+జీవింతును నిత్యము నీ నీడలో
+ఆస్వాదింతును నీ మాటల మకరందము
+యేసయ్య నీతో జీవించగానే
+నా బ్రతుకు బ్రతుకుగా మారేనులే
+నాట్యమాడేను నా అంతరంగము
+ఇది రక్షణానంద భాగ్యమే  ||సుగుణాల||
+
+యేసయ్య నిన్ను వెన్నంటగానే
+ఆజ్ఞల మార్గము కనిపించెనే
+నీవు నన్ను నడిపించాగలవు
+నేను నడవవలసిన త్రోవలో  ||సుగుణాల||
+
+యేసయ్య నీ కృప తలంచగానే
+నా శ్రమలు శ్రమలుగా అనిపించలేదే
+నీవు నాకిచ్చే మహిమ ఎదుట
+ఇవి ఎన్నతగినవి కావే  ||సుగుణాల||`},
+
+  {id:'d5',t:'స్థిరపరచువాడవు',y:'https://youtu.be/fGqYj1IjMr0',l:`స్థిరపరచువాడవు బలపరచువాడవు
+పడిపోయిన చోటే నిలబట్టువాడవు
+ఘనపరచువాడవు హెచ్చించువాడవు
+మా పక్షము నిలిచి జయమిచ్చువాడవు (2)
+
+ఏమైనా చేయగలవు కథ మొత్తం మార్చగలవు
+నీ నామముకే మహిమంతా తెచ్చుకొందువు (2)
+యేసయ్య.. యేసయ్య.. నీకే నీకే సాధ్యము (2)
+
+సర్వకృపానిధి మా పరమ కుమ్మరి
+నీ చేతిలోనే మా జీవమున్నది (2)
+మా దేవా నీ ఆలోచనలన్నీ ఎంతో గొప్పవి
+మా ఊహకు మించిన కార్యములెన్నో
+జరిగించుచున్నవి (2)  ||ఏమైనా||
+
+నీ ఆజ్ఞ లేనిదే ఏదైన జరుగునా?
+నీ కంచే దాటగ శత్రువుకు సాధ్యమా? (2)
+మా దేవా నీవే మాతొడుంటే అంతే చాలును
+అపవాది తలచిన కీడులన్నీ
+మేలైపోవును (2)  ||ఏమైనా||`}
+];
+
+function initDS(){
+  // Force update default songs every time
+  DS.forEach(function(ds){
+    var idx=S.findIndex(function(s){return s.id===ds.id;});
+    if(idx>=0){
+      // Update existing — force full lyrics
+      S[idx]=Object.assign({},S[idx],{t:ds.t,y:ds.y,l:ds.l});
+    } else {
+      S.unshift(ds);
+    }
+  });
+  localStorage.setItem('ns7',JSON.stringify(S));
+}
+
+// ═══ MOTIVES ═══
+var MOTIVES=[
+  '🙏 దేవుడు నిన్ను ప్రేమిస్తున్నాడు',
+  '✝ యేసు నీతో ఉన్నాడు',
+  '🎵 స్తుతి చేయుటే మన జీవితం',
+  '📖 వాక్యం నీ పాదములకు దీపము',
+  '🕊️ Peace that surpasses all understanding',
+  '🙌 Rejoice always, pray continually',
+  '❤️ నీ విశ్వాసం నిన్ను బతికిస్తుంది',
+  '🌟 దేవుని కార్యాలు అద్భుతమైనవి',
+];
+var motiveIdx=0;
+
+function rotateMotive(){
+  var el=document.getElementById('motiveLine');
+  if(!el)return;
+  el.style.opacity='0';
+  setTimeout(function(){
+    el.textContent=MOTIVES[motiveIdx%MOTIVES.length];
+    el.style.opacity='1';
+    el.style.transition='opacity 0.5s';
+    motiveIdx++;
+  },300);
+}
+
+function updateSongCount(){
+  var el=document.getElementById('songCountBadge');
+  if(el)el.textContent=S.length+' Songs';
+}
+
+// ═══ BANNER IMAGES ═══
+var BANNERS=[
+  // Starry night sky — dark dramatic
+  'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=80',
+  // Mountain sunrise golden
+  'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
+  // Dark forest light rays
+  'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80',
+  // Galaxy milky way
+  'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80',
+  // Ocean sunset dramatic red
+  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+  // Dark mountain misty
+  'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80',
+  // Night sky stars purple
+  'https://images.unsplash.com/photo-1476111021705-ac3b3304fe20?w=800&q=80',
+  // Golden wheat field sunset
+  'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80',
+];
+var bannerIdx=parseInt(localStorage.getItem('bannerIdx')||'0');
+
+function changeBanner(){
+  bannerIdx=(bannerIdx+1)%BANNERS.length;
+  localStorage.setItem('bannerIdx',bannerIdx);
+  applyBanner();
+  toast('🖼️ Banner changed! ('+(bannerIdx+1)+'/'+BANNERS.length+')');
+}
+
+function applyBanner(){
+  var el=document.getElementById('bannerBg');
+  if(!el)return;
+  el.style.opacity='0';
+  setTimeout(function(){
+    el.style.backgroundImage="url('"+BANNERS[bannerIdx]+"')";
+    el.style.opacity='1';
+  },300);
+}
+
+function initHome(){
+  rotateMotive();
+  setInterval(rotateMotive,3000);
+  var p=getDayPromise();
+  var ht=document.getElementById('homepromiseText');
+  var hr=document.getElementById('homepromiseRef');
+  if(ht)ht.textContent=p.t;
+  if(hr)hr.textContent='— '+p.r;
+  updateSongCount();
+  applyBanner();
+}
+
+// ═══ TOAST ═══
+var _t;
+function toast(m){var el=document.getElementById('toast');el.textContent=m;el.classList.add('on');clearTimeout(_t);_t=setTimeout(function(){el.classList.remove('on');},2500);}
+
+// ═══ INIT ═══
+window.onload=function(){
+  if(!dark)document.body.classList.add('light');
+  document.getElementById('darkBtn').textContent=dark?'☀️ Light':'🌙 Dark';
+  updateDateTime();setInterval(updateDateTime,30000);
+  var p=getDayPromise();
+  document.getElementById('promiseText').textContent=p.t;
+  document.getElementById('promiseRef').textContent='— '+p.r;
+  getWeatherLocation();
+  initDS();renderList();renderFav();render244(SONGS244);
+  initHome();
+  vrInit();
+  setTimeout(function(){
+    var sp=document.getElementById('splash');
+    if(sp){sp.style.opacity='0';setTimeout(function(){sp.style.display='none';},700);}
+  },2200);
+};
+</script>
+</body>
+</html>
