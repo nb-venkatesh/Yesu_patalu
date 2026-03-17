@@ -8,8 +8,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>🎵 యేసు పాటలు</title>
+<!-- Google Fonts — Telugu + English -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600&family=Noto+Serif+Telugu:wght@400;600&family=Mandali&family=Ramabhadra&family=Tenali+Ramakrishna&family=NTR&display=swap" rel="stylesheet">
 <style>
 html{background:#0a0000 !important;}
+/* Block WebIntoApp & other ad popups */
+iframe[src*="webintoapp"],
+div[class*="webintoapp"],
+div[id*="webintoapp"],
+.wia-popup, .wia-banner,
+iframe[src*="ad"], iframe[src*="popup"]{
+  display:none !important;
+  visibility:hidden !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
 /* ═══ BLACK RED GOLD THEME ═══ */
 :root{
   --gold:#f5c518;--red:#c0392b;--red2:#e74c3c;
@@ -1728,28 +1743,41 @@ function vrChangeSpeed(){
 
 // Load voices on init and when voices change — called from window.onload
 function vrInit(){
-  if(!window.speechSynthesis){
-    // WebView లో speechSynthesis late load అవుతుంది — retry
-    var retries=0;
-    var check=setInterval(function(){
-      retries++;
-      if(window.speechSynthesis){
-        clearInterval(check);
-        window.speechSynthesis.onvoiceschanged=vrLoadVoices;
+  // Aggressive retry for WebView/APK
+  var maxWait=15000; // 15 seconds max
+  var interval=300;
+  var elapsed=0;
+
+  function tryLoad(){
+    elapsed+=interval;
+    if(window.speechSynthesis){
+      var voices=window.speechSynthesis.getVoices();
+      if(voices.length>0){
         vrLoadVoices();
-      } else if(retries>20){
-        clearInterval(check);
-        var st=document.getElementById('vrStatus');
-        if(st)st.textContent='⚠️ Voice support లేదు — Chrome browser లో try చేయి';
+        return;
       }
-    },500);
-    return;
+      // Voices not ready yet
+      window.speechSynthesis.onvoiceschanged=function(){
+        vrLoadVoices();
+      };
+    }
+    if(elapsed<maxWait){
+      setTimeout(tryLoad,interval);
+    } else {
+      // Final attempt
+      if(window.speechSynthesis){
+        vrLoadVoices();
+      } else {
+        var st=document.getElementById('vrStatus');
+        if(st)st.textContent='⚠️ Voice Reader ఈ browser లో support లేదు';
+      }
+    }
   }
-  window.speechSynthesis.onvoiceschanged=vrLoadVoices;
-  // Multiple timeouts — voices sometimes load late in WebView
-  setTimeout(vrLoadVoices,500);
-  setTimeout(vrLoadVoices,1500);
+  setTimeout(tryLoad,300);
+  // Also try at fixed intervals
+  setTimeout(vrLoadVoices,1000);
   setTimeout(vrLoadVoices,3000);
+  setTimeout(vrLoadVoices,6000);
 }
 
 // Voice Recorder
@@ -1827,18 +1855,20 @@ async function sendAI2(){
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        system_instruction:{parts:[{text:sysPrompt}]},
-        contents:[{parts:[{text:q}]}],
+        contents:[{
+          parts:[{text:sysPrompt+'\n\nUser question: '+q+'\n\nTelugu answer:'}]
+        }],
         generationConfig:{maxOutputTokens:300,temperature:0.7}
       })
     });
     var data=await res.json();
+    if(data.error){throw new Error(data.error.message);}
     var txt=data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts&&data.candidates[0].content.parts[0]&&data.candidates[0].content.parts[0].text;
     if(txt&&txt.trim().length>10){
       bm.textContent=txt.trim();
       answered=true;
     }
-  }catch(e1){console.log('Gemini error:',e1);}
+  }catch(e1){console.log('Gemini error:',e1.message);}
 
   // Smart offline fallback
   if(!answered){
@@ -2136,6 +2166,30 @@ window.onload=function(){
   initDS();renderList();renderFav();render244(SONGS244);
   initHome();
   vrInit();
+
+  // Block WebIntoApp popup ads
+  setInterval(function(){
+    // Remove any popup overlays from WebIntoApp
+    document.querySelectorAll('iframe').forEach(function(el){
+      var src=el.src||'';
+      if(src.includes('webintoapp')||src.includes('advert')||src.includes('popup')){
+        el.remove();
+      }
+    });
+    // Remove overlay divs
+    document.querySelectorAll('div').forEach(function(el){
+      var z=parseInt(window.getComputedStyle(el).zIndex)||0;
+      var pos=window.getComputedStyle(el).position;
+      if(z>9000&&pos==='fixed'&&el.id!=='toast'&&el.id!=='dlMenu'&&el.id!=='splash'){
+        // Check if it's an ad (has external links or images from ad networks)
+        var html=el.innerHTML||'';
+        if(html.includes('webintoapp')||html.includes('CLICK HERE')||html.includes('Convert your Website')){
+          el.remove();
+        }
+      }
+    });
+  },1000);
+
   setTimeout(function(){
     var sp=document.getElementById('splash');
     if(sp){sp.style.opacity='0';setTimeout(function(){sp.style.display='none';},700);}
