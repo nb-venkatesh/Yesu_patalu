@@ -1882,64 +1882,39 @@ async function sendAI2(){
   var bm=document.createElement('div');bm.className='ai-msg bot';bm.innerHTML='<span style="opacity:0.6">⏳ thinking...</span>';msgs.appendChild(bm);
   msgs.scrollTop=msgs.scrollHeight;
 
-  var sysPrompt='You are a Telugu Christian Bible assistant. ALWAYS respond ONLY in Telugu language. Give 3-4 sentence answer. Be encouraging and helpful. End with a relevant Bible verse.';
-  var answered=false;
-
-  // Gemini 1.5 Flash — Free, fast, permanent
   var GEMINI_KEY=localStorage.getItem('geminiKey')||'';
   if(!GEMINI_KEY){
-    bm.textContent='🔑 AI use చేయడానికి API Key కావాలి — AI page లో ⚙️ API Key enter చేయండి';
-    msgs.scrollTop=msgs.scrollHeight;return;
+    bm.innerHTML='🔑 <b>API Key లేదు!</b><br><small>కింద "🔑 API Key change" click చేసి key enter చేయండి</small>';
+    msgs.scrollTop=msgs.scrollHeight;
+    showAIKeySetup();
+    return;
   }
+
+  var prompt='You are a Telugu Christian Bible assistant. Answer ONLY in Telugu language. Give clear, helpful 3-4 sentence answer. If it is a Bible/Christian question, add a relevant Bible verse at end. Question: '+q;
+
   try{
-    var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',{
+    var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+GEMINI_KEY,{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'x-goog-api-key':GEMINI_KEY
-      },
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        contents:[{
-          role:'user',
-          parts:[{text:sysPrompt+'\n\nQuestion: '+q+'\n\nAnswer in Telugu:'}]
-        }],
-        generationConfig:{maxOutputTokens:300,temperature:0.7}
+        contents:[{parts:[{text:prompt}]}],
+        generationConfig:{maxOutputTokens:400,temperature:0.7}
       })
     });
     var data=await res.json();
     if(data.error){
-      console.log('Gemini API error:',data.error.message);
-      throw new Error(data.error.message);
+      bm.textContent='⚠️ API Error: '+data.error.message;
+      msgs.scrollTop=msgs.scrollHeight;
+      return;
     }
     var txt=data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts&&data.candidates[0].content.parts[0]&&data.candidates[0].content.parts[0].text;
-    if(txt&&txt.trim().length>10){
+    if(txt&&txt.trim().length>5){
       bm.textContent=txt.trim();
-      answered=true;
-    }
-  }catch(e1){console.log('Gemini error:',e1.message);}
-
-  // Smart offline fallback
-  if(!answered){
-    var ql=q.toLowerCase();
-    var ans='';
-    if(ql.includes('yesu')||ql.includes('jesus')||ql.includes('యేసు')||ql.includes('christ')){
-      ans='యేసు క్రీస్తు దేవుని కుమారుడు మరియు మన రక్షకుడు. ఆయన మన పాపముల కొరకు సిలువపై మరణించి మూడవ దినమున పునరుత్థానుడయ్యాడు. ఆయనను విశ్వసించే వారందరికీ నిత్యజీవం దొరుకుతుంది. "దేవుడు లోకమును ఎంతగా ప్రేమించెనంటే తన అద్వితీయ కుమారుని అనుగ్రహించెను" — యోహాను 3:16 🙏';
-    } else if(ql.includes('pray')||ql.includes('ప్రార్థన')){
-      ans='ప్రార్థన అనేది దేవునితో మన హృదయ సంభాషణ. రోజూ ఉదయం మరియు రాత్రి ప్రార్థించడం మన విశ్వాసాన్ని బలపరుస్తుంది. దేవుడు మన ప్రతి మాటను వింటాడు మరియు సమాధానం ఇస్తాడు. "ప్రార్థనలో నిలుకడగా ఉండుడి" — కొలొస్సయులు 4:2 🙏';
-    } else if(ql.includes('bible')||ql.includes('బైబిల్')){
-      ans='బైబిల్ దేవుని పవిత్ర వాక్యం మరియు మన జీవితానికి మార్గదర్శి. దానిలో 66 పుస్తకాలు ఉన్నాయి. ప్రతిరోజూ బైబిల్ చదవడం మన ఆత్మను బలపరుస్తుంది. "నీ వాక్యం నా పాదములకు దీపమును" — కీర్తన 119:105 🙏';
-    } else if(ql.includes('love')||ql.includes('ప్రేమ')){
-      ans='దేవుడు ప్రేమ స్వరూపుడు. ఆయన మనలను ఎంతగా ప్రేమించాడంటే తన అద్వితీయ కుమారుని మనకు అనుగ్రహించాడు. ఆ ప్రేమను అనుభవించి ఇతరులను ప్రేమించడం మన పిలుపు. "దేవుడు ప్రేమ స్వరూపుడు" — 1 యోహాను 4:8 🙏';
-    } else if(ql.includes('peace')||ql.includes('శాంతి')){
-      ans='నిజమైన శాంతి దేవుని నుండి వస్తుంది. ఆయన ఇచ్చే శాంతి మన హృదయాలను కాపాడుతుంది. "సమస్త వివేచనమును మించిన దేవుని సమాధానము మీ హృదయములను కాపాడును" — ఫిలిప్పీ 4:7 🙏';
-    } else if(ql.includes('sin')||ql.includes('పాపం')||ql.includes('forgive')||ql.includes('క్షమ')){
-      ans='దేవుడు మన పాపాలను క్షమించడానికి సిద్ధంగా ఉన్నాడు. మనం పశ్చాత్తాపపడి అడిగితే ఆయన తప్పక క్షమిస్తాడు. "మన పాపములను మనము ఒప్పుకొనిన యెడల ఆయన మన పాపములను క్షమించును" — 1 యోహాను 1:9 🙏';
-    } else if(ql.includes('hope')||ql.includes('ఆశ')||ql.includes('faith')||ql.includes('విశ్వాసం')){
-      ans='దేవుని యందు నమ్మకముంచే వారికి నిరాశ ఉండదు. కష్టాల్లో కూడా ఆయన మనతోనే ఉంటాడు. "నేను మీకు శాంతి కలుగజేయుటకు ఆలోచనలు చేయుచున్నాను" — యిర్మియా 29:11 🙏';
     } else {
-      ans='దేవుడు మీ ప్రశ్నను వింటున్నాడు మరియు సమాధానం ఇవ్వగలడు. ప్రార్థనతో ఆయనను వెదకండి, ఆయన తప్పక కనుగొనబడతాడు. "అడగుడి అప్పుడు మీకు ఇయ్యబడును" — మత్తయి 7:7 🙏';
+      bm.textContent='⚠️ జవాబు రాలేదు. మళ్ళీ try చేయండి.';
     }
-    bm.textContent=ans;
+  }catch(e){
+    bm.textContent='⚠️ Internet check చేయండి — '+e.message;
   }
   msgs.scrollTop=msgs.scrollHeight;
 }
