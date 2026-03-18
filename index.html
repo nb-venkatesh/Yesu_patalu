@@ -332,7 +332,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 .rec-btn.recording{background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;animation:blink 1s infinite;}
 
 /* AI CHAT */
-.ai-msg{padding:12px 15px;border-radius:16px;margin-bottom:10px;font-size:0.87rem;line-height:1.8;max-width:92%;}
+.ai-msg{padding:10px 13px;border-radius:16px;margin-bottom:5px;font-size:0.87rem;line-height:1.6;max-width:92%;}
 .ai-msg.bot{background:linear-gradient(135deg,rgba(20,10,5,0.95),rgba(40,15,10,0.9));border:1px solid rgba(245,197,24,0.25);color:#f0e6d3;align-self:flex-start;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
 .ai-msg.bot strong,.ai-msg.bot b{color:#f5c518;font-weight:700;}
 .ai-msg.bot h1,.ai-msg.bot h2,.ai-msg.bot h3{color:#f5c518;margin:8px 0 4px 0;font-size:0.95rem;}
@@ -857,62 +857,170 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 
   <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;">
 
-    <!-- Model Selector -->
-    <div style="margin-bottom:10px;">
-      <label style="color:var(--sub);font-size:0.72rem;">🤖 AI Model:</label>
+    <!-- Mode Toggle: Chat vs Image -->
+    <div style="display:flex;gap:6px;margin-bottom:10px;">
+      <button id="aiChatTab" onclick="aiSetMode('chat')" style="flex:1;padding:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.82rem;">💬 Chat</button>
+      <button id="aiImgTab" onclick="aiSetMode('image')" style="flex:1;padding:8px;background:var(--deep);border:1px solid var(--border);color:var(--sub);border-radius:10px;cursor:pointer;font-size:0.82rem;">🎨 Image Generate</button>
+    </div>
+
+    <!-- Chat Model Selector -->
+    <div id="aiChatModelDiv" style="margin-bottom:10px;">
+      <label style="color:var(--sub);font-size:0.72rem;">🤖 Chat Model:</label>
       <select id="aiModelSelect" style="width:100%;margin-top:4px;background:var(--deep);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:10px;font-size:0.8rem;outline:none;">
-        <optgroup label="🥇 OpenAI GPT-5 Series — Most Powerful">
-          <option value="gpt-5.4">GPT-5.4 — Most Powerful 👑</option>
+        <optgroup label="🥇 OpenAI GPT-5 — Most Powerful">
+          <option value="gpt-5.4" selected>GPT-5.4 — Most Powerful 👑</option>
           <option value="gpt-5.4-pro">GPT-5.4 Pro</option>
           <option value="gpt-5.3-chat">GPT-5.3 Chat</option>
+          <option value="gpt-5.3-codex">GPT-5.3 Codex 💻</option>
           <option value="gpt-5.2-pro">GPT-5.2 Pro</option>
           <option value="gpt-5">GPT-5</option>
           <option value="gpt-5-mini">GPT-5 Mini</option>
-          <option value="gpt-5-nano">GPT-5 Nano — Fast ⚡</option>
+          <option value="gpt-5-nano">GPT-5 Nano ⚡</option>
         </optgroup>
-        <optgroup label="🥇 OpenAI GPT-4 Series">
-          <option value="gpt-4o">GPT-4o — Very Powerful ⭐</option>
-          <option value="gpt-4o-mini" selected>GPT-4o Mini — Fast & Free ✅</option>
+        <optgroup label="🥇 OpenAI GPT-4">
+          <option value="gpt-4o">GPT-4o ⭐</option>
+          <option value="gpt-4o-mini">GPT-4o Mini ✅</option>
         </optgroup>
         <optgroup label="🥈 Anthropic Claude">
-          <option value="claude-sonnet-4">Claude Sonnet 4 — Very Powerful</option>
+          <option value="claude-sonnet-4">Claude Sonnet 4</option>
           <option value="claude-sonnet-4-5">Claude Sonnet 4.5</option>
+          <option value="claude-3-7-sonnet">Claude 3.7 Sonnet</option>
           <option value="claude-3-5-sonnet">Claude 3.5 Sonnet</option>
         </optgroup>
-        <optgroup label="🥉 Google Gemini">
+        <optgroup label="🤖 xAI Grok">
+          <option value="x-ai/grok-4.20-beta">Grok 4.20 Beta 🔥</option>
+          <option value="x-ai/grok-4-1-fast">Grok 4.1 Fast ⚡</option>
+          <option value="x-ai/grok-3">Grok 3</option>
+          <option value="x-ai/grok-3-mini">Grok 3 Mini</option>
+          <option value="x-ai/grok-2">Grok 2</option>
+        </optgroup>
+        <optgroup label="🦙 Meta Llama">
+          <option value="meta-llama/llama-4-maverick">Llama 4 Maverick 🔥</option>
+          <option value="meta-llama/llama-4-scout">Llama 4 Scout</option>
+          <option value="meta-llama/llama-3.3-70b-instruct">Llama 3.3 70B</option>
+          <option value="meta-llama/llama-3.1-70b-instruct">Llama 3.1 70B</option>
+          <option value="meta-llama/llama-3.1-8b-instruct">Llama 3.1 8B ⚡</option>
+        </optgroup>
+        <optgroup label="🔵 Google Gemini">
+          <option value="google/gemini-3.1-pro-preview">Gemini 3.1 Pro 🔥</option>
+          <option value="google/gemini-3-pro-preview">Gemini 3 Pro</option>
+          <option value="google/gemini-3-flash-preview">Gemini 3 Flash</option>
+          <option value="google/gemini-3.1-flash-lite-preview">Gemini 3.1 Flash Lite ⚡</option>
+          <option value="google/gemini-2.5-pro">Gemini 2.5 Pro</option>
           <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
-          <option value="google/gemini-3.1-pro-preview">Gemini 3.1 Pro Preview</option>
           <option value="google/gemini-2.0-flash">Gemini 2.0 Flash</option>
         </optgroup>
-        <optgroup label="🏅 Other Powerful Models">
-          <option value="deepseek/deepseek-r1">DeepSeek R1 — Best Reasoning 🧠</option>
-          <option value="qwen/qwen3.5-397b-a17b">Qwen 3.5 397B — Huge Model</option>
+        <optgroup label="🧠 DeepSeek — Best Reasoning">
+          <option value="deepseek/deepseek-r1">DeepSeek R1 🧠</option>
+          <option value="deepseek/deepseek-v3">DeepSeek V3</option>
+          <option value="deepseek/deepseek-chat">DeepSeek Chat</option>
+        </optgroup>
+        <optgroup label="🌐 Mistral AI">
+          <option value="mistralai/mistral-large">Mistral Large</option>
+          <option value="mistralai/mistral-small">Mistral Small ⚡</option>
+          <option value="mistralai/mixtral-8x7b-instruct">Mixtral 8x7B</option>
+          <option value="mistralai/codestral">Codestral 💻 Code</option>
+        </optgroup>
+        <optgroup label="🔮 Qwen (Alibaba)">
+          <option value="qwen/qwen3.5-397b-a17b">Qwen 3.5 397B — Huge</option>
+          <option value="qwen/qwq-32b">QwQ 32B — Reasoning</option>
+          <option value="qwen/qwen3-max">Qwen 3 Max</option>
+          <option value="qwen/qwen3-235b-a22b">Qwen 3 235B</option>
+        </optgroup>
+        <optgroup label="🌙 Moonshot / Kimi">
           <option value="moonshotai/kimi-k2">Kimi K2 — Multilingual</option>
-          <option value="meta-llama/llama-3.1-8b-instruct:free">Llama 3.1 8B — Open Source</option>
+          <option value="moonshotai/kimi-k2-instruct">Kimi K2 Instruct</option>
+        </optgroup>
+        <optgroup label="💻 Code Models — Best for Programming">
+          <option value="mistralai/codestral">Codestral 💻 — Best Code</option>
+          <option value="gpt-5.3-codex">GPT-5.3 Codex 💻</option>
+          <option value="deepseek/deepseek-coder-v2">DeepSeek Coder V2</option>
+          <option value="meta-llama/codellama-70b-instruct">CodeLlama 70B</option>
+          <option value="qwen/qwen2.5-coder-32b-instruct">Qwen 2.5 Coder 32B</option>
+        </optgroup>
+        <optgroup label="🔍 Perplexity — Web Search (Latest)">
+          <option value="perplexity/sonar-pro">Sonar Pro 🔥 — Web Search</option>
+          <option value="perplexity/sonar-reasoning-pro">Sonar Reasoning Pro 🧠</option>
+          <option value="perplexity/sonar-reasoning">Sonar Reasoning</option>
+          <option value="perplexity/llama-3.1-sonar-large-128k-online">Sonar Large Online 🌐</option>
+          <option value="perplexity/llama-3.1-sonar-small-128k-online">Sonar Small Online ⚡</option>
+        </optgroup>
+        <optgroup label="⚡ Other Models">
+          <option value="microsoft/phi-4">Microsoft Phi-4</option>
+          <option value="microsoft/phi-4-reasoning">Phi-4 Reasoning 🧠</option>
+          <option value="nvidia/llama-3.1-nemotron-70b-instruct">NVIDIA Nemotron 70B</option>
+          <option value="cohere/command-r-plus">Cohere Command R+</option>
+          <option value="cohere/command-r7b-12-2024">Cohere Command R7B ⚡</option>
         </optgroup>
       </select>
     </div>
 
-    <div id="aiMessages2" style="min-height:300px;max-height:450px;overflow-y:auto;margin-bottom:12px;">
+    <!-- Image Model Selector (hidden by default) -->
+    <div id="aiImgModelDiv" style="display:none;margin-bottom:10px;">
+      <label style="color:var(--sub);font-size:0.72rem;">🎨 Image Model:</label>
+      <select id="aiImgModelSelect" style="width:100%;margin-top:4px;background:var(--deep);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:10px;font-size:0.8rem;outline:none;">
+        <optgroup label="🥇 OpenAI GPT Image">
+          <option value="gpt-image-1.5" selected>GPT Image 1.5 — Best 👑</option>
+          <option value="gpt-image-1">GPT Image 1</option>
+          <option value="gpt-image-1-mini">GPT Image 1 Mini ⚡</option>
+          <option value="dall-e-3">DALL-E 3 ⭐</option>
+          <option value="dall-e-2">DALL-E 2</option>
+        </optgroup>
+        <optgroup label="🔵 Google Imagen">
+          <option value="google/imagen-4.0-ultra">Imagen 4 Ultra 🔥</option>
+          <option value="google/imagen-4.0-preview">Imagen 4</option>
+          <option value="google/imagen-4.0-fast">Imagen 4 Fast ⚡</option>
+        </optgroup>
+        <optgroup label="🍌 Google Nano Banana">
+          <option value="gemini-3.1-flash-image-preview">Gemini 3.1 Flash Image</option>
+          <option value="gemini-3-pro-image-preview">Gemini 3 Pro Image</option>
+          <option value="gemini-2.5-flash-image-preview">Gemini 2.5 Flash Image</option>
+        </optgroup>
+        <optgroup label="⚡ FLUX (Black Forest Labs)">
+          <option value="black-forest-labs/flux.2-pro">FLUX.2 Pro 🔥</option>
+          <option value="black-forest-labs/flux.2-max">FLUX.2 Max</option>
+          <option value="black-forest-labs/flux.2-flex">FLUX.2 Flex</option>
+          <option value="black-forest-labs/flux.1-kontext-pro">FLUX.1 Kontext (Edit)</option>
+          <option value="black-forest-labs/flux.1-schnell">FLUX.1 Schnell ⚡</option>
+          <option value="flux-1.1-pro">FLUX 1.1 Pro</option>
+        </optgroup>
+        <optgroup label="🎨 Stable Diffusion">
+          <option value="stabilityai/stable-diffusion-3-medium">SD 3 Medium</option>
+          <option value="stabilityai/stable-diffusion-xl-base-1.0">SDXL Base 1.0</option>
+        </optgroup>
+      </select>
+      <div style="margin-top:8px;">
+        <input id="aiImgPrompt" type="text" placeholder="Image prompt రాయండి... (e.g. Jesus with children)" style="width:100%;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;font-size:0.85rem;font-family:inherit;outline:none;box-sizing:border-box;">
+      </div>
+      <button onclick="aiGenerateImage()" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#6a0dad,#c0392b);color:#fff;border:none;padding:12px;border-radius:12px;font-size:0.9rem;font-weight:700;cursor:pointer;">✨ Image Generate చేయి</button>
+      <div id="aiImgResult" style="margin-top:10px;text-align:center;"></div>
+    </div>
+
+    <div id="aiMessages2" style="min-height:280px;max-height:420px;overflow-y:auto;margin-bottom:8px;">
       <div class="ai-msg bot">నమస్కారం! 🙏 Bible గురించి, యేసు గురించి, క్రైస్తవ విశ్వాసం గురించి ఏమైనా అడగండి!</div>
     </div>
-    <div class="ai-input-row">
-      <!-- Action buttons row -->
-      <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
-        <button onclick="aiUploadPhoto()" style="background:rgba(245,197,24,0.15);border:1px solid var(--gold);color:var(--gold);padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.85rem;">📷 Photo</button>
-        <button onclick="aiUploadPDF()" style="background:rgba(245,197,24,0.15);border:1px solid var(--gold);color:var(--gold);padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.85rem;">📄 PDF/File</button>
-        <button id="aiVoiceBtn" onclick="aiVoiceInput()" style="background:rgba(192,57,43,0.2);border:1px solid var(--red);color:var(--red);padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.85rem;">🎙️ Voice</button>
-        <button onclick="aiDownloadChat()" style="background:rgba(0,180,0,0.15);border:1px solid #00b400;color:#00b400;padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.85rem;">⬇️ Save</button>
-      </div>
-      <img id="aiPhotoPreview" src="" style="display:none;max-width:100px;border-radius:8px;margin-bottom:6px;border:1px solid var(--gold);">
-      <div id="aiFilePreview" style="display:none;background:rgba(245,197,24,0.1);border:1px solid var(--gold);border-radius:8px;padding:6px 10px;margin-bottom:6px;color:var(--gold);font-size:0.78rem;"></div>
-      <div class="ai-input-row">
-        <input id="aiInput2" type="text" placeholder="మీ doubt ఇక్కడ రాయండి..." onkeydown="if(event.key==='Enter')sendAI2()">
-        <button class="ai-send-btn" onclick="sendAI2()">➤</button>
-      </div>
+
+    <!-- File/Photo previews -->
+    <img id="aiPhotoPreview" src="" style="display:none;max-width:80px;border-radius:8px;margin-bottom:4px;border:1px solid var(--gold);">
+    <div id="aiFilePreview" style="display:none;background:rgba(245,197,24,0.1);border:1px solid var(--gold);border-radius:8px;padding:5px 10px;margin-bottom:4px;color:var(--gold);font-size:0.75rem;"></div>
+
+    <!-- Input row — always visible -->
+    <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px;">
+      <input id="aiInput2" type="text" placeholder="మీ doubt రాయండి..." onkeydown="if(event.key==='Enter')sendAI2()" style="flex:1;background:var(--deep);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:10px 14px;font-size:0.87rem;font-family:inherit;outline:none;">
+      <button onclick="sendAI2()" style="background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;width:44px;height:44px;border-radius:12px;cursor:pointer;font-size:1.1rem;font-weight:700;flex-shrink:0;">➤</button>
     </div>
-    <div style="text-align:right;margin-top:6px;">
-      <button onclick="showAIKeySetup()" style="background:none;border:none;color:var(--sub);font-size:0.7rem;cursor:pointer;">🔑 API Key change</button>
+
+    <!-- Action buttons -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
+      <button onclick="aiUploadPhoto()" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">📷 Photo</button>
+      <button onclick="aiUploadPDF()" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">📄 File</button>
+      <button id="aiVoiceBtn" onclick="aiVoiceInput()" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.5);color:var(--red2);padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">🎙️ Voice</button>
+      <button onclick="aiNewChat()" style="background:rgba(0,150,255,0.12);border:1px solid rgba(0,150,255,0.4);color:#4db8ff;padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">🔄 New Chat</button>
+      <button onclick="aiDownloadPDF()" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.5);color:#ff6b6b;padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">📥 PDF</button>
+    </div>
+
+    <div style="text-align:right;">
+      <button onclick="showAIKeySetup()" style="background:none;border:none;color:var(--sub);font-size:0.68rem;cursor:pointer;">🔑 API Key</button>
     </div>
   </div>
 </div>
@@ -1927,6 +2035,22 @@ function initAIKey(){
     var box=document.getElementById('aiKeySetup');
     if(box)box.style.display='block';
   }
+  // Restore saved model
+  var savedModel=localStorage.getItem('aiModel')||'gpt-5.4';
+  var sel=document.getElementById('aiModelSelect');
+  if(sel){sel.value=savedModel;}
+}
+
+function aiNewChat(){
+  var msgs=document.getElementById('aiMessages2');
+  msgs.innerHTML='<div class="ai-msg bot">నమస్కారం! 🙏 కొత్త conversation start అయింది. ఏమైనా అడగండి!</div>';
+  aiPhoto=null;aiPDFText=null;
+  var prev=document.getElementById('aiPhotoPreview');
+  if(prev){prev.style.display='none';prev.src='';}
+  var fprev=document.getElementById('aiFilePreview');
+  if(fprev){fprev.style.display='none';fprev.textContent='';}
+  document.getElementById('aiInput2').value='';
+  toast('🔄 New Chat started!');
 }
 
 // Markdown renderer for AI responses
@@ -2098,20 +2222,63 @@ function aiVoiceInput(){
   }).catch(function(){toast('⚠️ Microphone permission కావాలి');});
 }
 
-function aiDownloadChat(){
+function aiDownloadPDF(){
   var msgs=document.getElementById('aiMessages2');
-  var lines=[];
+  var html='<!DOCTYPE html><html><head><meta charset="UTF-8">'
+    +'<style>body{font-family:"Noto Sans Telugu",Arial,sans-serif;padding:30px;max-width:700px;margin:0 auto;background:#fff;color:#222;}'
+    +'h1{color:#c0392b;border-bottom:2px solid #c0392b;padding-bottom:10px;}'
+    +'.user{background:#c0392b;color:#fff;padding:10px 14px;border-radius:12px 12px 4px 12px;margin:8px 0;display:inline-block;max-width:80%;float:right;clear:both;}'
+    +'.bot{background:#f5f0e8;border:1px solid #ddd;padding:10px 14px;border-radius:12px 12px 12px 4px;margin:8px 0;display:inline-block;max-width:85%;float:left;clear:both;}'
+    +'.clearfix{clear:both;height:4px;}'
+    +'@media print{body{padding:15px;}}'
+    +'</style></head><body>'
+    +'<h1>🎵 యేసు పాటలు — AI Chat</h1>'
+    +'<p style="color:#888;font-size:0.85rem;">'+new Date().toLocaleDateString('te-IN')+'</p><hr>';
+
   msgs.querySelectorAll('.ai-msg').forEach(function(el){
-    var who=el.classList.contains('user')?'నేను':'AI';
-    lines.push(who+': '+el.textContent);
-    lines.push('---');
+    var cls=el.classList.contains('user')?'user':'bot';
+    var txt=(el.innerText||el.textContent).replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    html+='<div class="'+cls+'">'+txt+'</div><div class="clearfix"></div>';
+  });
+
+  html+='<hr><p style="color:#888;font-size:0.75rem;text-align:center;">© 2026 యేసు పాటలు App</p></body></html>';
+
+  var win=window.open('','_blank');
+  if(win){
+    win.document.write(html);
+    win.document.close();
+    setTimeout(function(){win.print();},500);
+  } else {
+    // Fallback — download as HTML
+    var blob=new Blob(['\uFEFF'+html],{type:'text/html;charset=utf-8'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;a.download='YesuPatalu_Chat.html';
+    document.body.appendChild(a);a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast('✅ HTML saved — browser లో open చేసి Print/Save as PDF!');
+  }
+}
+function aiDownloadTxt(){
+  var msgs=document.getElementById('aiMessages2');
+  var lines=['యేసు పాటలు — AI Chat\n══════════════════\n'];
+  msgs.querySelectorAll('.ai-msg').forEach(function(el){
+    var who=el.classList.contains('user')?'నేను 👤':'AI 🤖';
+    lines.push(who+':');
+    lines.push(el.innerText||el.textContent);
+    lines.push('──────────────────');
   });
   var txt=lines.join('\n');
-  var blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  var bom='\uFEFF';
+  var blob=new Blob([bom+txt],{type:'text/plain;charset=utf-8'});
   var url=URL.createObjectURL(blob);
   var a=document.createElement('a');
-  a.href=url;a.download='YesuPatalu_AI_Chat.txt';
+  a.href=url;
+  a.download='YesuPatalu_AI_Chat_'+new Date().toLocaleDateString('te-IN').replace(/\//g,'-')+'.txt';
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
   URL.revokeObjectURL(url);
   toast('✅ Chat saved!');
 }
@@ -2179,8 +2346,31 @@ async function sendAI2(){
     messages[0].content.push({type:'text',text:prompt});
 
     var selectedModel=document.getElementById('aiModelSelect').value||'gpt-4o-mini';
+    // Save selected model
+    localStorage.setItem('aiModel',selectedModel);
     var res=await puter.ai.chat(messages,{model:selectedModel});
-    var txt=typeof res==='string'?res:(res&&res.message&&res.message.content)||'';
+    // Parse response — different models return different formats
+    var txt='';
+    if(typeof res==='string'){
+      txt=res;
+    } else if(res&&res.message&&res.message.content){
+      // content can be string or array
+      var mc=res.message.content;
+      if(typeof mc==='string') txt=mc;
+      else if(Array.isArray(mc)) txt=mc.map(function(x){return x.text||x.content||'';}).join('');
+      else txt=String(mc);
+    } else if(res&&res.content){
+      var rc=res.content;
+      if(typeof rc==='string') txt=rc;
+      else if(Array.isArray(rc)) txt=rc.map(function(x){return x.text||'';}).join('');
+    } else if(res&&res.text){
+      txt=res.text;
+    } else if(res&&res.choices&&res.choices[0]){
+      txt=res.choices[0].message&&res.choices[0].message.content||'';
+    } else {
+      // Last resort — stringify and show
+      txt=JSON.stringify(res);
+    }
     if(txt&&txt.length>5){
       bm.innerHTML=renderMarkdown(txt);
     } else {
