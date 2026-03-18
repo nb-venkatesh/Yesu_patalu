@@ -848,12 +848,60 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
   </div>
 
   <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;">
+
+    <!-- Model Selector -->
+    <div style="margin-bottom:10px;">
+      <label style="color:var(--sub);font-size:0.72rem;">🤖 AI Model:</label>
+      <select id="aiModelSelect" style="width:100%;margin-top:4px;background:var(--deep);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:10px;font-size:0.8rem;outline:none;">
+        <optgroup label="🥇 OpenAI GPT-5 Series — Most Powerful">
+          <option value="gpt-5.4">GPT-5.4 — Most Powerful 👑</option>
+          <option value="gpt-5.4-pro">GPT-5.4 Pro</option>
+          <option value="gpt-5.3-chat">GPT-5.3 Chat</option>
+          <option value="gpt-5.2-pro">GPT-5.2 Pro</option>
+          <option value="gpt-5">GPT-5</option>
+          <option value="gpt-5-mini">GPT-5 Mini</option>
+          <option value="gpt-5-nano">GPT-5 Nano — Fast ⚡</option>
+        </optgroup>
+        <optgroup label="🥇 OpenAI GPT-4 Series">
+          <option value="gpt-4o">GPT-4o — Very Powerful ⭐</option>
+          <option value="gpt-4o-mini" selected>GPT-4o Mini — Fast & Free ✅</option>
+        </optgroup>
+        <optgroup label="🥈 Anthropic Claude">
+          <option value="claude-sonnet-4">Claude Sonnet 4 — Very Powerful</option>
+          <option value="claude-sonnet-4-5">Claude Sonnet 4.5</option>
+          <option value="claude-3-5-sonnet">Claude 3.5 Sonnet</option>
+        </optgroup>
+        <optgroup label="🥉 Google Gemini">
+          <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
+          <option value="google/gemini-3.1-pro-preview">Gemini 3.1 Pro Preview</option>
+          <option value="google/gemini-2.0-flash">Gemini 2.0 Flash</option>
+        </optgroup>
+        <optgroup label="🏅 Other Powerful Models">
+          <option value="deepseek/deepseek-r1">DeepSeek R1 — Best Reasoning 🧠</option>
+          <option value="qwen/qwen3.5-397b-a17b">Qwen 3.5 397B — Huge Model</option>
+          <option value="moonshotai/kimi-k2">Kimi K2 — Multilingual</option>
+          <option value="meta-llama/llama-3.1-8b-instruct:free">Llama 3.1 8B — Open Source</option>
+        </optgroup>
+      </select>
+    </div>
+
     <div id="aiMessages2" style="min-height:300px;max-height:450px;overflow-y:auto;margin-bottom:12px;">
       <div class="ai-msg bot">నమస్కారం! 🙏 Bible గురించి, యేసు గురించి, క్రైస్తవ విశ్వాసం గురించి ఏమైనా అడగండి!</div>
     </div>
     <div class="ai-input-row">
-      <input id="aiInput2" type="text" placeholder="మీ doubt ఇక్కడ రాయండి..." onkeydown="if(event.key==='Enter')sendAI2()">
-      <button class="ai-send-btn" onclick="sendAI2()">➤</button>
+      <!-- Action buttons row -->
+      <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+        <button onclick="aiUploadPhoto()" style="background:rgba(245,197,24,0.15);border:1px solid var(--gold);color:var(--gold);padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.85rem;">📷 Photo</button>
+        <button onclick="aiUploadPDF()" style="background:rgba(245,197,24,0.15);border:1px solid var(--gold);color:var(--gold);padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.85rem;">📄 PDF/File</button>
+        <button id="aiVoiceBtn" onclick="aiVoiceInput()" style="background:rgba(192,57,43,0.2);border:1px solid var(--red);color:var(--red);padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.85rem;">🎙️ Voice</button>
+        <button onclick="aiDownloadChat()" style="background:rgba(0,180,0,0.15);border:1px solid #00b400;color:#00b400;padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.85rem;">⬇️ Save</button>
+      </div>
+      <img id="aiPhotoPreview" src="" style="display:none;max-width:100px;border-radius:8px;margin-bottom:6px;border:1px solid var(--gold);">
+      <div id="aiFilePreview" style="display:none;background:rgba(245,197,24,0.1);border:1px solid var(--gold);border-radius:8px;padding:6px 10px;margin-bottom:6px;color:var(--gold);font-size:0.78rem;"></div>
+      <div class="ai-input-row">
+        <input id="aiInput2" type="text" placeholder="మీ doubt ఇక్కడ రాయండి..." onkeydown="if(event.key==='Enter')sendAI2()">
+        <button class="ai-send-btn" onclick="sendAI2()">➤</button>
+      </div>
     </div>
     <div style="text-align:right;margin-top:6px;">
       <button onclick="showAIKeySetup()" style="background:none;border:none;color:var(--sub);font-size:0.7rem;cursor:pointer;">🔑 API Key change</button>
@@ -1873,44 +1921,201 @@ function initAIKey(){
   }
 }
 
-// AI Bible Assistant — Puter.js (Free, No Key, No Login needed)
+// AI Photo upload
+var aiPhoto=null;
+var aiPDFText=null;
+var aiVoiceRec=null;
+
+function aiUploadPhoto(){
+  var inp=document.createElement('input');
+  inp.type='file';inp.accept='image/*';
+  inp.onchange=function(){
+    var file=inp.files[0];if(!file)return;
+    var rd=new FileReader();
+    rd.onload=function(e){
+      aiPhoto=e.target.result;
+      aiPDFText=null;
+      document.getElementById('aiFilePreview').style.display='none';
+      toast('📷 Photo ready! Question type చేయి');
+      var prev=document.getElementById('aiPhotoPreview');
+      if(prev){prev.src=aiPhoto;prev.style.display='block';}
+    };
+    rd.readAsDataURL(file);
+  };
+  inp.click();
+}
+
+function aiUploadPDF(){
+  var inp=document.createElement('input');
+  inp.type='file';inp.accept='.pdf,.txt,.doc,.docx';
+  inp.onchange=function(){
+    var file=inp.files[0];if(!file)return;
+    var prev=document.getElementById('aiFilePreview');
+    if(file.type==='application/pdf'||file.name.endsWith('.pdf')){
+      // Read PDF as text using FileReader
+      var rd=new FileReader();
+      rd.onload=function(e){
+        // Store raw content — AI will explain
+        aiPDFText='[File: '+file.name+']\n'+e.target.result.substring(0,3000);
+        aiPhoto=null;
+        document.getElementById('aiPhotoPreview').style.display='none';
+        if(prev){prev.textContent='📄 '+file.name+' ready!';prev.style.display='block';}
+        toast('📄 File ready! Question type చేయి లేదా directly send చేయి');
+      };
+      rd.readAsText(file);
+    } else {
+      var rd=new FileReader();
+      rd.onload=function(e){
+        aiPDFText='[File: '+file.name+']\n'+e.target.result.substring(0,3000);
+        aiPhoto=null;
+        document.getElementById('aiPhotoPreview').style.display='none';
+        if(prev){prev.textContent='📄 '+file.name+' ready!';prev.style.display='block';}
+        toast('📄 File ready!');
+      };
+      rd.readAsText(file);
+    }
+  };
+  inp.click();
+}
+
+function aiVoiceInput(){
+  var btn=document.getElementById('aiVoiceBtn');
+  if(aiVoiceRec&&aiVoiceRec.state==='recording'){
+    aiVoiceRec.stop();
+    btn.textContent='🎙️ Voice';
+    btn.style.background='rgba(192,57,43,0.2)';
+    return;
+  }
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    toast('⚠️ Voice support లేదు');return;
+  }
+  navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+    var chunks=[];
+    aiVoiceRec=new MediaRecorder(stream);
+    aiVoiceRec.ondataavailable=function(e){if(e.data.size>0)chunks.push(e.data);};
+    aiVoiceRec.onstop=function(){
+      stream.getTracks().forEach(function(t){t.stop();});
+      var blob=new Blob(chunks,{type:'audio/webm'});
+      // Use speech recognition if available
+      if(window.SpeechRecognition||window.webkitSpeechRecognition){
+        var sr=new (window.SpeechRecognition||window.webkitSpeechRecognition)();
+        sr.lang='te-IN';
+        sr.onresult=function(e){
+          var txt=e.results[0][0].transcript;
+          document.getElementById('aiInput2').value=txt;
+          toast('🎙️ "'+txt+'" — send చేయండి!');
+        };
+        sr.onerror=function(){toast('⚠️ Voice recognize కాలేదు, మళ్ళీ try చేయి');};
+        sr.start();
+      } else {
+        toast('⚠️ Speech recognition support లేదు');
+      }
+    };
+    aiVoiceRec.start();
+    btn.textContent='⏹ Stop';
+    btn.style.background='rgba(192,57,43,0.5)';
+    toast('🔴 Recording... మాట్లాడు, తర్వాత Stop చేయి');
+  }).catch(function(){toast('⚠️ Microphone permission కావాలి');});
+}
+
+function aiDownloadChat(){
+  var msgs=document.getElementById('aiMessages2');
+  var lines=[];
+  msgs.querySelectorAll('.ai-msg').forEach(function(el){
+    var who=el.classList.contains('user')?'నేను':'AI';
+    lines.push(who+': '+el.textContent);
+    lines.push('---');
+  });
+  var txt=lines.join('\n');
+  var blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;a.download='YesuPatalu_AI_Chat.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('✅ Chat saved!');
+}
+
+function aiUploadPhoto(){
+  var inp=document.createElement('input');
+  inp.type='file';inp.accept='image/*';
+  inp.onchange=function(){
+    var file=inp.files[0];if(!file)return;
+    var rd=new FileReader();
+    rd.onload=function(e){
+      aiPhoto=e.target.result;
+      toast('📷 Photo ready! Question type చేయి');
+      var prev=document.getElementById('aiPhotoPreview');
+      if(prev){prev.src=aiPhoto;prev.style.display='block';}
+    };
+    rd.readAsDataURL(file);
+  };
+  inp.click();
+}
+
 async function sendAI2(){
   var inp=document.getElementById('aiInput2');
-  var q=inp.value.trim();if(!q)return;inp.value='';
+  var q=inp.value.trim();
   var msgs=document.getElementById('aiMessages2');
-  var um=document.createElement('div');um.className='ai-msg user';um.textContent=q;msgs.appendChild(um);
+
+  // Photo only or PDF only mode
+  if(!q&&aiPhoto){q='ఈ photo లో ఏముందో Telugu లో విపులంగా చెప్పు';}
+  if(!q&&aiPDFText){q='ఈ file contents explain చేయి Telugu లో';}
+  if(!q)return;
+  inp.value='';
+
+  var um=document.createElement('div');um.className='ai-msg user';
+  if(aiPhoto){
+    um.innerHTML='<img src="'+aiPhoto+'" style="max-width:120px;border-radius:8px;display:block;margin-bottom:4px;">'+q;
+  } else {
+    um.textContent=q;
+  }
+  msgs.appendChild(um);
   var bm=document.createElement('div');bm.className='ai-msg bot';bm.innerHTML='<span style="opacity:0.6">⏳ thinking...</span>';msgs.appendChild(bm);
   msgs.scrollTop=msgs.scrollHeight;
 
-  var prompt='You are a Telugu Christian Bible assistant. ALWAYS answer ONLY in Telugu language. Give 3-4 sentence answer. Be encouraging. Add a Bible verse at end. Question: '+q;
+  // Smart prompt — no forced Bible verse for non-Bible questions
+  var isBible=/(bible|బైబిల్|yesu|jesus|యేసు|god|దేవుడు|pray|ప్రార్థన|church|క్రైస్తవ|verse|కీర్తన|john|genesis|matthew|luke|mark|acts|paul)/i.test(q);
+  var prompt=isBible
+    ?'You are a Telugu Christian assistant. Answer in Telugu. Give helpful answer and add one relevant Bible verse at end. Question: '+q
+    :'You are a helpful Telugu assistant. Answer ONLY in Telugu language. Give a direct, accurate, helpful answer. Question: '+q;
+
+  // Add PDF content to prompt
+  if(aiPDFText){
+    prompt+= '\n\nFile content:\n'+aiPDFText;
+  }
 
   try{
     if(typeof puter==='undefined') throw new Error('Puter not loaded');
-    var res=await puter.ai.chat(prompt,{model:'gpt-4o-mini'});
-    // Puter returns string directly
+
+    var messages=[{role:'user',content:[]}];
+
+    // Add image if present
+    if(aiPhoto){
+      var base64=aiPhoto.split(',')[1];
+      var mtype=aiPhoto.split(';')[0].split(':')[1];
+      messages[0].content.push({type:'image_url',image_url:{url:'data:'+mtype+';base64,'+base64}});
+    }
+    messages[0].content.push({type:'text',text:prompt});
+
+    var selectedModel=document.getElementById('aiModelSelect').value||'gpt-4o-mini';
+    var res=await puter.ai.chat(messages,{model:selectedModel});
     var txt=typeof res==='string'?res:(res&&res.message&&res.message.content)||'';
     if(txt&&txt.length>5){
       bm.textContent=txt;
     } else {
-      throw new Error('empty response');
+      throw new Error('empty');
     }
   }catch(e){
-    // Fallback — simple offline answers
-    var ql=q.toLowerCase();
-    var ans='';
-    if(ql.includes('yesu')||ql.includes('jesus')||ql.includes('యేసు')){
-      ans='యేసు క్రీస్తు దేవుని కుమారుడు మరియు మన రక్షకుడు. ఆయన మన పాపముల కొరకు సిలువపై మరణించి మూడవ దినమున పునరుత్థానుడయ్యాడు. "దేవుడు లోకమును ఎంతగా ప్రేమించెనంటే తన అద్వితీయ కుమారుని అనుగ్రహించెను" — యోహాను 3:16 🙏';
-    } else if(ql.includes('pray')||ql.includes('ప్రార్థన')){
-      ans='ప్రార్థన దేవునితో మన హృదయ సంభాషణ. రోజూ ప్రార్థించడం మన విశ్వాసాన్ని బలపరుస్తుంది. "ప్రార్థనలో నిలుకడగా ఉండుడి" — కొలొస్సయులు 4:2 🙏';
-    } else if(ql.includes('bible')||ql.includes('బైబిల్')){
-      ans='బైబిల్ దేవుని పవిత్ర వాక్యం, మన జీవితానికి మార్గదర్శి. "నీ వాక్యం నా పాదములకు దీపమును" — కీర్తన 119:105 🙏';
-    } else if(ql.includes('love')||ql.includes('ప్రేమ')){
-      ans='దేవుడు ప్రేమ స్వరూపుడు. ఆయన తన కుమారుని మనకు అనుగ్రహించాడు. "దేవుడు ప్రేమ స్వరూపుడు" — 1 యోహాను 4:8 🙏';
-    } else {
-      ans='దేవుడు మీ ప్రశ్నను వింటున్నాడు. ప్రార్థనతో ఆయనను వెదకండి. "అడగుడి అప్పుడు మీకు ఇయ్యబడును" — మత్తయి 7:7 🙏';
-    }
-    bm.textContent=ans;
+    bm.textContent='⚠️ '+e.message;
   }
+
+  aiPhoto=null;
+  aiPDFText=null;
+  var prev=document.getElementById('aiPhotoPreview');
+  if(prev){prev.style.display='none';prev.src='';}
+  var fprev=document.getElementById('aiFilePreview');
+  if(fprev){fprev.style.display='none';fprev.textContent='';}
   msgs.scrollTop=msgs.scrollHeight;
 }
 
