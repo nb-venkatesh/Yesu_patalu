@@ -332,9 +332,17 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 .rec-btn.recording{background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;animation:blink 1s infinite;}
 
 /* AI CHAT */
-.ai-msg{padding:9px 13px;border-radius:14px;margin-bottom:8px;font-size:0.85rem;line-height:1.6;max-width:90%;}
-.ai-msg.bot{background:rgba(192,57,43,0.12);border:1px solid var(--rborder);color:var(--text);align-self:flex-start;}
-.ai-msg.user{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;margin-left:auto;border-radius:14px 14px 4px 14px;}
+.ai-msg{padding:12px 15px;border-radius:16px;margin-bottom:10px;font-size:0.87rem;line-height:1.8;max-width:92%;}
+.ai-msg.bot{background:linear-gradient(135deg,rgba(20,10,5,0.95),rgba(40,15,10,0.9));border:1px solid rgba(245,197,24,0.25);color:#f0e6d3;align-self:flex-start;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+.ai-msg.bot strong,.ai-msg.bot b{color:#f5c518;font-weight:700;}
+.ai-msg.bot h1,.ai-msg.bot h2,.ai-msg.bot h3{color:#f5c518;margin:8px 0 4px 0;font-size:0.95rem;}
+.ai-msg.bot ul,.ai-msg.bot ol{padding-left:18px;margin:6px 0;}
+.ai-msg.bot li{margin-bottom:4px;color:#f0e6d3;}
+.ai-msg.bot p{margin:4px 0;}
+.ai-msg.bot code{background:rgba(245,197,24,0.15);padding:2px 6px;border-radius:4px;font-family:monospace;color:#f5c518;}
+.ai-msg.bot blockquote{border-left:3px solid var(--gold);padding:6px 12px;margin:8px 0;background:rgba(245,197,24,0.08);border-radius:0 8px 8px 0;color:#f5c518;font-style:italic;}
+.ai-msg.user{background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;margin-left:auto;border-radius:16px 16px 4px 16px;box-shadow:0 2px 10px rgba(192,57,43,0.4);}
+#aiMessages2{display:flex;flex-direction:column;}
 .ai-input-row{display:flex;gap:8px;}
 .ai-input-row input{flex:1;background:var(--deep);border:1px solid var(--border);border-radius:20px;color:var(--text);padding:10px 14px;font-size:0.88rem;font-family:inherit;outline:none;}
 .ai-send-btn{background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;padding:10px 16px;border-radius:20px;font-size:1rem;cursor:pointer;font-weight:700;}
@@ -1921,6 +1929,39 @@ function initAIKey(){
   }
 }
 
+// Markdown renderer for AI responses
+function renderMarkdown(text){
+  if(!text)return'';
+  var html=text
+    // Escape HTML first
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    // Headers
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+    .replace(/^# (.+)$/gm,'<h1>$1</h1>')
+    // Bold
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/__(.+?)__/g,'<strong>$1</strong>')
+    // Italic
+    .replace(/\*(.+?)\*/g,'<em>$1</em>')
+    // Code inline
+    .replace(/`(.+?)`/g,'<code>$1</code>')
+    // Blockquote
+    .replace(/^&gt; (.+)$/gm,'<blockquote>$1</blockquote>')
+    // Bullet lists
+    .replace(/^\* (.+)$/gm,'<li>$1</li>')
+    .replace(/^- (.+)$/gm,'<li>$1</li>')
+    .replace(/^• (.+)$/gm,'<li>$1</li>')
+    // Numbered lists
+    .replace(/^\d+\. (.+)$/gm,'<li>$1</li>')
+    // Wrap consecutive li items
+    .replace(/(<li>.*<\/li>\n?)+/g,'<ul>$&</ul>')
+    // Line breaks to paragraphs
+    .replace(/\n\n/g,'</p><p>')
+    .replace(/\n/g,'<br>');
+  return '<p>'+html+'</p>';
+}
+
 // AI Photo upload
 var aiPhoto=null;
 var aiPDFText=null;
@@ -1947,35 +1988,74 @@ function aiUploadPhoto(){
 
 function aiUploadPDF(){
   var inp=document.createElement('input');
-  inp.type='file';inp.accept='.pdf,.txt,.doc,.docx';
+  inp.type='file';inp.accept='.pdf,.txt,.doc,.docx,.csv';
   inp.onchange=function(){
     var file=inp.files[0];if(!file)return;
     var prev=document.getElementById('aiFilePreview');
-    if(file.type==='application/pdf'||file.name.endsWith('.pdf')){
-      // Read PDF as text using FileReader
+
+    if(file.name.endsWith('.pdf')||file.type==='application/pdf'){
+      // Use PDF.js for proper text extraction
       var rd=new FileReader();
       rd.onload=function(e){
-        // Store raw content — AI will explain
-        aiPDFText='[File: '+file.name+']\n'+e.target.result.substring(0,3000);
-        aiPhoto=null;
-        document.getElementById('aiPhotoPreview').style.display='none';
-        if(prev){prev.textContent='📄 '+file.name+' ready!';prev.style.display='block';}
-        toast('📄 File ready! Question type చేయి లేదా directly send చేయి');
+        var typedArray=new Uint8Array(e.target.result);
+        // Load PDF.js dynamically
+        if(!window.pdfjsLib){
+          var script=document.createElement('script');
+          script.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+          script.onload=function(){
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            extractPDFText(typedArray,file.name,prev);
+          };
+          document.head.appendChild(script);
+        } else {
+          extractPDFText(typedArray,file.name,prev);
+        }
       };
-      rd.readAsText(file);
+      rd.readAsArrayBuffer(file);
+      if(prev){prev.textContent='⏳ PDF reading...';prev.style.display='block';}
     } else {
+      // TXT, CSV etc — direct read
       var rd=new FileReader();
       rd.onload=function(e){
-        aiPDFText='[File: '+file.name+']\n'+e.target.result.substring(0,3000);
+        aiPDFText='[File: '+file.name+']\n'+e.target.result.substring(0,4000);
         aiPhoto=null;
         document.getElementById('aiPhotoPreview').style.display='none';
-        if(prev){prev.textContent='📄 '+file.name+' ready!';prev.style.display='block';}
-        toast('📄 File ready!');
+        if(prev){prev.textContent='📄 '+file.name+' ready! ('+Math.round(e.target.result.length/1024)+'KB)';prev.style.display='block';}
+        toast('📄 File ready! Question type చేయి');
       };
       rd.readAsText(file);
     }
   };
   inp.click();
+}
+
+function extractPDFText(typedArray, fileName, prev){
+  var extractedText='';
+  window.pdfjsLib.getDocument({data:typedArray}).promise.then(function(pdf){
+    var totalPages=pdf.numPages;
+    var pagePromises=[];
+    for(var i=1;i<=Math.min(totalPages,10);i++){
+      pagePromises.push(pdf.getPage(i).then(function(page){
+        return page.getTextContent().then(function(tc){
+          return tc.items.map(function(item){return item.str;}).join(' ');
+        });
+      }));
+    }
+    return Promise.all(pagePromises);
+  }).then(function(pages){
+    extractedText=pages.join('\n\n').trim();
+    if(extractedText.length<10){
+      extractedText='PDF లో readable text లేదు (scanned image PDF అయి ఉండవచ్చు)';
+    }
+    aiPDFText='[PDF: '+fileName+']\n'+extractedText.substring(0,4000);
+    aiPhoto=null;
+    document.getElementById('aiPhotoPreview').style.display='none';
+    if(prev){prev.textContent='📄 '+fileName+' ready! ('+Math.round(extractedText.length/100)/10+'KB text)';prev.style.display='block';}
+    toast('✅ PDF text extracted! Question type చేయి');
+  }).catch(function(err){
+    aiPDFText='[PDF: '+fileName+'] — Read error: '+err.message;
+    if(prev){prev.textContent='⚠️ PDF read error — try text file';prev.style.display='block';}
+  });
 }
 
 function aiVoiceInput(){
@@ -2102,7 +2182,7 @@ async function sendAI2(){
     var res=await puter.ai.chat(messages,{model:selectedModel});
     var txt=typeof res==='string'?res:(res&&res.message&&res.message.content)||'';
     if(txt&&txt.length>5){
-      bm.textContent=txt;
+      bm.innerHTML=renderMarkdown(txt);
     } else {
       throw new Error('empty');
     }
