@@ -1005,7 +1005,10 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
         <button onclick="aiUploadAudio()" style="width:100%;background:linear-gradient(135deg,rgba(100,180,255,0.2),rgba(100,180,255,0.1));border:1px solid rgba(100,180,255,0.5);color:#4db8ff;padding:12px;border-radius:12px;cursor:pointer;font-size:0.9rem;font-weight:700;">🎙️ Audio File Upload చేయి</button>
         <div id="aiAudioPreview" style="display:none;margin-top:10px;">
           <audio id="aiAudioPlayer" controls style="width:100%;border-radius:8px;"></audio>
-          <div id="aiAudioName" style="color:var(--gold);font-size:0.78rem;margin-top:6px;"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+            <div id="aiAudioName" style="color:var(--gold);font-size:0.78rem;flex:1;"></div>
+            <button onclick="aiDeleteAudio()" style="background:rgba(192,57,43,0.3);border:1px solid var(--red);color:var(--red2);padding:4px 10px;border-radius:8px;cursor:pointer;font-size:0.75rem;">🗑️ Delete</button>
+          </div>
         </div>
         <div style="margin-top:10px;">
           <input id="aiAudioQuestion" type="text" placeholder="Audio గురించి ఏమి అడగాలి? (e.g. ఈ audio summarize చేయి)" style="width:100%;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;font-size:0.85rem;font-family:inherit;outline:none;box-sizing:border-box;">
@@ -2296,27 +2299,87 @@ function aiUploadAudio(){
   inp.click();
 }
 
+function aiDeleteAudio(){
+  aiAudioBase64=null;
+  var player=document.getElementById('aiAudioPlayer');
+  var preview=document.getElementById('aiAudioPreview');
+  var result=document.getElementById('aiAudioResult');
+  if(player){player.src='';}
+  if(preview){preview.style.display='none';}
+  if(result){result.style.display='none';result.textContent='';}
+  document.getElementById('aiAudioName').textContent='';
+  document.getElementById('aiAudioQuestion').value='';
+  toast('🗑️ Audio deleted!');
+}
+
 async function aiAnalyzeAudio(){
-  var q=document.getElementById('aiAudioQuestion').value.trim()||'ఈ audio లో ఏముందో Telugu లో summarize చేయి';
+  var q=document.getElementById('aiAudioQuestion').value.trim();
   var result=document.getElementById('aiAudioResult');
   result.style.display='block';
-  result.textContent='⏳ Analyzing...';
+
+  if(!aiAudioBase64){
+    result.textContent='⚠️ Audio file upload చేయి!';
+    return;
+  }
+
+  result.innerHTML='<span style="opacity:0.6">⏳ Transcribing audio...</span>';
+
   try{
     if(typeof puter==='undefined')throw new Error('Puter not loaded');
-    // Use whisper for transcription then GPT for analysis
-    var prompt='Listen to this audio and '+q+'. Answer in Telugu.';
-    var res=await puter.ai.chat(prompt,{model:'gpt-4o-mini'});
-    var txt=typeof res==='string'?res:(res&&res.message&&res.message.content)||'';
-    result.innerHTML=renderMarkdown(txt||'⚠️ Audio analyze కాలేదు');
+
+    // Use Whisper for transcription
+    var audioBlob=await fetch(aiAudioBase64).then(r=>r.blob());
+    var transcribed='';
+
+    try{
+      // Try Whisper transcription
+      var transRes=await puter.ai.txt2speech&&puter.ai.transcribe
+        ?await puter.ai.transcribe(audioBlob)
+        :null;
+      if(transRes&&transRes.text){
+        transcribed=transRes.text;
+      }
+    }catch(te){}
+
+    // Build prompt
+    var prompt='';
+    if(transcribed){
+      prompt='The following is a transcription of an audio file:\n\n"'+transcribed+'"\n\n';
+      prompt+=q?q:'ఈ audio లో ఏమి చెప్పారో Telugu లో summarize చేయి. అర్థాన్ని కూడా explain చేయి.';
+    } else {
+      // No transcription — ask AI to help based on filename/question
+      prompt=q?q:'Audio transcription available కాలేదు. కానీ మీరు ఏ audio గురించి అడుగుతున్నారో చెప్పండి, నేను help చేస్తాను.';
+      prompt+=' Answer in Telugu.';
+    }
+
+    var res=await puter.ai.chat(
+      [{role:'system',content:'You are a helpful Telugu assistant. Answer in Telugu language.'},{role:'user',content:prompt}],
+      {model:'gpt-4o-mini'}
+    );
+
+    var txt='';
+    if(typeof res==='string')txt=res;
+    else if(res&&res.message&&res.message.content){
+      var mc=res.message.content;
+      txt=typeof mc==='string'?mc:(Array.isArray(mc)?mc.map(function(x){return x.text||'';}).join(''):String(mc));
+    }
+
+    if(transcribed){
+      result.innerHTML='<div style="color:var(--gold);font-size:0.75rem;margin-bottom:6px;">📝 Transcript: '+transcribed.substring(0,100)+'...</div>'+renderMarkdown(txt);
+    } else {
+      result.innerHTML=renderMarkdown(txt);
+    }
+
   }catch(e){
     result.textContent='⚠️ '+e.message;
   }
 }
 
-// Voice Input fix — Direct SpeechRecognition
+// Voice Input — Auto language detect, continuous
 var aiSpeechRec=null;
 function aiVoiceInput(){
   var btn=document.getElementById('aiVoiceBtn');
+  var inp=document.getElementById('aiInput2');
 
   // Stop if already recording
   if(aiSpeechRec){
@@ -2324,47 +2387,72 @@ function aiVoiceInput(){
     aiSpeechRec=null;
     btn.textContent='🎙️ Voice';
     btn.style.background='rgba(192,57,43,0.15)';
+    btn.style.color='var(--red2)';
     return;
   }
 
-  // Check SpeechRecognition support
   var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!SR){
-    toast('⚠️ ఈ browser లో Voice support లేదు — Chrome use చేయి');
+    toast('⚠️ Chrome browser use చేయి — Voice support కావాలి');
     return;
   }
 
   aiSpeechRec=new SR();
-  aiSpeechRec.lang='te-IN'; // Telugu
-  aiSpeechRec.continuous=false;
-  aiSpeechRec.interimResults=false;
+  // Auto language — detect based on input
+  aiSpeechRec.lang='te-IN';
+  aiSpeechRec.continuous=true;       // Keep listening
+  aiSpeechRec.interimResults=true;   // Show as typing
 
   aiSpeechRec.onstart=function(){
     btn.textContent='⏹ Stop';
-    btn.style.background='rgba(192,57,43,0.6)';
-    toast('🔴 మాట్లాడు... (Telugu లో)');
+    btn.style.background='rgba(220,50,50,0.7)';
+    btn.style.color='#fff';
+    inp.placeholder='🔴 మాట్లాడు...';
+    toast('🔴 మాట్లాడు — Telugu లేదా English');
   };
 
   aiSpeechRec.onresult=function(e){
-    var txt=e.results[0][0].transcript;
-    document.getElementById('aiInput2').value=txt;
-    toast('✅ "'+txt+'" — ➤ Send చేయి!');
-    btn.textContent='🎙️ Voice';
-    btn.style.background='rgba(192,57,43,0.15)';
-    aiSpeechRec=null;
+    var interim='';
+    var final='';
+    for(var i=e.resultIndex;i<e.results.length;i++){
+      if(e.results[i].isFinal){
+        final+=e.results[i][0].transcript;
+      } else {
+        interim+=e.results[i][0].transcript;
+      }
+    }
+    // Show interim as typing
+    inp.value=(final||'')+interim;
+    if(final){
+      // Auto detect language from result
+      var isEng=/^[a-zA-Z\s\?\!\.,0-9]+$/.test(final.trim());
+      if(isEng&&aiSpeechRec.lang!=='en-IN'){
+        aiSpeechRec.lang='en-IN';
+      }
+    }
   };
 
   aiSpeechRec.onerror=function(e){
-    toast('⚠️ Voice error: '+e.error+' — మళ్ళీ try చేయి');
+    if(e.error!=='no-speech'){
+      toast('⚠️ Voice: '+e.error);
+    }
     btn.textContent='🎙️ Voice';
     btn.style.background='rgba(192,57,43,0.15)';
+    btn.style.color='var(--red2)';
+    inp.placeholder='మీ doubt రాయండి...';
     aiSpeechRec=null;
   };
 
   aiSpeechRec.onend=function(){
     btn.textContent='🎙️ Voice';
     btn.style.background='rgba(192,57,43,0.15)';
+    btn.style.color='var(--red2)';
+    inp.placeholder='మీ doubt రాయండి...';
     aiSpeechRec=null;
+    // Auto send if text present
+    if(inp.value.trim()){
+      setTimeout(function(){sendAI2();},300);
+    }
   };
 
   aiSpeechRec.start();
