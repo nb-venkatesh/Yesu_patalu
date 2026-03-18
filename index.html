@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+.reader-header <!DOCTYPE html>
 <html lang="te">
 <head>
 <meta charset="UTF-8">
@@ -352,7 +353,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 .vr-btn.stop{background:linear-gradient(135deg,var(--red),var(--red2));}
 .vr-speed{background:var(--deep);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:8px;font-size:0.78rem;outline:none;}
 </style>
-
+<script src="https://js.puter.com/v2/"></script>
 </head>
 <body>
 
@@ -1873,7 +1874,7 @@ function initAIKey(){
   }
 }
 
-// AI Bible Assistant
+// AI Bible Assistant — Puter.js (Free, No Key, No Login needed)
 async function sendAI2(){
   var inp=document.getElementById('aiInput2');
   var q=inp.value.trim();if(!q)return;inp.value='';
@@ -1882,39 +1883,34 @@ async function sendAI2(){
   var bm=document.createElement('div');bm.className='ai-msg bot';bm.innerHTML='<span style="opacity:0.6">⏳ thinking...</span>';msgs.appendChild(bm);
   msgs.scrollTop=msgs.scrollHeight;
 
-  var GEMINI_KEY=localStorage.getItem('geminiKey')||'';
-  if(!GEMINI_KEY){
-    bm.innerHTML='🔑 <b>API Key లేదు!</b><br><small>కింద "🔑 API Key change" click చేసి key enter చేయండి</small>';
-    msgs.scrollTop=msgs.scrollHeight;
-    showAIKeySetup();
-    return;
-  }
-
-  var prompt='You are a Telugu Christian Bible assistant. Answer ONLY in Telugu language. Give clear, helpful 3-4 sentence answer. If it is a Bible/Christian question, add a relevant Bible verse at end. Question: '+q;
+  var prompt='You are a Telugu Christian Bible assistant. ALWAYS answer ONLY in Telugu language. Give 3-4 sentence answer. Be encouraging. Add a Bible verse at end. Question: '+q;
 
   try{
-    var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+GEMINI_KEY,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        contents:[{parts:[{text:prompt}]}],
-        generationConfig:{maxOutputTokens:400,temperature:0.7}
-      })
-    });
-    var data=await res.json();
-    if(data.error){
-      bm.textContent='⚠️ API Error: '+data.error.message;
-      msgs.scrollTop=msgs.scrollHeight;
-      return;
-    }
-    var txt=data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts&&data.candidates[0].content.parts[0]&&data.candidates[0].content.parts[0].text;
-    if(txt&&txt.trim().length>5){
-      bm.textContent=txt.trim();
+    if(typeof puter==='undefined') throw new Error('Puter not loaded');
+    var res=await puter.ai.chat(prompt,{model:'gpt-4o-mini'});
+    // Puter returns string directly
+    var txt=typeof res==='string'?res:(res&&res.message&&res.message.content)||'';
+    if(txt&&txt.length>5){
+      bm.textContent=txt;
     } else {
-      bm.textContent='⚠️ జవాబు రాలేదు. మళ్ళీ try చేయండి.';
+      throw new Error('empty response');
     }
   }catch(e){
-    bm.textContent='⚠️ Internet check చేయండి — '+e.message;
+    // Fallback — simple offline answers
+    var ql=q.toLowerCase();
+    var ans='';
+    if(ql.includes('yesu')||ql.includes('jesus')||ql.includes('యేసు')){
+      ans='యేసు క్రీస్తు దేవుని కుమారుడు మరియు మన రక్షకుడు. ఆయన మన పాపముల కొరకు సిలువపై మరణించి మూడవ దినమున పునరుత్థానుడయ్యాడు. "దేవుడు లోకమును ఎంతగా ప్రేమించెనంటే తన అద్వితీయ కుమారుని అనుగ్రహించెను" — యోహాను 3:16 🙏';
+    } else if(ql.includes('pray')||ql.includes('ప్రార్థన')){
+      ans='ప్రార్థన దేవునితో మన హృదయ సంభాషణ. రోజూ ప్రార్థించడం మన విశ్వాసాన్ని బలపరుస్తుంది. "ప్రార్థనలో నిలుకడగా ఉండుడి" — కొలొస్సయులు 4:2 🙏';
+    } else if(ql.includes('bible')||ql.includes('బైబిల్')){
+      ans='బైబిల్ దేవుని పవిత్ర వాక్యం, మన జీవితానికి మార్గదర్శి. "నీ వాక్యం నా పాదములకు దీపమును" — కీర్తన 119:105 🙏';
+    } else if(ql.includes('love')||ql.includes('ప్రేమ')){
+      ans='దేవుడు ప్రేమ స్వరూపుడు. ఆయన తన కుమారుని మనకు అనుగ్రహించాడు. "దేవుడు ప్రేమ స్వరూపుడు" — 1 యోహాను 4:8 🙏';
+    } else {
+      ans='దేవుడు మీ ప్రశ్నను వింటున్నాడు. ప్రార్థనతో ఆయనను వెదకండి. "అడగుడి అప్పుడు మీకు ఇయ్యబడును" — మత్తయి 7:7 🙏';
+    }
+    bm.textContent=ans;
   }
   msgs.scrollTop=msgs.scrollHeight;
 }
