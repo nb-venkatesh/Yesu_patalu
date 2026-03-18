@@ -836,6 +836,17 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <h2 style="color:var(--gold);margin-bottom:4px;">🤖 AI Bible Assistant</h2>
     <p style="color:var(--sub);font-size:0.8rem;">Bible గురించి Telugu లో doubt అడగండి • Free AI</p>
   </div>
+
+  <!-- API Key setup -->
+  <div id="aiKeySetup" style="display:none;background:var(--card);border:1px solid rgba(245,197,24,0.3);border-radius:14px;padding:14px;margin-bottom:10px;">
+    <div style="color:var(--gold);font-size:0.85rem;font-weight:700;margin-bottom:8px;">🔑 Gemini API Key పెట్టండి</div>
+    <div style="color:var(--sub);font-size:0.75rem;margin-bottom:10px;">aistudio.google.com నుండి free key తీసుకోండి — ఒక్కసారే పెట్టాలి!</div>
+    <div style="display:flex;gap:8px;">
+      <input id="aiKeyInput" type="password" placeholder="AIzaSy..." style="flex:1;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px 12px;font-size:0.85rem;font-family:inherit;outline:none;">
+      <button onclick="saveAIKey()" style="background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;">Save</button>
+    </div>
+  </div>
+
   <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;">
     <div id="aiMessages2" style="min-height:300px;max-height:450px;overflow-y:auto;margin-bottom:12px;">
       <div class="ai-msg bot">నమస్కారం! 🙏 Bible గురించి, యేసు గురించి, క్రైస్తవ విశ్వాసం గురించి ఏమైనా అడగండి!</div>
@@ -843,6 +854,9 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <div class="ai-input-row">
       <input id="aiInput2" type="text" placeholder="మీ doubt ఇక్కడ రాయండి..." onkeydown="if(event.key==='Enter')sendAI2()">
       <button class="ai-send-btn" onclick="sendAI2()">➤</button>
+    </div>
+    <div style="text-align:right;margin-top:6px;">
+      <button onclick="showAIKeySetup()" style="background:none;border:none;color:var(--sub);font-size:0.7rem;cursor:pointer;">🔑 API Key change</button>
     </div>
   </div>
 </div>
@@ -991,6 +1005,7 @@ function go(p){
   if(p==='hist')renderHistory();
   if(p==='list')renderList();
   if(p==='fav')renderFav();
+  if(p==='ai')initAIKey();
 }
 
 // ═══ SONGS ═══
@@ -1838,6 +1853,26 @@ function toggleRecording(){
 
 
 
+// AI Key Management
+function saveAIKey(){
+  var k=document.getElementById('aiKeyInput').value.trim();
+  if(!k||!k.startsWith('AIza')){toast('⚠️ Valid key enter చేయి! AIzaSy... తో start అవ్వాలి');return;}
+  localStorage.setItem('geminiKey',k);
+  document.getElementById('aiKeySetup').style.display='none';
+  toast('✅ API Key saved! ఇప్పుడు AI use చేయవచ్చు');
+}
+function showAIKeySetup(){
+  var box=document.getElementById('aiKeySetup');
+  if(box)box.style.display=box.style.display==='none'?'block':'none';
+}
+function initAIKey(){
+  var k=localStorage.getItem('geminiKey');
+  if(!k){
+    var box=document.getElementById('aiKeySetup');
+    if(box)box.style.display='block';
+  }
+}
+
 // AI Bible Assistant
 async function sendAI2(){
   var inp=document.getElementById('aiInput2');
@@ -1847,13 +1882,16 @@ async function sendAI2(){
   var bm=document.createElement('div');bm.className='ai-msg bot';bm.innerHTML='<span style="opacity:0.6">⏳ thinking...</span>';msgs.appendChild(bm);
   msgs.scrollTop=msgs.scrollHeight;
 
-  var GEMINI_KEY='AIzaSyB-kDK02CR9GxMQlipJOss44On3RTG7w2s';
   var sysPrompt='You are a Telugu Christian Bible assistant. ALWAYS respond ONLY in Telugu language. Give 3-4 sentence answer. Be encouraging and helpful. End with a relevant Bible verse.';
   var answered=false;
 
   // Gemini 1.5 Flash — Free, fast, permanent
+  var GEMINI_KEY=localStorage.getItem('geminiKey')||'';
+  if(!GEMINI_KEY){
+    bm.textContent='🔑 AI use చేయడానికి API Key కావాలి — AI page లో ⚙️ API Key enter చేయండి';
+    msgs.scrollTop=msgs.scrollHeight;return;
+  }
   try{
-    var GEMINI_KEY='AIzaSyA2M1IBR5wHNPwzZs8R_VbB6Ic357-NUbI';
     var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',{
       method:'POST',
       headers:{
