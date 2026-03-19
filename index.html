@@ -404,6 +404,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <button id="nb-s244" onclick="go('s244')">🎼 244</button>
     <button id="nb-fav" onclick="go('fav')">❤️ Favs</button>
     <button id="nb-hist" onclick="go('hist')">🕐 History</button>
+    <button id="nb-pdf" onclick="go('pdf')">📄 PDF</button>
     <button id="nb-add" onclick="go('add')">➕ Add</button>
   </div>
 </nav>
@@ -841,91 +842,195 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 <!-- AI PAGE -->
 <div id="aiPage" class="page">
   <div style="background:linear-gradient(135deg,#0a0a00,#1a1a05);border:1px solid var(--gold);border-radius:18px;padding:16px;margin-bottom:12px;">
-    <h2 style="color:var(--gold);margin-bottom:4px;">🤖 AI Bible Assistant</h2>
-    <p style="color:var(--sub);font-size:0.8rem;">Bible గురించి Telugu లో doubt అడగండి • Free AI</p>
+    <h2 style="color:var(--gold);margin-bottom:4px;">🤖 Free AI Assistants</h2>
+    <p style="color:var(--sub);font-size:0.78rem;">Click చేయి → AI website open అవుతుంది → Free గా use చేయి!</p>
   </div>
 
-  <!-- API Key setup -->
-  <div id="aiKeySetup" style="display:none;background:var(--card);border:1px solid rgba(245,197,24,0.3);border-radius:14px;padding:14px;margin-bottom:10px;">
-    <div style="color:var(--gold);font-size:0.85rem;font-weight:700;margin-bottom:8px;">🔑 Gemini API Key పెట్టండి</div>
-    <div style="color:var(--sub);font-size:0.75rem;margin-bottom:10px;">aistudio.google.com నుండి free key తీసుకోండి — ఒక్కసారే పెట్టాలి!</div>
-    <div style="display:flex;gap:8px;">
-      <input id="aiKeyInput" type="password" placeholder="AIzaSy..." style="flex:1;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px 12px;font-size:0.85rem;font-family:inherit;outline:none;">
-      <button onclick="saveAIKey()" style="background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;">Save</button>
-    </div>
+  <!-- Search tip -->
+  <div style="background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:10px 14px;margin-bottom:12px;">
+    <div style="color:var(--gold);font-size:0.78rem;font-weight:700;margin-bottom:4px;">💡 Bible కోసం ఇలా అడుగు:</div>
+    <div style="color:var(--sub);font-size:0.72rem;line-height:1.6;">• "యేసు క్రీస్తు గురించి Telugu లో చెప్పు"<br>• "Who is Jesus Christ according to Bible"<br>• "Psalm 23 explain in Telugu"</div>
   </div>
 
-  <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;">
+  <!-- AI List -->
+  <div style="display:flex;flex-direction:column;gap:8px;">
 
-    <!-- Mode Toggle: Chat / Image / Audio -->
-    <div style="display:flex;gap:6px;margin-bottom:10px;">
-      <button id="aiChatTab" onclick="aiSetMode('chat')" style="flex:1;padding:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.78rem;">💬 Chat</button>
-      <button id="aiImgTab" onclick="aiSetMode('image')" style="flex:1;padding:8px;background:var(--deep);border:1px solid var(--border);color:var(--sub);border-radius:10px;cursor:pointer;font-size:0.78rem;">🎨 Image</button>
-      
-    </div>
-
-    <!-- Chat Model Selector -->
-    <div id="aiChatModelDiv" style="margin-bottom:10px;">
-      <label style="color:var(--sub);font-size:0.72rem;">🤖 Chat Model:</label>
-      <select id="aiModelSelect" style="width:100%;margin-top:4px;background:var(--deep);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:10px;font-size:0.8rem;outline:none;">
-        <optgroup label="⚡ Fast — 1500/day free">
-          <option value="gemini-2.0-flash" selected>Gemini 2.0 Flash ⚡ Default</option>
-          <option value="gemini-2.0-flash-lite">Gemini 2.0 Flash Lite ⚡ Fastest</option>
-        </optgroup>
-        <optgroup label="🧠 Powerful — 50/day free">
-          <option value="gemini-1.5-pro-latest">Gemini 1.5 Pro 🧠</option>
-          <option value="gemini-2.5-pro-preview-05-06">Gemini 2.5 Pro 🔥 Latest</option>
-        </optgroup>
-      </select>
-    </div>
-
-    <!-- Image Model Selector (hidden by default) -->
-    <div id="aiImgModelDiv" style="display:none;margin-bottom:10px;">
-      <label style="color:var(--sub);font-size:0.72rem;">🎨 Image Model:</label>
-      <select id="aiImgModelSelect" style="width:100%;margin-top:4px;background:var(--deep);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:10px;font-size:0.8rem;outline:none;">
-        <optgroup label="🎨 Pollinations.ai — 100% Free Forever">
-          <option value="flux" selected>FLUX — Best Quality ⭐ Default</option>
-          <option value="flux-realism">FLUX Realism — Photo Realistic</option>
-          <option value="flux-cablyai">FLUX CablyAI — Creative</option>
-          <option value="flux-anime">FLUX Anime — Anime Style</option>
-          <option value="flux-3d">FLUX 3D — 3D Style</option>
-          <option value="turbo">Turbo — Fastest ⚡</option>
-        </optgroup>
-      </select>
-      <div style="margin-top:8px;">
-        <input id="aiImgPrompt" type="text" placeholder="Image prompt రాయండి... (e.g. Jesus with children)" style="width:100%;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;font-size:0.85rem;font-family:inherit;outline:none;box-sizing:border-box;">
+    <a href="https://gemini.google.com" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(66,165,245,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">✨</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Google Gemini</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Telugu support • రోజు unlimited free</div>
+        </div>
+        <div style="color:#42a5f5;font-size:0.75rem;">Open →</div>
       </div>
-      <button onclick="aiGenerateImage()" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#6a0dad,#c0392b);color:#fff;border:none;padding:12px;border-radius:12px;font-size:0.9rem;font-weight:700;cursor:pointer;">✨ Image Generate చేయి</button>
-      <div id="aiImgResult" style="margin-top:10px;text-align:center;"></div>
+    </a>
+
+    <a href="https://chatgpt.com" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(76,175,80,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">🤖</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">ChatGPT</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Most popular • Free tier available</div>
+        </div>
+        <div style="color:#4caf50;font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+    <a href="https://claude.ai" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(255,140,0,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">🟠</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Claude AI</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Best quality answers • Free</div>
+        </div>
+        <div style="color:#ff8c00;font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+    <a href="https://copilot.microsoft.com" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(0,120,212,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">🔷</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Microsoft Copilot</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Web search + AI • Free unlimited</div>
+        </div>
+        <div style="color:#0078d4;font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+    <a href="https://grok.com" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(156,39,176,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">⚡</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Grok (xAI)</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Latest news • X account తో free</div>
+        </div>
+        <div style="color:#9c27b0;font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+    <a href="https://www.perplexity.ai" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(0,188,212,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">🔍</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Perplexity AI</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Web search AI • Sources చూపిస్తుంది</div>
+        </div>
+        <div style="color:#00bcd4;font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+    <a href="https://www.meta.ai" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(24,119,242,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">🌐</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Meta AI</div>
+          <div style="color:var(--sub);font-size:0.72rem;">WhatsApp లో కూడా • Free</div>
+        </div>
+        <div style="color:#1877f2;font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+    <a href="https://deepseek.com" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(102,187,106,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">🧠</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">DeepSeek</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Best reasoning • Free unlimited</div>
+        </div>
+        <div style="color:#66bb6a;font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+    <a href="https://huggingface.co/chat" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(255,196,0,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">🤗</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">HuggingFace Chat</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Multiple models • 100% Free</div>
+        </div>
+        <div style="color:#ffc400;font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+    <a href="https://you.com" target="_blank" style="text-decoration:none;">
+      <div style="background:var(--card);border:1px solid rgba(192,57,43,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:1.8rem;width:40px;text-align:center;">🔎</div>
+        <div style="flex:1;">
+          <div style="color:#fff;font-weight:700;font-size:0.92rem;">You.com</div>
+          <div style="color:var(--sub);font-size:0.72rem;">Search + AI • Free no login</div>
+        </div>
+        <div style="color:var(--red2);font-size:0.75rem;">Open →</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PDF PAGE -->
+<div id="pdfPage" class="page">
+  <div style="background:linear-gradient(135deg,#0a0505,#1a0808);border:1px solid var(--red);border-radius:18px;padding:16px;margin-bottom:12px;">
+    <h2 style="color:var(--gold);margin-bottom:4px;">📄 PDF Viewer</h2>
+    <p style="color:var(--sub);font-size:0.78rem;">Phone PDF open చేయి లేదా Link paste చేయి</p>
+  </div>
+
+  <!-- Tabs -->
+  <div style="display:flex;gap:6px;margin-bottom:12px;">
+    <button onclick="pdfTab('file')" id="pdfFileTab" style="flex:1;padding:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.8rem;">📱 Phone PDF</button>
+    <button onclick="pdfTab('link')" id="pdfLinkTab" style="flex:1;padding:8px;background:var(--deep);border:1px solid var(--border);color:var(--sub);border-radius:10px;cursor:pointer;font-size:0.8rem;">🔗 Link PDF</button>
+    <button onclick="pdfTab('bible')" id="pdfBibleTab" style="flex:1;padding:8px;background:var(--deep);border:1px solid var(--border);color:var(--sub);border-radius:10px;cursor:pointer;font-size:0.8rem;">✝ Bible PDF</button>
+  </div>
+
+  <!-- Phone PDF -->
+  <div id="pdfFileSection">
+    <button onclick="openPhonePDF()" style="width:100%;background:linear-gradient(135deg,rgba(192,57,43,0.3),rgba(192,57,43,0.1));border:2px dashed var(--red);color:var(--text);padding:20px;border-radius:14px;cursor:pointer;font-size:0.9rem;">
+      📱 Phone లో ఉన్న PDF Select చేయి
+    </button>
+    <div id="pdfFileViewer" style="margin-top:10px;"></div>
+  </div>
+
+  <!-- Link PDF -->
+  <div id="pdfLinkSection" style="display:none;">
+    <div style="display:flex;gap:8px;margin-bottom:10px;">
+      <input id="pdfLinkInput" type="url" placeholder="https://... PDF link paste చేయి" style="flex:1;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;font-size:0.85rem;font-family:inherit;outline:none;">
+      <button onclick="openLinkPDF()" style="background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;">Open</button>
     </div>
-
-    
-
-    <div id="aiMessages2" style="min-height:280px;max-height:420px;overflow-y:auto;margin-bottom:8px;">
-      <div class="ai-msg bot">నమస్కారం! 🙏 Bible గురించి, యేసు గురించి, క్రైస్తవ విశ్వాసం గురించి ఏమైనా అడగండి!</div>
+    <div id="pdfLinkViewer" style="width:100%;height:500px;border-radius:12px;overflow:hidden;display:none;">
+      <iframe id="pdfLinkFrame" src="" style="width:100%;height:100%;border:none;border-radius:12px;"></iframe>
     </div>
+  </div>
 
-    <!-- File/Photo previews -->
-    <img id="aiPhotoPreview" src="" style="display:none;max-width:80px;border-radius:8px;margin-bottom:4px;border:1px solid var(--gold);">
-    <div id="aiFilePreview" style="display:none;background:rgba(245,197,24,0.1);border:1px solid var(--gold);border-radius:8px;padding:5px 10px;margin-bottom:4px;color:var(--gold);font-size:0.75rem;"></div>
+  <!-- Bible PDFs -->
+  <div id="pdfBibleSection" style="display:none;">
+    <div style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Telugu Bible PDFs — Download చేయవచ్చు</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="background:var(--card);border:1px solid var(--rborder);border-radius:12px;padding:12px;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;margin-bottom:6px;">✝ Telugu Bible (OV)</div>
+        <div style="color:var(--sub);font-size:0.75rem;margin-bottom:8px;">Old Version • Complete Bible</div>
+        <div style="display:flex;gap:6px;">
+          <button onclick="viewBiblePDF('https://www.bible.com/bible/1109/GEN.1.TELIRV')" style="flex:1;background:rgba(192,57,43,0.2);border:1px solid var(--red);color:var(--text);padding:7px;border-radius:8px;cursor:pointer;font-size:0.78rem;">🔗 Online చదువు</button>
+          <a href="https://www.ph4.org/b4_pd.php?q=te" target="_blank" style="flex:1;background:rgba(245,197,24,0.15);border:1px solid var(--gold);color:var(--gold);padding:7px;border-radius:8px;text-decoration:none;font-size:0.78rem;text-align:center;">⬇️ Download</a>
+        </div>
+      </div>
 
-    <!-- Input row — always visible -->
-    <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px;">
-      <input id="aiInput2" type="text" placeholder="మీ doubt రాయండి..." onkeydown="if(event.key==='Enter')sendAI2()" style="flex:1;background:var(--deep);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:10px 14px;font-size:0.87rem;font-family:inherit;outline:none;">
-      <button onclick="sendAI2()" style="background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;width:44px;height:44px;border-radius:12px;cursor:pointer;font-size:1.1rem;font-weight:700;flex-shrink:0;">➤</button>
-    </div>
+      <div style="background:var(--card);border:1px solid var(--rborder);border-radius:12px;padding:12px;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;margin-bottom:6px;">✝ Telugu Bible (IRV)</div>
+        <div style="color:var(--sub);font-size:0.75rem;margin-bottom:8px;">Indian Revised Version • Modern Telugu</div>
+        <div style="display:flex;gap:6px;">
+          <a href="https://www.bible.com/bible/1109/GEN.1.TELIRV" target="_blank" style="flex:1;background:rgba(192,57,43,0.2);border:1px solid var(--red);color:var(--text);padding:7px;border-radius:8px;text-decoration:none;font-size:0.78rem;text-align:center;">🔗 Online చదువు</a>
+          <a href="https://ibs-india.org/wp-content/uploads/2020/05/Telugu-Bible-IRV.pdf" target="_blank" style="flex:1;background:rgba(245,197,24,0.15);border:1px solid var(--gold);color:var(--gold);padding:7px;border-radius:8px;text-decoration:none;font-size:0.78rem;text-align:center;">⬇️ Download</a>
+        </div>
+      </div>
 
-    <!-- Action buttons -->
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-      <button onclick="aiUploadPhoto()" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">📷 Photo</button>
-      <button onclick="aiUploadPDF()" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">📄 File</button>
-      <button id="aiVoiceBtn" onclick="aiVoiceInput()" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.5);color:var(--red2);padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">🎙️ Voice</button>
-      <button onclick="aiNewChat()" style="background:rgba(0,150,255,0.12);border:1px solid rgba(0,150,255,0.4);color:#4db8ff;padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">🔄 New Chat</button>
-      <button onclick="aiDownloadPDF()" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.5);color:#ff6b6b;padding:6px 10px;border-radius:10px;cursor:pointer;font-size:0.78rem;">📥 PDF</button>
-    </div>
-
-    <div style="text-align:right;">
-      <button onclick="showAIKeySetup()" style="background:none;border:none;color:var(--sub);font-size:0.68rem;cursor:pointer;">🔑 API Key</button>
+      <div style="background:var(--card);border:1px solid var(--rborder);border-radius:12px;padding:12px;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;margin-bottom:6px;">📖 KJV English Bible</div>
+        <div style="color:var(--sub);font-size:0.75rem;margin-bottom:8px;">King James Version • Complete</div>
+        <div style="display:flex;gap:6px;">
+          <a href="https://www.bible.com/bible/1/GEN.1.KJV" target="_blank" style="flex:1;background:rgba(192,57,43,0.2);border:1px solid var(--red);color:var(--text);padding:7px;border-radius:8px;text-decoration:none;font-size:0.78rem;text-align:center;">🔗 Online చదువు</a>
+          <a href="https://www.ph4.org/b4_pd.php?q=en_kjv" target="_blank" style="flex:1;background:rgba(245,197,24,0.15);border:1px solid var(--gold);color:var(--gold);padding:7px;border-radius:8px;text-decoration:none;font-size:0.78rem;text-align:center;">⬇️ Download</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1075,6 +1180,7 @@ function go(p){
   if(p==='list')renderList();
   if(p==='fav')renderFav();
   if(p==='ai')initAIKey();
+  if(p==='pdf')initPDFPage();
 }
 
 // ═══ SONGS ═══
@@ -2343,14 +2449,6 @@ async function sendAI2(){
   msgs.scrollTop=msgs.scrollHeight;
 
   // Get Gemini key from localStorage
-  var GEMINI_KEY=localStorage.getItem('geminiKey')||'';
-  if(!GEMINI_KEY){
-    bm.innerHTML='🔑 <b>Gemini API Key కావాలి!</b><br><small>కింద "🔑 API Key" click చేసి key enter చేయి</small>';
-    msgs.scrollTop=msgs.scrollHeight;
-    showAIKeySetup();
-    return;
-  }
-
   // Detect language
   var isEnglish=/^[a-zA-Z0-9\s\?\!\.\,\-\'\"\/\(\)]+$/.test(q.trim());
   var langInstr=isEnglish?'Answer in English.':'తెలుగులో జవాబు ఇవ్వు (Answer in Telugu).';
@@ -2377,29 +2475,39 @@ async function sendAI2(){
   }
 
   try{
-    var selectedModel=document.getElementById('aiModelSelect').value||'gemini-2.0-flash';
+    var selectedModel=document.getElementById('aiModelSelect').value||'gpt-4o-mini';
     localStorage.setItem('aiModel',selectedModel);
-    var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+selectedModel+':generateContent?key='+GEMINI_KEY,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        system_instruction:{parts:[{text:sysPrompt}]},
-        contents:contents,
-        generationConfig:{maxOutputTokens:600,temperature:0.7}
-      })
-    });
-    var data=await res.json();
-    if(data.error){
-      // Quota exceeded — show helpful message
-      if(data.error.code===429){
-        bm.textContent='⏳ Daily limit reached! రేపు try చేయి (రోజు 1500 free requests). లేదా కొత్త Gemini key తీసుకో.';
-      } else {
-        bm.textContent='⚠️ '+data.error.message;
-      }
+
+    // Use Puter.js — user pays with their own account
+    if(typeof puter==='undefined'){
+      bm.textContent='⚠️ AI load కాలేదు. Page refresh చేయి.';
       msgs.scrollTop=msgs.scrollHeight;
       return;
     }
-    var txt=data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts&&data.candidates[0].content.parts[0]&&data.candidates[0].content.parts[0].text;
+
+    // Build puter messages
+    var puterMsgs=[{role:'system',content:sysPrompt}];
+    aiChatHistory.slice(-10).forEach(function(h){puterMsgs.push(h);});
+    if(aiPhoto){
+      var base64=aiPhoto.split(',')[1];
+      var mtype=aiPhoto.split(';')[0].split(':')[1];
+      puterMsgs.push({role:'user',content:[{type:'image_url',image_url:{url:'data:'+mtype+';base64,'+base64}},{type:'text',text:userMsg}]});
+    } else {
+      puterMsgs.push({role:'user',content:userMsg});
+    }
+
+    var res=await puter.ai.chat(puterMsgs,{model:selectedModel});
+    var txt='';
+    if(typeof res==='string') txt=res;
+    else if(res&&res.message&&res.message.content){
+      var mc=res.message.content;
+      if(typeof mc==='string') txt=mc;
+      else if(Array.isArray(mc)) txt=mc.map(function(x){return x.text||x.content||'';}).join('');
+    } else if(res&&res.content){
+      var rc=res.content;
+      txt=typeof rc==='string'?rc:(Array.isArray(rc)?rc.map(function(x){return x.text||'';}).join(''):String(rc));
+    }
+
     if(txt&&txt.trim().length>5){
       bm.innerHTML=renderMarkdown(txt.trim());
       aiChatHistory.push({role:'user',content:userMsg});
@@ -2409,7 +2517,7 @@ async function sendAI2(){
       bm.textContent='⚠️ జవాబు రాలేదు. మళ్ళీ try చేయి.';
     }
   }catch(e){
-    bm.textContent='⚠️ Internet check చేయి: '+e.message;
+    bm.textContent='⚠️ Error: '+e.message;
   }
 
   aiPhoto=null;aiPDFText=null;
@@ -2671,6 +2779,62 @@ function initHome(){
 function waContactClicked(){
   var box=document.getElementById('waReplyBox');
   if(box)box.style.display='block';
+}
+
+// ═══ PDF FUNCTIONS ═══
+function initPDFPage(){
+  pdfTab('file');
+}
+
+function pdfTab(tab){
+  var fileSec=document.getElementById('pdfFileSection');
+  var linkSec=document.getElementById('pdfLinkSection');
+  var bibleSec=document.getElementById('pdfBibleSection');
+  var fileTab=document.getElementById('pdfFileTab');
+  var linkTab=document.getElementById('pdfLinkTab');
+  var bibleTab=document.getElementById('pdfBibleTab');
+  var active='background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;font-weight:700;';
+  var inactive='background:var(--deep);border:1px solid var(--border);color:var(--sub);';
+  fileSec.style.display='none';linkSec.style.display='none';bibleSec.style.display='none';
+  fileTab.style.cssText=fileTab.style.cssText+inactive;
+  linkTab.style.cssText=linkTab.style.cssText+inactive;
+  bibleTab.style.cssText=bibleTab.style.cssText+inactive;
+  if(tab==='file'){fileSec.style.display='block';fileTab.style.cssText=active;}
+  else if(tab==='link'){linkSec.style.display='block';linkTab.style.cssText=active;}
+  else if(tab==='bible'){bibleSec.style.display='block';bibleTab.style.cssText=active;}
+}
+
+function openPhonePDF(){
+  var inp=document.createElement('input');
+  inp.type='file';inp.accept='.pdf';
+  inp.onchange=function(){
+    var file=inp.files[0];if(!file)return;
+    var url=URL.createObjectURL(file);
+    var viewer=document.getElementById('pdfFileViewer');
+    viewer.innerHTML='<div style="color:var(--gold);font-size:0.78rem;margin-bottom:6px;">📄 '+file.name+'</div>'
+      +'<iframe src="'+url+'" style="width:100%;height:550px;border:none;border-radius:12px;background:#fff;"></iframe>'
+      +'<a href="'+url+'" download="'+file.name+'" style="display:inline-block;margin-top:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;padding:8px 16px;border-radius:10px;font-weight:700;text-decoration:none;font-size:0.82rem;">⬇️ Download</a>';
+  };
+  inp.click();
+}
+
+function openLinkPDF(){
+  var url=document.getElementById('pdfLinkInput').value.trim();
+  if(!url){toast('⚠️ PDF link paste చేయి!');return;}
+  if(!url.startsWith('http')){toast('⚠️ Valid URL కాదు!');return;}
+  var viewer=document.getElementById('pdfLinkViewer');
+  var frame=document.getElementById('pdfLinkFrame');
+  // Use Google PDF viewer for cross-origin PDFs
+  var viewUrl='https://docs.google.com/viewer?url='+encodeURIComponent(url)+'&embedded=true';
+  frame.src=viewUrl;
+  viewer.style.display='block';
+  toast('📄 PDF loading...');
+}
+
+function viewBiblePDF(url){
+  pdfTab('link');
+  document.getElementById('pdfLinkInput').value=url;
+  openLinkPDF();
 }
 
 // ═══ TOAST ═══
