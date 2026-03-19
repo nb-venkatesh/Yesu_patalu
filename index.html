@@ -359,6 +359,46 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 .vr-btn{background:linear-gradient(135deg,#4a0080,#9c27b0);color:#fff;border:none;padding:8px 14px;border-radius:20px;cursor:pointer;font-size:0.82rem;font-weight:600;}
 .vr-btn.stop{background:linear-gradient(135deg,var(--red),var(--red2));}
 .vr-speed{background:var(--deep);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:8px;font-size:0.78rem;outline:none;}
+
+/* ── Light mode Jesus page fixes ── */
+body.light #jesusPage { background:var(--bg); }
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#0a0a1a"],
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#001a0a"],
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#001530"],
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#00150a"],
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#1a0000"],
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#002200"],
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#1a1000"],
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#0a001a"],
+body.light #jesusPage div[style*="background:rgba(52,152,219"],
+body.light #jesusPage div[style*="background:rgba(245,197,24"],
+body.light #jesusPage div[style*="background:rgba(39,174,96"],
+body.light #jesusPage div[style*="background:rgba(192,57,43"],
+body.light #jesusPage div[style*="background:rgba(180,100"] { background:rgba(0,0,0,0.04) !important; }
+body.light #jesusPage li[style*="border-left"],
+body.light #jesusPage div[style*="border-left"] { background:rgba(0,0,0,0.04) !important; }
+body.light #jesusPage span[style*="color:#7ec8a0"] { color:#1a7a40 !important; }
+body.light #jesusPage span[style*="color:#74b9ff"] { color:#1565c0 !important; }
+body.light #jesusPage span[style*="color:#ce93d8"] { color:#7b1fa2 !important; }
+body.light #jesusPage span[style*="color:#2ecc71"] { color:#1a7a40 !important; }
+body.light #jesusPage span[style*="color:#ff6b6b"] { color:#c0392b !important; }
+body.light #jesusPage span[style*="color:#ffaa88"],
+body.light #jesusPage b[style*="color:#ffaa88"],
+body.light #jesusPage i[style*="color:#ffaa88"],
+body.light #jesusPage p[style*="color:#ffaa88"] { color:#c0392b !important; }
+body.light #jesusPage div[style*="color:#ff6b6b"] { color:#c0392b !important; }
+body.light #jesusPage div[style*="color:#7ec8a0"] { color:#1a7a40 !important; }
+body.light #jesusPage div[style*="color:#74b9ff"] { color:#1565c0 !important; }
+body.light #jesusPage div[style*="color:#ce93d8"] { color:#7b1fa2 !important; }
+body.light #jesusPage div[style*="color:#2ecc71"] { color:#1a7a40 !important; }
+body.light #jesusPage span[style*="color:var(--sub)"] { color:#555 !important; }
+body.light #jesusPage div[style*="color:var(--sub)"] { color:#555 !important; }
+body.light #jesusPage span[style*="color:var(--text)"] { color:#1a0a00 !important; }
+body.light #jesusPage .jesus-section { background:#fff; }
+/* Hero banner light */
+body.light #jesusPage div[style*="background:linear-gradient(135deg,#1a0000"] { background:linear-gradient(135deg,#fff0f0,#ffe0e0) !important; border-color:rgba(192,57,43,0.3) !important; }
+/* Quick nav buttons */
+body.light #jesusPage button[style*="background:rgba"] { border-color:rgba(0,0,0,0.2) !important; }
 </style>
 
 </head>
@@ -435,18 +475,58 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       </div>
     </div>
 
+
+
+    <!-- Bible — full width with OT/NT quick links -->
+    <div style="background:linear-gradient(135deg,#051a05,#0a2a0a);border:1px solid rgba(0,150,50,0.45);border-radius:14px;padding:14px;grid-column:span 2;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span style="font-size:1.3rem;">📖</span>
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">పవిత్ర బైబిల్</div>
+        <span style="color:var(--sub);font-size:0.7rem;margin-left:4px;">Telugu + English • Click చేయి → chapter చదువు</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+        <div onclick="go('bible');setTimeout(function(){showT('OT');},100)" style="cursor:pointer;background:rgba(0,150,50,0.1);border:1px solid rgba(0,150,50,0.35);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.4rem;">📜</span>
+          <div><div style="color:var(--gold);font-size:0.82rem;font-weight:700;">పాత నిబంధన</div><div style="color:var(--sub);font-size:0.65rem;">Old Testament • 39 Books</div></div>
+        </div>
+        <div onclick="go('bible');setTimeout(function(){showT('NT');},100)" style="cursor:pointer;background:rgba(0,150,50,0.1);border:1px solid rgba(0,150,50,0.35);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.4rem;">✝</span>
+          <div><div style="color:var(--gold);font-size:0.82rem;font-weight:700;">క్రొత్త నిబంధన</div><div style="color:var(--sub);font-size:0.65rem;">New Testament • 27 Books</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Lyrics Sites -->
+    <div style="background:linear-gradient(135deg,#0a0a1a,#12122a);border:1px solid rgba(100,100,255,0.35);border-radius:14px;padding:14px;grid-column:span 2;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span style="font-size:1.3rem;">🎼</span>
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Lyrics Sites</div>
+        <span style="color:var(--sub);font-size:0.7rem;margin-left:4px;">Telugu Christian పాటల lyrics</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+        <a href="https://christianlyricz.com/" target="_blank" style="text-decoration:none;background:rgba(255,255,255,0.05);border:1px solid rgba(100,100,255,0.25);border-radius:10px;padding:9px 10px;display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1.1rem;">🎼</span>
+          <div><div style="color:var(--gold);font-size:0.78rem;font-weight:700;">Christian Lyricz</div><div style="color:var(--sub);font-size:0.65rem;">Telugu lyrics</div></div>
+        </a>
+        <a href="https://www.christiandatahouse.com/p/hosanna-all-songs.html?m=1" target="_blank" style="text-decoration:none;background:rgba(255,255,255,0.05);border:1px solid rgba(100,100,255,0.25);border-radius:10px;padding:9px 10px;display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1.1rem;">🎵</span>
+          <div><div style="color:var(--gold);font-size:0.78rem;font-weight:700;">Hosanna Songs</div><div style="color:var(--sub);font-size:0.65rem;">240 పాటలు</div></div>
+        </a>
+        <a href="https://songsofzion.org/" target="_blank" style="text-decoration:none;background:rgba(255,255,255,0.05);border:1px solid rgba(100,100,255,0.25);border-radius:10px;padding:9px 10px;display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1.1rem;">🕊️</span>
+          <div><div style="color:var(--gold);font-size:0.78rem;font-weight:700;">Songs of Zion</div><div style="color:var(--sub);font-size:0.65rem;">Zion songs</div></div>
+        </a>
+        <a href="https://waytochurch.com/" target="_blank" style="text-decoration:none;background:rgba(255,255,255,0.05);border:1px solid rgba(100,100,255,0.25);border-radius:10px;padding:9px 10px;display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1.1rem;">⛪</span>
+          <div><div style="color:var(--gold);font-size:0.78rem;font-weight:700;">Way to Church</div><div style="color:var(--sub);font-size:0.65rem;">Church resources</div></div>
+        </a>
+      </div>
+    </div>
+
     <!-- Songs -->
     <div onclick="go('list')" style="background:linear-gradient(135deg,#1a0505,#3d0a0a);border:1px solid rgba(192,57,43,0.5);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
       <div style="font-size:2rem;margin-bottom:6px;">🎵</div>
       <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Songs</div>
       <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Telugu Christian</div>
-    </div>
-
-    <!-- Bible -->
-    <div onclick="go('bible')" style="background:linear-gradient(135deg,#0a1a05,#1a3d0a);border:1px solid rgba(0,150,50,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
-      <div style="font-size:2rem;margin-bottom:6px;">📖</div>
-      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Bible</div>
-      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Telugu + English</div>
     </div>
 
     <!-- 244 Songs -->
@@ -506,6 +586,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">16 Bible Movies</div>
     </div>
 
+
   </div>
 
   <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు • Jesus Songs</div>
@@ -513,17 +594,10 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 
 <!-- CHRISTIAN MOVIES PAGE -->
 <div id="moviesPage" class="page">
-  <!-- Header -->
-  <div style="background:linear-gradient(135deg,#0a0a00,#1e1a00);border:1px solid rgba(255,200,0,0.4);border-radius:18px;padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">
-    <div>
-      <h2 style="color:var(--gold);font-size:1rem;margin-bottom:3px;">🎬 Christian Telugu Movies</h2>
-      <p style="color:var(--sub);font-size:0.7rem;">App లోనే play అవుతుంది • 16 Movies</p>
-    </div>
-    <div style="background:rgba(192,57,43,0.15);border:1px solid var(--red);border-radius:10px;padding:5px 10px;font-size:0.7rem;color:var(--red);">▶ Tap to Play</div>
-  </div>
+
 
   <!-- In-app Player -->
-  <div id="moviePlayer" style="display:none;background:#000;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 4px 20px rgba(0,0,0,0.8);">
+  <div id="moviePlayer" style="display:none;background:#000;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 4px 20px rgba(0,0,0,0.8);position:sticky;top:0;z-index:100;">
     <!-- Video Frame -->
     <div id="movieWrapper" style="position:relative;width:100%;padding-top:56.25%;background:#000;">
       <iframe id="movieFrame" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;fullscreen" allowfullscreen></iframe>
@@ -538,24 +612,25 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <!-- Controls bar -->
     <div style="padding:8px 12px;background:#0a0a0a;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
       <!-- Fullscreen -->
-      <button onclick="movieFullscreen()" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:6px 12px;border-radius:8px;font-size:0.78rem;cursor:pointer;display:flex;align-items:center;gap:4px;">
-        ⛶ Fullscreen
-      </button>
-      <!-- Mute toggle -->
-      <button id="muteBtn" onclick="movieToggleMute()" style="background:rgba(100,200,100,0.12);border:1px solid rgba(100,200,100,0.4);color:#7ec8a0;padding:6px 12px;border-radius:8px;font-size:0.78rem;cursor:pointer;">
-        🔊 Sound ON
-      </button>
-      <!-- Brightness down -->
-      <div style="display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:4px 8px;">
+      <button onclick="movieFullscreen()" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:6px 10px;border-radius:8px;font-size:0.75rem;cursor:pointer;">⛶ Full</button>
+      <!-- Sound volume -->
+      <div style="display:flex;align-items:center;gap:3px;background:rgba(100,200,100,0.08);border:1px solid rgba(100,200,100,0.3);border-radius:8px;padding:4px 8px;">
+        <span style="color:#7ec8a0;font-size:0.72rem;">🔊</span>
+        <button onclick="movieVol(-10)" style="background:none;border:none;color:#7ec8a0;font-size:1rem;cursor:pointer;padding:0 4px;line-height:1;font-weight:700;">−</button>
+        <span id="volVal" style="color:#7ec8a0;font-size:0.72rem;min-width:32px;text-align:center;">100%</span>
+        <button onclick="movieVol(10)" style="background:none;border:none;color:#7ec8a0;font-size:1rem;cursor:pointer;padding:0 4px;line-height:1;font-weight:700;">+</button>
+      </div>
+      <!-- Brightness -->
+      <div style="display:flex;align-items:center;gap:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:4px 8px;">
         <span style="color:var(--sub);font-size:0.72rem;">☀️</span>
-        <button onclick="movieBright(-1)" style="background:none;border:none;color:#fff;font-size:1rem;cursor:pointer;padding:0 4px;line-height:1;">−</button>
+        <button onclick="movieBright(-1)" style="background:none;border:none;color:#fff;font-size:1rem;cursor:pointer;padding:0 4px;line-height:1;font-weight:700;">−</button>
         <span id="brightVal" style="color:var(--gold);font-size:0.72rem;min-width:28px;text-align:center;">100%</span>
-        <button onclick="movieBright(1)" style="background:none;border:none;color:#fff;font-size:1rem;cursor:pointer;padding:0 4px;line-height:1;">+</button>
+        <button onclick="movieBright(1)" style="background:none;border:none;color:#fff;font-size:1rem;cursor:pointer;padding:0 4px;line-height:1;font-weight:700;">+</button>
       </div>
       <!-- YouTube link -->
-      <a id="movieYtLink" href="#" target="_blank" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);color:#e88;padding:6px 12px;border-radius:8px;font-size:0.78rem;text-decoration:none;margin-left:auto;">
-        ▶ YouTube
-      </a>
+      <a id="movieYtLink" href="#" target="_blank" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);color:#e88;padding:6px 10px;border-radius:8px;font-size:0.75rem;text-decoration:none;margin-left:auto;">▶ YT</a>
+      <!-- Home button -->
+      <button onclick="closeMovie();go('home')" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.3);color:var(--gold);padding:6px 10px;border-radius:8px;font-size:0.75rem;cursor:pointer;">🏠</button>
     </div>
   </div>
 
@@ -624,7 +699,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     </div>
     <div onclick="playMovie('we04QvLsttM','అబ్రాహాము జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
       <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
-        <img src="https://img.youtube.com/vi/we04QvLsttM/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://img.youtube.com/vi/tYBK2TZfrhw/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
       </div>
       <div style="flex:1;min-width:0;">
@@ -633,9 +708,9 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       </div>
       <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
     </div>
-    <div onclick="playMovie('we04QvLsttM','యోనా జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+    <div onclick="playMovie('tYBK2TZfrhw','యోనా జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
       <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
-        <img src="https://img.youtube.com/vi/we04QvLsttM/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://img.youtube.com/vi/tYBK2TZfrhw/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
       </div>
       <div style="flex:1;min-width:0;">
@@ -666,9 +741,9 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       </div>
       <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
     </div>
-    <div onclick="playMovie('-gd9UlUdw5k','దానియేలు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+    <div onclick="playMovie('WqZnpchvCHM','దానియేలు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
       <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
-        <img src="https://img.youtube.com/vi/-gd9UlUdw5k/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://img.youtube.com/vi/WqZnpchvCHM/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
       </div>
       <div style="flex:1;min-width:0;">
@@ -755,11 +830,9 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 
   <!-- PLAYER VIEW — shows when song is playing -->
   <div id="playerView" style="display:none;">
-    <!-- Back to list button -->
 
-
-    <!-- Player card -->
-    <div class="now-card" id="nowCard" style="margin-bottom:12px;">
+    <!-- Player card — sticky so video stays on screen while scrolling lyrics -->
+    <div class="now-card" id="nowCard" style="margin-bottom:0;position:sticky;top:0;z-index:50;">
       <div class="video-container">
         <div class="no-video-ph" id="nvph"><div style="font-size:3rem">🎵</div></div>
         <iframe id="ytf" style="display:none" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
@@ -777,10 +850,11 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     </div>
 
     <!-- Lyrics — full, no max-height -->
-    <div id="lyrWrap" style="display:none;background:var(--card);border:1px solid var(--rborder);border-radius:14px;margin-bottom:12px;">
+    <div id="lyrWrap" style="display:none;background:var(--card);border:1px solid var(--rborder);border-radius:0 0 14px 14px;margin-bottom:12px;">
       <div class="lyrics-head" style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="color:var(--gold);font-weight:700;">📝 Lyrics</span>
         <div style="display:flex;gap:6px;">
+          <button onclick="showSongList()" style="background:linear-gradient(135deg,#1a0505,#2a0808);border:1px solid rgba(192,57,43,0.5);color:var(--gold);padding:5px 12px;border-radius:14px;font-size:0.75rem;cursor:pointer;font-weight:600;">← Songs</button>
           <button class="tog-btn" id="togBtn" onclick="toggleLyrics()">Hide</button>
         </div>
       </div>
@@ -818,17 +892,14 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
   <div id="linksMain">
     <p class="section-title">📂 Folders</p>
     <div class="ql-grid">
-      <div class="ql-card" onclick="showFolder('lyrics')"><div class="qi">🎼</div><h3>Lyrics Sites</h3><p>Christian lyrics</p></div>
       <div class="ql-card" onclick="showFolder('testimonies')"><div class="qi">🙏</div><h3>Testimonies</h3><p>Telugu testimony channels</p></div>
       <div class="ql-card" onclick="showFolder('shortfilms')"><div class="qi">🎬</div><h3>Short Films</h3><p>Christian short films</p></div>
       <div class="ql-card" onclick="showFolder('prayer')"><div class="qi">✝️</div><h3>Prayer Resources</h3><p>ప్రార్థన సహాయం</p></div>
     </div>
     <p class="section-title">⚡ Quick Links</p>
     <div class="ql-grid">
-      <a class="ql-card" href="https://www.biblegateway.com/passage/?search=John+3%3A16&version=TELUGU" target="_blank"><div class="qi">📚</div><h3>Telugu Bible</h3><p>BibleGateway Telugu</p></a>
+      <a class="ql-card" href="https://sajeevavahini.com/telugubible/" target="_blank"><div class="qi">📚</div><h3>Telugu Bible</h3><p>Sajeeva Vahini</p></a>
       <a class="ql-card" href="https://www.bible.com" target="_blank"><div class="qi">✝</div><h3>YouVersion</h3><p>Bible App</p></a>
-      <a class="ql-card" href="https://www.youtube.com/results?search_query=the+chosen+series+telugu+dubbed" target="_blank"><div class="qi">🎬</div><h3>Jesus Films</h3><p>The Chosen Telugu</p></a>
-      <a class="ql-card" href="https://www.biblegateway.com/devotionals/morning-and-evening/today/" target="_blank"><div class="qi">📅</div><h3>Daily Devotion</h3><p>రోజువారీ భక్తి</p></a>
     </div>
   </div>
   <div id="folderView" style="display:none">
@@ -847,17 +918,30 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div class="test-card" onclick="showT('NT')"><div class="ti">✝</div><h3>క్రొత్త నిబంధన</h3><p>New Testament • 27 Books</p></div>
     </div>
   </div>
-  <div id="bBooks" style="display:none"><button class="back-btn" onclick="bBack('home')">← Back</button><h3 id="bTestTitle" class="bible-section-title"></h3><div class="books-grid" id="booksGrid"></div></div>
-  <div id="bChaps" style="display:none"><button class="back-btn" onclick="bBack('books')">← Back</button><h3 id="bBookTitle" class="bible-section-title"></h3><div class="chap-grid" id="chapGrid"></div></div>
+  <div id="bBooks" style="display:none">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <button onclick="bBack('home')" style="background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:6px 14px;border-radius:16px;cursor:pointer;font-size:0.78rem;font-weight:700;flex-shrink:0;">← Back</button>
+      <h3 id="bTestTitle" class="bible-section-title" style="margin:0;font-size:0.95rem;"></h3>
+    </div>
+    <div class="books-grid" id="booksGrid"></div>
+  </div>
+  <div id="bChaps" style="display:none">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <button onclick="bBack('books')" style="background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:6px 14px;border-radius:16px;cursor:pointer;font-size:0.78rem;font-weight:700;flex-shrink:0;">← Back</button>
+      <h3 id="bBookTitle" class="bible-section-title" style="margin:0;font-size:0.95rem;"></h3>
+    </div>
+    <div class="chap-grid" id="chapGrid"></div>
+  </div>
   <div id="bReader" style="display:none">
-    <button class="back-btn" onclick="bBack('chaps')">← Back</button>
     <div class="reader-header">
       <h3 id="readerTitle"></h3>
       <div class="rnav-btns"><button class="rnav" onclick="prevC()">◀</button><button class="rnav" onclick="nextC()">▶</button></div>
     </div>
 
-    <!-- Controls Bar -->
+    <!-- Controls Bar — Back button included here -->
     <div style="background:var(--card);border:1px solid var(--rborder);border-radius:12px;padding:10px 12px;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+      <!-- Back button -->
+      <button onclick="bBack('chaps')" style="background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:16px;cursor:pointer;font-size:0.78rem;font-weight:700;flex-shrink:0;">← Back</button>
       <!-- Font Family -->
       <select id="fontFamily" onchange="applyFont()" style="background:var(--deep);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:8px;font-size:0.78rem;outline:none;">
         <option value="'Segoe UI',sans-serif">Default</option>
@@ -880,9 +964,11 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
         </optgroup>
       </select>
       <!-- Font Size -->
-      <button onclick="changeFontSize(-1)" style="background:var(--red);color:#fff;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;font-weight:700;">−</button>
-      <span id="fontSizeLabel" style="color:var(--gold);font-size:0.82rem;min-width:24px;text-align:center;">16</span>
-      <button onclick="changeFontSize(1)" style="background:var(--red);color:#fff;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;font-weight:700;">+</button>
+      <div style="display:flex;align-items:center;gap:4px;background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.3);border-radius:10px;padding:3px 6px;">
+        <button onclick="changeFontSize(-1)" style="background:var(--red);color:#fff;border:none;width:26px;height:26px;border-radius:8px;cursor:pointer;font-weight:900;font-size:1rem;line-height:1;flex-shrink:0;">−</button>
+        <span id="fontSizeLabel" style="color:var(--gold);font-size:0.82rem;min-width:24px;text-align:center;font-weight:700;">16</span>
+        <button onclick="changeFontSize(1)" style="background:var(--red);color:#fff;border:none;width:26px;height:26px;border-radius:8px;cursor:pointer;font-weight:900;font-size:1rem;line-height:1;flex-shrink:0;">+</button>
+      </div>
       <!-- Night Mode -->
       <button id="nightBtn" onclick="toggleNight()" style="background:rgba(255,150,0,0.15);border:1px solid orange;color:orange;padding:5px 10px;border-radius:12px;cursor:pointer;font-size:0.78rem;">🌙 Night</button>
       <!-- Highlight -->
@@ -891,6 +977,47 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <button onclick="setHL('green')" style="background:#00c853;border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;" title="Green"></button>
       <button onclick="setHL('red')" style="background:#e53935;border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;" title="Red"></button>
       <button onclick="setHL('')" style="background:var(--btn-bg);border:1px solid var(--border);color:var(--sub);padding:4px 8px;border-radius:8px;cursor:pointer;font-size:0.72rem;">Clear</button>
+      <!-- Voice Read button -->
+      <button id="bVoiceBtn" onclick="toggleBibleVoicePanel()" style="background:rgba(100,80,200,0.2);border:1px solid rgba(150,100,255,0.5);color:#ce93d8;padding:5px 10px;border-radius:12px;cursor:pointer;font-size:0.78rem;margin-left:auto;">🔊 Voice</button>
+      <!-- Voice Note button -->
+      <button id="bVNoteBtn" onclick="toggleBibleVNotePanel()" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);color:#ffaa88;padding:5px 10px;border-radius:12px;cursor:pointer;font-size:0.78rem;">🎤 Note</button>
+      <!-- Text Notes button -->
+      <button id="bNotesBtn" onclick="toggleBibleNotesPanel()" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.35);color:var(--gold);padding:5px 10px;border-radius:12px;cursor:pointer;font-size:0.78rem;">📝 Notes</button>
+    </div>
+
+    <!-- Voice Reader Panel (collapsible) -->
+    <div id="bVoicePanel" style="display:none;background:rgba(60,40,120,0.3);border:1px solid rgba(150,100,255,0.4);border-radius:12px;padding:12px;margin-bottom:10px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <span style="color:#ce93d8;font-size:0.85rem;font-weight:700;">🔊 Voice Reader</span>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <label style="color:var(--sub);font-size:0.72rem;">Speed:</label>
+          <select id="bVoiceSpeed" style="background:var(--deep);border:1px solid var(--border);color:var(--text);padding:3px 6px;border-radius:6px;font-size:0.72rem;outline:none;">
+            <option value="0.7">Slow</option>
+            <option value="1" selected>Normal</option>
+            <option value="1.3">Fast</option>
+            <option value="1.6">Faster</option>
+          </select>
+          <label style="color:var(--sub);font-size:0.72rem;">Lang:</label>
+          <select id="bVoiceLang" style="background:var(--deep);border:1px solid var(--border);color:var(--text);padding:3px 6px;border-radius:6px;font-size:0.72rem;outline:none;">
+            <option value="te-IN">Telugu</option>
+            <option value="en-US">English</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:flex;gap:7px;">
+        <button onclick="bibleVoiceRead()" style="flex:1;background:linear-gradient(135deg,#4a007a,#9c27b0);color:#fff;border:none;padding:9px;border-radius:10px;cursor:pointer;font-weight:700;font-size:0.82rem;">▶ Read Chapter</button>
+        <button onclick="bibleVoiceStop()" style="background:rgba(192,57,43,0.3);border:1px solid var(--red);color:#ffaa88;padding:9px 14px;border-radius:10px;cursor:pointer;font-size:0.82rem;">⏹ Stop</button>
+      </div>
+    </div>
+
+    <!-- Voice Note Panel (collapsible) -->
+    <div id="bVNotePanel" style="display:none;background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.3);border-radius:12px;padding:12px;margin-bottom:10px;">
+      <div style="color:#ffaa88;font-size:0.85rem;font-weight:700;margin-bottom:8px;">🎤 Voice Note</div>
+      <div style="display:flex;gap:7px;align-items:center;">
+        <button id="bVNRecBtn" onclick="bVNoteRecord()" style="background:var(--red);color:#fff;border:none;padding:9px 16px;border-radius:10px;cursor:pointer;font-weight:700;font-size:0.82rem;">🎤 Record</button>
+        <span id="bVNStatus" style="color:var(--sub);font-size:0.75rem;">Press to record your note</span>
+      </div>
+      <div id="bVNList" style="margin-top:8px;display:flex;flex-direction:column;gap:5px;max-height:120px;overflow-y:auto;"></div>
     </div>
 
     <!-- Parallel Bible -->
@@ -899,117 +1026,18 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div class="par-col"><h5>KJV ENGLISH 🇬🇧</h5><div id="enCol"></div></div>
     </div>
 
-    <!-- Notes -->
-    <div class="notes-panel">
-      <h4>📝 Notes — <span id="notesRef" style="color:var(--sub);font-size:0.8rem;"></span></h4>
-      <textarea id="bibleNotes" placeholder="ఇక్కడ notes రాయండి..."></textarea>
-      <button class="notes-save-btn" onclick="saveNote()">💾 Save Note</button>
+    <!-- Notes Panel (collapsible) - id kept same for saveNote() compatibility -->
+    <div id="bNotesPanel" style="display:none;background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.3);border-radius:12px;padding:12px;margin-bottom:10px;">
+      <div style="color:var(--gold);font-size:0.85rem;font-weight:700;margin-bottom:8px;">📝 Notes — <span id="notesRef" style="color:var(--sub);font-size:0.78rem;"></span></div>
+      <textarea id="bibleNotes" placeholder="ఇక్కడ notes రాయండి..." style="width:100%;min-height:80px;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;font-size:0.88rem;font-family:inherit;outline:none;resize:vertical;"></textarea>
+      <button onclick="saveNote()" style="width:100%;margin-top:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;padding:10px;border-radius:10px;cursor:pointer;font-weight:700;font-size:0.85rem;">💾 Save Note</button>
     </div>
 
-    <!-- AI Voice Reader -->
-    <div style="background:linear-gradient(135deg,#0a0020,#150030);border:1px solid rgba(156,39,176,0.4);border-radius:16px;padding:14px;margin-top:10px;">
 
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-        <span style="color:#ce93d8;font-size:0.88rem;font-weight:700;">🔊 Voice Reader</span>
-        <span id="vrStatus" style="color:var(--sub);font-size:0.68rem;max-width:160px;text-align:right;"></span>
-      </div>
-
-      <!-- Telugu Voice — Male / Female split -->
-      <div style="margin-bottom:10px;">
-        <div style="color:#ce93d8;font-size:0.7rem;margin-bottom:5px;font-weight:600;">🇮🇳 Telugu Voice</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-          <div>
-            <div style="color:rgba(100,180,255,0.8);font-size:0.65rem;margin-bottom:3px;">👨 Male</div>
-            <select id="vrTeMale" style="width:100%;background:#0d001a;border:1px solid rgba(100,150,255,0.35);color:#b0c4ff;padding:6px 5px;border-radius:8px;font-size:0.7rem;outline:none;">
-              <option>Loading...</option>
-            </select>
-          </div>
-          <div>
-            <div style="color:rgba(255,150,200,0.8);font-size:0.65rem;margin-bottom:3px;">👩 Female</div>
-            <select id="vrTeFemale" style="width:100%;background:#0d001a;border:1px solid rgba(255,100,180,0.35);color:#ffb3d9;padding:6px 5px;border-radius:8px;font-size:0.7rem;outline:none;">
-              <option>Loading...</option>
-            </select>
-          </div>
-        </div>
-        <!-- Active gender toggle -->
-        <div style="display:flex;gap:6px;margin-top:7px;">
-          <button id="vrTeGenderM" onclick="vrSetTeGender('male')" style="flex:1;padding:6px;border-radius:8px;border:1.5px solid rgba(100,150,255,0.5);background:rgba(100,150,255,0.2);color:#b0c4ff;font-size:0.72rem;cursor:pointer;font-weight:600;">👨 Male use చేయి</button>
-          <button id="vrTeGenderF" onclick="vrSetTeGender('female')" style="flex:1;padding:6px;border-radius:8px;border:1.5px solid rgba(255,100,180,0.5);background:rgba(255,100,180,0.15);color:#ffb3d9;font-size:0.72rem;cursor:pointer;font-weight:600;">👩 Female use చేయి</button>
-        </div>
-      </div>
-
-      <!-- English Voice — Male / Female split -->
-      <div style="margin-bottom:10px;">
-        <div style="color:#ce93d8;font-size:0.7rem;margin-bottom:5px;font-weight:600;">🇬🇧 English Voice</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-          <div>
-            <div style="color:rgba(100,180,255,0.8);font-size:0.65rem;margin-bottom:3px;">👨 Male</div>
-            <select id="vrEnMale" style="width:100%;background:#0d001a;border:1px solid rgba(100,150,255,0.35);color:#b0c4ff;padding:6px 5px;border-radius:8px;font-size:0.7rem;outline:none;">
-              <option>Loading...</option>
-            </select>
-          </div>
-          <div>
-            <div style="color:rgba(255,150,200,0.8);font-size:0.65rem;margin-bottom:3px;">👩 Female</div>
-            <select id="vrEnFemale" style="width:100%;background:#0d001a;border:1px solid rgba(255,100,180,0.35);color:#ffb3d9;padding:6px 5px;border-radius:8px;font-size:0.7rem;outline:none;">
-              <option>Loading...</option>
-            </select>
-          </div>
-        </div>
-        <div style="display:flex;gap:6px;margin-top:7px;">
-          <button id="vrEnGenderM" onclick="vrSetEnGender('male')" style="flex:1;padding:6px;border-radius:8px;border:1.5px solid rgba(100,150,255,0.5);background:rgba(100,150,255,0.2);color:#b0c4ff;font-size:0.72rem;cursor:pointer;font-weight:600;">👨 Male use చేయి</button>
-          <button id="vrEnGenderF" onclick="vrSetEnGender('female')" style="flex:1;padding:6px;border-radius:8px;border:1.5px solid rgba(255,100,180,0.5);background:rgba(255,100,180,0.15);color:#ffb3d9;font-size:0.72rem;cursor:pointer;font-weight:600;">👩 Female use చేయి</button>
-        </div>
-      </div>
-
-      <!-- Speed + Pitch -->
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="color:var(--sub);font-size:0.7rem;">⚡ Speed</span>
-        <select id="vrSpeed" style="background:#0d001a;border:1px solid rgba(156,39,176,0.3);color:var(--text);padding:5px 7px;border-radius:7px;font-size:0.7rem;outline:none;">
-          <option value="0.6">0.6x Very Slow</option>
-          <option value="0.8">0.8x Slow</option>
-          <option value="1" selected>1x Normal</option>
-          <option value="1.2">1.2x Fast</option>
-          <option value="1.5">1.5x Faster</option>
-          <option value="1.8">1.8x Very Fast</option>
-        </select>
-        <span style="color:var(--sub);font-size:0.7rem;">🎵 Pitch</span>
-        <select id="vrPitch" style="background:#0d001a;border:1px solid rgba(156,39,176,0.3);color:var(--text);padding:5px 7px;border-radius:7px;font-size:0.7rem;outline:none;">
-          <option value="0.7">Low (Male feel)</option>
-          <option value="1" selected>Normal</option>
-          <option value="1.3">High (Female feel)</option>
-        </select>
-      </div>
-
-      <!-- Play Buttons -->
-      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px;">
-        <button id="vrPlayBtn" onclick="vrPlay()" style="flex:1;background:linear-gradient(135deg,#4a0080,#9c27b0);color:#fff;border:none;padding:10px 10px;border-radius:18px;cursor:pointer;font-size:0.8rem;font-weight:700;min-width:80px;">▶ Telugu</button>
-        <button id="vrEngBtn" onclick="vrPlayEn()" style="flex:1;background:linear-gradient(135deg,#1a3a6b,#2980b9);color:#fff;border:none;padding:10px 10px;border-radius:18px;cursor:pointer;font-size:0.8rem;font-weight:700;min-width:80px;">▶ English</button>
-        <button id="vrStopBtn" onclick="vrStop()" style="display:none;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:10px 10px;border-radius:18px;cursor:pointer;font-size:0.8rem;font-weight:700;">⏹ Stop</button>
-        <button onclick="vrPreviewTe()" style="background:rgba(156,39,176,0.2);border:1px solid rgba(156,39,176,0.4);color:#ce93d8;padding:9px 10px;border-radius:18px;cursor:pointer;font-size:0.75rem;">🔈 Test</button>
-      </div>
-
-      <!-- Progress bar -->
-      <div id="vrProgressWrap" style="display:none;">
-        <div style="background:rgba(255,255,255,0.08);border-radius:10px;height:5px;overflow:hidden;">
-          <div id="vrProgressBar" style="height:100%;background:linear-gradient(90deg,#9c27b0,#f5c518);width:0%;transition:width 0.4s;border-radius:10px;"></div>
-        </div>
-        <div id="vrVerseLabel" style="color:#ce93d8;font-size:0.7rem;margin-top:4px;text-align:center;"></div>
-      </div>
-    </div>
-
-    <!-- Sound Recorder -->
-    <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;margin-top:10px;">
-      <h4 style="color:var(--gold);margin-bottom:10px;font-size:0.9rem;">🎙️ Voice Notes</h4>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <button id="recBtn" class="rec-btn idle" onclick="toggleRecording()">🎙️ Record</button>
-        <span id="recStatus" style="color:var(--sub);font-size:0.8rem;"></span>
-      </div>
-      <div id="recordings" style="margin-top:8px;"></div>
-    </div>
 
   </div>
   <div id="bReaderSites" style="display:none">
-    <button class="back-btn" onclick="bBack('home')">← Back</button>
+    <button onclick="bBack('home')" style="background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:6px 14px;border-radius:16px;cursor:pointer;font-size:0.78rem;font-weight:700;margin-bottom:10px;display:inline-block;">← Back</button>
     <p id="bReaderTitle" class="bible-section-title"></p>
     <div id="readerSites" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;"></div>
     <div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:24px;text-align:center;"><div style="font-size:2.5rem;margin-bottom:12px;">📖</div><p style="color:var(--gold);font-size:0.95rem;margin-bottom:8px;">పై buttons press చేయండి</p><p style="color:var(--sub);font-size:0.82rem;">Telugu Bible browser లో open అవుతుంది</p></div>
@@ -1028,8 +1056,8 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <p style="color:#ffaa88;font-size:0.95rem;font-weight:600;">Jesus Christ — దేవుని కుమారుడు</p>
       <div style="display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap;">
         <span style="background:rgba(192,57,43,0.3);border:1px solid rgba(192,57,43,0.6);color:#ffaa88;padding:4px 12px;border-radius:20px;font-size:0.72rem;">లోక రక్షకుడు</span>
-        <span style="background:rgba(245,197,24,0.15);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:4px 12px;border-radius:20px;font-size:0.72rem;">Son of God</span>
-        <span style="background:rgba(39,174,96,0.2);border:1px solid rgba(39,174,96,0.4);color:#7ec8a0;padding:4px 12px;border-radius:20px;font-size:0.72rem;">Saviour of the World</span>
+        <span style="background:rgba(245,197,24,0.15);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:4px 12px;border-radius:20px;font-size:0.72rem;">దేవుని కుమారుడు</span>
+        <span style="background:rgba(39,174,96,0.2);border:1px solid rgba(39,174,96,0.4);color:#7ec8a0;padding:4px 12px;border-radius:20px;font-size:0.72rem;">మార్గం • సత్యం • జీవం</span>
       </div>
     </div>
   </div>
@@ -1068,7 +1096,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
         <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#7ec8a0;">జ్ఞానుల సందర్శన:</b> తూర్పు దేశపు జ్ఞానులు నక్షత్రమును అనుసరించి వచ్చి <b style="color:#ffaa88;">బంగారం, సాంబ్రాణి, గోపరసం</b> కానుకలు సమర్పించారు.</span>
       </li>
       <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(192,57,43,0.06);border-radius:10px;border-left:3px solid var(--red);">
-        <span style="color:#ffaa88;font-size:0.9rem;flex-shrink:0;">🔮</span>
+        <span style="color:#c0392b;font-size:0.9rem;flex-shrink:0;">🔮</span>
         <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ffaa88;">ప్రవచన నెరవేర్పు:</b> యెషయా 7:14 — కన్య గర్భం ధరించి కుమారుని కనును — <i style="color:var(--gold);">"ఇమ్మానుయేలు"</i> = దేవుడు మనతో ఉన్నాడు</span>
       </li>
     </ul>
@@ -1090,7 +1118,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
         <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#7ec8a0;">బాప్తిస్మం (వయసు 30):</b> యోర్దాను నదిలో యోహాను చేత బాప్తిస్మం పొందాడు. పరిశుద్ధాత్మ పావురంలా దిగివచ్చింది. పరలోకం నుండి — <i style="color:#ffaa88;">"ఇతడు నా ప్రియ కుమారుడు, ఇతనియందు నేను సంతోషించుచున్నాను"</i></span>
       </li>
       <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(192,57,43,0.07);border-radius:10px;border-left:3px solid var(--red);">
-        <span style="color:#ffaa88;font-size:0.9rem;flex-shrink:0;">🌵</span>
+        <span style="color:#c0392b;font-size:0.9rem;flex-shrink:0;">🌵</span>
         <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ffaa88;">అరణ్య శోధన (40 రోజులు):</b> సాతాను 3 విధాలుగా శోధించాడు:<br>
           <span style="color:var(--sub);font-size:0.8rem;">① రాళ్ళను రొట్టెలుగా చేయి → <b style="color:#7ec8a0;">"రొట్టెవలన మాత్రమే కాదు"</b><br>
           ② దేవాలయం నుండి దూకు → <b style="color:#7ec8a0;">"నీ దేవుణ్ణి శోధించకు"</b><br>
@@ -1233,19 +1261,19 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     </div>
     <div style="display:flex;flex-direction:column;gap:8px;">
       <div style="padding:12px;background:rgba(180,100,255,0.08);border-radius:12px;border-left:3px solid #ce93d8;">
-        <p style="color:#ffaa88;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"నేనే మార్గమును, సత్యమును, జీవమును అయి యున్నాను"</p>
+        <p style="color:#c0392b;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"నేనే మార్గమును, సత్యమును, జీవమును అయి యున్నాను"</p>
         <span style="color:var(--sub);font-size:0.72rem;">📖 యోహాను 14:6</span>
       </div>
       <div style="padding:12px;background:rgba(180,100,255,0.08);border-radius:12px;border-left:3px solid #ce93d8;">
-        <p style="color:#ffaa88;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"అలసిపోయి భారము మోయువారందరూ నా యొద్దకు రండి — నేను మీకు విశ్రాంతి ఇచ్చెదను"</p>
+        <p style="color:#c0392b;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"అలసిపోయి భారము మోయువారందరూ నా యొద్దకు రండి — నేను మీకు విశ్రాంతి ఇచ్చెదను"</p>
         <span style="color:var(--sub);font-size:0.72rem;">📖 మత్తయి 11:28</span>
       </div>
       <div style="padding:12px;background:rgba(180,100,255,0.08);border-radius:12px;border-left:3px solid #ce93d8;">
-        <p style="color:#ffaa88;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"దేవుడు లోకమును ఎంతో ప్రేమించెను — తన అద్వితీయ కుమారుని అనుగ్రహించెను"</p>
+        <p style="color:#c0392b;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"దేవుడు లోకమును ఎంతో ప్రేమించెను — తన అద్వితీయ కుమారుని అనుగ్రహించెను"</p>
         <span style="color:var(--sub);font-size:0.72rem;">📖 యోహాను 3:16</span>
       </div>
       <div style="padding:12px;background:rgba(180,100,255,0.08);border-radius:12px;border-left:3px solid #ce93d8;">
-        <p style="color:#ffaa88;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"నేను వచ్చినది జీవము కలిగించుటకును — సమృద్ధిగా కలిగించుటకును వచ్చితిని"</p>
+        <p style="color:#c0392b;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"నేను వచ్చినది జీవము కలిగించుటకును — సమృద్ధిగా కలిగించుటకును వచ్చితిని"</p>
         <span style="color:var(--sub);font-size:0.72rem;">📖 యోహాను 10:10</span>
       </div>
     </div>
@@ -1566,7 +1594,6 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 
   <!-- Game Area -->
   <div id="mgArea" style="display:none;">
-    <button onclick="closeMindGame()" class="back-btn">← Back</button>
     <div id="mgContent"></div>
   </div>
   <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు</div>
@@ -1592,7 +1619,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(66,165,245,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">✨</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Google Gemini</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">Google Gemini</div>
           <div style="color:var(--sub);font-size:0.72rem;">Telugu support • రోజు unlimited free</div>
         </div>
         <div style="color:#42a5f5;font-size:0.75rem;">Open →</div>
@@ -1603,7 +1630,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(76,175,80,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">🤖</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">ChatGPT</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">ChatGPT</div>
           <div style="color:var(--sub);font-size:0.72rem;">Most popular • Free tier available</div>
         </div>
         <div style="color:#4caf50;font-size:0.75rem;">Open →</div>
@@ -1614,7 +1641,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(255,140,0,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">🟠</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Claude AI</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">Claude AI</div>
           <div style="color:var(--sub);font-size:0.72rem;">Best quality answers • Free</div>
         </div>
         <div style="color:#ff8c00;font-size:0.75rem;">Open →</div>
@@ -1625,7 +1652,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(0,120,212,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">🔷</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Microsoft Copilot</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">Microsoft Copilot</div>
           <div style="color:var(--sub);font-size:0.72rem;">Web search + AI • Free unlimited</div>
         </div>
         <div style="color:#0078d4;font-size:0.75rem;">Open →</div>
@@ -1636,7 +1663,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(156,39,176,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">⚡</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Grok (xAI)</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">Grok (xAI)</div>
           <div style="color:var(--sub);font-size:0.72rem;">Latest news • X account తో free</div>
         </div>
         <div style="color:#9c27b0;font-size:0.75rem;">Open →</div>
@@ -1647,7 +1674,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(0,188,212,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">🔍</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Perplexity AI</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">Perplexity AI</div>
           <div style="color:var(--sub);font-size:0.72rem;">Web search AI • Sources చూపిస్తుంది</div>
         </div>
         <div style="color:#00bcd4;font-size:0.75rem;">Open →</div>
@@ -1658,7 +1685,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(24,119,242,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">🌐</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">Meta AI</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">Meta AI</div>
           <div style="color:var(--sub);font-size:0.72rem;">WhatsApp లో కూడా • Free</div>
         </div>
         <div style="color:#1877f2;font-size:0.75rem;">Open →</div>
@@ -1669,7 +1696,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(102,187,106,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">🧠</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">DeepSeek</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">DeepSeek</div>
           <div style="color:var(--sub);font-size:0.72rem;">Best reasoning • Free unlimited</div>
         </div>
         <div style="color:#66bb6a;font-size:0.75rem;">Open →</div>
@@ -1680,7 +1707,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(255,196,0,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">🤗</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">HuggingFace Chat</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">HuggingFace Chat</div>
           <div style="color:var(--sub);font-size:0.72rem;">Multiple models • 100% Free</div>
         </div>
         <div style="color:#ffc400;font-size:0.75rem;">Open →</div>
@@ -1691,7 +1718,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="background:var(--card);border:1px solid rgba(192,57,43,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
         <div style="font-size:1.8rem;width:40px;text-align:center;">🔎</div>
         <div style="flex:1;">
-          <div style="color:#fff;font-weight:700;font-size:0.92rem;">You.com</div>
+          <div style="color:var(--text);font-weight:700;font-size:0.92rem;">You.com</div>
           <div style="color:var(--sub);font-size:0.72rem;">Search + AI • Free no login</div>
         </div>
         <div style="color:var(--red2);font-size:0.75rem;">Open →</div>
@@ -1785,6 +1812,13 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 
 <!-- ADD -->
 <div id="addPage" class="page">
+  <!-- Bulk Import Section -->
+  <div style="background:rgba(0,150,50,0.08);border:1px solid rgba(0,150,50,0.3);border-radius:14px;padding:14px;margin-bottom:14px;">
+    <div style="color:#7ec8a0;font-weight:700;font-size:0.88rem;margin-bottom:6px;">📥 Bulk Import Songs</div>
+    <div style="color:var(--sub);font-size:0.72rem;margin-bottom:8px;">ఒక్కో line లో: <b style="color:var(--gold);">Song Name | YouTube-ID లేదా Link</b> అని రాయి</div>
+    <textarea id="bulkInput" placeholder="Neevena Santhosha Ganamu | 7bs28pPaPlk&#10;Uhakandani Prema | mX0Qj4QBpiU&#10;..." style="width:100%;min-height:100px;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;font-size:0.82rem;font-family:inherit;outline:none;resize:vertical;"></textarea>
+    <button onclick="bulkImport()" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#006633,#27ae60);color:#fff;border:none;padding:10px;border-radius:10px;cursor:pointer;font-weight:700;font-size:0.85rem;">📥 Import All Songs</button>
+  </div>
   <div style="background:var(--card);border:1px solid var(--rborder);border-radius:18px;padding:20px;">
     <h2 id="formH" style="color:var(--gold);margin-bottom:18px;font-size:1.1rem;">➕ కొత్త పాట Add చేయి</h2>
     <div style="margin-bottom:15px;"><label style="display:block;font-size:0.8rem;color:var(--sub);margin-bottom:7px;">పాట పేరు *</label><input id="fT" placeholder="Ex: కృపామయుడా" style="width:100%;background:var(--deep);border:1px solid var(--border);border-radius:11px;color:var(--text);padding:11px 13px;font-size:0.95rem;font-family:inherit;outline:none;"></div>
@@ -2017,7 +2051,8 @@ function renderList(){
   if(!fl.length){el.innerHTML='<div class="empty"><div class="eico">'+(q?'🔍':'🎵')+'</div><p>'+(q?'కనిపించలేదు':'Songs add చేయి ➕')+'</p></div>';return;}
   el.innerHTML=fl.map(function(s){
     var ri=S.indexOf(s);var id=ytId(s.y||'');var th=id?thumb(id):null;var cur=ri===C;
-    return'<div class="song-item'+(cur?' cur':'')+'" onclick="play('+ri+')">'+(th?'<img class="sthumb" src="'+th+'" loading="lazy">':'<div class="sthumb-ph">🎵</div>')+'<div class="sinfo"><h3>'+s.t+(cur?'<span class="playing-dot"></span>':'')+'</h3><small>'+(F.includes(s.id)?'❤️ ':'')+(s.l?'Lyrics ✓':'No lyrics')+'</small></div><div class="sbtns" onclick="event.stopPropagation()"><button class="ibtn" onclick="editS('+ri+')">✏️</button><button class="ibtn" onclick="delS('+ri+')">🗑️</button></div></div>';
+    var movebtns=(tab==='all'?'<button class="ibtn" onclick="moveSong('+ri+',-1)" title="Move Up">⬆️</button><button class="ibtn" onclick="moveSong('+ri+',1)" title="Move Down">⬇️</button>':'');
+    return'<div class="song-item'+(cur?' cur':'')+'" onclick="play('+ri+')">'+(th?'<img class="sthumb" src="'+th+'" loading="lazy">':'<div class="sthumb-ph">🎵</div>')+'<div class="sinfo"><h3>'+s.t+(cur?'<span class="playing-dot"></span>':'')+'</h3><small>'+(F.includes(s.id)?'❤️ ':'')+(s.l?'Lyrics ✓':'No lyrics')+'</small></div><div class="sbtns" onclick="event.stopPropagation()">'+movebtns+'<button class="ibtn" onclick="editS('+ri+')">✏️</button><button class="ibtn" onclick="delS('+ri+')">🗑️</button></div></div>';
   }).join('');
 }
 
@@ -4403,7 +4438,22 @@ function openMindGame(game){
   var pg=document.getElementById('mindGamesPage');
   if(pg)pg.scrollTop=0;
 }
+// Global game timer reference for cleanup
+var _mgActiveTimer=null;
+var _mgColorTimer=null;
+
 function closeMindGame(){
+  // Clear ALL possible timers
+  if(_mgActiveTimer){clearInterval(_mgActiveTimer);_mgActiveTimer=null;}
+  if(_mgColorTimer){clearInterval(_mgColorTimer);_mgColorTimer=null;}
+  // Clear speech if typing game
+  if(window.tyCheck)window.tyCheck=null;
+  // Stop any speech synthesis
+  if('speechSynthesis' in window)window.speechSynthesis.cancel();
+  // Clear content
+  var c=document.getElementById('mgContent');
+  if(c)c.innerHTML='';
+  // Show grid
   document.getElementById('mgArea').style.display='none';
   var grid=document.getElementById('mgGrid');
   var hdr=document.getElementById('mgHeader');
@@ -4418,7 +4468,7 @@ function initMemoryGame(c){
   var emojis=['✝','🙏','📖','✨','🕊','⭐','🎵','💫'];
   var cards=emojis.concat(emojis).sort(function(){return Math.random()-0.5;});
   var flipped=[],matched=0,moves=0;
-  c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">🃏 Memory Cards</h3>'
+  c.innerHTML='<div style=\"display:flex;align-items:center;margin-bottom:10px;\"><button onclick=\"closeMindGame()\" style=\"background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:14px;cursor:pointer;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-right:8px;\">← Back</button><h3 style="color:var(--gold);margin-bottom:0;">🃏 Memory Cards</h3></div>'
     +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Matching pairs కనుగొనండి! Moves: <b id="memMoves" style="color:var(--gold);">0</b> | Pairs: <b id="memPairs" style="color:var(--gold);">0</b>/8</p>'
     +'<div id="memGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;"></div>';
   var grid=document.getElementById('memGrid');
@@ -4457,7 +4507,7 @@ function initNumberGame(c){
   function newRound(len){
     seq=[];for(var i=0;i<len;i++)seq.push(Math.floor(Math.random()*9)+1);
     input=[];
-    c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">🔢 Number Memory</h3>'
+    c.innerHTML='<div style=\"display:flex;align-items:center;margin-bottom:10px;\"><button onclick=\"closeMindGame()\" style=\"background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:14px;cursor:pointer;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-right:8px;\">← Back</button><h3 style="color:var(--gold);margin-bottom:0;">🔢 Number Memory</h3></div>'
       +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:12px;">Sequence చూసి గుర్తు పెట్టుకో! Level: <b style="color:var(--gold);">'+len+'</b></p>'
       +'<div id="numSeq" style="font-size:2rem;text-align:center;letter-spacing:14px;color:var(--gold);font-weight:700;background:var(--card);padding:20px;border-radius:14px;margin-bottom:12px;">'+seq.join(' ')+'</div>'
       +'<button id="numHideBtn" style="width:100%;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;margin-bottom:10px;">✅ గుర్తు పెట్టుకున్నాను — Hide</button>'
@@ -4524,7 +4574,7 @@ function initWordGame(c){
     var w=words[wi];
     var scrambled=w.w.split('').sort(function(){return Math.random()-0.5;}).join('');
     while(scrambled===w.w) scrambled=w.w.split('').sort(function(){return Math.random()-0.5;}).join('');
-    c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">📝 Word Unscramble</h3>'
+    c.innerHTML='<div style=\"display:flex;align-items:center;margin-bottom:10px;\"><button onclick=\"closeMindGame()\" style=\"background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:14px;cursor:pointer;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-right:8px;\">← Back</button><h3 style="color:var(--gold);margin-bottom:0;">📝 Word Unscramble</h3></div>'
       +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Hint: '+w.h+' | '+(wi+1)+'/'+words.length+' Score: <b style="color:var(--gold);">'+score+'</b></p>'
       +'<div style="font-size:2rem;text-align:center;letter-spacing:10px;color:var(--text);background:var(--card);padding:18px;border-radius:14px;margin-bottom:12px;font-weight:700;">'+scrambled+'</div>'
       +'<input id="wuInput" type="text" placeholder="Word type చేయి..." style="width:100%;padding:13px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:1rem;outline:none;margin-bottom:10px;text-transform:uppercase;font-family:inherit;">'
@@ -4602,7 +4652,7 @@ function initMathGame(c){
     } else {
       // First render
       gameStarted=true;
-      c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">➗ Quick Math</h3>'
+      c.innerHTML='<div style=\"display:flex;align-items:center;margin-bottom:10px;\"><button onclick=\"closeMindGame()\" style=\"background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:14px;cursor:pointer;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-right:8px;\">← Back</button><h3 style="color:var(--gold);margin-bottom:0;">➗ Quick Math</h3></div>'
         +'<div id="mathBar" style="display:flex;justify-content:space-between;margin-bottom:12px;align-items:center;">'
         +'<span style="color:var(--sub);">Q '+(q+1)+'/'+total+'</span>'
         +'<span style="color:var(--gold);font-weight:700;">Score: '+score+'</span>'
@@ -4625,7 +4675,7 @@ function initMathGame(c){
         og.appendChild(btn);
       });
     }
-    clearInterval(timer);
+    clearInterval(timer);clearInterval(_mgActiveTimer);
     timer=setInterval(function(){
       t--;
       var td=document.getElementById('mathTimer');if(td)td.textContent=t;
@@ -4686,7 +4736,7 @@ function initSlidingPuzzle(c){
     });
   }
   shuffle();moves=0;
-  c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">🧩 15-Puzzle</h3>'
+  c.innerHTML='<div style=\"display:flex;align-items:center;margin-bottom:10px;\"><button onclick=\"closeMindGame()\" style=\"background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:14px;cursor:pointer;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-right:8px;\">← Back</button><h3 style="color:var(--gold);margin-bottom:0;">🧩 15-Puzzle</h3></div>'
     +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Numbers 1-15 order లో పెట్టు! Moves: <b id="pzMoves" style="color:var(--gold);">0</b></p>'
     +'<div id="pzGrid" style="display:grid;grid-template-columns:repeat(4,70px);gap:6px;margin:0 auto 12px;width:fit-content;"></div>'
     +'<button onclick="initSlidingPuzzle(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:12px;cursor:pointer;font-weight:700;">🔄 New Game</button>';
@@ -4728,7 +4778,7 @@ function initTypingGame(c){
   ];
   var cur=verses[Math.floor(Math.random()*verses.length)];
   var startTime=null,done=false;
-  c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">⌨️ Typing Speed</h3>'
+  c.innerHTML='<div style="display:flex;align-items:center;margin-bottom:10px;"><button onclick="closeMindGame()" style="background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:14px;cursor:pointer;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-right:8px;">← Back</button><h3 style="color:var(--gold);margin-bottom:0;">⌨️ Typing Speed</h3></div>'
     +'<div style="background:rgba(245,197,24,0.07);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:6px 12px;margin-bottom:8px;font-size:0.72rem;color:var(--sub);">💡 Exactly type చేయి — case sensitive కాదు</div>'
     +'<div id="tyTarget" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;font-size:0.88rem;line-height:1.9;color:var(--gold);"></div>'
     +'<input id="tyInput" type="text" placeholder="ఇక్కడ type చేయి..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:100%;padding:13px;background:var(--deep);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-size:0.9rem;outline:none;margin-bottom:8px;">'
@@ -4786,7 +4836,7 @@ function initColorStroop(c){
   var colorNames=['RED','BLUE','GREEN','YELLOW','PURPLE'];
   var colorVals=['#e53935','#1e88e5','#43a047','#fdd835','#9c27b0'];
   var score=0,q=0,total=15,timer;
-  c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">🎨 Color Stroop</h3>'
+  c.innerHTML='<div style=\"display:flex;align-items:center;margin-bottom:10px;\"><button onclick=\"closeMindGame()\" style=\"background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:14px;cursor:pointer;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-right:8px;\">← Back</button><h3 style="color:var(--gold);margin-bottom:0;">🎨 Color Stroop</h3></div>'
     +'<div id="csBar" style="color:var(--sub);font-size:0.78rem;margin-bottom:8px;">Q 1/'+total+' | Score: 0 | Time: <b id="csTimer" style="color:var(--red);">6</b></div>'
     +'<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;margin-bottom:12px;">'
     +'<div id="csWord" style="font-size:2.5rem;font-weight:900;letter-spacing:3px;margin-bottom:8px;"> </div>'
@@ -4826,7 +4876,7 @@ function initColorStroop(c){
       };
       csBtns.appendChild(btn);
     });
-    clearInterval(timer);
+    clearInterval(timer);clearInterval(_mgColorTimer);
     timer=setInterval(function(){
       t--;
       var te=document.getElementById('csTimer');if(te)te.textContent=t;
@@ -4860,7 +4910,7 @@ function initVerseComplete(c){
       return;
     }
     var v=verses[vi];
-    c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">✝️ Verse Complete</h3>'
+    c.innerHTML='<div style=\"display:flex;align-items:center;margin-bottom:10px;\"><button onclick=\"closeMindGame()\" style=\"background:linear-gradient(135deg,#1a0505,#2a0808);border:1.5px solid var(--red);color:var(--gold);padding:5px 12px;border-radius:14px;cursor:pointer;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-right:8px;\">← Back</button><h3 style="color:var(--gold);margin-bottom:0;">✝️ Verse Complete</h3></div>'
       +'<p style="color:var(--sub);font-size:0.75rem;margin-bottom:10px;">'+(vi+1)+'/'+verses.length+' | Score: '+score+'</p>'
       +'<div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:16px;margin-bottom:12px;">'
       +'<div style="color:rgba(180,100,255,0.8);font-size:0.72rem;margin-bottom:8px;">📖 '+v.ref+'</div>'
@@ -4905,6 +4955,7 @@ function playMovie(videoId, title){
   if(!player||!frame)return;
   _movieMuted=false;
   _movieBright=0;
+  var vv=document.getElementById('volVal');if(vv){vv.textContent='100%';vv.style.color='#7ec8a0';}
   // Reset controls
   var mb=document.getElementById('muteBtn');
   if(mb){mb.textContent='🔊 Sound ON';mb.style.background='rgba(100,200,100,0.12)';mb.style.borderColor='rgba(100,200,100,0.4)';mb.style.color='#7ec8a0';}
@@ -4958,6 +5009,26 @@ function movieFullscreen(){
     }
   }
   toast('📱 Rotate phone for better view!');
+}
+
+function movieVol(delta){
+  var fr=document.getElementById('movieFrame');
+  var vv=document.getElementById('volVal');
+  if(!fr||!fr.src)return;
+  // Use postMessage to control YouTube iframe volume
+  var curVol=parseInt((vv?vv.textContent:'100'))||100;
+  curVol=Math.max(0,Math.min(100,curVol+delta));
+  if(vv)vv.textContent=curVol+'%';
+  try{
+    fr.contentWindow.postMessage(JSON.stringify({event:'command',func:'setVolume',args:[curVol]}),'*');
+  }catch(e){}
+  // Also reload with volume param if needed
+  if(curVol===0){
+    if(vv)vv.style.color='#e88';
+  } else {
+    if(vv)vv.style.color='#7ec8a0';
+  }
+  toast('🔊 Volume: '+curVol+'%');
 }
 
 function movieToggleMute(){
@@ -5031,6 +5102,165 @@ function toggleLyricsPanel(){
   var hidden=lw.style.display==='none';
   lw.style.display=hidden?'block':'none';
   if(btn)btn.textContent=hidden?'📝 Hide Lyrics':'📝 Show Lyrics';
+}
+
+
+// ── Bible Voice Reader (compact) ──
+
+function toggleBibleNotesPanel(){
+  var p=document.getElementById('bNotesPanel');
+  var v=document.getElementById('bVoicePanel');
+  var vn=document.getElementById('bVNotePanel');
+  if(v)v.style.display='none';
+  if(vn)vn.style.display='none';
+  if(p)p.style.display=p.style.display==='none'?'block':'none';
+}
+function toggleBibleVoicePanel(){
+  var p=document.getElementById('bVoicePanel');
+  var n=document.getElementById('bVNotePanel');
+  if(n)n.style.display='none';
+  if(p)p.style.display=p.style.display==='none'?'block':'none';
+}
+function toggleBibleVNotePanel(){
+  var p=document.getElementById('bVNotePanel');
+  var v=document.getElementById('bVoicePanel');
+  if(v)v.style.display='none';
+  if(p)p.style.display=p.style.display==='none'?'block':'none';
+  if(p&&p.style.display==='block')loadBVNotes();
+}
+function bibleVoiceRead(){
+  if('speechSynthesis' in window){
+    window.speechSynthesis.cancel();
+    var te=document.getElementById('teCol');
+    var en=document.getElementById('enCol');
+    var lang=document.getElementById('bVoiceLang')?document.getElementById('bVoiceLang').value:'te-IN';
+    var speed=parseFloat(document.getElementById('bVoiceSpeed')?document.getElementById('bVoiceSpeed').value:1);
+    var text=(lang==='te-IN'?te:en);
+    if(!text)return;
+    var txt=text.innerText||text.textContent||'';
+    if(!txt.trim()){toast('⚠️ Text లేదు');return;}
+    var utt=new SpeechSynthesisUtterance(txt);
+    utt.lang=lang;utt.rate=speed;
+    // Try to find matching voice
+    var voices=window.speechSynthesis.getVoices();
+    var match=voices.find(function(v){return v.lang===lang||v.lang.startsWith(lang.split('-')[0]);});
+    if(match)utt.voice=match;
+    window.speechSynthesis.speak(utt);
+    toast('🔊 Reading started...');
+  } else {
+    toast('⚠️ Voice not supported on this browser');
+  }
+}
+function bibleVoiceStop(){
+  if('speechSynthesis' in window)window.speechSynthesis.cancel();
+  toast('⏹ Stopped');
+}
+
+// ── Bible Voice Notes (compact) ──
+var _bvnRec=null,_bvnChunks=[];
+function loadBVNotes(){
+  var ref=document.getElementById('notesRef')?document.getElementById('notesRef').textContent:'';
+  var key='bvn_'+ref.replace(/\s/g,'_');
+  var list=document.getElementById('bVNList');if(!list)return;
+  try{
+    var saved=JSON.parse(localStorage.getItem(key)||'[]');
+    list.innerHTML=saved.length?saved.map(function(n,i){
+      var d=document.createElement('div');
+      d.style.cssText='display:flex;align-items:center;gap:6px;padding:5px;background:rgba(255,255,255,0.05);border-radius:8px;';
+      var aud=document.createElement('audio');
+      aud.src=n.url;aud.controls=true;aud.style.cssText='flex:1;height:28px;';
+      var dBtn=document.createElement('button');
+      dBtn.textContent='🗑';dBtn.style.cssText='background:none;border:none;color:var(--red);cursor:pointer;font-size:0.9rem;';
+      (function(k,j){dBtn.onclick=function(){deleteBVN(k,j);};})(key,i);
+      d.appendChild(aud);d.appendChild(dBtn);
+      return d.outerHTML;
+    }).join(''):'<div style="color:var(--sub);font-size:0.75rem;">No notes yet</div>';
+  }catch(e){}
+}
+function deleteBVN(key,idx){
+  try{var a=JSON.parse(localStorage.getItem(key)||'[]');a.splice(idx,1);localStorage.setItem(key,JSON.stringify(a));loadBVNotes();}catch(e){}
+}
+function bVNoteRecord(){
+  var btn=document.getElementById('bVNRecBtn');
+  var status=document.getElementById('bVNStatus');
+  if(_bvnRec&&_bvnRec.state==='recording'){
+    _bvnRec.stop();
+    if(btn){btn.textContent='🎤 Record';btn.style.background='var(--red)';}
+    return;
+  }
+  navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+    _bvnChunks=[];
+    _bvnRec=new MediaRecorder(stream);
+    _bvnRec.ondataavailable=function(e){if(e.data.size>0)_bvnChunks.push(e.data);};
+    _bvnRec.onstop=function(){
+      var blob=new Blob(_bvnChunks,{type:'audio/webm'});
+      var url=URL.createObjectURL(blob);
+      var ref=document.getElementById('notesRef')?document.getElementById('notesRef').textContent:'';
+      var key='bvn_'+ref.replace(/\s/g,'_');
+      try{
+        var saved=JSON.parse(localStorage.getItem(key)||'[]');
+        saved.push({url:url,time:new Date().toLocaleTimeString()});
+        localStorage.setItem(key,JSON.stringify(saved));
+      }catch(e){}
+      loadBVNotes();
+      stream.getTracks().forEach(function(t){t.stop();});
+      toast('✅ Voice note saved!');
+    };
+    _bvnRec.start();
+    if(btn){btn.textContent='⏹ Stop';btn.style.background='#e53935';}
+    if(status)status.textContent='Recording...';
+    toast('🎤 Recording started...');
+  }).catch(function(){toast('⚠️ Microphone permission అవసరం');});
+}
+
+
+function moveSong(idx, dir){
+  var newIdx = idx + dir;
+  if(newIdx < 0 || newIdx >= S.length) return;
+  var tmp = S[idx];
+  S[idx] = S[newIdx];
+  S[newIdx] = tmp;
+  // Update current playing index
+  if(C === idx) C = newIdx;
+  else if(C === newIdx) C = idx;
+  localStorage.setItem('ns7', JSON.stringify(S));
+  localStorage.setItem('nc7', C);
+  renderList();
+  // Scroll to moved song
+  setTimeout(function(){
+    var items = document.querySelectorAll('.song-item');
+    if(items[newIdx]) items[newIdx].scrollIntoView({behavior:'smooth', block:'nearest'});
+  }, 50);
+}
+
+
+function bulkImport(){
+  var raw=document.getElementById('bulkInput').value.trim();
+  if(!raw){toast('⚠️ ఏమీ రాయలేదు!');return;}
+  var lines=raw.split('\n').filter(function(l){return l.trim();});
+  var added=0,skipped=0;
+  lines.forEach(function(line){
+    // Support: Name | videoId  OR  Name | full-youtube-url
+    var parts=line.split('|');
+    if(parts.length<2){skipped++;return;}
+    var name=parts[0].trim();
+    var vidRaw=parts[1].trim();
+    if(!name||!vidRaw){skipped++;return;}
+    // Extract video ID
+    var vid=ytId(vidRaw)||vidRaw;
+    var url=vid.startsWith('http')?vid:'https://www.youtube.com/watch?v='+vid;
+    // Avoid duplicates by title
+    var exists=S.some(function(s){return s.t.toLowerCase()===name.toLowerCase();});
+    if(exists){skipped++;return;}
+    var id='s'+(Date.now()+added);
+    S.push({id:id,t:name,y:url,l:''});
+    added++;
+  });
+  localStorage.setItem('ns7',JSON.stringify(S));
+  renderList();
+  document.getElementById('bulkInput').value='';
+  toast('✅ '+added+' songs added! '+skipped+' skipped.');
+  if(added>0)go('list');
 }
 
 // ═══ TOAST ═══
