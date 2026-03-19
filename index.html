@@ -184,7 +184,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 .lyrics-head{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;}
 .lyrics-head span{font-size:0.85rem;color:var(--sub);}
 .tog-btn{background:none;border:1px solid var(--border);color:var(--sub);padding:4px 12px;border-radius:12px;font-size:0.75rem;cursor:pointer;}
-.lyrics-body{padding:4px 16px 16px;max-height:260px;overflow-y:auto;font-size:0.95rem;line-height:2.1;white-space:pre-wrap;color:var(--text);}
+.lyrics-body{padding:4px 16px 16px;font-size:0.95rem;line-height:2.1;white-space:pre-wrap;color:var(--text);}
 .lyrics-body.hidden{display:none;}
 
 /* SONGS LIST */
@@ -398,6 +398,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <button id="nb-bible" onclick="go('bible')">📖 Bible</button>
     <button id="nb-list" onclick="go('list')">🎵 Songs</button>
     <button id="nb-fav" onclick="go('fav')">❤️ Favs</button>
+    <button id="nb-bsearch" onclick="go('bsearch')">📖 Bible Guide</button>
   </div>
 </nav>
 
@@ -417,36 +418,22 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     </div>
   </div>
 
-  <!-- Now playing (hidden by default) -->
-  <div class="now-card" id="nowCard" style="display:none">
-    <div class="video-container">
-      <div class="no-video-ph" id="nvph"><div style="font-size:3rem">🎵</div></div>
-      <iframe id="ytf" style="display:none" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div class="song-meta">
-      <h2 id="nowTitle"></h2>
-      <div class="action-btns">
-        <a class="abtn abtn-yt" id="ytBtn" href="#" target="_blank">▶ YouTube</a>
-        <a class="abtn abtn-dl" id="dlBtn" href="#" target="_blank">⬇ Download</a>
-        <button class="abtn abtn-wa" onclick="shareWA()">💬 Share</button>
-        <button class="abtn abtn-pr" onclick="printLyrics()">🖨️</button>
-        <button class="fav-btn" id="favBtn" onclick="toggleFav()">🤍</button>
-      </div>
-    </div>
-    <div class="lyrics-wrap" id="lyrWrap" style="display:none">
-      <div class="lyrics-head">
-        <span>📝 Lyrics</span>
-        <div style="display:flex;gap:6px;">
-          <button class="tog-btn" onclick="go('list')" style="border-color:var(--red);color:var(--red);">← Songs</button>
-          <button class="tog-btn" id="togBtn" onclick="toggleLyrics()">Hide</button>
-        </div>
-      </div>
-      <div class="lyrics-body" id="lyrBody"></div>
-    </div>
-  </div>
+
 
   <!-- Main Grid — All features -->
   <div style="padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+
+    <!-- Jesus — FIRST CARD -->
+    <div onclick="go('jesus')" style="background:linear-gradient(135deg,#1a0000,#3d0000);border:2px solid rgba(192,57,43,0.6);border-radius:14px;padding:16px;cursor:pointer;text-align:center;grid-column:span 2;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(192,57,43,0.12) 0%,transparent 70%);"></div>
+      <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:14px;">
+        <div style="font-size:2.5rem;filter:drop-shadow(0 0 10px rgba(245,197,24,0.6));">✝</div>
+        <div style="text-align:left;">
+          <div style="color:var(--gold);font-weight:800;font-size:1rem;">యేసు క్రీస్తు</div>
+          <div style="color:#ffaa88;font-size:0.75rem;margin-top:2px;">జననం • పరిచర్య • అద్భుతాలు • సిలువ • పునరుత్థానం</div>
+        </div>
+      </div>
+    </div>
 
     <!-- Songs -->
     <div onclick="go('list')" style="background:linear-gradient(135deg,#1a0505,#3d0a0a);border:1px solid rgba(192,57,43,0.5);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
@@ -476,12 +463,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">10 Free AIs</div>
     </div>
 
-    <!-- Favorites -->
-    <div onclick="go('fav')" style="background:linear-gradient(135deg,#1a0510,#3d0a20);border:1px solid rgba(255,50,100,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
-      <div style="font-size:2rem;margin-bottom:6px;">❤️</div>
-      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Favorites</div>
-      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">నచ్చిన పాటలు</div>
-    </div>
+
 
     <!-- Links -->
     <div onclick="go('links')" style="background:linear-gradient(135deg,#001a1a,#003d3d);border:1px solid rgba(0,200,200,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
@@ -490,6 +472,8 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Christian Resources</div>
     </div>
 
+
+
     <!-- History -->
     <div onclick="go('hist')" style="background:linear-gradient(135deg,#1a1000,#3d2800);border:1px solid rgba(200,150,0,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
       <div style="font-size:2rem;margin-bottom:6px;">🕐</div>
@@ -497,19 +481,9 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">చదివిన Bible</div>
     </div>
 
-    <!-- Add Song -->
-    <div onclick="go('add')" style="background:linear-gradient(135deg,#001a0a,#003d20);border:1px solid rgba(0,200,100,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
-      <div style="font-size:2rem;margin-bottom:6px;">➕</div>
-      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Add Song</div>
-      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">కొత్త పాట add</div>
-    </div>
 
-    <!-- Jesus -->
-    <div onclick="go('jesus')" style="background:linear-gradient(135deg,#1a0808,#3d1010);border:1px solid rgba(192,57,43,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
-      <div style="font-size:2rem;margin-bottom:6px;">✝</div>
-      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Jesus</div>
-      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Life & Teachings</div>
-    </div>
+
+
 
     <!-- Bible Quiz -->
     <div onclick="go('bibleQuiz')" style="background:linear-gradient(135deg,#0a001a,#1a003d);border:1px solid rgba(180,100,255,0.35);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
@@ -525,23 +499,315 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Free Brain Games</div>
     </div>
 
+    <!-- Christian Movies -->
+    <div onclick="go('movies')" style="background:linear-gradient(135deg,#0a0a00,#1a1a00);border:1px solid rgba(255,200,0,0.45);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">🎬</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Christian Movies</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">16 Bible Movies</div>
+    </div>
+
   </div>
 
   <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు • Jesus Songs</div>
 </div>
+
+<!-- CHRISTIAN MOVIES PAGE -->
+<div id="moviesPage" class="page">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#0a0a00,#1e1a00);border:1px solid rgba(255,200,0,0.4);border-radius:18px;padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">
+    <div>
+      <h2 style="color:var(--gold);font-size:1rem;margin-bottom:3px;">🎬 Christian Telugu Movies</h2>
+      <p style="color:var(--sub);font-size:0.7rem;">App లోనే play అవుతుంది • 16 Movies</p>
+    </div>
+    <div style="background:rgba(192,57,43,0.15);border:1px solid var(--red);border-radius:10px;padding:5px 10px;font-size:0.7rem;color:var(--red);">▶ Tap to Play</div>
+  </div>
+
+  <!-- In-app Player -->
+  <div id="moviePlayer" style="display:none;background:#000;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 4px 20px rgba(0,0,0,0.8);">
+    <!-- Video Frame -->
+    <div id="movieWrapper" style="position:relative;width:100%;padding-top:56.25%;background:#000;">
+      <iframe id="movieFrame" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;fullscreen" allowfullscreen></iframe>
+      <!-- Brightness overlay -->
+      <div id="brightOverlay" style="position:absolute;inset:0;background:rgba(0,0,0,0);pointer-events:none;transition:background 0.2s;"></div>
+    </div>
+    <!-- Title bar -->
+    <div style="padding:8px 12px;background:#111;display:flex;align-items:center;gap:8px;">
+      <div id="movieTitle" style="color:var(--gold);font-size:0.82rem;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></div>
+      <button onclick="closeMovie()" style="background:rgba(192,57,43,0.25);border:1px solid var(--red);color:var(--red);padding:4px 10px;border-radius:8px;font-size:0.72rem;cursor:pointer;flex-shrink:0;">✕</button>
+    </div>
+    <!-- Controls bar -->
+    <div style="padding:8px 12px;background:#0a0a0a;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+      <!-- Fullscreen -->
+      <button onclick="movieFullscreen()" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:6px 12px;border-radius:8px;font-size:0.78rem;cursor:pointer;display:flex;align-items:center;gap:4px;">
+        ⛶ Fullscreen
+      </button>
+      <!-- Mute toggle -->
+      <button id="muteBtn" onclick="movieToggleMute()" style="background:rgba(100,200,100,0.12);border:1px solid rgba(100,200,100,0.4);color:#7ec8a0;padding:6px 12px;border-radius:8px;font-size:0.78rem;cursor:pointer;">
+        🔊 Sound ON
+      </button>
+      <!-- Brightness down -->
+      <div style="display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:4px 8px;">
+        <span style="color:var(--sub);font-size:0.72rem;">☀️</span>
+        <button onclick="movieBright(-1)" style="background:none;border:none;color:#fff;font-size:1rem;cursor:pointer;padding:0 4px;line-height:1;">−</button>
+        <span id="brightVal" style="color:var(--gold);font-size:0.72rem;min-width:28px;text-align:center;">100%</span>
+        <button onclick="movieBright(1)" style="background:none;border:none;color:#fff;font-size:1rem;cursor:pointer;padding:0 4px;line-height:1;">+</button>
+      </div>
+      <!-- YouTube link -->
+      <a id="movieYtLink" href="#" target="_blank" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);color:#e88;padding:6px 12px;border-radius:8px;font-size:0.78rem;text-decoration:none;margin-left:auto;">
+        ▶ YouTube
+      </a>
+    </div>
+  </div>
+
+  <!-- Jesus Movies -->
+  <p style="color:var(--gold);font-size:0.85rem;font-weight:700;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid rgba(192,57,43,0.3);">✝️ యేసు సినిమాలు — Jesus Movies (4)</p>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+    <div onclick="playMovie('0WKsWgPbp3s','యేసు సినిమా — Telugu 1')" style="background:var(--card);border:1px solid rgba(192,57,43,0.35);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(192,57,43,0.35)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/0WKsWgPbp3s/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">యేసు సినిమా — Telugu 1</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Jesus Life Story • Telugu</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('2mgUPt2KI08','Jesus Movie — English')" style="background:var(--card);border:1px solid rgba(192,57,43,0.35);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(192,57,43,0.35)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/2mgUPt2KI08/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Jesus Movie — English</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Jesus Life Story • English</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('dgwPSst8KG4','యేసు సినిమా — Telugu 2')" style="background:var(--card);border:1px solid rgba(192,57,43,0.35);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(192,57,43,0.35)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/dgwPSst8KG4/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">యేసు సినిమా — Telugu 2</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Jesus Life Story • Telugu Part 2</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('me8uai5nV9c','యేసు సినిమా — Telugu 3')" style="background:var(--card);border:1px solid rgba(192,57,43,0.35);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(192,57,43,0.35)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/me8uai5nV9c/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">యేసు సినిమా — Telugu 3</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Jesus Life Story • Telugu Part 3</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+  </div>
+
+  <!-- Bible Life Stories -->
+  <p style="color:var(--gold);font-size:0.85rem;font-weight:700;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid rgba(192,57,43,0.3);">📖 Bible జీవిత చరిత్రలు — Life Stories (12)</p>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+    <div onclick="playMovie('zd0NTC5uhNQ','సొలొమోను జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/zd0NTC5uhNQ/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">సొలొమోను జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Solomon Life Story • Wisdom King</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('we04QvLsttM','అబ్రాహాము జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/we04QvLsttM/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">అబ్రాహాము జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Abraham Life Story • Father of Faith</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('we04QvLsttM','యోనా జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/we04QvLsttM/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">యోనా జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Jonah Life Story • The Reluctant Prophet</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('_l_Datk8250','యోసేపు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/_l_Datk8250/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">యోసేపు జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Joseph Life Story • From Prison to Palace</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('KPmwVTpulJg','దావీదు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/KPmwVTpulJg/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">దావీదు జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">David Life Story • Shepherd to King</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('-gd9UlUdw5k','దానియేలు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/-gd9UlUdw5k/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">దానియేలు జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Daniel Life Story • Lions Den</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('go9jv5VU-a8','నోవాహు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/go9jv5VU-a8/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">నోవాహు జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Noah Life Story • The Great Flood</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('PVMPuUXJ1W8','అపొస్తలుడు పౌలు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/PVMPuUXJ1W8/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">అపొస్తలుడు పౌలు జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Apostle Paul Life Story • Road to Damascus</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('Bm5lukXFIHc','ఎస్తేరు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/Bm5lukXFIHc/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">ఎస్తేరు జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Esther Life Story • Brave Queen</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('JnRXTQ7GpyA','యోబు జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/JnRXTQ7GpyA/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">యోబు జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Job Life Story • Patience in Suffering</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('b5zsvqm6rj0','అపొస్తలుల కార్యములు')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/b5zsvqm6rj0/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">అపొస్తలుల కార్యములు</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Acts of the Apostles • Early Church</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+    <div onclick="playMovie('WdmVvIJkT54','యిర్మీయా జీవిత చరిత్ర')" style="background:var(--card);border:1px solid rgba(245,197,24,0.25);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,197,24,0.25)'">
+      <div style="position:relative;width:72px;height:48px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000;">
+        <img src="https://img.youtube.com/vi/WdmVvIJkT54/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><span style="font-size:1.2rem;">▶</span></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="color:var(--gold);font-weight:700;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">యిర్మీయా జీవిత చరిత్ర</div>
+        <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Jeremiah Life Story • The Weeping Prophet</div>
+      </div>
+      <div style="color:var(--red);font-size:1rem;flex-shrink:0;">▶</div>
+    </div>
+  </div>
+
+  <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు</div>
+</div>
+
+
+
 <!-- SONGS -->
 <div id="listPage" class="page">
-  <div class="tabs">
-    <button class="tab active" onclick="setTab('all',this)">అన్నీ</button>
-    <button class="tab" onclick="setTab('fav',this)">❤️ Favorites</button>
+
+  <!-- PLAYER VIEW — shows when song is playing -->
+  <div id="playerView" style="display:none;">
+    <!-- Back to list button -->
+
+
+    <!-- Player card -->
+    <div class="now-card" id="nowCard" style="margin-bottom:12px;">
+      <div class="video-container">
+        <div class="no-video-ph" id="nvph"><div style="font-size:3rem">🎵</div></div>
+        <iframe id="ytf" style="display:none" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="song-meta">
+        <h2 id="nowTitle"></h2>
+        <div class="action-btns">
+          <a class="abtn abtn-yt" id="ytBtn" href="#" target="_blank">▶ YouTube</a>
+          <a class="abtn abtn-dl" id="dlBtn" href="#" target="_blank">⬇ Download</a>
+          <button class="abtn abtn-wa" onclick="shareWA()">💬 Share</button>
+          <button class="abtn abtn-pr" onclick="printLyrics()">🖨️</button>
+          <button class="fav-btn" id="favBtn" onclick="toggleFav()">🤍</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lyrics — full, no max-height -->
+    <div id="lyrWrap" style="display:none;background:var(--card);border:1px solid var(--rborder);border-radius:14px;margin-bottom:12px;">
+      <div class="lyrics-head" style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span style="color:var(--gold);font-weight:700;">📝 Lyrics</span>
+        <div style="display:flex;gap:6px;">
+          <button class="tog-btn" id="togBtn" onclick="toggleLyrics()">Hide</button>
+        </div>
+      </div>
+      <div class="lyrics-body" id="lyrBody" style="padding:16px;font-size:0.95rem;line-height:2.1;white-space:pre-wrap;color:var(--text);"></div>
+    </div>
   </div>
-  <div class="search-row"><input id="srch" type="text" placeholder="పాట వెతకండి..." oninput="renderList()"><span class="sicon">🔍</span></div>
-  <div id="songList"></div>
+
+  <!-- LIST VIEW — shows songs list -->
+  <div id="listView">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div class="tabs" style="margin-bottom:0;flex:1;">
+        <button class="tab active" onclick="setTab('all',this)">అన్నీ</button>
+        <button class="tab" onclick="setTab('fav',this)">❤️ Favorites</button>
+      </div>
+      <button onclick="go('home')" style="background:linear-gradient(135deg,#1a0505,#2a0808);border:1px solid rgba(192,57,43,0.5);color:var(--gold);padding:7px 14px;border-radius:18px;font-size:0.75rem;cursor:pointer;white-space:nowrap;flex-shrink:0;margin-left:8px;font-weight:600;">🏠 Home</button>
+    </div>
+    <div class="search-row"><input id="srch" type="text" placeholder="పాట వెతకండి..." oninput="renderList()"><span class="sicon">🔍</span></div>
+    <div id="songList"></div>
+  </div>
 </div>
 
 <!-- 244 SONGS -->
 <div id="s244Page" class="page">
-  <div style="margin-bottom:12px;"><h2 style="color:var(--gold);font-size:1rem;margin-bottom:4px;">🎼 తెలుగు క్రైస్తవ గీతాలు</h2><p style="color:var(--sub);font-size:0.8rem;">244 పాటలు — Click చేయండి YouTube లో వినడానికి</p></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+    <div><h2 style="color:var(--gold);font-size:1rem;margin-bottom:4px;">🎼 తెలుగు క్రైస్తవ గీతాలు</h2><p style="color:var(--sub);font-size:0.8rem;">244 పాటలు — Click చేయండి YouTube లో వినడానికి</p></div>
+    <button onclick="go('home')" style="background:linear-gradient(135deg,#1a0505,#2a0808);border:1px solid rgba(192,57,43,0.5);color:var(--gold);padding:7px 14px;border-radius:18px;font-size:0.75rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">🏠 Home</button>
+  </div>
   <div class="search-row"><input id="srch244" type="text" placeholder="పాట వెతకండి..." oninput="filter244()"><span class="sicon">🔍</span></div>
   <div id="count244" style="color:var(--sub);font-size:0.8rem;margin-bottom:10px;"></div>
   <div id="grid244"></div>
@@ -559,10 +825,10 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     </div>
     <p class="section-title">⚡ Quick Links</p>
     <div class="ql-grid">
-      <a class="ql-card" href="https://sajeevavahini.com/telugubible/" target="_blank"><div class="qi">📚</div><h3>Telugu Bible</h3><p>Sajeeva Vahini</p></a>
+      <a class="ql-card" href="https://www.biblegateway.com/passage/?search=John+3%3A16&version=TELUGU" target="_blank"><div class="qi">📚</div><h3>Telugu Bible</h3><p>BibleGateway Telugu</p></a>
       <a class="ql-card" href="https://www.bible.com" target="_blank"><div class="qi">✝</div><h3>YouVersion</h3><p>Bible App</p></a>
+      <a class="ql-card" href="https://www.youtube.com/results?search_query=the+chosen+series+telugu+dubbed" target="_blank"><div class="qi">🎬</div><h3>Jesus Films</h3><p>The Chosen Telugu</p></a>
       <a class="ql-card" href="https://www.biblegateway.com/devotionals/morning-and-evening/today/" target="_blank"><div class="qi">📅</div><h3>Daily Devotion</h3><p>రోజువారీ భక్తి</p></a>
-      <a class="ql-card" href="https://www.biblegateway.com/passage/?search=John+3&version=TELUGU" target="_blank"><div class="qi">🔍</div><h3>Bible Search</h3><p>వాక్యం వెతకండి</p></a>
     </div>
   </div>
   <div id="folderView" style="display:none">
@@ -752,90 +1018,270 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 
 <!-- JESUS -->
 <div id="jesusPage" class="page">
-  <div class="jesus-header">
-    <div style="font-size:3.5rem;margin-bottom:10px;filter:drop-shadow(0 0 20px rgba(192,57,43,0.8));">✝</div>
-    <h1 style="color:var(--gold);font-size:1.4rem;margin-bottom:6px;">యేసు క్రీస్తు ఎవరు?</h1>
-    <p style="color:#ffaa88;font-size:0.9rem;">Who is Jesus Christ?</p>
-    <p style="color:var(--sub);font-size:0.8rem;margin-top:8px;">దేవుని కుమారుడు • లోక రక్షకుడు • Son of God • Saviour</p>
+
+  <!-- Hero Banner -->
+  <div style="background:linear-gradient(135deg,#1a0000,#3d0000,#1a0000);border:2px solid rgba(192,57,43,0.6);border-radius:22px;padding:28px 20px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(192,57,43,0.15) 0%,transparent 70%);"></div>
+    <div style="position:relative;z-index:1;">
+      <div style="font-size:3.5rem;filter:drop-shadow(0 0 20px rgba(245,197,24,0.8));">✝</div>
+      <h1 style="color:var(--gold);font-size:1.5rem;margin:10px 0 6px;letter-spacing:1px;">యేసు క్రీస్తు</h1>
+      <p style="color:#ffaa88;font-size:0.95rem;font-weight:600;">Jesus Christ — దేవుని కుమారుడు</p>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap;">
+        <span style="background:rgba(192,57,43,0.3);border:1px solid rgba(192,57,43,0.6);color:#ffaa88;padding:4px 12px;border-radius:20px;font-size:0.72rem;">లోక రక్షకుడు</span>
+        <span style="background:rgba(245,197,24,0.15);border:1px solid rgba(245,197,24,0.4);color:var(--gold);padding:4px 12px;border-radius:20px;font-size:0.72rem;">Son of God</span>
+        <span style="background:rgba(39,174,96,0.2);border:1px solid rgba(39,174,96,0.4);color:#7ec8a0;padding:4px 12px;border-radius:20px;font-size:0.72rem;">Saviour of the World</span>
+      </div>
+    </div>
   </div>
 
-  <div class="jesus-section">
-    <h3 style="color:var(--gold);">🌟 జననం / Birth</h3>
-    <p>రోమా చక్రవర్తి అగస్తు కైసరు జనాభా లెక్క తీయమని ఆజ్ఞ ఇచ్చాడు. యోసేపు తన భార్య మరియతో కలిసి నజరేతు నుండి బేత్లెహేముకు వెళ్ళాడు. సత్రంలో చోటు లేకపోవడంతో పశువుల శాలలో యేసు పుట్టాడు. మరియ ఆయనను గుడ్డలతో చుట్టి యావురిలో పరుండ బెట్టింది.<br><br>
-    దేవదూత కాపరులకు కనిపించి <i>"భయపడకుడి — నేడు దావీదు పట్టణమున మీకు రక్షకుడు పుట్టాడు, ఆయనే క్రీస్తు అయిన ప్రభువు"</i> అని చెప్పాడు. పరలోక సైన్యం <i>"ఉన్నత స్థలములలో దేవునికి మహిమ, భూమిపై సమాధానము"</i> అని స్తుతించింది. తూర్పు దేశపు జ్ఞానులు నక్షత్రమును అనుసరించి వచ్చి బంగారము, సాంబ్రాణి, గోపరసము కానుకలు సమర్పించారు.<br><br>
-    <span style="color:var(--sub);font-size:0.82rem;">Caesar Augustus ordered a census. Joseph and Mary traveled from Nazareth to Bethlehem. With no room at the inn, Jesus was born in a stable and laid in a manger. An angel told shepherds "Fear not — today in David's city a Saviour is born, Christ the Lord." A heavenly host praised God. Wise men from the East followed a star and offered gold, frankincense and myrrh.</span><br><br>
-    <span style="color:var(--red);font-size:0.8rem;">📖 లూకా 2:1-20, మత్తయి 2:1-12</span></p>
+  <!-- Quick Nav -->
+  <div style="display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:4px;">
+    <button onclick="document.getElementById('jBirth').scrollIntoView({behavior:'smooth'})" style="background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.3);color:var(--gold);padding:6px 12px;border-radius:20px;font-size:0.72rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">🌟 జననం</button>
+    <button onclick="document.getElementById('jGospel').scrollIntoView({behavior:'smooth'})" style="background:rgba(39,174,96,0.12);border:1px solid rgba(39,174,96,0.3);color:#7ec8a0;padding:6px 12px;border-radius:20px;font-size:0.72rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">📢 సువార్త</button>
+    <button onclick="document.getElementById('jMiracles').scrollIntoView({behavior:'smooth'})" style="background:rgba(52,152,219,0.12);border:1px solid rgba(52,152,219,0.3);color:#74b9ff;padding:6px 12px;border-radius:20px;font-size:0.72rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">✨ అద్భుతాలు</button>
+    <button onclick="document.getElementById('jCross').scrollIntoView({behavior:'smooth'})" style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);color:#ffaa88;padding:6px 12px;border-radius:20px;font-size:0.72rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">✝ సిలువ</button>
+    <button onclick="document.getElementById('jRise').scrollIntoView({behavior:'smooth'})" style="background:rgba(39,174,96,0.12);border:1px solid rgba(39,174,96,0.3);color:#7ec8a0;padding:6px 12px;border-radius:20px;font-size:0.72rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">🌅 పునరుత్థానం</button>
+    <button onclick="document.getElementById('jSave').scrollIntoView({behavior:'smooth'})" style="background:rgba(180,100,255,0.12);border:1px solid rgba(180,100,255,0.3);color:#ce93d8;padding:6px 12px;border-radius:20px;font-size:0.72rem;cursor:pointer;white-space:nowrap;flex-shrink:0;">🙏 రక్షణ</button>
   </div>
 
-  <div class="jesus-section">
-    <h3 style="color:#2ecc71;">📢 సువార్త / The Gospel</h3>
-    <p>యేసు 30 సంవత్సరముల వయసులో యోర్దాను నదిలో యోహాను చేత బాప్తిస్మం పొందాడు. పరిశుద్ధాత్మ పావురము రూపంలో దిగివచ్చింది. పరలోకము నుండి <i>"ఇతడు నా ప్రియ కుమారుడు, ఇతనియందు నేను సంతోషించుచున్నాను"</i> అను వాక్యం వినిపించింది.<br><br>
-    పరిశుద్ధాత్మ ఆయనను అరణ్యానికి నడిపించింది. 40 పగళ్ళు, 40 రాత్రులు ఉపవాసముండాడు. సాతాను 3 విధాలుగా శోధించాడు — ప్రతిసారీ యేసు <i>"లిఖించబడియున్నది"</i> అని దేవుని వాక్యంతో జయించాడు. తర్వాత గలిలయలో <i>"కాలము సంపూర్ణమైనది, దేవుని రాజ్యము సమీపించింది, మారుమనస్సు పొందుడి"</i> అని ప్రకటించాడు. 12 మందిని శిష్యులుగా పిలిచాడు.<br><br>
-    <span style="color:var(--sub);font-size:0.82rem;">At 30 Jesus was baptized in the Jordan. The Holy Spirit descended as a dove, a voice said "This is My beloved Son." Led into the wilderness He fasted 40 days. Satan tempted Him 3 times — each time Jesus overcame with "It is written." Then He preached "Repent for the kingdom of God is near" and called 12 disciples.</span><br><br>
-    <span style="color:#2ecc71;font-size:0.8rem;">📖 మత్తయి 3-4, మార్కు 1:14-20</span></p>
+  <!-- 1. జననం / Birth -->
+  <div id="jBirth" style="background:linear-gradient(135deg,#0a0a1a,#12122a);border:1px solid rgba(245,197,24,0.3);border-radius:18px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="background:rgba(245,197,24,0.2);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🌟</div>
+      <div>
+        <h3 style="color:var(--gold);font-size:1rem;margin:0;">జననం</h3>
+        <span style="color:var(--sub);font-size:0.72rem;">Birth of Jesus Christ</span>
+      </div>
+      <span style="margin-left:auto;background:rgba(245,197,24,0.1);border:1px solid rgba(245,197,24,0.3);color:var(--gold);padding:3px 10px;border-radius:10px;font-size:0.68rem;">లూకా 2 • మత్తయి 2</span>
+    </div>
+    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(245,197,24,0.06);border-radius:10px;border-left:3px solid var(--gold);">
+        <span style="color:var(--gold);font-size:0.9rem;flex-shrink:0;">📍</span>
+        <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:var(--gold);">స్థలం:</b> రోమా చక్రవర్తి అగస్తు కైసరు జనాభా లెక్క కారణంగా, యోసేపు మరియలతో నజరేతు నుండి <b style="color:#ffaa88;">బేత్లెహేముకు</b> వెళ్ళారు. సత్రంలో చోటు లేక <b style="color:#ffaa88;">పశువుల శాలలో</b> యేసు జన్మించాడు.</span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(100,150,255,0.06);border-radius:10px;border-left:3px solid #74b9ff;">
+        <span style="color:#74b9ff;font-size:0.9rem;flex-shrink:0;">👼</span>
+        <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#74b9ff;">దేవదూత సందేశం:</b> కాపరులకు కనిపించి — <i style="color:#ffaa88;">"భయపడకుడి! నేడు దావీదు పట్టణమున మీకు రక్షకుడు పుట్టాడు — ఆయనే క్రీస్తు అయిన ప్రభువు"</i></span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(39,174,96,0.06);border-radius:10px;border-left:3px solid #7ec8a0;">
+        <span style="color:#7ec8a0;font-size:0.9rem;flex-shrink:0;">⭐</span>
+        <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#7ec8a0;">జ్ఞానుల సందర్శన:</b> తూర్పు దేశపు జ్ఞానులు నక్షత్రమును అనుసరించి వచ్చి <b style="color:#ffaa88;">బంగారం, సాంబ్రాణి, గోపరసం</b> కానుకలు సమర్పించారు.</span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(192,57,43,0.06);border-radius:10px;border-left:3px solid var(--red);">
+        <span style="color:#ffaa88;font-size:0.9rem;flex-shrink:0;">🔮</span>
+        <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ffaa88;">ప్రవచన నెరవేర్పు:</b> యెషయా 7:14 — కన్య గర్భం ధరించి కుమారుని కనును — <i style="color:var(--gold);">"ఇమ్మానుయేలు"</i> = దేవుడు మనతో ఉన్నాడు</span>
+      </li>
+    </ul>
   </div>
 
-  <div class="jesus-section">
-    <h3 style="color:#3498db;">✨ అద్భుత కార్యాలు / Miracles</h3>
-    <div class="miracle-item"><b>🍷 నీటిని ద్రాక్షారసంగా మార్చడం / Water into Wine</b><p style="margin-top:4px;font-size:0.82rem;">కానా పెండ్లిలో ద్రాక్షారసం అయిపోయింది. యేసు 6 రాతి తొట్టెలను నీటితో నింపమన్నాడు — అవి ద్రాక్షారసంగా మారాయి. మొదటి అద్భుతం.<br><span style="color:var(--sub);">At Cana's wedding water became wine — His first miracle. John 2:1-11</span></p></div>
-    <div class="miracle-item"><b>🐟 జాలరులతో చేపలు / Miraculous Catch</b><p style="margin-top:4px;font-size:0.82rem;">పేతురు రాత్రంతా చేపలు పట్టలేదు. యేసు "లోతులో వలలు వేయుడి" అన్నాడు — రెండు నావలు మునగేంత చేపలు వచ్చాయి! పేతురు "నేను పాపిని" అన్నాడు — యేసు "ఇకపై మనుష్యులను పట్టెదవు" అన్నాడు.<br><span style="color:var(--sub);">Peter fished all night in vain. Jesus said "Cast nets deeper" — boats nearly sank with fish! Luke 5:1-11</span></p></div>
-    <div class="miracle-item"><b>👁️ పుట్టు గుడ్డివానికి చూపు / Blind Man Healed</b><p style="margin-top:4px;font-size:0.82rem;">యేసు మట్టి కలిపి కన్నులకు పూసి "సీలోయాముకు వెళ్ళి కడుగుకొమ్ము" అన్నాడు — అతడు చూపు పొందాడు.<br><span style="color:var(--sub);">Jesus made mud, put it on the man's eyes, said "Go wash in Siloam" — he came back seeing. John 9:1-12</span></p></div>
-    <div class="miracle-item"><b>🌊 తుఫాను శాంతింపజేయడం / Calming the Storm</b><p style="margin-top:4px;font-size:0.82rem;">గొప్ప తుఫాను వచ్చింది — యేసు నిద్రపోతున్నాడు. శిష్యులు లేపారు. యేసు "సమాధానముగా ఉండుము" అన్నాడు — అంతట ప్రశాంతత కలిగింది.<br><span style="color:var(--sub);">"Peace, be still" — the storm immediately ceased. Mark 4:35-41</span></p></div>
-    <div class="miracle-item"><b>🍞 5000 మందికి భోజనం / Feeding 5000</b><p style="margin-top:4px;font-size:0.82rem;">5 రొట్టెలు, 2 చేపలతో 5000 మందికి తినిపించాడు — 12 గంపలు మిగిలాయి!<br><span style="color:var(--sub);">5 loaves + 2 fish fed 5000 with 12 baskets left over! John 6:1-14</span></p></div>
-    <div class="miracle-item"><b>🚶 నీటిపై నడవడం / Walking on Water</b><p style="margin-top:4px;font-size:0.82rem;">యేసు నీటిపై నడుస్తూ వచ్చాడు. పేతురు కూడా నడిచాడు కానీ భయపడి మునిగాడు — యేసు పట్టుకున్నాడు.<br><span style="color:var(--sub);">Peter walked on water but sank in fear — Jesus caught him. Matthew 14:22-33</span></p></div>
-    <div class="miracle-item"><b>💀 లాజరును బ్రతికించడం / Raising Lazarus</b><p style="margin-top:4px;font-size:0.82rem;">4 రోజుల తర్వాత సమాధి ముందు యేసు కన్నీళ్ళు కార్చాడు. "లాజరూ బయటికి రా!" అని పిలిచాడు — లాజరు జీవంతో వచ్చాడు!<br><span style="color:var(--sub);">"Lazarus come forth!" — and he walked out alive after 4 days! John 11:1-44</span></p></div>
-    <div class="miracle-item"><b>🤚 చేయి ఎండినవాడిని బాగుచేయడం / Withered Hand</b><p style="margin-top:4px;font-size:0.82rem;">శబ్బాతు నాడు సమాజమందిరంలో "చేయి చాపుము" అన్నాడు — చేయి బాగైంది.<br><span style="color:var(--sub);">"Stretch out your hand" — completely restored on the Sabbath. Mark 3:1-6</span></p></div>
+  <!-- 2. సువార్త -->
+  <div id="jGospel" style="background:linear-gradient(135deg,#001a0a,#00250f);border:1px solid rgba(39,174,96,0.35);border-radius:18px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="background:rgba(39,174,96,0.2);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">📢</div>
+      <div>
+        <h3 style="color:#7ec8a0;font-size:1rem;margin:0;">పరిచర్య & సువార్త</h3>
+        <span style="color:var(--sub);font-size:0.72rem;">Ministry & Gospel</span>
+      </div>
+      <span style="margin-left:auto;background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.3);color:#7ec8a0;padding:3px 10px;border-radius:10px;font-size:0.68rem;">మత్తయి 3-4 • మార్కు 1</span>
+    </div>
+    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(39,174,96,0.07);border-radius:10px;border-left:3px solid #7ec8a0;">
+        <span style="color:#7ec8a0;font-size:0.9rem;flex-shrink:0;">💧</span>
+        <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#7ec8a0;">బాప్తిస్మం (వయసు 30):</b> యోర్దాను నదిలో యోహాను చేత బాప్తిస్మం పొందాడు. పరిశుద్ధాత్మ పావురంలా దిగివచ్చింది. పరలోకం నుండి — <i style="color:#ffaa88;">"ఇతడు నా ప్రియ కుమారుడు, ఇతనియందు నేను సంతోషించుచున్నాను"</i></span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(192,57,43,0.07);border-radius:10px;border-left:3px solid var(--red);">
+        <span style="color:#ffaa88;font-size:0.9rem;flex-shrink:0;">🌵</span>
+        <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ffaa88;">అరణ్య శోధన (40 రోజులు):</b> సాతాను 3 విధాలుగా శోధించాడు:<br>
+          <span style="color:var(--sub);font-size:0.8rem;">① రాళ్ళను రొట్టెలుగా చేయి → <b style="color:#7ec8a0;">"రొట్టెవలన మాత్రమే కాదు"</b><br>
+          ② దేవాలయం నుండి దూకు → <b style="color:#7ec8a0;">"నీ దేవుణ్ణి శోధించకు"</b><br>
+          ③ నన్ను ఆరాధిస్తే రాజ్యాలు ఇస్తాను → <b style="color:#7ec8a0;">"సాతానా, దూరంగా వెళ్ళు!"</b></span></span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(245,197,24,0.07);border-radius:10px;border-left:3px solid var(--gold);">
+        <span style="color:var(--gold);font-size:0.9rem;flex-shrink:0;">👥</span>
+        <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:var(--gold);">12 శిష్యులు:</b> పేతురు, అంద్రెయ, యాకోబు, యోహాను, ఫిలిప్పు, బర్తొలొమయ్య, మత్తయి, తోమా, యాకోబు (అల్ఫయి కొడుకు), తద్దయి, సీమోను, యూదా ఇస్కరియోతు</span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(180,100,255,0.07);border-radius:10px;border-left:3px solid #ce93d8;">
+        <span style="color:#ce93d8;font-size:0.9rem;flex-shrink:0;">🏔️</span>
+        <span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ce93d8;">పర్వత ప్రసంగం (మత్తయి 5-7):</b> <i style="color:#ffaa88;">"దీనులు ధన్యులు • శుద్ధహృదయులు దేవుని చూస్తారు • మీరు భూమికి ఉప్పు, లోకానికి వెలుతురు"</i></span>
+      </li>
+    </ul>
   </div>
 
-  <div class="jesus-section">
-    <h3 style="color:var(--gold);">📖 ఉపమానాలు / Parables</h3>
-    <div class="parable-item"><b>🐑 పోగొట్టుకున్న గొర్రె / Lost Sheep (లూకా 15:3-7)</b><p style="margin-top:4px;font-size:0.82rem;">100 గొర్రెలలో ఒకటి పోతే 99 వదిలి వెదికాడు. దొరికినప్పుడు సంతోషంతో భుజాన వేసుకున్నాడు. పశ్చాత్తాపించే ఒక్క పాపి గురించి పరలోకంలో మహా సంతోషం కలుగుతుంది.<br><span style="color:var(--sub);">Left 99 to find 1 lost sheep — great joy in heaven over one sinner who repents.</span></p></div>
-    <div class="parable-item"><b>💰 తండ్రి-కుమారుడు / Prodigal Son (లూకా 15:11-32)</b><p style="margin-top:4px;font-size:0.82rem;">కుమారుడు ఆస్తి తీసుకొని వెళ్ళిపోయాడు, పేదవాడై తిరిగి వచ్చాడు. తండ్రి దూరంగా చూసే పరుగెత్తి ముద్దుపెట్టుకున్నాడు — దేవుని ప్రేమ చిత్రీకరణ.<br><span style="color:var(--sub);">Father saw son returning from far off, ran and embraced him — picture of God's welcoming love.</span></p></div>
-    <div class="parable-item"><b>🌱 విత్తనాల ఉపమానం / Sower (మత్తయి 13:1-23)</b><p style="margin-top:4px;font-size:0.82rem;">విత్తనం 4 చోట్ల పడింది — దారిపక్కన, రాతినేలపై, ముండ్లలో, మంచి నేలపై (100 రెట్లు ఫలించింది). విత్తనం = దేవుని వాక్యం, నేల = హృదయం.<br><span style="color:var(--sub);">Seed on good soil yielded 100-fold. Seed = God's Word, Soil = our heart.</span></p></div>
-    <div class="parable-item"><b>🏠 బుద్ధిమంతుడు-మూఢుడు / Wise Builder (మత్తయి 7:24-27)</b><p style="margin-top:4px;font-size:0.82rem;">బండపై కట్టినవాడు తుఫానులో నిలిచాడు, ఇసుకపై కట్టినవాడు పడిపోయాడు. యేసు మాటలు విని పాటించువాడు బుద్ధిమంతుడు.<br><span style="color:var(--sub);">Built on rock stood firm in storm. Hearing and obeying Jesus = wise builder.</span></p></div>
-    <div class="parable-item"><b>🕯️ పది కన్యకలు / Ten Virgins (మత్తయి 25:1-13)</b><p style="margin-top:4px;font-size:0.82rem;">5 మంది అదనపు నూనె తెచ్చారు, 5 మంది తెచ్చుకోలేదు. అర్ధరాత్రి పెండ్లికుమారుడు వచ్చినప్పుడు నూనె లేనివారు లోపలికి రాలేకపోయారు — సిద్ధంగా ఉండాలి.<br><span style="color:var(--sub);">5 wise had extra oil, 5 foolish didn't — be ready for Jesus' return.</span></p></div>
-    <div class="parable-item"><b>🤲 మంచి సమరయుడు / Good Samaritan (లూకా 10:25-37)</b><p style="margin-top:4px;font-size:0.82rem;">దొంగలకు కొట్టబడినవాడిని యాజకుడు, లేవీయుడు వదిలి వెళ్ళారు. సమరయుడు గాయాలు కట్టి, సత్రంలో చేర్చాడు, డబ్బు చెల్లించాడు. "నీవు వెళ్ళి ఆలాగే చేయుము."<br><span style="color:var(--sub);">Samaritan helped the wounded man — priest and Levite passed by. "Go and do likewise."</span></p></div>
+  <!-- 3. అద్భుతాలు -->
+  <div id="jMiracles" style="background:linear-gradient(135deg,#001530,#001a3a);border:1px solid rgba(52,152,219,0.35);border-radius:18px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="background:rgba(52,152,219,0.2);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">✨</div>
+      <div>
+        <h3 style="color:#74b9ff;font-size:1rem;margin:0;">అద్భుత కార్యాలు</h3>
+        <span style="color:var(--sub);font-size:0.72rem;">Miracles of Jesus — 37+ miracles recorded</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:7px;">
+      <div style="padding:9px 12px;background:rgba(52,152,219,0.08);border-radius:10px;border-left:3px solid #74b9ff;display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;">🍷</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:#74b9ff;">కానా పెళ్ళి — నీళ్ళు ద్రాక్షారసంగా</b><br><span style="color:var(--sub);">మొదటి అద్భుతం • 6 రాతి తొట్టెలలో నీళ్ళు ద్రాక్షారసంగా మారాయి (యోహా 2:1-11)</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(52,152,219,0.08);border-radius:10px;border-left:3px solid #74b9ff;display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;">🐟</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:#74b9ff;">అద్భుత చేపల వేట</b><br><span style="color:var(--sub);">రాత్రంతా చేపలు రాలేదు • "లోతులో వలలు వేయుడి" — రెండు నావలు మునగేంత చేపలు (లూకా 5:1-11)</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(52,152,219,0.08);border-radius:10px;border-left:3px solid #74b9ff;display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;">🍞</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:#74b9ff;">5000 మందికి భోజనం</b><br><span style="color:var(--sub);">5 రొట్టెలు + 2 చేపలు → 5000 మంది తిన్నారు + 12 గంపలు మిగిలాయి (యోహా 6:1-14)</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(52,152,219,0.08);border-radius:10px;border-left:3px solid #74b9ff;display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;">🌊</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:#74b9ff;">తుఫాను శాంతింపజేయడం</b><br><span style="color:var(--sub);">"సమాధానముగా ఉండుము!" — గాలి, సముద్రం అంతట ప్రశాంతమయ్యాయి (మార్కు 4:39)</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(52,152,219,0.08);border-radius:10px;border-left:3px solid #74b9ff;display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;">🚶</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:#74b9ff;">నీటిపై నడవడం</b><br><span style="color:var(--sub);">పేతురు కూడా నడిచాడు — భయపడి మునిగాడు — యేసు పట్టుకున్నాడు (మత్తయి 14:29)</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(52,152,219,0.08);border-radius:10px;border-left:3px solid #74b9ff;display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;">👁️</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:#74b9ff;">పుట్టు గుడ్డివానికి చూపు</b><br><span style="color:var(--sub);">మట్టి కలిపి కన్నులకు పూసి "సీలోయాముకు వెళ్ళి కడుగుకో" — చూపు పొందాడు (యోహా 9:7)</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(52,152,219,0.08);border-radius:10px;border-left:3px solid #74b9ff;display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;">💀</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:#74b9ff;">లాజరు పునరుత్థానం</b><br><span style="color:var(--sub);">4 రోజుల తర్వాత సమాధి ముందు యేసు కన్నీళ్ళు కార్చాడు → "లాజరూ బయటికి రా!" (యోహా 11:43)</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(52,152,219,0.08);border-radius:10px;border-left:3px solid #74b9ff;display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;">🤚</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:#74b9ff;">ఎండిన చేయి స్వస్థత</b><br><span style="color:var(--sub);">శబ్బాతు నాడు "చేయి చాపుము" — చేయి పూర్తిగా బాగైంది (మార్కు 3:5)</span></div>
+      </div>
+    </div>
   </div>
 
-  <div class="jesus-section" style="background:linear-gradient(135deg,#0f0000,#1a0505);border-color:var(--red);">
-    <h3 style="color:var(--red);">✝ సిలువ / Crucifixion</h3>
-    <p>యూదా 30 వెండి నాణేలకు యేసును అప్పగించాడు. గెత్సేమనేలో యేసు ప్రార్థించాడు — <i>"తండ్రీ నీకు ఇష్టమైతే ఈ పాత్రను నా యొద్ద నుండి తొలగించుము — అయినను నా చిత్తముకాదు, నీ చిత్తమే జరుగుగాక."</i> సైనికులు ఆయనను పట్టుకున్నారు. పిలాతు నిర్దోషి అని తెలిసినా సిలువ వేయించాడు.<br><br>
-    యేసు సిలువపై <i>"నా దేవా నా దేవా నన్నేల విడిచితివి?"</i> అని మొఱ్ఱపెట్టాడు. <i>"తండ్రీ నీ చేతికి నా ఆత్మను అప్పగించుకొనుచున్నాను"</i> అని చెప్పి ప్రాణం వదిలాడు. దేవాలయ తెర రెండుగా చినిగింది. భూకంపం వచ్చింది. ఆయన రక్తం మన పాపాలను కడిగివేస్తుంది.<br><br>
-    <span style="color:var(--sub);font-size:0.82rem;">Judas betrayed Jesus for 30 silver coins. In Gethsemane Jesus prayed "Not my will but Yours." Pilate knew He was innocent but crucified Him. On the cross Jesus cried "My God why have You forsaken Me?" then "Father into Your hands I commit My spirit." The temple veil tore, earthquake came. His blood washes our sins.</span><br><br>
-    <span style="color:var(--red);font-size:0.8rem;">📖 మత్తయి 26-27</span></p>
+  <!-- 4. ఉపమానాలు -->
+  <div style="background:linear-gradient(135deg,#1a1000,#251800);border:1px solid rgba(245,197,24,0.3);border-radius:18px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="background:rgba(245,197,24,0.15);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">📖</div>
+      <div>
+        <h3 style="color:var(--gold);font-size:1rem;margin:0;">ఉపమానాలు</h3>
+        <span style="color:var(--sub);font-size:0.72rem;">Parables of Jesus — 40+ parables</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:7px;">
+      <div style="padding:9px 12px;background:rgba(245,197,24,0.07);border-radius:10px;border-left:3px solid var(--gold);display:flex;gap:10px;">
+        <span style="flex-shrink:0;">🐑</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:var(--gold);">పోగొట్టుకున్న గొర్రె (లూకా 15:3-7)</b><br><span style="color:var(--sub);">99 వదిలి 1 వెతికాడు — దొరికినప్పుడు భుజాన వేసుకున్నాడు → పశ్చాత్తాపించిన ఒక్క పాపి గురించి పరలోకంలో మహా సంతోషం</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(245,197,24,0.07);border-radius:10px;border-left:3px solid var(--gold);display:flex;gap:10px;">
+        <span style="flex-shrink:0;">💰</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:var(--gold);">తండ్రి-కుమారుడు / Prodigal Son (లూకా 15:11-32)</b><br><span style="color:var(--sub);">కుమారుడు ఆస్తి తీసుకొని వెళ్ళిపోయి పేదవాడై తిరిగి వచ్చాడు — తండ్రి దూరంగా చూసే పరుగెత్తి ముద్దుపెట్టుకున్నాడు → <b style="color:#ffaa88;">దేవుని ప్రేమ చిత్రీకరణ</b></span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(245,197,24,0.07);border-radius:10px;border-left:3px solid var(--gold);display:flex;gap:10px;">
+        <span style="flex-shrink:0;">🌱</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:var(--gold);">విత్తనాల ఉపమానం (మత్తయి 13:1-23)</b><br><span style="color:var(--sub);">విత్తనం = దేవుని వాక్యం • నేల = మన హృదయం • మంచి నేలపై 100 రెట్లు ఫలించింది</span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(245,197,24,0.07);border-radius:10px;border-left:3px solid var(--gold);display:flex;gap:10px;">
+        <span style="flex-shrink:0;">🤲</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:var(--gold);">మంచి సమరయుడు (లూకా 10:25-37)</b><br><span style="color:var(--sub);">దొంగలకు కొట్టబడినవాడిని యాజకుడు-లేవీయుడు వదిలి వెళ్ళారు • సమరయుడు గాయాలు కట్టి, సత్రంలో చేర్చాడు → <b style="color:#ffaa88;">"నీవు వెళ్ళి ఆలాగే చేయుము"</b></span></div>
+      </div>
+      <div style="padding:9px 12px;background:rgba(245,197,24,0.07);border-radius:10px;border-left:3px solid var(--gold);display:flex;gap:10px;">
+        <span style="flex-shrink:0;">🏠</span><div style="font-size:0.83rem;line-height:1.6;"><b style="color:var(--gold);">బుద్ధిమంతుడు-మూఢుడు (మత్తయి 7:24-27)</b><br><span style="color:var(--sub);">బండపై కట్టిన ఇల్లు తుఫానులో నిలిచింది • ఇసుకపై కట్టినది పడిపోయింది → <b style="color:#ffaa88;">యేసు మాటలు పాటించువాడు = బుద్ధిమంతుడు</b></span></div>
+      </div>
+    </div>
   </div>
 
-  <div class="jesus-section" style="background:linear-gradient(135deg,#002200,#003300);border-color:#27ae60;">
-    <h3 style="color:#2ecc71;">🌅 పునరుత్థానం / Resurrection</h3>
-    <p>మూడు రోజుల తర్వాత స్త్రీలు సమాధికి వచ్చారు — రాయి తొలగింది, సమాధి ఖాళీగా ఉంది! దేవదూత <i>"ఆయన ఇక్కడ లేడు — లేచాడు!"</i> అన్నాడు. యేసు మగ్దలేనే మరియకు, శిష్యులకు కనిపించాడు. వారితో తిన్నాడు, మాట్లాడాడు.<br><br>
-    ఎమ్మాయికి వెళ్తున్న ఇద్దరు శిష్యులకు కనిపించి లేఖనాలు వివరించాడు. "మీరు వెళ్ళి అన్ని జాతులను శిష్యులుగా చేయుడి" అని మహా సేనలిచ్చి 40 రోజుల తర్వాత పరలోకానికి వెళ్ళాడు. ఇది క్రైస్తవ విశ్వాసానికి పునాది!<br><br>
-    <span style="color:var(--sub);font-size:0.82rem;">After 3 days women found the empty tomb. An angel said "He is not here — He has risen!" Jesus appeared to Mary Magdalene, disciples, ate with them. He gave the Great Commission "Go make disciples of all nations" and ascended to heaven after 40 days. This is the foundation of Christian faith!</span><br><br>
-    <span style="color:#2ecc71;font-size:0.8rem;">📖 లూకా 24, మత్తయి 28</span></p>
+  <!-- 5. సిలువ -->
+  <div id="jCross" style="background:linear-gradient(135deg,#1a0000,#2a0000);border:1px solid rgba(192,57,43,0.5);border-radius:18px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="background:rgba(192,57,43,0.25);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">✝</div>
+      <div>
+        <h3 style="color:#ff6b6b;font-size:1rem;margin:0;">సిలువ & మరణం</h3>
+        <span style="color:var(--sub);font-size:0.72rem;">Crucifixion — The Sacrifice</span>
+      </div>
+      <span style="margin-left:auto;background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.4);color:#ffaa88;padding:3px 10px;border-radius:10px;font-size:0.68rem;">మత్తయి 26-27</span>
+    </div>
+    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(192,57,43,0.08);border-radius:10px;border-left:3px solid #ff6b6b;">
+        <span style="flex-shrink:0;">🪙</span><span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ffaa88;">అప్పగింత:</b> యూదా ఇస్కరియోతు <b style="color:#ff6b6b;">30 వెండి నాణేలకు</b> యేసును అప్పగించాడు (జెకర్యా 11:12 ప్రవచనం నెరవేరింది)</span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(192,57,43,0.08);border-radius:10px;border-left:3px solid #ff6b6b;">
+        <span style="flex-shrink:0;">🙏</span><span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ffaa88;">గెత్సేమనే ప్రార్థన:</b> <i style="color:#ffaa88;">"తండ్రీ నీకు ఇష్టమైతే ఈ పాత్ర తొలగించుము — అయినను నా చిత్తం కాదు, <b>నీ చిత్తమే జరుగుగాక</b>"</i></span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(192,57,43,0.08);border-radius:10px;border-left:3px solid #ff6b6b;">
+        <span style="flex-shrink:0;">✝</span><span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ffaa88;">సిలువపై 7 మాటలు:</b><br>
+          <span style="color:var(--sub);font-size:0.8rem;">① "తండ్రీ వారిని క్షమించుము"<br>② "నేడు నీవు నాతో పరదైసులో ఉంటావు"<br>③ "స్త్రీ ఇదిగో నీ కుమారుడు"<br>④ "నా దేవా నన్నేల విడిచితివి?"<br>⑤ "దప్పికగా ఉన్నాను"<br>⑥ <b style="color:#7ec8a0;">"సమాప్తమైంది!"</b><br>⑦ "తండ్రీ నీ చేతికి నా ఆత్మను అప్పగించుకొనుచున్నాను"</span></span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(192,57,43,0.08);border-radius:10px;border-left:3px solid #ff6b6b;">
+        <span style="flex-shrink:0;">⚡</span><span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#ffaa88;">మరణం తర్వాత:</b> దేవాలయ తెర పైన నుండి కింద వరకు రెండుగా చినిగింది • భూకంపం • రాళ్ళు పగిలాయి • <b style="color:#7ec8a0;">ఆయన రక్తం మన పాపాలను కడిగివేస్తుంది</b></span>
+      </li>
+    </ul>
   </div>
 
-  <div class="jesus-section">
-    <h3 style="color:var(--gold);">💬 యేసు చెప్పిన మాటలు / Words of Jesus</h3>
-    <div class="quote-item"><p style="font-style:italic;color:var(--gold);">"నేనే మార్గమును, సత్యమును, జీవమును అయి యున్నాను."</p><p style="color:var(--sub);font-size:0.78rem;margin-top:3px;">"I am the way, the truth, and the life." — యోహాను 14:6</p></div>
-    <div class="quote-item"><p style="font-style:italic;color:var(--gold);">"అలసిపోయి భారము మోయువారందరూ నా యొద్దకు రండి, నేను మీకు విశ్రాంతి ఇచ్చెదను."</p><p style="color:var(--sub);font-size:0.78rem;margin-top:3px;">"Come to me all who are weary, I will give you rest." — మత్తయి 11:28</p></div>
-    <div class="quote-item"><p style="font-style:italic;color:var(--gold);">"దేవుడు లోకమును ఎంతో ప్రేమించెను గనుక ఆయన తన అద్వితీయ కుమారుని అనుగ్రహించెను."</p><p style="color:var(--sub);font-size:0.78rem;margin-top:3px;">"For God so loved the world He gave His only Son." — యోహాను 3:16</p></div>
-    <div class="quote-item"><p style="font-style:italic;color:var(--gold);">"నేను వచ్చినది జీవము కలిగించుటకును, సమృద్ధిగా కలిగించుటకును వచ్చితిని."</p><p style="color:var(--sub);font-size:0.78rem;margin-top:3px;">"I came that they may have life and have it abundantly." — యోహాను 10:10</p></div>
+  <!-- 6. పునరుత్థానం -->
+  <div id="jRise" style="background:linear-gradient(135deg,#002200,#003300);border:1px solid rgba(39,174,96,0.4);border-radius:18px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="background:rgba(39,174,96,0.2);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🌅</div>
+      <div>
+        <h3 style="color:#2ecc71;font-size:1rem;margin:0;">పునరుత్థానం</h3>
+        <span style="color:var(--sub);font-size:0.72rem;">Resurrection — The Victory!</span>
+      </div>
+      <span style="margin-left:auto;background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.3);color:#7ec8a0;padding:3px 10px;border-radius:10px;font-size:0.68rem;">లూకా 24 • మత్తయి 28</span>
+    </div>
+    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(39,174,96,0.08);border-radius:10px;border-left:3px solid #2ecc71;">
+        <span style="flex-shrink:0;">🪨</span><span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#2ecc71;">ఖాళీ సమాధి:</b> 3వ రోజు ఉదయం స్త్రీలు వచ్చారు — రాయి తొలగింది, సమాధి ఖాళీ! దేవదూత — <i style="color:#ffaa88;">"ఆయన ఇక్కడ లేడు — <b>లేచాడు!</b>"</i></span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(39,174,96,0.08);border-radius:10px;border-left:3px solid #2ecc71;">
+        <span style="flex-shrink:0;">👁️</span><span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#2ecc71;">ప్రత్యక్షతలు:</b> మగ్దలేనే మరియకు • పేతురుకు • ఎమ్మాయి వెళ్ళే ఇద్దరు శిష్యులకు • 11 మంది శిష్యులకు • 500 మందికి పైగా ఒకేసారి (1 కొరి 15:6)</span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(39,174,96,0.08);border-radius:10px;border-left:3px solid #2ecc71;">
+        <span style="flex-shrink:0;">🌍</span><span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#2ecc71;">మహా సేన (మత్తయి 28:19-20):</b> <i style="color:#ffaa88;">"మీరు వెళ్ళి అన్ని జాతులను శిష్యులుగా చేయుడి — నేను యుగాంతమువరకు మీతో ఉన్నాను"</i></span>
+      </li>
+      <li style="display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(39,174,96,0.08);border-radius:10px;border-left:3px solid #2ecc71;">
+        <span style="flex-shrink:0;">☁️</span><span style="color:var(--text);font-size:0.85rem;line-height:1.6;"><b style="color:#2ecc71;">స్వర్గారోహణ:</b> 40 రోజుల తర్వాత ఒలీవ పర్వతం నుండి పరలోకానికి వెళ్ళాడు — <b style="color:#ffaa88;">తిరిగి వస్తాడు!</b> (అపొ 1:11)</span>
+      </li>
+    </ul>
   </div>
 
-  <div class="jesus-section" style="background:linear-gradient(135deg,#0a0a00,#1a1a05);border-color:var(--gold);text-align:center;">
+  <!-- 7. యేసు మాటలు -->
+  <div style="background:linear-gradient(135deg,#0a0a1a,#15152a);border:1px solid rgba(180,100,255,0.3);border-radius:18px;padding:18px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="background:rgba(180,100,255,0.2);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">💬</div>
+      <h3 style="color:#ce93d8;font-size:1rem;margin:0;">యేసు చెప్పిన మాటలు</h3>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="padding:12px;background:rgba(180,100,255,0.08);border-radius:12px;border-left:3px solid #ce93d8;">
+        <p style="color:#ffaa88;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"నేనే మార్గమును, సత్యమును, జీవమును అయి యున్నాను"</p>
+        <span style="color:var(--sub);font-size:0.72rem;">📖 యోహాను 14:6</span>
+      </div>
+      <div style="padding:12px;background:rgba(180,100,255,0.08);border-radius:12px;border-left:3px solid #ce93d8;">
+        <p style="color:#ffaa88;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"అలసిపోయి భారము మోయువారందరూ నా యొద్దకు రండి — నేను మీకు విశ్రాంతి ఇచ్చెదను"</p>
+        <span style="color:var(--sub);font-size:0.72rem;">📖 మత్తయి 11:28</span>
+      </div>
+      <div style="padding:12px;background:rgba(180,100,255,0.08);border-radius:12px;border-left:3px solid #ce93d8;">
+        <p style="color:#ffaa88;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"దేవుడు లోకమును ఎంతో ప్రేమించెను — తన అద్వితీయ కుమారుని అనుగ్రహించెను"</p>
+        <span style="color:var(--sub);font-size:0.72rem;">📖 యోహాను 3:16</span>
+      </div>
+      <div style="padding:12px;background:rgba(180,100,255,0.08);border-radius:12px;border-left:3px solid #ce93d8;">
+        <p style="color:#ffaa88;font-size:0.9rem;font-style:italic;margin-bottom:4px;">"నేను వచ్చినది జీవము కలిగించుటకును — సమృద్ధిగా కలిగించుటకును వచ్చితిని"</p>
+        <span style="color:var(--sub);font-size:0.72rem;">📖 యోహాను 10:10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. రక్షణ -->
+  <div id="jSave" style="background:linear-gradient(135deg,#0a0a00,#1a1a00);border:2px solid rgba(245,197,24,0.5);border-radius:18px;padding:20px;margin-bottom:12px;text-align:center;">
     <div style="font-size:2.5rem;margin-bottom:10px;">🙏</div>
-    <h3 style="color:var(--gold);margin-bottom:12px;">రక్షణ పొందడం ఎలా? / How to be Saved?</h3>
-    <div style="text-align:left;font-size:0.85rem;line-height:1.9;">
-      <p>✅ <b style="color:var(--gold);">విశ్వసించు</b> — యేసు దేవుని కుమారుడని నమ్ము<br><span style="color:var(--sub);font-size:0.8rem;">Believe — Jesus is the Son of God</span></p>
-      <p style="margin-top:6px;">✅ <b style="color:var(--gold);">పశ్చాత్తాపము</b> — పాపాలు ఒప్పుకొని క్షమించమని కోరు<br><span style="color:var(--sub);font-size:0.8rem;">Repent — Confess sins and ask forgiveness</span></p>
-      <p style="margin-top:6px;">✅ <b style="color:var(--gold);">అంగీకరించు</b> — యేసును ప్రభువుగా హృదయంలో చేర్చుకో<br><span style="color:var(--sub);font-size:0.8rem;">Accept — Invite Jesus as Lord into your heart</span></p>
-      <p style="margin-top:6px;">✅ <b style="color:var(--gold);">బాప్తిస్మం</b> — నీటిలో బాప్తిస్మం పొందు<br><span style="color:var(--sub);font-size:0.8rem;">Be Baptized — in water as commanded</span></p>
+    <h3 style="color:var(--gold);font-size:1.05rem;margin-bottom:16px;">రక్షణ పొందడం ఎలా?</h3>
+    <div style="display:flex;flex-direction:column;gap:8px;text-align:left;margin-bottom:16px;">
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 14px;background:rgba(39,174,96,0.1);border-radius:12px;border:1px solid rgba(39,174,96,0.25);">
+        <div style="background:#27ae60;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">1</div>
+        <div><b style="color:#7ec8a0;">విశ్వసించు</b> — యేసు దేవుని కుమారుడు, మన కోసం సిలువపై మరణించాడని నమ్ము<br><span style="color:var(--sub);font-size:0.75rem;">Believe Jesus is the Son of God who died for your sins</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 14px;background:rgba(192,57,43,0.1);border-radius:12px;border:1px solid rgba(192,57,43,0.25);">
+        <div style="background:var(--red);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">2</div>
+        <div><b style="color:#ffaa88;">పశ్చాత్తాపము</b> — పాపాలు ఒప్పుకొని దేవుని క్షమాపణ కోరు<br><span style="color:var(--sub);font-size:0.75rem;">Repent — Confess your sins and ask God for forgiveness</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 14px;background:rgba(52,152,219,0.1);border-radius:12px;border:1px solid rgba(52,152,219,0.25);">
+        <div style="background:#2980b9;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">3</div>
+        <div><b style="color:#74b9ff;">అంగీకరించు</b> — యేసును నీ ప్రభువుగా హృదయంలో చేర్చుకో<br><span style="color:var(--sub);font-size:0.75rem;">Accept Jesus as your Lord and Saviour into your heart</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 14px;background:rgba(245,197,24,0.1);border-radius:12px;border:1px solid rgba(245,197,24,0.25);">
+        <div style="background:var(--gold);color:#000;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">4</div>
+        <div><b style="color:var(--gold);">బాప్తిస్మం</b> — నీటిలో బాప్తిస్మం పొందు — తన ఆజ్ఞ పాటించు<br><span style="color:var(--sub);font-size:0.75rem;">Be baptized in water as Jesus commanded</span></div>
+      </div>
     </div>
-    <div style="margin-top:14px;padding:12px;background:rgba(245,197,24,0.08);border-radius:10px;font-size:0.82rem;font-style:italic;color:var(--gold);">
-      "నీ నోటితో యేసు ప్రభువని అంగీకరించి... రక్షింపబడతావు"<br>
-      <span style="color:var(--sub);font-size:0.78rem;">"Confess Jesus is Lord... you will be saved" — రోమీయులు 10:9</span>
+    <div style="background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.3);border-radius:12px;padding:14px;">
+      <p style="color:var(--gold);font-size:0.88rem;font-style:italic;margin-bottom:6px;">"నీ నోటితో యేసు ప్రభువని అంగీకరించి, దేవుడు ఆయనను మృతులలో నుండి లేపెనని హృదయమున విశ్వసించినయెడల నీవు రక్షింపబడుదువు"</p>
+      <span style="color:var(--sub);font-size:0.75rem;">📖 రోమీయులు 10:9</span>
     </div>
   </div>
+
   <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు • Jesus Songs</div>
+</div>
+
 </div>
 
 <!-- HELP -->
@@ -1021,15 +1467,61 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
   <div class="copyright" style="margin-top:16px;">© 2026 <span>Vicky</span> — యేసు పాటలు</div>
 </div>
 
+<!-- BIBLE SEARCH PAGE -->
+<div id="bsearchPage" class="page">
+  <div style="background:linear-gradient(135deg,#0a0a1a,#1a1a3d);border:1px solid rgba(100,100,255,0.35);border-radius:18px;padding:14px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="font-size:2rem;">📖</div>
+      <div>
+        <h2 style="color:var(--gold);font-size:1rem;margin-bottom:2px;">Telugu Bible Guide</h2>
+        <p style="color:var(--sub);font-size:0.72rem;">Bible గురించి clarity • కొత్తగా చదివేవారికి</p>
+      </div>
+    </div>
+    <a href="https://www.biblegateway.com/passage/?search=John+3%3A16&version=TELUGU" target="_blank" style="background:linear-gradient(135deg,#1a5c2a,#27ae60);color:#fff;border:none;padding:7px 12px;border-radius:10px;font-size:0.72rem;font-weight:700;text-decoration:none;white-space:nowrap;">📖 BibleGateway</a>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:12px;">
+    <div style="display:flex;gap:8px;margin-bottom:10px;">
+      <input id="bsearchInput" type="text" placeholder="వాక్యం లేదా reference (e.g. John 3:16, love, ప్రేమ)..." 
+        style="flex:1;padding:12px;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.88rem;outline:none;font-family:inherit;"
+        onkeydown="if(event.key==='Enter')doBibleSearch()">
+      <button onclick="doBibleSearch()" style="background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px 16px;border-radius:10px;font-size:1rem;cursor:pointer;">🔍</button>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="color:var(--sub);font-size:0.72rem;align-self:center;">Quick:</span>
+      <button onclick="quickSearch('John 3:16')" class="qsbtn">John 3:16</button>
+      <button onclick="quickSearch('Psalm 23')" class="qsbtn">కీర్తన 23</button>
+      <button onclick="quickSearch('Romans 8:28')" class="qsbtn">రోమా 8:28</button>
+      <button onclick="quickSearch('Isaiah 40:31')" class="qsbtn">యెష 40:31</button>
+      <button onclick="quickSearch('Matthew 5')" class="qsbtn">మత్తయి 5</button>
+      <button onclick="quickSearch('Philippians 4:13')" class="qsbtn">ఫిలి 4:13</button>
+    </div>
+  </div>
+  <div style="display:flex;gap:6px;margin-bottom:12px;">
+    <button onclick="bsLang('te')" id="bsl-te" style="flex:1;padding:8px;border-radius:10px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;font-size:0.8rem;font-weight:700;cursor:pointer;">తెలుగు</button>
+    <button onclick="bsLang('en')" id="bsl-en" style="flex:1;padding:8px;border-radius:10px;background:var(--card);color:var(--sub);border:1px solid var(--border);font-size:0.8rem;cursor:pointer;">English KJV</button>
+    <button onclick="bsLang('both')" id="bsl-both" style="flex:1;padding:8px;border-radius:10px;background:var(--card);color:var(--sub);border:1px solid var(--border);font-size:0.8rem;cursor:pointer;">Both</button>
+  </div>
+  <div id="bsearchResults" style="display:flex;flex-direction:column;gap:8px;"></div>
+  <div id="bsearchEmpty" style="text-align:center;padding:40px;color:var(--sub);">
+    <div style="font-size:2.5rem;margin-bottom:8px;">📖</div>
+    <p style="color:var(--sub);font-size:0.85rem;">వాక్యం లేదా topic search చేయి<br><span style="font-size:0.75rem;color:var(--sub);">e.g. "John 3:16" లేదా "love" లేదా "ప్రేమ"</span></p>
+  </div>
+  <div id="bsearchLoading" style="display:none;text-align:center;padding:30px;color:var(--sub);">
+    <div style="font-size:2rem;animation:pulse 1s infinite;">⏳</div>
+    <p style="font-size:0.82rem;margin-top:8px;">Searching...</p>
+  </div>
+  <div class="copyright" style="margin-top:16px;">© 2026 <span>Vicky</span> — యేసు పాటలు</div>
+</div>
+
 <!-- MIND GAMES PAGE -->
 <div id="mindGamesPage" class="page">
-  <div style="background:linear-gradient(135deg,#001a1a,#003a3a);border:1px solid rgba(0,220,180,0.4);border-radius:18px;padding:16px;margin-bottom:14px;text-align:center;">
+  <div id="mgHeader" style="background:linear-gradient(135deg,#001a1a,#003a3a);border:1px solid rgba(0,220,180,0.4);border-radius:18px;padding:16px;margin-bottom:14px;text-align:center;">
     <div style="font-size:2.5rem;margin-bottom:8px;">🧠</div>
     <h2 style="color:var(--gold);margin-bottom:4px;">Free Mind Games</h2>
     <p style="color:var(--sub);font-size:0.78rem;">Brain sharp చేసుకో! • Sharpen your mind!</p>
   </div>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+  <div id="mgGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
     <div onclick="openMindGame('memory')" style="background:linear-gradient(135deg,#1a0a2e,#2d1550);border:1px solid rgba(156,39,176,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
       <div style="font-size:2.2rem;margin-bottom:7px;">🃏</div>
       <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Memory Cards</div>
@@ -1037,7 +1529,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     </div>
     <div onclick="openMindGame('numbers')" style="background:linear-gradient(135deg,#001a1a,#003030);border:1px solid rgba(0,200,200,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
       <div style="font-size:2.2rem;margin-bottom:7px;">🔢</div>
-      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Number Match</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Number Memory</div>
       <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">సంఖ్య జ్ఞాపకం</div>
     </div>
     <div onclick="openMindGame('word')" style="background:linear-gradient(135deg,#1a1000,#302000);border:1px solid rgba(245,197,24,0.35);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
@@ -1049,6 +1541,26 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div style="font-size:2.2rem;margin-bottom:7px;">➗</div>
       <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Quick Math</div>
       <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">మెదడు లెక్కలు</div>
+    </div>
+    <div onclick="openMindGame('puzzle')" style="background:linear-gradient(135deg,#1a0010,#3a0030);border:1px solid rgba(255,50,200,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2.2rem;margin-bottom:7px;">🧩</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Sliding Puzzle</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">15-పజిల్ గేమ్</div>
+    </div>
+    <div onclick="openMindGame('typing')" style="background:linear-gradient(135deg,#001a08,#003018);border:1px solid rgba(0,255,100,0.35);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2.2rem;margin-bottom:7px;">⌨️</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Typing Speed</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Bible వాక్యాలు type</div>
+    </div>
+    <div onclick="openMindGame('color')" style="background:linear-gradient(135deg,#1a1a00,#353500);border:1px solid rgba(255,220,0,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2.2rem;margin-bottom:7px;">🎨</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Color Stroop</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">రంగు గేమ్</div>
+    </div>
+    <div onclick="openMindGame('bible_type')" style="background:linear-gradient(135deg,#0a001a,#180030);border:1px solid rgba(180,100,255,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2.2rem;margin-bottom:7px;">✝️</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Verse Complete</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">వాక్యం పూర్తి చేయి</div>
     </div>
   </div>
 
@@ -1396,9 +1908,17 @@ function go(p){
   document.querySelectorAll('.nav-btns button').forEach(function(x){x.classList.remove('active');});
   document.getElementById(p+'Page').classList.add('active');
   var nb=document.getElementById('nb-'+p);if(nb)nb.classList.add('active');
-  document.getElementById('fab').classList.toggle('off',['add','bible','links','contact','help','s244','jesus','ai','hist','bibleQuiz','mindGames'].includes(p));
+  document.getElementById('fab').classList.toggle('off',['add','bible','links','contact','help','s244','jesus','ai','hist','bibleQuiz','mindGames','bsearch','movies'].includes(p));
   if(p==='hist')renderHistory();
-  if(p==='list')renderList();
+  if(p==='list'){
+    renderList();
+    // When going to list page directly (nav button), show list not player
+    var pv=document.getElementById('playerView');
+    var lv=document.getElementById('listView');
+    if(pv&&lv&&!document.getElementById('nowCard')){
+      pv.style.display='none';lv.style.display='block';
+    }
+  }
   if(p==='fav')renderFav();
   if(p==='ai')initAIKey();
   if(p==='pdf')initPDFPage();
@@ -1414,7 +1934,6 @@ function play(i,nav){
   C=i;localStorage.setItem('nc7',i);
   var id=ytId(s.y||'');
   var fr=document.getElementById('ytf'),ph=document.getElementById('nvph');
-  document.getElementById('welcomeCard').style.display='none';
   document.getElementById('nowCard').style.display='block';
   if(id){
     // APK WebView compatible YouTube embed
@@ -1428,97 +1947,28 @@ function play(i,nav){
   // Multiple download options - popup menu
   document.getElementById('dlBtn').onclick=function(e){
     e.preventDefault();
-    if(!id){toast('⚠️ YouTube link ledu!');return;}
+    if(!id){toast('⚠️ YouTube link లేదు!');return;}
     var ytUrl='https://www.youtube.com/watch?v='+id;
-    var songTitle=S[C]?S[C].t:'';
-    var menu=document.getElementById('dlMenu');
-    if(menu){menu.remove();return;}
-
-    // Auto copy YouTube URL to clipboard
-    function copyUrl(){
-      if(navigator.clipboard){
-        navigator.clipboard.writeText(ytUrl).catch(function(){});
-      } else {
-        var ta=document.createElement('textarea');
-        ta.value=ytUrl;ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';
-        document.body.appendChild(ta);ta.select();
-        try{document.execCommand('copy');}catch(err){}
-        document.body.removeChild(ta);
-      }
-    }
-    copyUrl();
-
-    var m=document.createElement('div');
-    m.id='dlMenu';
-    m.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:flex-end;justify-content:center;';
-    m.innerHTML=
-      '<div style="background:#0f0505;border:1px solid var(--gold);border-radius:20px 20px 0 0;padding:20px 16px 32px;width:100%;max-width:480px;">'
-
-        // Handle bar
-        +'<div style="width:40px;height:4px;background:rgba(255,255,255,0.2);border-radius:4px;margin:0 auto 16px;"></div>'
-
-        // Song name
-        +'<div style="color:var(--gold);font-size:0.9rem;font-weight:700;margin-bottom:4px;text-align:center;">⬇️ Download</div>'
-        +'<div style="color:var(--sub);font-size:0.75rem;text-align:center;margin-bottom:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">🎵 '+songTitle+'</div>'
-
-        // Copied badge
-        +'<div style="background:rgba(0,200,83,0.15);border:1px solid #00c853;border-radius:10px;padding:8px 12px;margin-bottom:14px;display:flex;align-items:center;gap:8px;">'
-          +'<span>📋</span>'
-          +'<div><div style="color:#00e676;font-size:0.78rem;font-weight:700;">Link copied!</div>'
-          +'<div style="color:var(--sub);font-size:0.68rem;margin-top:1px;">'+ytUrl+'</div></div>'
-        +'</div>'
-
-        // NewPipe — BEST option (highlighted)
-        +'<div style="color:var(--sub);font-size:0.72rem;margin-bottom:6px;">⭐ BEST — App లో save అవుతుంది</div>'
-        +'<a href="newpipe://'+ytUrl+'" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,rgba(0,120,255,0.2),rgba(0,80,200,0.15));border:2px solid #2196f3;border-radius:14px;margin-bottom:10px;text-decoration:none;" onclick="document.getElementById(\'dlMenu\').remove()">'
-          +'<div style="width:42px;height:42px;background:linear-gradient(135deg,#1565c0,#2196f3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">⬇️</div>'
-          +'<div><div style="color:#90caf9;font-size:0.9rem;font-weight:700;">NewPipe</div>'
-          +'<div style="color:var(--sub);font-size:0.72rem;">Phone లో directly download — ads లేవు</div></div>'
-        +'</a>'
-
-        // VLC
-        +'<a href="vlc://'+ytUrl+'" style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.4);border-radius:12px;margin-bottom:8px;text-decoration:none;" onclick="document.getElementById(\'dlMenu\').remove()">'
-          +'<div style="width:36px;height:36px;background:linear-gradient(135deg,#e65100,#ff9800);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎬</div>'
-          +'<div><div style="color:#ffb74d;font-size:0.85rem;font-weight:600;">VLC Player</div>'
-          +'<div style="color:var(--sub);font-size:0.7rem;">VLC తో play/download చేయవచ్చు</div></div>'
-        +'</a>'
-
-        // Separator
-        +'<div style="color:var(--sub);font-size:0.72rem;margin:10px 0 6px;">🌐 Browser లో download (link already copied)</div>'
-
-        // Browser options — compact
-        +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px;">'
-          +[
-            ['https://www.y2mate.com/en872/youtube/'+id,'🎵 Y2Mate'],
-            ['https://ezmp3.cc/?url='+encodeURIComponent(ytUrl),'🎧 EzMP3'],
-            ['https://loader.to/?url='+encodeURIComponent(ytUrl),'🔊 Loader.to'],
-            ['https://snapsave.app/?url='+encodeURIComponent(ytUrl),'📱 SnapSave']
-          ].map(function(s){
-            return'<a href="'+s[0]+'" target="_blank" style="display:flex;align-items:center;justify-content:center;padding:9px 6px;background:rgba(255,255,255,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:10px;color:var(--text);text-decoration:none;font-size:0.78rem;font-weight:600;gap:4px;" onclick="document.getElementById(\'dlMenu\').remove()">'+s[1]+'</a>';
-          }).join('')
-        +'</div>'
-
-        // NewPipe install hint
-        +'<div style="background:rgba(33,150,243,0.08);border:1px solid rgba(33,150,243,0.25);border-radius:10px;padding:8px 10px;margin-bottom:12px;">'
-          +'<div style="color:#90caf9;font-size:0.72rem;">💡 NewPipe install లేదా?</div>'
-          +'<a href="https://newpipe.net" target="_blank" style="color:#64b5f6;font-size:0.7rem;" onclick="document.getElementById(\'dlMenu\').remove()">newpipe.net నుండి install చేయండి →</a>'
-        +'</div>'
-
-        +'<button onclick="document.getElementById(\'dlMenu\').remove()" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--sub);padding:10px;border-radius:12px;cursor:pointer;font-size:0.82rem;">✕ Close</button>'
-      +'</div>';
-
-    document.body.appendChild(m);
-    toast('📋 Link copied!');
-    // Close on backdrop click
-    m.addEventListener('click',function(ev){
-      if(ev.target===m)m.remove();
-    });
+    var sfUrl='https://en1.savefrom.net/1-youtube-video-downloader-13sg/?url='+encodeURIComponent(ytUrl);
+    window.open(sfUrl,'_blank');
+    toast('⬇️ SaveFrom తెరుచుకుంటుంది...');
   };
   document.getElementById('favBtn').textContent=F.includes(s.id)?'❤️':'🤍';
   var lw=document.getElementById('lyrWrap');
-  if(s.l){lw.style.display='block';document.getElementById('lyrBody').textContent=s.l;document.getElementById('lyrBody').classList.remove('hidden');lOpen=true;document.getElementById('togBtn').textContent='Hide';}
-  else lw.style.display='none';
-  if(nav)go('home');renderList();
+  if(s.l){
+    lw.style.display='block';
+    document.getElementById('lyrBody').textContent=s.l;
+    document.getElementById('lyrBody').classList.remove('hidden');
+    lOpen=true;
+    document.getElementById('togBtn').textContent='Hide';
+  } else {
+    lw.style.display='none';
+  }
+  if(nav){
+    go('list');
+    showSongPlayer();
+  }
+  renderList();
 }
 
 function shareWA(){
@@ -2781,7 +3231,7 @@ function cancelEdit(){eId=null;['fT','fY','fL'].forEach(function(id){document.ge
 function delS(i){
   if(!confirm('"'+S[i].t+'" delete చేయాలా?'))return;
   var id=S[i].id;
-  if(C===i){C=-1;localStorage.removeItem('nc7');document.getElementById('ytf').src='';document.getElementById('ytf').style.display='none';document.getElementById('nvph').style.display='flex';document.getElementById('nowCard').style.display='none';document.getElementById('welcomeCard').style.display='block';}
+  if(C===i){C=-1;localStorage.removeItem('nc7');document.getElementById('ytf').src='';document.getElementById('ytf').style.display='none';document.getElementById('nvph').style.display='flex';document.getElementById('nowCard').style.display='none';document.getElementById('nowCard').style.display='none';}
   else if(C>i){C--;localStorage.setItem('nc7',C);}
   F=F.filter(function(f){return f!==id;});S.splice(i,1);
   localStorage.setItem('ns7',JSON.stringify(S));localStorage.setItem('nf7',JSON.stringify(F));
@@ -3632,47 +4082,368 @@ function qzMakePDF(answers,score,total,level,book){
   toast('📄 PDF ready! Downloads లో చూడు!');
 }
 
+
+// ═══ BIBLE SEARCH ═══
+var _bsLang = 'te';
+
+function bsLang(lang) {
+  _bsLang = lang;
+  ['te','en','both'].forEach(function(l) {
+    var b = document.getElementById('bsl-'+l);
+    if (!b) return;
+    if (l === lang) {
+      b.style.background = 'linear-gradient(135deg,var(--red),var(--red2))';
+      b.style.color = '#fff'; b.style.border = 'none';
+    } else {
+      b.style.background = 'var(--card)';
+      b.style.color = 'var(--sub)';
+      b.style.border = '1px solid var(--border)';
+    }
+  });
+  // Re-run search if results already showing
+  var inp = document.getElementById('bsearchInput');
+  if (inp && inp.value.trim()) doBibleSearch();
+}
+
+function quickSearch(q) {
+  var inp = document.getElementById('bsearchInput');
+  if (inp) { inp.value = q; doBibleSearch(); }
+}
+
+function doBibleSearch() {
+  var q = (document.getElementById('bsearchInput').value || '').trim();
+  if (!q) { toast('⚠️ వాక్యం type చేయి!'); return; }
+
+  document.getElementById('bsearchResults').innerHTML = '';
+  document.getElementById('bsearchEmpty').style.display = 'none';
+  document.getElementById('bsearchLoading').style.display = 'block';
+
+  // Use Bible API (api.bible or bible-api.com — free, no key needed)
+  // Parse reference like "John 3:16", "Romans 8:28", "Psalm 23"
+  var ref = parseBibleRef(q);
+
+  if (ref) {
+    // Fetch specific verse/chapter
+    fetchBibleVerse(ref, _bsLang);
+  } else {
+    // Keyword search — use Claude API
+    fetchBibleKeyword(q, _bsLang);
+  }
+}
+
+function parseBibleRef(q) {
+  // Match patterns: "John 3:16", "Romans 8", "కీర్తన 23", "యెష 40:31"
+  var bookMap = {
+    'john':'JHN','matthew':'MAT','mark':'MRK','luke':'LUK','acts':'ACT',
+    'romans':'ROM','genesis':'GEN','exodus':'EXO','psalms':'PSA','psalm':'PSA',
+    'proverbs':'PRO','isaiah':'ISA','revelation':'REV','ephesians':'EPH',
+    'philippians':'PHP','colossians':'COL','hebrews':'HEB','james':'JAS',
+    'corinthians':'1CO','2corinthians':'2CO','galatians':'GAL','1timothy':'1TI',
+    '1john':'1JN','2john':'2JN','3john':'3JN','jude':'JUD',
+    // Telugu shortcuts
+    'యోహాను':'JHN','మత్తయి':'MAT','మార్కు':'MRK','లూకా':'LUK',
+    'అపొ':'ACT','రోమా':'ROM','ఆది':'GEN','నిర్గమ':'EXO',
+    'కీర్తన':'PSA','కీర్తనలు':'PSA','సామె':'PRO','యెష':'ISA','యెషయా':'ISA',
+    'ప్రక':'REV','ఎఫె':'EPH','ఫిలి':'PHP','హెబ్రీ':'HEB','గలతీ':'GAL'
+  };
+  var m = q.match(/^([a-zA-Zఀ-౿\s\d]+?)\s+(\d+)(?::(\d+))?(?:-(\d+))?$/i);
+  if (!m) return null;
+  var bookRaw = m[1].trim().toLowerCase().replace(/\s+/g,'');
+  var chapter = m[2];
+  var verse = m[3];
+  var code = bookMap[bookRaw] || bookMap[m[1].trim().toLowerCase()];
+  if (!code) {
+    // Try partial match
+    var keys = Object.keys(bookMap);
+    for (var i = 0; i < keys.length; i++) {
+      if (bookRaw.includes(keys[i]) || keys[i].includes(bookRaw)) {
+        code = bookMap[keys[i]]; break;
+      }
+    }
+  }
+  if (!code) return null;
+  return { code: code, chapter: chapter, verse: verse, raw: q };
+}
+
+function fetchBibleVerse(ref, lang) {
+  var passage = ref.code + '.' + ref.chapter + (ref.verse ? '.' + ref.verse : '');
+  // Use bible-api.com (free, no key)
+  var teUrl = 'https://bible-api.com/' + encodeURIComponent(ref.raw) + '?translation=webbe';
+  var enUrl = 'https://bible-api.com/' + encodeURIComponent(ref.raw) + '?translation=kjv';
+
+  var promises = [];
+  if (lang === 'te' || lang === 'both') promises.push(fetch(teUrl).then(function(r){return r.json();}).catch(function(){return null;}));
+  else promises.push(Promise.resolve(null));
+  if (lang === 'en' || lang === 'both') promises.push(fetch(enUrl).then(function(r){return r.json();}).catch(function(){return null;}));
+  else promises.push(Promise.resolve(null));
+
+  Promise.all(promises).then(function(results) {
+    document.getElementById('bsearchLoading').style.display = 'none';
+    var teData = results[0], enData = results[1];
+    var html = '';
+
+    if (teData && teData.verses && teData.verses.length > 0) {
+      html += '<div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:14px;margin-bottom:8px;">';
+      html += '<div style="color:rgba(180,100,255,0.8);font-size:0.72rem;margin-bottom:8px;">📖 ' + (teData.reference || ref.raw) + ' — Telugu (WEB)</div>';
+      teData.verses.forEach(function(v) {
+        html += '<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">';
+        html += '<span style="color:var(--gold);font-size:0.72rem;font-weight:700;">' + v.verse + '</span> ';
+        html += '<span style="color:var(--text);font-size:0.9rem;line-height:1.8;">' + v.text + '</span></div>';
+      });
+      html += '</div>';
+    }
+
+    if (enData && enData.verses && enData.verses.length > 0) {
+      html += '<div style="background:var(--card);border:1px solid rgba(100,100,255,0.3);border-radius:14px;padding:14px;margin-bottom:8px;">';
+      html += '<div style="color:rgba(100,150,255,0.8);font-size:0.72rem;margin-bottom:8px;">📖 ' + (enData.reference || ref.raw) + ' — English KJV</div>';
+      enData.verses.forEach(function(v) {
+        html += '<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">';
+        html += '<span style="color:var(--gold);font-size:0.72rem;font-weight:700;">' + v.verse + '</span> ';
+        html += '<span style="color:var(--text);font-size:0.9rem;line-height:1.8;">' + v.text + '</span></div>';
+      });
+      html += '</div>';
+    }
+
+    if (!html) {
+      // Fallback to keyword search
+      fetchBibleKeyword(ref.raw, lang);
+      return;
+    }
+    document.getElementById('bsearchResults').innerHTML = html;
+  });
+}
+
+// ── OFFLINE KEYWORD DATABASE ──
+var BS_DB = {
+  love:[ {ref:"యోహాను 3:16",te:"దేవుడు లోకమును ఎంతో ప్రేమించెను గనుక ఆయన తన అద్వితీయ కుమారుని అనుగ్రహించెను, ఆయనయందు విశ్వాసముంచు ప్రతివాడును నశింపక నిత్యజీవము పొందునట్లు ఆయనను అనుగ్రహించెను.",en:"For God so loved the world that he gave his only Son, that whoever believes in him should not perish but have eternal life."},
+    {ref:"రోమీయులు 8:38-39",te:"మరణమైనను, జీవమైనను, దేవదూతలైనను, అధికారులైనను, ఉన్నవేమైనను, రానున్నవేమైనను, బలవంతులైనను... మన ప్రభువైన యేసుక్రీస్తు ద్వారా అగుపడిన దేవుని ప్రేమ నుండి మనలను వేరు చేయలేవు.",en:"Neither death nor life... nor anything else in all creation, will be able to separate us from the love of God in Christ Jesus our Lord."},
+    {ref:"1 కొరింథీయులు 13:4-5",te:"ప్రేమ సహనముగలది; దయగలది; ప్రేమ మత్సరపడదు; ప్రేమ డంబముగా ప్రవర్తింపదు; ఉప్పొంగదు; అమర్యాదగా నడువదు; తన స్వప్రయోజనమును విచారించుకొనదు.",en:"Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way."},
+    {ref:"1 యోహాను 4:8",te:"ప్రేమించని వాడు దేవుని ఎరుగడు; ఏలయనగా దేవుడు ప్రేమస్వరూపి.",en:"Anyone who does not love does not know God, because God is love."},
+    {ref:"రోమీయులు 5:8",te:"మనమింకను పాపులమై యుండగా క్రీస్తు మనకొరకు చనిపోయెను; ఇందుచేత దేవుడు మనయందు తన ప్రేమను వెల్లడిపరచుచున్నాడు.",en:"But God shows his love for us in that while we were still sinners, Christ died for us."},
+    {ref:"యిర్మీయా 31:3",te:"యెహోవా నాకు దూరమున కనబడి — నేను నిరంతర ప్రేమతో నిన్ను ప్రేమించితిని గనుక నేను నీకు కృప చూపుట కొనసాగించితిని.",en:"I have loved you with an everlasting love; therefore I have continued my faithfulness to you."},
+    {ref:"యోహాను 15:13",te:"తన స్నేహితుల కొరకు తన ప్రాణము పెట్టుట కంటె ఎక్కువైన ప్రేమ ఎవనికిని లేదు.",en:"Greater love has no one than this, that someone lay down his life for his friends."}
+  ],
+  faith:[ {ref:"హెబ్రీయులు 11:1",te:"విశ్వాసమనగా నమ్మిన వాటియందు నిశ్చయత, చూడని వాటియందు రుజువు.",en:"Now faith is the assurance of things hoped for, the conviction of things not seen."},
+    {ref:"రోమీయులు 10:17",te:"కాబట్టి వినుట వలన విశ్వాసము కలుగును; వినుట క్రీస్తు గూర్చిన మాట వలన కలుగును.",en:"So faith comes from hearing, and hearing through the word of Christ."},
+    {ref:"మత్తయి 17:20",te:"మీకు ఆవగింజంత విశ్వాసముండినను ఈ కొండతో ఇక్కడనుండి అక్కడికి తొలగుమని చెప్పినయెడల అది తొలగును; మీకు అసాధ్యమైనది ఏదియు ఉండదు.",en:"If you have faith like a grain of mustard seed, you will say to this mountain, Move from here, and it will move."},
+    {ref:"ఫిలిప్పీయులు 4:13",te:"నన్ను బలపరచువాని వలన సమస్తమును చేయగలను.",en:"I can do all things through him who strengthens me."},
+    {ref:"గలతీయులు 2:20",te:"క్రీస్తుతో కూడ సిలువ వేయబడితిని; ఇకను జీవించువాడు నేను కాను, క్రీస్తే నాయందు జీవించుచున్నాడు.",en:"I have been crucified with Christ. It is no longer I who live, but Christ who lives in me."}
+  ],
+  hope:[ {ref:"రోమీయులు 15:13",te:"మీరు విశ్వాసముచేత ఆశయందు సంపూర్ణులగునట్లు ఆశాభూతుడైన దేవుడు మీకు సమస్తమైన ఆనందమును సమాధానమును దయచేయుగాక.",en:"May the God of hope fill you with all joy and peace in believing, so that by the power of the Holy Spirit you may abound in hope."},
+    {ref:"యిర్మీయా 29:11",te:"మీకు అపాయము కలుగజేయుటకు కాదు, సంక్షేమము కలుగజేయుటకే నేను మీ విషయమై ఆలోచన చేయుచున్నాను, మీకు నిరీక్షణార్థమైన భవిష్యత్తు దయచేయుటకే నేను ఆలోచన చేయుచున్నాను.",en:"For I know the plans I have for you, declares the LORD, plans for welfare and not for evil, to give you a future and a hope."},
+    {ref:"కీర్తనలు 31:24",te:"మీరందరు యెహోవా నిమిత్తము ధైర్యముగా ఉండుడి, ఆయన కొరకు నిరీక్షించువారికి ఆయన మీ హృదయమును ధైర్యపరచును.",en:"Be strong, and let your heart take courage, all you who wait for the LORD!"},
+    {ref:"రోమీయులు 8:28",te:"దేవుని ప్రేమించువారికి, అనగా ఆయన సంకల్పముచొప్పున పిలువబడినవారికి, సమస్తమును మేలుకే జరుగునని యెరుగుదుము.",en:"And we know that for those who love God all things work together for good, for those who are called according to his purpose."}
+  ],
+  peace:[ {ref:"యోహాను 14:27",te:"నా సమాధానమును మీకు అనుగ్రహించుచున్నాను; నా సమాధానమే మీకు ఇచ్చుచున్నాను; లోకము ఇచ్చునట్లుగా నేను మీకు ఇవ్వను. మీ హృదయము కలవరపడకుండును గాక, వెరవకుండును గాక.",en:"Peace I leave with you; my peace I give to you. Not as the world gives do I give to you. Let not your hearts be troubled, neither let them be afraid."},
+    {ref:"ఫిలిప్పీయులు 4:6-7",te:"దేనిని గూర్చియు చింతింపకుడి; గాని ప్రతివిషయములోను ప్రార్థనా విజ్ఞాపనములచేత కృతజ్ఞతాపూర్వకముగా మీ విన్నపములు దేవునికి తెలియజేయుడి; అప్పుడు సమస్త జ్ఞానమునకు మించిన దేవుని సమాధానము మీ హృదయములను మనస్సులను కాపాడును.",en:"Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God. And the peace of God, which surpasses all understanding, will guard your hearts."},
+    {ref:"యెషయా 26:3",te:"నీవు నీయందు నమ్మికయుంచువానిని సంపూర్ణ సమాధానముతో కాపాడుదువు, అతడు నీయందే నిరీక్షణ కలిగియున్నాడు.",en:"You keep him in perfect peace whose mind is stayed on you, because he trusts in you."},
+    {ref:"రోమీయులు 5:1",te:"విశ్వాసముచేత నీతిమంతులముగా తీర్చబడినవారమై మన ప్రభువైన యేసుక్రీస్తు ద్వారా దేవునితో సమాధానపడియున్నాము.",en:"Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ."}
+  ],
+  strength:[ {ref:"ఫిలిప్పీయులు 4:13",te:"నన్ను బలపరచువాని వలన సమస్తమును చేయగలను.",en:"I can do all things through him who strengthens me."},
+    {ref:"యెషయా 40:31",te:"యెహోవా కొరకు నిరీక్షించువారు నూతన బలము పొందుదురు; గద్దలవలె రెక్కలెత్తి యెగురుదురు; పరుగెత్తినను అలయరు, నడచినను అలసరు.",en:"But they who wait for the LORD shall renew their strength; they shall mount up with wings like eagles."},
+    {ref:"కీర్తనలు 46:1",te:"దేవుడు మనకు ఆశ్రయమును బలమునై యున్నాడు; ఆపదలలో ఆయన మనకు అతిశీఘ్రముగా తోడ్పడువాడు.",en:"God is our refuge and strength, a very present help in trouble."},
+    {ref:"2 తిమోతి 1:7",te:"దేవుడు మనకు భయమునకు గాక బలమునకును ప్రేమకును స్వస్థబుద్ధికిని సంబంధించిన ఆత్మను అనుగ్రహించియున్నాడు.",en:"For God gave us a spirit not of fear but of power and love and self-control."},
+    {ref:"నెహెమ్యా 8:10",te:"ఈ దినము మన ప్రభువునకు పవిత్రమైనది... మీరు దుఃఖపడకుడి; యెహోవా వలన కలుగు సంతోషమే మీకు బలము.",en:"Do not be grieved, for the joy of the LORD is your strength."}
+  ],
+  prayer:[ {ref:"మత్తయి 7:7",te:"అడగుడి, మీకు ఇవ్వబడును; వెదకుడి, మీకు దొరకును; తట్టుడి, మీకు తీయబడును.",en:"Ask, and it will be given to you; seek, and you will find; knock, and it will be opened to you."},
+    {ref:"1 థెస్సలొనీకయులు 5:17",te:"అన్నివేళలా ప్రార్థన చేయుడి.",en:"Pray without ceasing."},
+    {ref:"ఫిలిప్పీయులు 4:6",te:"దేనిని గూర్చియు చింతింపకుడి; గాని ప్రతివిషయములోను ప్రార్థనా విజ్ఞాపనములచేత... మీ విన్నపములు దేవునికి తెలియజేయుడి.",en:"Do not be anxious about anything, but in everything by prayer and supplication... let your requests be made known to God."},
+    {ref:"యాకోబు 5:16",te:"నీతిమంతుని విజ్ఞాపన చేయుట బహు బలముగలదై ఫలించుచున్నది.",en:"The prayer of a righteous person has great power as it is working."},
+    {ref:"యెషయా 65:24",te:"వారు పిలువకమునుపే నేను ఉత్తరమిచ్చెదను; వారు మాటాడుచుండగా నేను వినెదను.",en:"Before they call I will answer; while they are yet speaking I will hear."}
+  ],
+  salvation:[ {ref:"యోహాను 3:16",te:"దేవుడు లోకమును ఎంతో ప్రేమించెను గనుక ఆయన తన అద్వితీయ కుమారుని అనుగ్రహించెను... నిత్యజీవము పొందునట్లు ఆయనను అనుగ్రహించెను.",en:"For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life."},
+    {ref:"రోమీయులు 10:9",te:"యేసు ప్రభువని నీ నోటితో అంగీకరించి, దేవుడు ఆయనను మృతులలో నుండి లేపెనని నీ హృదయమందు విశ్వసించినయెడల నీవు రక్షింపబడుదువు.",en:"If you confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved."},
+    {ref:"అపొస్తలుల కార్యములు 4:12",te:"మరొకనివలన రక్షణలేదు; ఆకాశము క్రింద మనుష్యులలో ఇవ్వబడిన వేరొక నామమేదియు లేదు; దానిచేతనే మనము రక్షింపబడవలెను.",en:"And there is salvation in no one else, for there is no other name under heaven given among men by which we must be saved."},
+    {ref:"ఎఫెసీయులు 2:8",te:"విశ్వాసముద్వారా కృపచేతనే రక్షింపబడితిరి; ఇది మీవలన కలిగినది కాదు, దేవుని వరమే.",en:"For by grace you have been saved through faith. And this is not your own doing; it is the gift of God."},
+    {ref:"తీతు 3:5",te:"ఆయన మనలను రక్షించెను; ఇది నీతికి సంబంధించిన మన క్రియలను బట్టి కాదు గాని తన కనికరమును బట్టియే.",en:"He saved us, not because of works done by us in righteousness, but according to his own mercy."}
+  ],
+  fear:[ {ref:"యెషయా 41:13",te:"నేను నీ దేవుడనైన యెహోవాను; నీవు భయపడకుము, నేను నిన్ను బలపరుచెదను, నిన్ను సహాయపడెదను.",en:"For I, the LORD your God, hold your right hand; it is I who say to you, Fear not, I am the one who helps you."},
+    {ref:"కీర్తనలు 23:4",te:"మృత్యుచ్ఛాయల లోయలో నడిచినను నేను కీడు భయపడను; నీవు నాతో ఉన్నావు; నీ దండమును నీ చేతికఱ్ఱయు నన్ను ఆదరించుచున్నవి.",en:"Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me."},
+    {ref:"2 తిమోతి 1:7",te:"దేవుడు మనకు భయమునకు గాక బలమునకును ప్రేమకును స్వస్థబుద్ధికిని సంబంధించిన ఆత్మను అనుగ్రహించియున్నాడు.",en:"For God gave us a spirit not of fear but of power and love and self-control."},
+    {ref:"యెషయా 43:1",te:"యాకోబూ, భయపడకు, నేను నిన్ను విమోచించితిని; నేను నిన్ను పేరుపెట్టి పిలిచితిని; నీవు నాకు చెందినవాడవు.",en:"Fear not, for I have redeemed you; I have called you by name, you are mine."},
+    {ref:"కీర్తనలు 27:1",te:"యెహోవా నా వెలుతురు నా రక్షణ; నేనెవరికి భయపడుదును? యెహోవా నా జీవాధారము; నేనెవరికి వెరతును?",en:"The LORD is my light and my salvation; whom shall I fear? The LORD is the stronghold of my life; of whom shall I be afraid?"}
+  ],
+  joy:[ {ref:"నెహెమ్యా 8:10",te:"యెహోవా వలన కలుగు సంతోషమే మీకు బలము.",en:"The joy of the LORD is your strength."},
+    {ref:"కీర్తనలు 16:11",te:"జీవమార్గము నాకు తెలుపుదువు; నీ సన్నిధిలో సంపూర్ణానందము కలదు; నీ కుడిచేతిలో నిత్యానందములు కలవు.",en:"You make known to me the path of life; in your presence there is fullness of joy; at your right hand are pleasures forevermore."},
+    {ref:"యోహాను 15:11",te:"నా సంతోషము మీలో నిలిచి, మీ సంతోషము సంపూర్ణమగునట్లు ఈ సంగతులు మీతో చెప్పుచున్నాను.",en:"These things I have spoken to you, that my joy may be in you, and that your joy may be full."},
+    {ref:"రోమీయులు 15:13",te:"ఆశాభూతుడైన దేవుడు మీకు సమస్తమైన ఆనందమును సమాధానమును దయచేయుగాక.",en:"May the God of hope fill you with all joy and peace in believing."},
+    {ref:"కీర్తనలు 30:5",te:"ఆయన కోపము ఒక్క క్షణముండును; ఆయన దయవలన జీవము కలుగును; సాయంకాలమున ఏడ్పు వచ్చినను ఉదయమున సంతోషము కలుగును.",en:"Weeping may tarry for the night, but joy comes with the morning."}
+  ],
+  forgiveness:[ {ref:"1 యోహాను 1:9",te:"మన పాపములను మనము ఒప్పుకొనినయెడల, ఆయన నమ్మదగినవాడును నీతిమంతుడును అయినందున ఆయన మన పాపములను క్షమించి సమస్త దుర్నీతి నుండి మనలను పవిత్రపరచును.",en:"If we confess our sins, he is faithful and just to forgive us our sins and to cleanse us from all unrighteousness."},
+    {ref:"కీర్తనలు 103:12",te:"తూర్పు పడమర ఎంత దూరముగా నున్నవో, ఆయన మన అతిక్రమములను అంత దూరముగా మనకు దూరపరచియున్నాడు.",en:"As far as the east is from the west, so far does he remove our transgressions from us."},
+    {ref:"మత్తయి 18:22",te:"యేసు అతనితో — నేను ఏడుసార్లు వరకు కాదు గాని ఏడుపది సార్లు వరకు క్షమింపుమని చెప్పుచున్నాను.",en:"Jesus said: I do not say to you seven times, but seventy-seven times."},
+    {ref:"ఎఫెసీయులు 4:32",te:"ఒకనియెడల ఒకడు దయగలవారై, కనికరముగలవారై, దేవుడు క్రీస్తునందు మీకు క్షమించినట్లు మీరును ఒకనినొకడు క్షమించుడి.",en:"Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you."},
+    {ref:"యెషయా 43:25",te:"నీ అతిక్రమములను నా నిమిత్తమే తుడిచివేయు నేనే నేను; నీ పాపములను జ్ఞాపకము చేసికొనను.",en:"I am he who blots out your transgressions for my own sake, and I will not remember your sins."}
+  ],
+  healing:[ {ref:"యెషయా 53:5",te:"మన అతిక్రమముల నిమిత్తము ఆయన గాయపరచబడెను; మన దోషముల నిమిత్తము ఆయన నలుగగొట్టబడెను; మనకు శాంతికలుగజేయు శిక్ష ఆయనమీద పడెను; ఆయన పొందిన దెబ్బలచేత మనకు స్వస్థత కలుగుచున్నది.",en:"He was wounded for our transgressions; he was crushed for our iniquities; and by his stripes we are healed."},
+    {ref:"యాకోబు 5:15",te:"విశ్వాసముతో చేయు ప్రార్థన రోగిని స్వస్థపరచును.",en:"The prayer of faith will save the one who is sick, and the Lord will raise him up."},
+    {ref:"కీర్తనలు 103:3",te:"ఆయన నీ దోషములన్నిటిని క్షమించువాడు; నీ రోగములన్నిటిని స్వస్థపరచువాడు.",en:"Who forgives all your iniquity, who heals all your diseases."},
+    {ref:"యిర్మీయా 17:14",te:"యెహోవా, నన్ను స్వస్థపరచుము, నేను స్వస్థుడనగుదును; నన్ను రక్షించుము, నేను రక్షింపబడుదును; నీవే నా స్తుతి.",en:"Heal me, O LORD, and I shall be healed; save me, and I shall be saved, for you are my praise."},
+    {ref:"మత్తయి 11:28",te:"అలసినవారలారా, భారము మోయువారలారా, మీరందరు నా యొద్దకు రండి; నేను మీకు విశ్రాంతి నిచ్చెదను.",en:"Come to me, all who labor and are heavy laden, and I will give you rest."}
+  ],
+  protection:[ {ref:"కీర్తనలు 91:1-2",te:"సర్వోన్నతుని మరుగున కాపుర ముండువాడు సర్వశక్తుని నీడలో నివసించును; యెహోవా నా దుర్గము నా కోట, నేను నమ్ముకొనెడి నా దేవుడు.",en:"He who dwells in the shelter of the Most High will abide in the shadow of the Almighty. I will say to the LORD, My refuge and my fortress, my God, in whom I trust."},
+    {ref:"కీర్తనలు 46:1",te:"దేవుడు మనకు ఆశ్రయమును బలమునై యున్నాడు; ఆపదలలో ఆయన మనకు అతిశీఘ్రముగా తోడ్పడువాడు.",en:"God is our refuge and strength, a very present help in trouble."},
+    {ref:"జెఫన్యా 3:17",te:"నీ దేవుడైన యెహోవా నీ మధ్యను ఉన్నాడు; ఆయన రక్షించుటకు శక్తిగలవాడు; ఆయన నీవలన ఆనందముతో సంతోషించును.",en:"The LORD your God is in your midst, a mighty one who will save; he will rejoice over you with gladness."},
+    {ref:"2 థెస్సలొనీకయులు 3:3",te:"అయితే ప్రభువు నమ్మదగినవాడు; ఆయన మిమ్మును స్థిరపరచి దుష్టునిచేత కాపాడును.",en:"But the Lord is faithful. He will establish you and guard you against the evil one."}
+  ],
+  trust:[ {ref:"సామెతలు 3:5-6",te:"నీ పూర్ణహృదయముతో యెహోవాను నమ్ముకొనుము; నీ స్వబుద్ధిని ఆధారముగా చేసికొనకుము; నీ ప్రవర్తనయందంతటను ఆయనను అంగీకరింపుము; అప్పుడు ఆయన నీ మార్గములను సరాళముగా చేయును.",en:"Trust in the LORD with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths."},
+    {ref:"కీర్తనలు 37:5",te:"నీ మార్గమును యెహోవాకు అప్పగించుము; ఆయనను నమ్ముకొనుము; ఆయన దాని నెరవేర్చును.",en:"Commit your way to the LORD; trust in him, and he will act."},
+    {ref:"యెషయా 26:3",te:"నీవు నీయందు నమ్మికయుంచువానిని సంపూర్ణ సమాధానముతో కాపాడుదువు.",en:"You keep him in perfect peace whose mind is stayed on you, because he trusts in you."}
+  ],
+  grace:[ {ref:"ఎఫెసీయులు 2:8-9",te:"విశ్వాసముద్వారా కృపచేతనే రక్షింపబడితిరి; ఇది మీవలన కలిగినది కాదు, దేవుని వరమే; అది క్రియలవలన కలిగినది కాదు.",en:"For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works."},
+    {ref:"రోమీయులు 5:20",te:"పాపము విస్తరించిన చోట కృప అధికముగా విస్తరించెను.",en:"Where sin increased, grace abounded all the more."},
+    {ref:"2 కొరింథీయులు 12:9",te:"ఆయన నాతో నా కృప నీకు చాలును; నా శక్తి బలహీనతలో పరిపూర్ణమగుచున్నదని చెప్పెను.",en:"My grace is sufficient for you, for my power is made perfect in weakness."}
+  ],
+  jesus:[ {ref:"యోహాను 14:6",te:"యేసు అతనితో — నేనే మార్గమును సత్యమును జీవమును అయి యున్నాను; నా ద్వారా తప్ప యొక్కడును తండ్రియొద్దకు రాడు.",en:"Jesus said: I am the way, and the truth, and the life. No one comes to the Father except through me."},
+    {ref:"మత్తయి 1:21",te:"ఆయన తన ప్రజలను వారి పాపముల నుండి రక్షించును గనుక నీవు ఆయన పేరు యేసు అని పెట్టుదువు.",en:"She will bear a son, and you shall call his name Jesus, for he will save his people from their sins."},
+    {ref:"ఫిలిప్పీయులు 2:9-10",te:"దేవుడు ఆయనను అధికముగా హెచ్చించి, ప్రతి నామమును కంటె అత్యధికమైన నామమాయనకు అనుగ్రహించెను.",en:"Therefore God has highly exalted him and bestowed on him the name that is above every name."},
+    {ref:"హెబ్రీయులు 13:8",te:"యేసుక్రీస్తు నిన్నటి దినమందును నేటి దినమందును శాశ్వతముగాను ఒక్కడే యై యున్నాడు.",en:"Jesus Christ is the same yesterday and today and forever."}
+  ],
+  bible:[ {ref:"2 తిమోతి 3:16-17",te:"సమస్త లేఖనమును దేవుని ప్రేరేపణవలన కలిగినది; ఉపదేశించుటకును మందలించుటకును దిద్దుటకును నీతిని గూర్చి శిక్షణ నిమిత్తమును ప్రయోజనకరమైనది.",en:"All Scripture is breathed out by God and profitable for teaching, for reproof, for correction, and for training in righteousness."},
+    {ref:"కీర్తనలు 119:105",te:"నీ వాక్యము నా పాదమునకు దీపమును నా త్రోవకు వెలుతురునై యున్నది.",en:"Your word is a lamp to my feet and a light to my path."},
+    {ref:"హెబ్రీయులు 4:12",te:"దేవుని వాక్యము జీవముగలదై చురుకైనదై రెండువైపులా పదును గల యే ఖడ్గమునకంటెను వాడిగా ఉన్నది.",en:"For the word of God is living and active, sharper than any two-edged sword."}
+  ],
+  holy_spirit:[ {ref:"అపొస్తలుల కార్యములు 1:8",te:"పరిశుద్ధాత్మ మీమీద వచ్చినప్పుడు మీకు శక్తి కలుగును.",en:"But you will receive power when the Holy Spirit has come upon you."},
+    {ref:"యోహాను 14:26",te:"తండ్రి నా నామమున పంపబోవు పరాక్లేతుడు, అనగా పరిశుద్ధాత్మ, సమస్తమును మీకు బోధించి, నేను మీతో చెప్పిన సంగతులన్నిటిని మీకు జ్ఞాపకము చేయించును.",en:"But the Helper, the Holy Spirit, whom the Father will send in my name, he will teach you all things."},
+    {ref:"గలతీయులు 5:22-23",te:"ఆత్మ ఫలమేమనగా: ప్రేమ సంతోషము సమాధానము దీర్ఘశాంతి దయాళుత్వము మంచితనము విశ్వాస్యత సాత్వికత జితేంద్రియత.",en:"But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control."}
+  ],
+  ప్రేమ:null, భయం:null, విశ్వాసం:null, శాంతి:null, రక్షణ:null, ఆశ:null, బలం:null, ప్రార్థన:null, కృప:null
+};
+// Telugu keyword aliases
+BS_DB['ప్రేమ'] = BS_DB['love'];
+BS_DB['భయం'] = BS_DB['fear'];
+BS_DB['విశ్వాసం'] = BS_DB['faith'];
+BS_DB['శాంతి'] = BS_DB['peace'];
+BS_DB['రక్షణ'] = BS_DB['salvation'];
+BS_DB['ఆశ'] = BS_DB['hope'];
+BS_DB['బలం'] = BS_DB['strength'];
+BS_DB['ప్రార్థన'] = BS_DB['prayer'];
+BS_DB['కృప'] = BS_DB['grace'];
+BS_DB['యేసు'] = BS_DB['jesus'];
+BS_DB['స్వస్థత'] = BS_DB['healing'];
+BS_DB['రక్షణ'] = BS_DB['salvation'];
+BS_DB['సంతోషం'] = BS_DB['joy'];
+BS_DB['సంతోషము'] = BS_DB['joy'];
+BS_DB['క్షమాపణ'] = BS_DB['forgiveness'];
+BS_DB['కాపు'] = BS_DB['protection'];
+BS_DB['నమ్మకం'] = BS_DB['trust'];
+
+function fetchBibleKeyword(keyword, lang) {
+  document.getElementById('bsearchLoading').style.display = 'none';
+  var key = keyword.toLowerCase().trim();
+  
+  // Find matching verses
+  var verses = null;
+  
+  // Direct match
+  if (BS_DB[key]) { verses = BS_DB[key]; }
+  
+  // Partial match
+  if (!verses) {
+    var keys = Object.keys(BS_DB);
+    for (var i = 0; i < keys.length; i++) {
+      if (key.includes(keys[i]) || keys[i].includes(key)) {
+        verses = BS_DB[keys[i]]; break;
+      }
+    }
+  }
+
+  if (!verses || verses.length === 0) {
+    // Show helpful suggestion with BibleGateway link
+    var bgUrl = 'https://www.biblegateway.com/quicksearch/?search=' + encodeURIComponent(keyword) + '&version=TELUGU';
+    document.getElementById('bsearchResults').innerHTML =
+      '<div style="text-align:center;padding:20px;">' +
+      '<div style="font-size:2rem;margin-bottom:10px;">🔍</div>' +
+      '<p style="color:var(--sub);font-size:0.85rem;margin-bottom:14px;">"' + keyword + '" offline లో లేదు<br>BibleGateway లో వెతకండి:</p>' +
+      '<a href="' + bgUrl + '" target="_blank" style="display:inline-block;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;padding:10px 20px;border-radius:12px;font-weight:700;font-size:0.85rem;text-decoration:none;">📖 BibleGateway లో వెతకు</a>' +
+      '<p style="color:var(--sub);font-size:0.72rem;margin-top:12px;">Try: love, faith, hope, peace, prayer, joy, grace, jesus, healing, fear, strength, forgiveness</p>' +
+      '</div>';
+    return;
+  }
+
+  var html = '<div style="background:rgba(245,197,24,0.07);border:1px solid rgba(245,197,24,0.2);border-radius:10px;padding:8px 12px;margin-bottom:10px;font-size:0.75rem;color:var(--sub);">📖 "' + keyword + '" — ' + verses.length + ' వాక్యాలు దొరికాయి</div>';
+  verses.forEach(function(v) {
+    html += '<div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:12px 14px;margin-bottom:8px;">';
+    html += '<div style="color:rgba(180,100,255,0.8);font-size:0.75rem;font-weight:700;margin-bottom:8px;">📖 ' + v.ref + '</div>';
+    if (lang === 'te' || lang === 'both') html += '<div style="color:var(--text);font-size:0.9rem;line-height:1.9;margin-bottom:6px;">' + v.te + '</div>';
+    if (lang === 'en' || lang === 'both') html += '<div style="color:rgba(180,180,255,0.85);font-size:0.82rem;line-height:1.7;font-style:italic;border-top:1px solid rgba(255,255,255,0.06);padding-top:6px;">' + v.en + '</div>';
+    html += '</div>';
+  });
+  document.getElementById('bsearchResults').innerHTML = html;
+  document.getElementById('bsearchEmpty').style.display = 'none';
+}
+
+function showBsEmpty() {
+  document.getElementById('bsearchEmpty').style.display = 'block';
+  document.getElementById('bsearchEmpty').innerHTML = '<div style="font-size:2rem;">😔</div><p style="color:var(--sub);font-size:0.85rem;margin-top:8px;">వాక్యం కనుగొనలేదు<br>మళ్ళీ try చేయి</p>';
+}
+
 // ═══ MIND GAMES ═══
 // ═══ MIND GAMES ═══
 function openMindGame(game){
+  // Hide cards grid, show game area
+  var grid=document.getElementById('mgGrid');
+  var hdr=document.getElementById('mgHeader');
+  if(grid)grid.style.display='none';
+  if(hdr)hdr.style.display='none';
   document.getElementById('mgArea').style.display='block';
   var c=document.getElementById('mgContent');
   if(game==='memory')initMemoryGame(c);
   else if(game==='numbers')initNumberGame(c);
   else if(game==='word')initWordGame(c);
   else if(game==='math')initMathGame(c);
-  document.querySelectorAll('.page.active')[0].scrollTop=0;
+  else if(game==='puzzle')initSlidingPuzzle(c);
+  else if(game==='reaction')initReactionGame(c);
+  else if(game==='pattern')initPatternGame(c);
+  else if(game==='typing')initTypingGame(c);
+  else if(game==='color')initColorStroop(c);
+  else if(game==='bible_type')initVerseComplete(c);
+  // Scroll to top of page
+  window.scrollTo(0,0);
+  var pg=document.getElementById('mindGamesPage');
+  if(pg)pg.scrollTop=0;
 }
-function closeMindGame(){document.getElementById('mgArea').style.display='none';}
+function closeMindGame(){
+  document.getElementById('mgArea').style.display='none';
+  var grid=document.getElementById('mgGrid');
+  var hdr=document.getElementById('mgHeader');
+  if(grid)grid.style.display='grid';
+  if(hdr)hdr.style.display='block';
+  window.scrollTo(0,0);
+  var pg=document.getElementById('mindGamesPage');
+  if(pg)pg.scrollTop=0;
+}
 
 function initMemoryGame(c){
   var emojis=['✝','🙏','📖','✨','🕊','⭐','🎵','💫'];
   var cards=emojis.concat(emojis).sort(function(){return Math.random()-0.5;});
   var flipped=[],matched=0,moves=0;
   c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">🃏 Memory Cards</h3>'
-    +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Matching cards కనుగొనండి! Moves: <b id="mgMoves">0</b> | Pairs: <b id="mgPairs">0</b>/8</p>'
-    +'<div id="mgGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;"></div>';
-  var grid=document.getElementById('mgGrid');
+    +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Matching pairs కనుగొనండి! Moves: <b id="memMoves" style="color:var(--gold);">0</b> | Pairs: <b id="memPairs" style="color:var(--gold);">0</b>/8</p>'
+    +'<div id="memGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;"></div>';
+  var grid=document.getElementById('memGrid');
   cards.forEach(function(em,i){
     var d=document.createElement('div');
-    d.dataset.idx=i;d.dataset.em=em;
-    d.style.cssText='background:var(--card);border:1.5px solid var(--border);border-radius:10px;height:64px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;transition:all 0.3s;';
+    d.style.cssText='background:var(--card);border:1.5px solid var(--border);border-radius:10px;height:64px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;cursor:pointer;transition:all 0.3s;';
     d.textContent='?';
     d.onclick=function(){
-      if(d.dataset.revealed||flipped.length===2)return;
+      if(d._revealed||flipped.length===2)return;
       d.textContent=em;d.style.background='rgba(245,197,24,0.15)';d.style.borderColor='var(--gold)';
-      d.dataset.revealed='1';flipped.push(d);
+      d._revealed=true;flipped.push({el:d,em:em});
       if(flipped.length===2){
-        moves++;document.getElementById('mgMoves').textContent=moves;
-        if(flipped[0].dataset.em===flipped[1].dataset.em){
-          flipped[0].style.background='rgba(39,174,96,0.2)';flipped[1].style.background='rgba(39,174,96,0.2)';
-          matched++;document.getElementById('mgPairs').textContent=matched;
+        moves++;
+        var mv=document.getElementById('memMoves');if(mv)mv.textContent=moves;
+        if(flipped[0].em===flipped[1].em){
+          flipped[0].el.style.background='rgba(39,174,96,0.2)';
+          flipped[1].el.style.background='rgba(39,174,96,0.2)';
+          matched++;
+          var pr=document.getElementById('memPairs');if(pr)pr.textContent=matched;
           flipped=[];
           if(matched===8)setTimeout(function(){toast('🎉 Excellent! '+moves+' moves లో complete!');},300);
         } else {
+          var tmp=flipped.slice();flipped=[];
           setTimeout(function(){
-            flipped.forEach(function(f){f.textContent='?';delete f.dataset.revealed;f.style.background='var(--card)';f.style.borderColor='var(--border)';});
-            flipped=[];
+            tmp.forEach(function(f){f.el.textContent='?';f.el._revealed=false;f.el.style.background='var(--card)';f.el.style.borderColor='var(--border)';});
           },900);
         }
       }
@@ -3682,42 +4453,43 @@ function initMemoryGame(c){
 }
 
 function initNumberGame(c){
-  var seq=[],shown=false,input=[];
+  var seq=[],input=[];
   function newRound(len){
     seq=[];for(var i=0;i<len;i++)seq.push(Math.floor(Math.random()*9)+1);
-    input=[];shown=false;
+    input=[];
     c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">🔢 Number Memory</h3>'
-      +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:12px;">Number sequence చూసి గుర్తు పెట్టుకో!</p>'
-      +'<div id="mgSeq" style="font-size:2rem;text-align:center;letter-spacing:14px;color:var(--gold);font-weight:700;background:var(--card);padding:20px;border-radius:14px;margin-bottom:12px;">'+seq.join(' ')+'</div>'
-      +'<button onclick="hideNumSeq()" style="width:100%;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;margin-bottom:10px;">✅ గుర్తు పెట్టుకున్నాను — Hide</button>';
-  }
-  window.hideNumSeq=function(){
-    document.getElementById('mgSeq').textContent='? ? ? ? ?'.slice(0,seq.length*2-1);
-    var p=c.querySelector('button');p.style.display='none';
-    var d=document.createElement('div');
-    d.innerHTML='<p style="color:var(--text);font-size:0.88rem;margin-bottom:8px;">Number pad:</p>'
-      +'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px;" id="mgPad"></div>'
-      +'<div id="mgInp" style="font-size:1.5rem;text-align:center;color:var(--gold);min-height:40px;letter-spacing:8px;margin-bottom:8px;"></div>'
-      +'<button onclick="checkNum()" style="width:100%;background:linear-gradient(135deg,#1a5c2a,#27ae60);color:#fff;border:none;padding:11px;border-radius:12px;font-weight:700;cursor:pointer;">✅ Check</button>';
-    c.appendChild(d);
-    var pad=document.getElementById('mgPad');
-    [1,2,3,4,5,6,7,8,9,'⌫',0,'✅'].forEach(function(n){
-      var b=document.createElement('button');
-      b.textContent=n;b.style.cssText='background:var(--card);border:1px solid var(--border);color:var(--text);padding:12px;border-radius:10px;font-size:1rem;cursor:pointer;';
-      b.onclick=function(){
-        if(n==='⌫'){input.pop();}
-        else if(n==='✅'){checkNum();}
-        else if(input.length<seq.length){input.push(n);}
-        document.getElementById('mgInp').textContent=input.join(' ');
+      +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:12px;">Sequence చూసి గుర్తు పెట్టుకో! Level: <b style="color:var(--gold);">'+len+'</b></p>'
+      +'<div id="numSeq" style="font-size:2rem;text-align:center;letter-spacing:14px;color:var(--gold);font-weight:700;background:var(--card);padding:20px;border-radius:14px;margin-bottom:12px;">'+seq.join(' ')+'</div>'
+      +'<button id="numHideBtn" style="width:100%;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;margin-bottom:10px;">✅ గుర్తు పెట్టుకున్నాను — Hide</button>'
+      +'<div id="numPad" style="display:none;">'
+      +'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px;" id="numBtns"></div>'
+      +'<div id="numInp" style="font-size:1.5rem;text-align:center;color:var(--gold);min-height:40px;letter-spacing:8px;margin-bottom:8px;"></div>'
+      +'<button id="numCheckBtn" style="width:100%;background:linear-gradient(135deg,#1a5c2a,#27ae60);color:#fff;border:none;padding:11px;border-radius:12px;font-weight:700;cursor:pointer;">✅ Check</button>'
+      +'</div>';
+    document.getElementById('numHideBtn').onclick=function(){
+      document.getElementById('numSeq').textContent='? '.repeat(seq.length).trim();
+      this.style.display='none';
+      document.getElementById('numPad').style.display='block';
+      var btns=document.getElementById('numBtns');
+      btns.innerHTML='';
+      [1,2,3,4,5,6,7,8,9,'⌫',0,'OK'].forEach(function(n){
+        var b=document.createElement('button');
+        b.textContent=n;
+        b.style.cssText='background:var(--card);border:1px solid var(--border);color:var(--text);padding:12px;border-radius:10px;font-size:1rem;cursor:pointer;';
+        b.onclick=function(){
+          if(n==='⌫'){input.pop();}
+          else if(n==='OK'){document.getElementById('numCheckBtn').click();}
+          else if(input.length<seq.length){input.push(n);}
+          var el=document.getElementById('numInp');if(el)el.textContent=input.join(' ');
+        };
+        btns.appendChild(b);
+      });
+      document.getElementById('numCheckBtn').onclick=function(){
+        if(input.join('')===seq.join('')){toast('🎉 Correct! Next level...');setTimeout(function(){newRound(seq.length+1);},800);}
+        else{toast('❌ Wrong! Answer: '+seq.join(' ')+' — Retry!');setTimeout(function(){newRound(seq.length);},1200);}
       };
-      pad.appendChild(b);
-    });
-  };
-  window.checkNum=function(){
-    var ok=input.join('')===seq.join('');
-    if(ok){toast('🎉 Correct! Next level...');setTimeout(function(){newRound(seq.length+1);},1000);}
-    else{toast('❌ Wrong! Answer: '+seq.join(' ')+' — Retry!');setTimeout(function(){newRound(seq.length);},1500);}
-  };
+    };
+  }
   newRound(3);
 }
 
@@ -3732,41 +4504,67 @@ function initWordGame(c){
     {w:'GRACE',h:'దేవుని కృప / God\'s grace'},
     {w:'FAITH',h:'విశ్వాసం / Belief in God'},
     {w:'PSALM',h:'బైబిల్ కీర్తన పుస్తకం'},
-    {w:'ANGEL',h:'దేవదూత / Messenger of God'}
+    {w:'ANGEL',h:'దేవదూత / Messenger of God'},
+    {w:'PRAYER',h:'ప్రార్థన / Talking to God'},
+    {w:'GOSPEL',h:'సువార్త / Good News'},
+    {w:'TEMPLE',h:'దేవాలయం / House of God'},
+    {w:'HEAVEN',h:'పరలోకం / Paradise'},
+    {w:'ISRAEL',h:'యాకోబుకు దేవుడు ఇచ్చిన పేరు'}
   ];
-  var wi=0;words=words.sort(function(){return Math.random()-0.5;});
-  function showWord(){
-    if(wi>=words.length){c.innerHTML='<div style="text-align:center;padding:30px;"><div style="font-size:3rem;">🎉</div><h3 style="color:var(--gold);">అన్నీ complete చేశావు!</h3><button onclick="initWordGame(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:12px;margin-top:14px;cursor:pointer;font-weight:700;">🔄 Again</button></div>';return;}
+  var wi=0,score=0;
+  words=words.sort(function(){return Math.random()-0.5;});
+  function show(){
+    if(wi>=words.length){
+      c.innerHTML='<div style="text-align:center;padding:30px;"><div style="font-size:3rem;">🎉</div>'
+        +'<h3 style="color:var(--gold);">అన్నీ complete చేశావు!</h3>'
+        +'<div style="color:var(--sub);margin:8px 0;">Score: <b style="color:var(--gold);">'+score+'</b>/'+words.length+'</div>'
+        +'<button onclick="initWordGame(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:12px;margin-top:14px;cursor:pointer;font-weight:700;">🔄 Again</button></div>';
+      return;
+    }
     var w=words[wi];
     var scrambled=w.w.split('').sort(function(){return Math.random()-0.5;}).join('');
+    while(scrambled===w.w) scrambled=w.w.split('').sort(function(){return Math.random()-0.5;}).join('');
     c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">📝 Word Unscramble</h3>'
-      +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Hint: '+w.h+'</p>'
+      +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Hint: '+w.h+' | '+(wi+1)+'/'+words.length+' Score: <b style="color:var(--gold);">'+score+'</b></p>'
       +'<div style="font-size:2rem;text-align:center;letter-spacing:10px;color:var(--text);background:var(--card);padding:18px;border-radius:14px;margin-bottom:12px;font-weight:700;">'+scrambled+'</div>'
-      +'<input id="wordInp" type="text" placeholder="Word type చేయి..." style="width:100%;padding:13px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:1rem;outline:none;margin-bottom:10px;text-transform:uppercase;">'
+      +'<input id="wuInput" type="text" placeholder="Word type చేయి..." style="width:100%;padding:13px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:1rem;outline:none;margin-bottom:10px;text-transform:uppercase;font-family:inherit;">'
+      +'<div id="wuResult" style="min-height:20px;margin-bottom:8px;"></div>'
       +'<div style="display:flex;gap:8px;">'
-      +'<button onclick="checkWord(\''+w.w+'\')" style="flex:1;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;">✅ Check</button>'
-      +'<button onclick="wi++;showWord()" style="background:var(--btn-bg);border:1px solid var(--border);color:var(--sub);padding:12px 16px;border-radius:12px;cursor:pointer;">Skip →</button>'
-      +'</div>'
-      +'<p style="color:var(--sub);font-size:0.75rem;margin-top:8px;">Word '+(wi+1)+' / '+words.length+'</p>';
+      +'<button id="wuCheckBtn" style="flex:1;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;">✅ Check</button>'
+      +'<button id="wuSkipBtn" style="background:var(--btn-bg);border:1px solid var(--border);color:var(--sub);padding:12px 16px;border-radius:12px;cursor:pointer;">Skip →</button>'
+      +'</div>';
+    document.getElementById('wuCheckBtn').onclick=function(){
+      var inp=(document.getElementById('wuInput').value||'').trim().toUpperCase();
+      var res=document.getElementById('wuResult');
+      if(inp===w.w){
+        score++;
+        res.innerHTML='<div style="color:#7ec8a0;font-size:0.85rem;">✅ Correct! <b>'+w.w+'</b></div>';
+        setTimeout(function(){wi++;show();},800);
+      } else {
+        res.innerHTML='<div style="color:#e88;font-size:0.85rem;">❌ Wrong! Try again.</div>';
+      }
+    };
+    document.getElementById('wuSkipBtn').onclick=function(){wi++;show();};
+    var inp=document.getElementById('wuInput');
+    if(inp)inp.onkeydown=function(e){if(e.key==='Enter')document.getElementById('wuCheckBtn').click();};
   }
-  window.checkWord=function(correct){
-    var inp=document.getElementById('wordInp').value.trim().toUpperCase();
-    if(inp===correct){toast('🎉 Correct! '+correct+' ✅');wi++;setTimeout(showWord,700);}
-    else{toast('❌ Wrong! Try again.');}
-  };
-  showWord();
+  show();
 }
 
 function initMathGame(c){
-  var score=0,q=0,total=10,timer,t;
+  var score=0,q=0,total=10,timer,gameStarted=false;
+
   function newQ(){
     if(q>=total){
-      c.innerHTML='<div style="text-align:center;padding:30px;"><div style="font-size:3rem;">🧮</div><h3 style="color:var(--gold);">Score: '+score+'/'+total+'</h3>'
-        +'<p style="color:var(--sub);font-size:0.85rem;margin:8px 0 16px;">'+(score>=7?'అద్భుతం! 🏆':'Practice చేయి! 📖')+'</p>'
-        +'<button onclick="initMathGame(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:12px;cursor:pointer;font-weight:700;">🔄 Again</button></div>';
+      clearInterval(timer);
+      c.innerHTML='<div style="text-align:center;padding:30px;"><div style="font-size:3rem;">🧮</div>'
+        +'<h3 style="color:var(--gold);margin:10px 0;">Score: '+score+'/'+total+'</h3>'
+        +'<p style="color:var(--sub);font-size:0.85rem;">'+(score>=7?'అద్భుతం! 🏆':score>=5?'బాగుంది! 👍':'Practice చేయి! 📖')+'</p>'
+        +'<button onclick="initMathGame(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:12px;margin-top:14px;cursor:pointer;font-weight:700;">🔄 Again</button></div>';
       return;
     }
-    var ops=['+','-','×'];var op=ops[Math.floor(Math.random()*ops.length)];
+    var ops=['+','-','×'];
+    var op=ops[Math.floor(Math.random()*ops.length)];
     var a,b,ans;
     if(op==='+'){a=Math.floor(Math.random()*50)+1;b=Math.floor(Math.random()*50)+1;ans=a+b;}
     else if(op==='-'){a=Math.floor(Math.random()*50)+10;b=Math.floor(Math.random()*a)+1;ans=a-b;}
@@ -3774,32 +4572,465 @@ function initMathGame(c){
     var opts=[ans];
     while(opts.length<4){var r=ans+(Math.floor(Math.random()*10)-5);if(r>0&&!opts.includes(r))opts.push(r);}
     opts=opts.sort(function(){return Math.random()-0.5;});
-    t=8;
-    c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">➗ Quick Math</h3>'
-      +'<div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="color:var(--sub);">Q '+(q+1)+'/'+total+'</span><span style="color:var(--gold);font-weight:700;">Score: '+score+'</span><div id="mgT" style="background:var(--red);color:#fff;padding:2px 10px;border-radius:20px;font-weight:700;">8</div></div>'
-      +'<div style="font-size:2rem;text-align:center;color:#fff;font-weight:700;background:var(--card);padding:22px;border-radius:16px;margin-bottom:14px;">'+a+' '+op+' '+b+' = ?</div>'
-      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="mgOpts"></div>';
-    var og=document.getElementById('mgOpts');
-    opts.forEach(function(ov){
-      var b2=document.createElement('button');
-      b2.textContent=ov;b2.style.cssText='background:var(--card);border:1.5px solid var(--border);color:var(--text);padding:16px;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;';
-      b2.onclick=function(){
+    var t=8;
+
+    // Only update existing elements if already rendered, else build fresh
+    var existing=document.getElementById('mathOpts');
+    if(existing&&gameStarted){
+      // Update question
+      var qEl=document.getElementById('mathQ');
+      var barEl=document.getElementById('mathBar');
+      var timerEl=document.getElementById('mathTimer');
+      if(qEl)qEl.textContent=a+' '+op+' '+b+' = ?';
+      if(barEl)barEl.innerHTML='Q '+(q+1)+'/'+total+' <span style="float:right;color:var(--gold);font-weight:700;">Score: '+score+'</span>';
+      if(timerEl)timerEl.textContent=t;
+      existing.innerHTML='';
+      opts.forEach(function(ov){
+        var btn=document.createElement('button');
+        btn.textContent=ov;
+        btn.style.cssText='background:var(--card);border:1.5px solid var(--border);color:var(--text);padding:16px;border-radius:12px;font-size:1.2rem;font-weight:700;cursor:pointer;';
+        btn.onclick=function(){
+          clearInterval(timer);
+          if(ov===ans){score++;btn.style.background='linear-gradient(135deg,#1a5c2a,#27ae60)';toast('✅ Correct!');}
+          else{btn.style.background='linear-gradient(135deg,#8b0000,#c0392b)';toast('❌ Answer: '+ans);}
+          btn.style.color='#fff';
+          existing.querySelectorAll('button').forEach(function(x){x.onclick=null;});
+          q++;setTimeout(newQ,700);
+        };
+        existing.appendChild(btn);
+      });
+    } else {
+      // First render
+      gameStarted=true;
+      c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">➗ Quick Math</h3>'
+        +'<div id="mathBar" style="display:flex;justify-content:space-between;margin-bottom:12px;align-items:center;">'
+        +'<span style="color:var(--sub);">Q '+(q+1)+'/'+total+'</span>'
+        +'<span style="color:var(--gold);font-weight:700;">Score: '+score+'</span>'
+        +'<div id="mathTimer" style="background:var(--red);color:#fff;padding:3px 12px;border-radius:20px;font-weight:700;min-width:30px;text-align:center;">'+t+'</div></div>'
+        +'<div id="mathQ" style="font-size:2.5rem;text-align:center;color:#fff;font-weight:700;background:var(--card);padding:22px;border-radius:16px;margin-bottom:14px;">'+a+' '+op+' '+b+' = ?</div>'
+        +'<div id="mathOpts" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"></div>';
+      var og=document.getElementById('mathOpts');
+      opts.forEach(function(ov){
+        var btn=document.createElement('button');
+        btn.textContent=ov;
+        btn.style.cssText='background:var(--card);border:1.5px solid var(--border);color:var(--text);padding:16px;border-radius:12px;font-size:1.2rem;font-weight:700;cursor:pointer;';
+        btn.onclick=function(){
+          clearInterval(timer);
+          if(ov===ans){score++;btn.style.background='linear-gradient(135deg,#1a5c2a,#27ae60)';toast('✅ Correct!');}
+          else{btn.style.background='linear-gradient(135deg,#8b0000,#c0392b)';toast('❌ Answer: '+ans);}
+          btn.style.color='#fff';
+          og.querySelectorAll('button').forEach(function(x){x.onclick=null;});
+          q++;setTimeout(newQ,700);
+        };
+        og.appendChild(btn);
+      });
+    }
+    clearInterval(timer);
+    timer=setInterval(function(){
+      t--;
+      var td=document.getElementById('mathTimer');if(td)td.textContent=t;
+      if(t<=3&&td)td.style.background='#8b0000';
+      if(t<=0){clearInterval(timer);toast('⏰ Time out! Answer: '+ans);q++;setTimeout(newQ,500);}
+    },1000);
+  }
+  newQ();
+}
+
+
+
+function initSlidingPuzzle(c){
+  var tiles=[],moves=0;
+  function shuffle(){
+    tiles=Array.from({length:16},function(_,i){return i;});
+    for(var i=0;i<500;i++){
+      var nb=getNeighbors(tiles.indexOf(15));
+      var r=nb[Math.floor(Math.random()*nb.length)];
+      var bi=tiles.indexOf(15);
+      var t=tiles[bi];tiles[bi]=tiles[r];tiles[r]=t;
+    }
+  }
+  function getNeighbors(idx){
+    var n=[];
+    if(idx%4!==0)n.push(idx-1);
+    if(idx%4!==3)n.push(idx+1);
+    if(idx>=4)n.push(idx-4);
+    if(idx<=11)n.push(idx+4);
+    return n;
+  }
+  function isSolved(){return tiles.every(function(t,i){return t===i;});}
+  function render(){
+    var grid=document.getElementById('pzGrid');
+    if(!grid)return;
+    grid.innerHTML='';
+    tiles.forEach(function(t,i){
+      var d=document.createElement('div');
+      d.style.cssText='width:70px;height:70px;display:flex;align-items:center;justify-content:center;border-radius:10px;font-size:1.4rem;font-weight:700;cursor:pointer;transition:all 0.15s;';
+      if(t===15){d.style.background='transparent';}
+      else{
+        d.style.background='linear-gradient(135deg,#1a003d,#3a0070)';
+        d.style.border='2px solid rgba(180,100,255,0.5)';
+        d.style.color='var(--gold)';
+        d.textContent=t+1;
+        d.onclick=(function(idx){return function(){
+          var bi=tiles.indexOf(15);
+          if(getNeighbors(bi).includes(idx)){
+            var tmp=tiles[bi];tiles[bi]=tiles[idx];tiles[idx]=tmp;
+            moves++;
+            var mv=document.getElementById('pzMoves');if(mv)mv.textContent=moves;
+            render();
+            if(isSolved())setTimeout(function(){toast('🏆 Solved in '+moves+' moves!');},200);
+          }
+        };})(i);
+      }
+      grid.appendChild(d);
+    });
+  }
+  shuffle();moves=0;
+  c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">🧩 15-Puzzle</h3>'
+    +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Numbers 1-15 order లో పెట్టు! Moves: <b id="pzMoves" style="color:var(--gold);">0</b></p>'
+    +'<div id="pzGrid" style="display:grid;grid-template-columns:repeat(4,70px);gap:6px;margin:0 auto 12px;width:fit-content;"></div>'
+    +'<button onclick="initSlidingPuzzle(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:12px;cursor:pointer;font-weight:700;">🔄 New Game</button>';
+  render();
+}
+
+function initTypingGame(c){
+  var verses=[
+    'The LORD is my shepherd I shall not want Psalm 23:1',
+    'For God so loved the world that he gave his one and only Son that whoever believes in him shall not perish but have eternal life John 3:16',
+    'I can do all things through Christ who strengthens me Philippians 4:13',
+    'Trust in the LORD with all your heart and do not lean on your own understanding in all your ways acknowledge him and he will make your paths straight Proverbs 3:5-6',
+    'The joy of the LORD is your strength Nehemiah 8:10',
+    'Fear not for I am with you be not dismayed for I am your God I will strengthen you I will help you Isaiah 41:10',
+    'Your word is a lamp to my feet and a light to my path Psalm 119:105',
+    'Ask and it will be given to you seek and you will find knock and the door will be opened to you Matthew 7:7',
+    'Jesus said I am the way and the truth and the life no one comes to the Father except through me John 14:6',
+    'Be strong and courageous do not be afraid do not be discouraged for the LORD your God will be with you Joshua 1:9',
+    'The LORD is my light and my salvation whom shall I fear the LORD is the stronghold of my life of whom shall I be afraid Psalm 27:1',
+    'Come to me all you who are weary and burdened and I will give you rest Matthew 11:28',
+    'For I know the plans I have for you declares the LORD plans to prosper you and not to harm you plans to give you hope and a future Jeremiah 29:11',
+    'Greater love has no one than this to lay down ones life for ones friends John 15:13',
+    'And we know that in all things God works for the good of those who love him who have been called according to his purpose Romans 8:28',
+    'Do not be anxious about anything but in every situation by prayer and petition with thanksgiving present your requests to God Philippians 4:6',
+    'In the beginning was the Word and the Word was with God and the Word was God John 1:1',
+    'Blessed are the pure in heart for they will see God Matthew 5:8',
+    'The name of the LORD is a strong tower the righteous run to it and are safe Proverbs 18:10',
+    'This is the day the LORD has made let us rejoice and be glad in it Psalm 118:24',
+    'For by grace you have been saved through faith and this is not your own doing it is the gift of God Ephesians 2:8',
+    'Jesus Christ is the same yesterday and today and forever Hebrews 13:8',
+    'Create in me a clean heart O God and renew a right spirit within me Psalm 51:10',
+    'But those who hope in the LORD will renew their strength they will soar on wings like eagles Isaiah 40:31',
+    'No weapon formed against you shall prosper Isaiah 54:17',
+    'I have been crucified with Christ it is no longer I who live but Christ who lives in me Galatians 2:20',
+    'He heals the brokenhearted and binds up their wounds Psalm 147:3',
+    'The LORD will fight for you you need only to be still Exodus 14:14',
+    'Even though I walk through the darkest valley I will fear no evil for you are with me Psalm 23:4',
+    'May the God of hope fill you with all joy and peace as you trust in him Romans 15:13'
+  ];
+  var cur=verses[Math.floor(Math.random()*verses.length)];
+  var startTime=null,done=false;
+  c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">⌨️ Typing Speed</h3>'
+    +'<div style="background:rgba(245,197,24,0.07);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:6px 12px;margin-bottom:8px;font-size:0.72rem;color:var(--sub);">💡 Exactly type చేయి — case sensitive కాదు</div>'
+    +'<div id="tyTarget" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;font-size:0.88rem;line-height:1.9;color:var(--gold);"></div>'
+    +'<input id="tyInput" type="text" placeholder="ఇక్కడ type చేయి..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:100%;padding:13px;background:var(--deep);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-size:0.9rem;outline:none;margin-bottom:8px;">'
+    +'<div id="tyStats" style="color:var(--sub);font-size:0.78rem;text-align:center;min-height:24px;"></div>'
+    +'<button onclick="initTypingGame(document.getElementById(\'mgContent\'))" style="margin-top:8px;background:var(--btn-bg);border:1px solid var(--border);color:var(--gold);padding:8px 18px;border-radius:10px;cursor:pointer;font-weight:700;font-size:0.82rem;">🔄 New Verse</button>';
+
+  // Render initial target
+  var tgt=document.getElementById('tyTarget');
+  if(tgt){
+    var html='';
+    for(var i=0;i<cur.length;i++){
+      html+='<span style="color:var(--sub);">'+cur[i]+'</span>';
+    }
+    tgt.innerHTML=html;
+  }
+
+  window.tyCheck=function(){
+    var inp=document.getElementById('tyInput');
+    if(!inp)return;
+    var val=inp.value;
+    if(!startTime&&val.length>0)startTime=Date.now();
+    var target=cur.toLowerCase();
+    var typed=val.toLowerCase();
+    var html='';
+    for(var i=0;i<cur.length;i++){
+      if(i<typed.length){
+        var ok=typed[i]===target[i];
+        html+='<span style="color:'+(ok?'#7ec8a0':'#e88')+';background:'+(ok?'rgba(39,174,96,0.12)':'rgba(192,57,43,0.18)')+';">'+cur[i]+'</span>';
+      } else if(i===typed.length){
+        html+='<span style="background:rgba(245,197,24,0.35);border-bottom:2px solid var(--gold);">'+cur[i]+'</span>';
+      } else {
+        html+='<span style="color:rgba(255,255,255,0.25);">'+cur[i]+'</span>';
+      }
+    }
+    var tgt2=document.getElementById('tyTarget');if(tgt2)tgt2.innerHTML=html;
+    if(val.toLowerCase()===cur.toLowerCase()&&!done){
+      done=true;
+      var secs=((Date.now()-startTime)/1000).toFixed(1);
+      var wordCount=cur.trim().split(/\s+/).length;
+      var wpm=Math.round((wordCount/parseFloat(secs))*60);
+      var grade=wpm>=60?'🔥 Expert!':wpm>=40?'⭐ Good!':wpm>=25?'👍 Nice!':'📖 Keep practicing!';
+      var st=document.getElementById('tyStats');
+      if(st)st.innerHTML='<div style="background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.3);border-radius:10px;padding:10px;color:#7ec8a0;font-weight:700;">✅ '+secs+'s | '+wpm+' WPM | '+grade+'</div>';
+      inp.style.borderColor='#27ae60';
+      toast('🎉 '+wpm+' WPM! Well done!');
+    }
+  };
+  var inp=document.getElementById('tyInput');
+  if(inp)inp.oninput=window.tyCheck;
+}
+
+
+
+function initColorStroop(c){
+  var colorNames=['RED','BLUE','GREEN','YELLOW','PURPLE'];
+  var colorVals=['#e53935','#1e88e5','#43a047','#fdd835','#9c27b0'];
+  var score=0,q=0,total=15,timer;
+  c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">🎨 Color Stroop</h3>'
+    +'<div id="csBar" style="color:var(--sub);font-size:0.78rem;margin-bottom:8px;">Q 1/'+total+' | Score: 0 | Time: <b id="csTimer" style="color:var(--red);">6</b></div>'
+    +'<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;margin-bottom:12px;">'
+    +'<div id="csWord" style="font-size:2.5rem;font-weight:900;letter-spacing:3px;margin-bottom:8px;"> </div>'
+    +'<div style="color:var(--sub);font-size:0.78rem;">ఈ text యొక్క INK COLOR ఏది? (Not the word meaning!)</div></div>'
+    +'<div id="csBtns" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;"></div>';
+
+  function newQ(){
+    if(q>=total){
+      c.innerHTML='<div style="text-align:center;padding:30px;">'
+        +'<div style="font-size:3rem;">🎨</div>'
+        +'<h3 style="color:var(--gold);margin:10px 0;">Score: '+score+'/'+total+'</h3>'
+        +'<p style="color:var(--sub);">'+(score>=12?'అద్భుతం! 🧠':score>=8?'బాగుంది! 👍':'మళ్ళీ try చేయి!')+'</p>'
+        +'<button onclick="initColorStroop(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:12px;margin-top:14px;cursor:pointer;font-weight:700;">🔄 Again</button></div>';
+      return;
+    }
+    var wordIdx=Math.floor(Math.random()*5);
+    var colorIdx=Math.floor(Math.random()*5);
+    if(Math.random()>0.3)while(colorIdx===wordIdx)colorIdx=Math.floor(Math.random()*5);
+    var answer=colorIdx,t=6;
+    var csW=document.getElementById('csWord');
+    var csBar=document.getElementById('csBar');
+    var csBtns=document.getElementById('csBtns');
+    if(!csW||!csBtns)return;
+    csW.textContent=colorNames[wordIdx];
+    csW.style.color=colorVals[colorIdx];
+    if(csBar)csBar.innerHTML='Q '+(q+1)+'/'+total+' | Score: '+score+' | Time: <b id="csTimer" style="color:var(--red);">'+t+'</b>';
+    csBtns.innerHTML='';
+    colorNames.forEach(function(n,i){
+      var btn=document.createElement('button');
+      btn.textContent=n;
+      btn.style.cssText='padding:10px 4px;border-radius:10px;border:2px solid '+colorVals[i]+'88;background:'+colorVals[i]+'22;color:#fff;font-weight:700;font-size:0.75rem;cursor:pointer;';
+      btn.onclick=function(){
         clearInterval(timer);
-        if(ov===ans){score++;b2.style.background='linear-gradient(135deg,#1a5c2a,#27ae60)';toast('✅ Correct!');}
-        else{b2.style.background='linear-gradient(135deg,#8b0000,#c0392b)';toast('❌ Answer: '+ans);}
-        b2.style.color='#fff';
-        og.querySelectorAll('button').forEach(function(x){x.onclick=null;});
-        q++;setTimeout(newQ,700);
+        if(i===answer){score++;btn.style.background=colorVals[i];}
+        else{btn.style.background='rgba(192,57,43,0.6)';csBtns.children[answer]&&(csBtns.children[answer].style.background=colorVals[answer]);}
+        q++;setTimeout(newQ,600);
       };
-      og.appendChild(b2);
+      csBtns.appendChild(btn);
     });
     clearInterval(timer);
     timer=setInterval(function(){
-      t--;var td=document.getElementById('mgT');if(td)td.textContent=t;
-      if(t<=0){clearInterval(timer);toast('⏰ Time out! Answer: '+ans);q++;setTimeout(newQ,700);}
+      t--;
+      var te=document.getElementById('csTimer');if(te)te.textContent=t;
+      if(t<=0){clearInterval(timer);q++;setTimeout(newQ,200);}
     },1000);
   }
-  score=0;q=0;newQ();
+  setTimeout(newQ,50);
+}
+
+function initVerseComplete(c){
+  var verses=[
+    {full:'దేవుడు లోకమును ఎంతో ప్రేమించెను గనుక తన అద్వితీయ కుమారుని అనుగ్రహించెను',blank:'దేవుడు లోకమును ఎంతో _____ గనుక',ans:'ప్రేమించెను',ref:'యోహాను 3:16'},
+    {full:'యెహోవా నా కాపరి నాకు కొదువ కలుగదు',blank:'యెహోవా నా _____ నాకు కొదువ కలుగదు',ans:'కాపరి',ref:'కీర్తన 23:1'},
+    {full:'నన్ను బలపరచువాని వలన సమస్తమును చేయగలను',blank:'నన్ను _____ వాని వలన సమస్తమును చేయగలను',ans:'బలపరచు',ref:'ఫిలిప్పీ 4:13'},
+    {full:'యెహోవా నా వెలుతురు నా రక్షణ నేనెవరికి భయపడుదును',blank:'యెహోవా నా _____ నా రక్షణ',ans:'వెలుతురు',ref:'కీర్తన 27:1'},
+    {full:'ప్రభువు భయము జ్ఞానమునకు మూలము',blank:'ప్రభువు _____ జ్ఞానమునకు మూలము',ans:'భయము',ref:'సామెతలు 1:7'},
+    {full:'నేనే మార్గమును సత్యమును జీవమును అయి యున్నాను',blank:'నేనే _____ సత్యమును జీవమును',ans:'మార్గమును',ref:'యోహాను 14:6'},
+    {full:'దేవుని ప్రేమించువారికి సమస్తమును మేలుకే జరుగును',blank:'సమస్తమును _____ జరుగును',ans:'మేలుకే',ref:'రోమా 8:28'},
+    {full:'అలసినవారలారా నా యొద్దకు రండి నేను మీకు విశ్రాంతి నిచ్చెదను',blank:'నా యొద్దకు రండి నేను మీకు _____ నిచ్చెదను',ans:'విశ్రాంతి',ref:'మత్తయి 11:28'},
+    {full:'నీవు భయపడకుము నేను నిన్ను బలపరుచెదను',blank:'నీవు _____ నేను నిన్ను బలపరుచెదను',ans:'భయపడకుము',ref:'యెషయా 41:13'},
+    {full:'యెహోవా వలన కలుగు సంతోషమే మీకు బలము',blank:'యెహోవా వలన కలుగు _____ మీకు బలము',ans:'సంతోషమే',ref:'నెహెమ్యా 8:10'}
+  ];
+  var vi=0,score=0;
+  verses=verses.sort(function(){return Math.random()-0.5;});
+  function show(){
+    if(vi>=verses.length){
+      c.innerHTML='<div style="text-align:center;padding:30px;"><div style="font-size:3rem;">✝️</div>'
+        +'<h3 style="color:var(--gold);margin:10px 0;">అన్నీ complete!</h3>'
+        +'<div style="background:rgba(245,197,24,0.1);border-radius:12px;padding:12px;margin:10px 0;color:var(--gold);font-size:1.2rem;font-weight:700;">Score: '+score+'/'+verses.length+'</div>'
+        +'<button onclick="initVerseComplete(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:12px;margin-top:14px;cursor:pointer;font-weight:700;">🔄 Again</button></div>';
+      return;
+    }
+    var v=verses[vi];
+    c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">✝️ Verse Complete</h3>'
+      +'<p style="color:var(--sub);font-size:0.75rem;margin-bottom:10px;">'+(vi+1)+'/'+verses.length+' | Score: '+score+'</p>'
+      +'<div style="background:var(--card);border:1px solid var(--rborder);border-radius:14px;padding:16px;margin-bottom:12px;">'
+      +'<div style="color:rgba(180,100,255,0.8);font-size:0.72rem;margin-bottom:8px;">📖 '+v.ref+'</div>'
+      +'<div style="color:var(--text);font-size:1rem;line-height:1.9;">'+v.blank+'</div></div>'
+      +'<input id="vcIn" type="text" placeholder="Missing word type చేయి..." autocorrect="off" spellcheck="false" style="width:100%;padding:13px;background:var(--deep);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-size:0.9rem;outline:none;margin-bottom:10px;font-family:inherit;">'
+      +'<div style="display:flex;gap:8px;">'
+      +'<button id="vcCheckBtn" style="flex:1;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;">✅ Check</button>'
+      +'<button id="vcSkipBtn" style="background:var(--btn-bg);border:1px solid var(--border);color:var(--sub);padding:12px 16px;border-radius:12px;cursor:pointer;">Skip →</button>'
+      +'</div>'
+      +'<div id="vcRes" style="margin-top:10px;min-height:30px;"></div>';
+    document.getElementById('vcCheckBtn').onclick=function(){
+      var inp=(document.getElementById('vcIn').value||'').trim();
+      var ok=inp===v.ans||(inp.length>=3&&v.ans.startsWith(inp.substring(0,3)));
+      var res=document.getElementById('vcRes');
+      if(ok){
+        score++;
+        res.innerHTML='<div style="background:rgba(39,174,96,0.15);border:1px solid rgba(39,174,96,0.4);border-radius:10px;padding:10px;color:#7ec8a0;">✅ Correct! <span style="color:var(--gold);">'+v.full+'</span></div>';
+        setTimeout(function(){vi++;show();},1400);
+      } else {
+        res.innerHTML='<div style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);border-radius:10px;padding:10px;color:#e88;">❌ Answer: <b style="color:var(--gold);">'+v.ans+'</b></div>';
+      }
+    };
+    document.getElementById('vcSkipBtn').onclick=function(){vi++;show();};
+    var inp=document.getElementById('vcIn');
+    if(inp)inp.onkeydown=function(e){if(e.key==='Enter')document.getElementById('vcCheckBtn').click();};
+  }
+  show();
+}
+
+
+
+
+// ═══ MOVIES ═══
+var _movieMuted=false;
+var _movieBright=0; // 0 = no overlay (100% bright), higher = darker
+
+function playMovie(videoId, title){
+  var player=document.getElementById('moviePlayer');
+  var frame=document.getElementById('movieFrame');
+  var titleEl=document.getElementById('movieTitle');
+  var ytLink=document.getElementById('movieYtLink');
+  if(!player||!frame)return;
+  _movieMuted=false;
+  _movieBright=0;
+  // Reset controls
+  var mb=document.getElementById('muteBtn');
+  if(mb){mb.textContent='🔊 Sound ON';mb.style.background='rgba(100,200,100,0.12)';mb.style.borderColor='rgba(100,200,100,0.4)';mb.style.color='#7ec8a0';}
+  var bo=document.getElementById('brightOverlay');
+  if(bo)bo.style.background='rgba(0,0,0,0)';
+  var bv=document.getElementById('brightVal');
+  if(bv)bv.textContent='100%';
+  // Load video
+  frame.src='https://www.youtube.com/embed/'+videoId+'?autoplay=1&rel=0&playsinline=1&enablejsapi=1';
+  if(titleEl)titleEl.textContent=title;
+  if(ytLink)ytLink.href='https://www.youtube.com/watch?v='+videoId;
+  player.style.display='block';
+  setTimeout(function(){player.scrollIntoView({behavior:'smooth',block:'start'});},100);
+}
+
+function closeMovie(){
+  var player=document.getElementById('moviePlayer');
+  var frame=document.getElementById('movieFrame');
+  if(frame)frame.src='';
+  if(player)player.style.display='none';
+}
+
+function movieFullscreen(){
+  var wrapper=document.getElementById('movieWrapper');
+  var frame=document.getElementById('movieFrame');
+  // Try native fullscreen on the iframe
+  if(frame){
+    if(frame.requestFullscreen)frame.requestFullscreen();
+    else if(frame.webkitRequestFullscreen)frame.webkitRequestFullscreen();
+    else if(frame.mozRequestFullScreen)frame.mozRequestFullScreen();
+    else{
+      // Fallback: expand wrapper to fill screen
+      if(wrapper){
+        wrapper.style.cssText='position:fixed;inset:0;z-index:9999;padding-top:0;background:#000;';
+        var closeBtn=document.createElement('button');
+        closeBtn.textContent='✕ Exit';
+        closeBtn.style.cssText='position:fixed;top:10px;right:10px;z-index:10000;background:rgba(192,57,43,0.9);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.9rem;cursor:pointer;';
+        closeBtn.onclick=function(){
+          wrapper.style.cssText='position:relative;width:100%;padding-top:56.25%;background:#000;';
+          closeBtn.remove();
+          // restore overlay
+          var bo=document.getElementById('brightOverlay');
+          if(bo){bo.style.position='absolute';bo.style.inset='0';}
+        };
+        document.body.appendChild(closeBtn);
+        var bo=document.getElementById('brightOverlay');
+        if(bo){bo.style.position='fixed';bo.style.inset='0';bo.style.zIndex='9998';}
+        // Make iframe fill wrapper
+        frame.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;';
+      }
+    }
+  }
+  toast('📱 Rotate phone for better view!');
+}
+
+function movieToggleMute(){
+  _movieMuted=!_movieMuted;
+  var mb=document.getElementById('muteBtn');
+  var frame=document.getElementById('movieFrame');
+  if(mb){
+    if(_movieMuted){
+      mb.textContent='🔇 Sound OFF';
+      mb.style.background='rgba(192,57,43,0.15)';
+      mb.style.borderColor='rgba(192,57,43,0.4)';
+      mb.style.color='#e88';
+    } else {
+      mb.textContent='🔊 Sound ON';
+      mb.style.background='rgba(100,200,100,0.12)';
+      mb.style.borderColor='rgba(100,200,100,0.4)';
+      mb.style.color='#7ec8a0';
+    }
+  }
+  // Reload with mute param
+  if(frame&&frame.src){
+    var src=frame.src.replace('&mute=1','').replace('&mute=0','');
+    frame.src=src+(_movieMuted?'&mute=1':'&mute=0');
+  }
+  toast(_movieMuted?'🔇 Sound OFF':'🔊 Sound ON');
+}
+
+function movieBright(dir){
+  // brightness: 0=100%, 1=80%, 2=60%, 3=40%, 4=20%  (overlay opacity)
+  _movieBright=Math.max(0,Math.min(4,_movieBright+dir));
+  var opacities=[0,0.2,0.4,0.6,0.8];
+  var percents=[100,80,60,40,20];
+  var bo=document.getElementById('brightOverlay');
+  var bv=document.getElementById('brightVal');
+  if(bo)bo.style.background='rgba(0,0,0,'+opacities[_movieBright]+')';
+  if(bv)bv.textContent=percents[_movieBright]+'%';
+}
+
+
+function showSongPlayer(){
+  var pv=document.getElementById('playerView');
+  var lv=document.getElementById('listView');
+  if(pv)pv.style.display='block';
+  if(lv)lv.style.display='none';
+  // Show hide button only if lyrics exist
+  var btn=document.getElementById('lyrHideBtn');
+  var lw=document.getElementById('lyrWrap');
+  if(btn)btn.style.display=(lw&&lw.style.display!=='none')?'inline-flex':'none';
+  var lp=document.getElementById('listPage');
+  if(lp)lp.scrollTop=0;
+  window.scrollTo(0,0);
+}
+
+function showSongList(){
+  var pv=document.getElementById('playerView');
+  var lv=document.getElementById('listView');
+  if(pv)pv.style.display='none';
+  if(lv)lv.style.display='block';
+  // Stop video
+  var fr=document.getElementById('ytf');
+  if(fr){fr.src='';fr.style.display='none';}
+  var ph=document.getElementById('nvph');
+  if(ph)ph.style.display='flex';
+}
+
+
+function toggleLyricsPanel(){
+  var lw=document.getElementById('lyrWrap');
+  var btn=document.getElementById('lyrHideBtn');
+  if(!lw)return;
+  var hidden=lw.style.display==='none';
+  lw.style.display=hidden?'block':'none';
+  if(btn)btn.textContent=hidden?'📝 Hide Lyrics':'📝 Show Lyrics';
 }
 
 // ═══ TOAST ═══
