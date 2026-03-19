@@ -1,4 +1,4 @@
-ld);font-size:0.<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="te">
 <head>
 <meta charset="UTF-8">
@@ -846,6 +846,17 @@ body.light #jesusPage button[style*="background:rgba"] { border-color:rgba(0,0,0
           <button class="abtn abtn-pr" onclick="printLyrics()">🖨️</button>
           <button class="fav-btn" id="favBtn" onclick="toggleFav()">🤍</button>
         </div>
+      </div>
+    </div>
+
+    <!-- YouTube Search Panel -->
+    <div id="ytSearchPanel" style="display:none;background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.4);border-radius:14px;padding:14px;margin-bottom:12px;">
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;margin-bottom:6px;">🔍 <span id="ytspTitle"></span></div>
+      <div style="color:var(--sub);font-size:0.75rem;margin-bottom:10px;">YouTube లో video search చేయి → URL లో <b style="color:var(--gold);">v=</b> తర్వాత code copy చేయి → పెట్టు</div>
+      <a id="ytspLink" href="#" target="_blank" style="display:block;background:var(--red);color:#fff;padding:9px 12px;border-radius:10px;text-decoration:none;font-size:0.82rem;font-weight:700;text-align:center;margin-bottom:8px;">🔍 YouTube లో Search చేయి</a>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input id="ytspInput" type="text" placeholder="Video ID paste చేయి (e.g. dQw4w9WgXcQ)" style="flex:1;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:9px 12px;font-size:0.85rem;outline:none;font-family:inherit;">
+        <button onclick="saveYtId()" style="background:linear-gradient(135deg,#006633,#27ae60);color:#fff;border:none;padding:9px 16px;border-radius:10px;cursor:pointer;font-weight:700;">💾 Save</button>
       </div>
     </div>
 
@@ -1814,8 +1825,10 @@ body.light #jesusPage button[style*="background:rgba"] { border-color:rgba(0,0,0
 <div id="addPage" class="page">
   <!-- Bulk Import Section -->
   <div style="background:rgba(0,150,50,0.08);border:1px solid rgba(0,150,50,0.3);border-radius:14px;padding:14px;margin-bottom:14px;">
-    <div style="color:#7ec8a0;font-weight:700;font-size:0.88rem;margin-bottom:6px;">📥 Bulk Import Songs</div>
-    <div style="color:var(--sub);font-size:0.72rem;margin-bottom:8px;">ఒక్కో line లో: <b style="color:var(--gold);">Song Name | YouTube-ID లేదా Link</b> అని రాయి</div>
+    <div style="color:#7ec8a0;font-weight:700;font-size:0.88rem;margin-bottom:8px;">📥 Bulk Import Songs</div>
+    <!-- Load Default 25 Songs button -->
+    <button onclick="loadDefaultSongs()" style="width:100%;background:linear-gradient(135deg,#1a3a6b,#2980b9);color:#fff;border:none;padding:10px;border-radius:10px;cursor:pointer;font-weight:700;font-size:0.85rem;margin-bottom:10px;">🎵 Load Default 25 Songs</button>
+    <div style="color:var(--sub);font-size:0.72rem;margin-bottom:8px;">లేదా manually paste చేయి — ఒక్కో line లో: <b style="color:var(--gold);">Song Name | YouTube-ID</b></div>
     <textarea id="bulkInput" placeholder="Neevena Santhosha Ganamu | 7bs28pPaPlk&#10;Uhakandani Prema | mX0Qj4QBpiU&#10;..." style="width:100%;min-height:100px;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;font-size:0.82rem;font-family:inherit;outline:none;resize:vertical;"></textarea>
     <button onclick="bulkImport()" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#006633,#27ae60);color:#fff;border:none;padding:10px;border-radius:10px;cursor:pointer;font-weight:700;font-size:0.85rem;">📥 Import All Songs</button>
   </div>
@@ -1849,7 +1862,14 @@ var PROMISES=[{t:"యెహోవా నా కాపరి, నాకు లే
 var SONGS244=[[1,"కృపామయుడా"],[2,"ఆనందయాత్ర"],[3,"నూతన యెరుషలేము"],[4,"ఎగురుచున్నది"],[5,"స్తుతి పాత్రుడా"],[6,"నా ప్రియుడా"],[7,"శాశ్వతమైనది"],[8,"యేసయ్యా నాప్రియా!"],[9,"నా ప్రాణప్రియుడవు"],[10,"ప్రాణేశ్వర"],[11,"నీతివాగులకొరకు"],[12,"యేసురాజు రాజులరాజే"],[13,"ఓ ప్రభువా"],[14,"వందనము"],[15,"ప్రభువా నీలో జీవించుట"],[16,"మాధుర్యమే"],[17,"ఏమని వర్ణింతు"],[18,"నా ప్రాణప్రియుడా"],[19,"నిత్యుడా నీ సన్నిధి"],[20,"త్రియేక దేవుడైన"],[21,"యేసు అను నామమే"],[22,"కృపయే నేటివరకు"],[23,"దేవా నా అర్థధ్వని"],[24,"ఆనందమే"],[25,"ప్రేమయూ"],[26,"ఆనందం యేసుతో"],[27,"నా వేదనలో"],[28,"కృపానిధి నీవే ప్రభు"],[29,"పోరాటం"],[30,"కృపయే నేటివరకు"],[31,"నా ప్రియుడు యేసు"],[32,"నా స్తుతిపాత్రుడా"],[33,"స్తుతి సింహాసనా"],[34,"అనాదిలో"],[35,"స్తుతికి పాత్రుడా"],[36,"ప్రభువా నీ సముఖము"],[37,"నేడో రేపో"],[38,"నిత్యుడగు నా తండ్రి"],[39,"నీ కృప బాహుళ్యమే"],[40,"నా యేసు రాజా"],[41,"నా ప్రాణ ఆత్మ"],[42,"నన్ను విడువక"],[43,"నూతన యెరుషలేమే"],[44,"యేసయ్యా నా నిరీక్షణా"],[45,"ఎవరున్నారు"],[46,"ఆశ్చర్యకరుడా నీదు కృపా"],[47,"యుద్ధ వీరులం"],[48,"ఆనందయాత్ర"],[49,"నా జీవితం నీకంకితం"],[50,"సూర్యుని ధరించి"],[51,"పాడెద నేనొక"],[52,"ఆదరణకర్తవు"],[53,"ఆకాంక్షతో"],[54,"ఇంతగ నన్ను"],[55,"శ్రీమంతుడా"],[56,"స్తుతి స్తోత్రములు"],[57,"అబ్రహాము దేవుడవు"],[58,"స్తుతి గానమా"],[59,"యెడబాయని"],[60,"యేసయ్యా నీవేనాకని"],[61,"కృపా సత్య సంపూర్ణుడా"],[62,"ఆనందింతు నీలో"],[63,"నీ కృప నాకు చాలును"],[64,"నీ ప్రేమే నన్ను"],[65,"సర్వాంగసుందరా"],[66,"స్తుతి పాత్రుడా"],[67,"రాజుల రాజుల రాజు"],[68,"యేసు రక్షము"],[69,"ప్రేమామృతం"],[70,"యేసయ్యా నీ కృపా"],[71,"యేసయ్యా నా హృదయ"],[72,"నాకెంతో ఆనందం"],[73,"వేలుళ్లలో బహుఘనుడా"],[74,"నా విమోచకుడా"],[75,"అగ్నిమందించు"],[76,"నా దీపము"],[77,"నా మార్గమునకు"],[78,"యెహోవాయే నా కాపరిగా"],[79,"ప్రేమా ప్రేమా"],[80,"ప్రేమా - ప్రేమా"],[81,"సిలువలో ఆ సిలువలో"],[82,"ఆరని ప్రేమ ఇది"],[83,"వినలేదా నీవు"],[84,"రక్తం యేసు రక్తం"],[85,"కృపలను తలంచుచు"],[86,"పదివేలలోని"],[87,"సుగుణాల సంపన్నుడా"],[88,"కలువరిగిరిలో"],[89,"నీ ముఖము"],[90,"నా జీవిత భాగస్వామివి"],[91,"నా యేసయ్యా"],[92,"దేవా నా దేవుడవు"],[93,"సరిరారెవ్వరూ"],[94,"యూదా స్తుతిగోత్రపు"],[95,"భూమ్యాకాశములు"],[96,"దేవా నీ కృప నిరంతరం"],[97,"నేనెందుకని"],[98,"యేసయ్యా నా హృదయాభి"],[99,"వర్లల్లెదము"],[100,"నమ్మదగినవాడవు"],[101,"నిరంతరం"],[102,"నా హృదయాన"],[103,"కృపామయుడా"],[104,"అత్యున్నత సింహాసనం"],[105,"జీవించుచున్నది"],[106,"నేను యేసుని చూచే"],[107,"నా ప్రాణమా నాలో"],[108,"ఆనందమే పరమానందమే"],[109,"మనసెరిగిన"],[110,"విశ్వాసము లేకుండా"],[111,"నా గీతారాధనలో"],[112,"నిత్యాశ్రయదుర్గమైన"],[113,"ప్రవహించుచున్నది"],[114,"నా యేసయ్యా నీ దివ్య"],[115,"నిన్న నేడు నిరంతరం"],[116,"నీవుగాక ఎవరున్నారు"],[117,"ఎవరు సమీపించలేని"],[118,"పరుగెత్తడా"],[119,"ఉత్సాహగానము"],[120,"ఎన్నెన్నో మేళ్ళను"],[121,"చూచుచున్న దేవుడవు"],[122,"నా అర్పణలు"],[123,"నా జీవితాన"],[124,"నా ప్రార్థనలన్నీ"],[125,"కృపానిధి"],[126,"నీ కృప నిత్యముందును"],[127,"మనసా! నీప్రియుడు"],[128,"విజయ గీతము"],[129,"సాగిపోదును"],[130,"జ్యోతిర్మయుడా"],[131,"ఆశ్రయ దుర్గము నీవని"],[132,"వందనాలు - వందనాలు"],[133,"మహోఘనుడవు"],[134,"అదిగదిగో పరలోకము"],[135,"లేమ్ము తెజరిల్లము"],[136,"పాడనా"],[137,"స్తుతి గానమే"],[138,"శాశ్వతమైనది నీతో"],[139,"అడగకమునుపే"],[140,"సర్వాధికారివి"],[141,"నా స్తుతులపైన"],[142,"ప్రభువా నీ కలువరి"],[143,"దీనుడా అజేయుడా"],[144,"ఆశ్రయ దుర్గమా"],[145,"నా హృదయమెంతో"],[146,"సర్వలోక నివాసులారా"],[147,"సర్వయుగములలో"],[148,"మహోన్నతుడా"],[149,"శారోను వనములో"],[150,"ఆత్మ పరిశుద్ధాత్ముడా"],[151,"నాలోన అనుభవంవున"],[152,"యేసయ్యా! నను"],[153,"సద్గుణ శీలుడా"],[154,"అనురాగాలు కురిపించే"],[155,"సాత్వికుడా"],[156,"ఆశ్చర్య కరుడా"],[157,"నిండు మనస్సుతో"],[158,"నీ బాహుబలము"],[159,"ఆర్తాటముతో"],[160,"రాజాధి రాజ"],[161,"అల్లా ఓమెగయైన"],[162,"మహిమ స్వరూపుడా"],[163,"త్రేజీవాసుల"],[164,"సృష్టికర్తవైన"],[165,"వెళ్లులో బహుఘనుడా"],[166,"జీవప్రదాతవు"],[167,"నీతిన్యాయములు"],[168,"కృపాక్షేమము"],[169,"సర్వోన్నతుడా"],[170,"నా హృదయములో"],[171,"యేసయ్యా కనికరపూర్ణుడా"],[172,"నజరేయుడా"],[173,"నా ఆత్మీయ యాత్రలో"],[174,"మధురం మధురం"],[175,"నీవేనా సంతోషగానము"],[176,"నా జీవం నీ కృపలో"],[177,"సజీవుడవైన యేసయ్యా"],[178,"అవధులే లేనిది"],[179,"విజయ శీలుడా"],[180,"ఆరాధన స్తుతి ఆరాధన"],[181,"దయగల హృదయుడవు"],[182,"పరిశుద్ధడవై"],[183,"ప్రేమాంబుధి"],[184,"సన్మతించెను"],[185,"నిజమైన ద్రాక్షావల్లి"],[186,"నీతో నా జీవితం"],[187,"విలువైనది"],[188,"గొప్ప దేవుడా"],[189,"నా నీతి సూర్యుడా"],[190,"ఊహాలు నాదు ఊటలు"],[191,"సుమధుర స్వరముల"],[192,"చిరకాల స్నేహం"],[193,"మహో మహిమతో"],[194,"పర్వతములు తొలగిన"],[195,"నీ ప్రేమ నాలో"],[196,"నీ ప్రేమ నాలో"],[197,"కలవరపడి"],[198,"నాలో నివసించే"],[199,"వినరండి నా ప్రియుని"],[200,"నూతన గీతము"],[201,"పాటలతోనే పయనం"],[202,"ఆనందం నీలోనే"],[203,"నీవే కృపాధారము"],[204,"దివినేలు స్తోత్రార్తుడా"],[205,"నా యెదుట నీవు"],[206,"కృపగలదేవా"],[207,"ఎవరో నన్నిలా మార్చినది"],[208,"అమరుడవు నీవు"],[209,"నా దాగుచోటు నీవే"],[210,"నీవే హృదయసారధి"],[211,"ఘనమైనవి నీ కార్యములు"],[212,"కరుణాసంపన్నుడా"],[213,"నేను వెళ్ళే మార్గము"],[214,"పాడెద స్తుతిగానము"],[215,"మహాదానందమైన"],[216,"కృపా - కృపా"],[217,"అతిసుందరుడవు"],[218,"ప్రేమే శాశ్వతమైన"],[219,"స్తుతి పాడుటకే"],[220,"మదిలోన నీరూపం"],[221,"జంటితేనె"],[222,"బహు సౌందర్య సీయోనులో"],[223,"ఎదో ఆశ నాలో"],[224,"జయసంకేతమా"],[225,"గగనము చీల్చుకొని"],[226,"నాకొఱక నీ ప్రణాళిక"],[227,"అతిపరిశుద్ధుడా"],[228,"రక్తం జయం యేసు రక్తం జయం"],[229,"నూతనమైన కృప"],[230,"సిలువలో వేలాడే"],[231,"కరుణాసాగర"],[232,"నీకేగ నా స్తుతిమాలిక"],[233,"నీవే శ్రావ్య సదనము"],[234,"ఆకాశము వైపు"],[235,"పరిమళతైలం నీవే"],[236,"ప్రేమపూర్ణుడా"],[237,"జగములనేలే"],[238,"రాజ జగమెరిగిన"],[239,"జగమంతా"],[240,"అక్షయుడా"],[241,"ఆశ్రయుడా"],[242,"కురిసింది తొలకరి వాన"],[243,"ఊహాకందని"],[244,"యేసయ్యా నా ప్రాణమా"]];
 
 // ═══ STATE ═══
-var S=JSON.parse(localStorage.getItem('ns7')||'[]');
+var DEFAULT_SONGS=[{"id": "ds1", "t": "Neevena Santhosha Ganamu", "y": "https://www.youtube.com/watch?v=7bs28pPaPlk", "l": ""}, {"id": "ds2", "t": "Uhakandani Prema", "y": "https://www.youtube.com/watch?v=mX0Qj4QBpiU", "l": ""}, {"id": "ds3", "t": "Tolakarivaana", "y": "https://www.youtube.com/watch?v=V-_O7nl0Ii0", "l": ""}, {"id": "ds4", "t": "Viswanadhuda", "y": "https://www.youtube.com/watch?v=3JZ_D3ELwOQ", "l": ""}, {"id": "ds5", "t": "Soundarya Poornuda", "y": "https://www.youtube.com/watch?v=YQHsXMglC9A", "l": ""}, {"id": "ds6", "t": "Mahaganudaa Yehova", "y": "https://www.youtube.com/watch?v=fRh_vgS2dFE", "l": ""}, {"id": "ds7", "t": "Yesayye Naa Praanam", "y": "https://www.youtube.com/watch?v=RgKAFK5djSk", "l": ""}, {"id": "ds8", "t": "Jeevana Makarandham", "y": "https://www.youtube.com/watch?v=OPf0YbXqDm0", "l": ""}, {"id": "ds9", "t": "Nuthanamaina Krupa", "y": "https://www.youtube.com/watch?v=Zi_XLOBDo_Y", "l": ""}, {"id": "ds10", "t": "Sthuthi Keerthaneeyudaa", "y": "https://www.youtube.com/watch?v=ktvTqknDobU", "l": ""}, {"id": "ds11", "t": "Aaradhanaku Yogyuda", "y": "https://www.youtube.com/watch?v=JGwWNGJdvx8", "l": ""}, {"id": "ds12", "t": "Sthuthulapaina Aseenuda", "y": "https://www.youtube.com/watch?v=hLQl3WQQoQ0", "l": ""}, {"id": "ds13", "t": "Adhikamuga Cheyagalavu", "y": "https://www.youtube.com/watch?v=60ItHLz5WEA", "l": ""}, {"id": "ds14", "t": "Siluvalo Vrelade", "y": "https://www.youtube.com/watch?v=e-ORhEE9VVg", "l": ""}, {"id": "ds15", "t": "Naa Yesu Prema", "y": "https://www.youtube.com/watch?v=09R8_2nJtjg", "l": ""}, {"id": "ds16", "t": "Karunasagara", "y": "https://www.youtube.com/watch?v=lp-EO5I60KA", "l": ""}, {"id": "ds17", "t": "Naa Sahayakuda", "y": "https://www.youtube.com/watch?v=2Vv-BfVoq4g", "l": ""}, {"id": "ds18", "t": "Yesu Naa Rakshaka", "y": "https://www.youtube.com/watch?v=CevxZvSJLk8", "l": ""}, {"id": "ds19", "t": "Stothram Yesu", "y": "https://www.youtube.com/watch?v=SlPhMPnQ58k", "l": ""}, {"id": "ds20", "t": "Nee Prema Madhuram", "y": "https://www.youtube.com/watch?v=kXYiU_JCYtU", "l": ""}, {"id": "ds21", "t": "Enduko Nanninthaga", "y": "https://www.youtube.com/watch?v=7bs28pPaPlk", "l": ""}, {"id": "ds22", "t": "Ebinesare", "y": "https://www.youtube.com/watch?v=mX0Qj4QBpiU", "l": ""}, {"id": "ds23", "t": "Gaganamu Cheelchukoni", "y": "https://www.youtube.com/watch?v=V-_O7nl0Ii0", "l": ""}, {"id": "ds24", "t": "Naalo Emi Chuchi", "y": "https://www.youtube.com/watch?v=3JZ_D3ELwOQ", "l": ""}, {"id": "ds25", "t": "Sugunala Sampannuda", "y": "https://www.youtube.com/watch?v=YQHsXMglC9A", "l": ""}, {"id": "ex1", "t": "Ninne Ninne Nammithinayya", "y": "https://www.youtube.com/results?search_query=Ninne+Ninne+Nammithinayya+telugu+christian+song", "l": ""}, {"id": "ex2", "t": "Yesu Rakthame Jayam", "y": "https://www.youtube.com/results?search_query=Yesu+Rakthame+Jayam+telugu+song", "l": ""}, {"id": "ex3", "t": "Nee Krupa Chaalunu", "y": "https://www.youtube.com/results?search_query=Nee+Krupa+Chaalunu+Hosanna+song", "l": ""}, {"id": "ex4", "t": "Yesayya Nee Prema", "y": "https://www.youtube.com/results?search_query=Yesayya+Nee+Prema+telugu+christian+song", "l": ""}, {"id": "ex5", "t": "Aradhana Stuthi Aradhana", "y": "https://www.youtube.com/results?search_query=Aradhana+Stuthi+Aradhana+telugu", "l": ""}, {"id": "ex6", "t": "Prabhuvaa Neeve Na Saranam", "y": "https://www.youtube.com/results?search_query=Prabhuvaa+Neeve+Na+Saranam+song", "l": ""}, {"id": "ex7", "t": "Yehova Na Kapari", "y": "https://www.youtube.com/results?search_query=Yehova+Na+Kapari+telugu+song", "l": ""}, {"id": "ex8", "t": "Yesu Naa Jeevitham", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Jeevitham+song", "l": ""}, {"id": "ex9", "t": "Naa Hrudayamlo Nee Sannidhi", "y": "https://www.youtube.com/results?search_query=Naa+Hrudayamlo+Nee+Sannidhi+song", "l": ""}, {"id": "ex10", "t": "Sthothram Yesu Raja", "y": "https://www.youtube.com/results?search_query=Sthothram+Yesu+Raja+telugu", "l": ""}, {"id": "ex11", "t": "Naa Pranamaina Yesu", "y": "https://www.youtube.com/results?search_query=Naa+Pranamaina+Yesu+song", "l": ""}, {"id": "ex12", "t": "Nee Dayalo Nenu Brathikina", "y": "https://www.youtube.com/results?search_query=Nee+Dayalo+Nenu+Brathikina+song", "l": ""}, {"id": "ex13", "t": "Yesu Nee Sannidhi", "y": "https://www.youtube.com/results?search_query=Yesu+Nee+Sannidhi+song", "l": ""}, {"id": "ex14", "t": "Naa Rakshaka Yesu", "y": "https://www.youtube.com/results?search_query=Naa+Rakshaka+Yesu+song", "l": ""}, {"id": "ex15", "t": "Sthuthulatho Nee Sannidhi", "y": "https://www.youtube.com/results?search_query=Sthuthulatho+Nee+Sannidhi+song", "l": ""}, {"id": "ex16", "t": "Yehova Na Sahayakudu", "y": "https://www.youtube.com/results?search_query=Yehova+Na+Sahayakudu+song", "l": ""}, {"id": "ex17", "t": "Naa Jeevitham Nee Chethullo", "y": "https://www.youtube.com/results?search_query=Naa+Jeevitham+Nee+Chethullo+song", "l": ""}, {"id": "ex18", "t": "Nee Sannidhi Naku Chaalu", "y": "https://www.youtube.com/results?search_query=Nee+Sannidhi+Naku+Chaalu+song", "l": ""}, {"id": "ex19", "t": "Prabhuva Nee Mahima", "y": "https://www.youtube.com/results?search_query=Prabhuva+Nee+Mahima+song", "l": ""}, {"id": "ex20", "t": "Yesayya Nee Krupa", "y": "https://www.youtube.com/results?search_query=Yesayya+Nee+Krupa+telugu+christian+song", "l": ""}, {"id": "ex21", "t": "Naa Jeevitha Prayanamlo", "y": "https://www.youtube.com/results?search_query=Naa+Jeevitha+Prayanamlo+song", "l": ""}, {"id": "ex22", "t": "Yehova Na Rakshakudu", "y": "https://www.youtube.com/results?search_query=Yehova+Na+Rakshakudu+telugu+song", "l": ""}, {"id": "ex23", "t": "Nee Sannidhilo Anandam", "y": "https://www.youtube.com/results?search_query=Nee+Sannidhilo+Anandam+song", "l": ""}, {"id": "ex24", "t": "Yesu Naa Daivam", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Daivam+telugu+song", "l": ""}, {"id": "ex25", "t": "Naa Pranam Neeve", "y": "https://www.youtube.com/results?search_query=Naa+Pranam+Neeve+song", "l": ""}, {"id": "ex26", "t": "Prabhuvaa Neeve Naa Gathi", "y": "https://www.youtube.com/results?search_query=Prabhuvaa+Neeve+Naa+Gathi+song", "l": ""}, {"id": "ex27", "t": "Nee Prema Entho Goppadi", "y": "https://www.youtube.com/results?search_query=Nee+Prema+Entho+Goppadi+song", "l": ""}, {"id": "ex28", "t": "Yesayya Nee Mahima", "y": "https://www.youtube.com/results?search_query=Yesayya+Nee+Mahima+telugu", "l": ""}, {"id": "ex29", "t": "Naa Jeevitham Nee Cheyyi", "y": "https://www.youtube.com/results?search_query=Naa+Jeevitham+Nee+Cheyyi+song", "l": ""}, {"id": "ex30", "t": "Yehova Na Balamu", "y": "https://www.youtube.com/results?search_query=Yehova+Na+Balamu+song", "l": ""}, {"id": "ex31", "t": "Nee Dayalo Anandam", "y": "https://www.youtube.com/results?search_query=Nee+Dayalo+Anandam+song", "l": ""}, {"id": "ex32", "t": "Yesu Naa Pranam", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Pranam+song", "l": ""}, {"id": "ex33", "t": "Naa Jeevitha Deepam", "y": "https://www.youtube.com/results?search_query=Naa+Jeevitha+Deepam+song", "l": ""}, {"id": "ex34", "t": "Prabhuva Nee Sannidhi", "y": "https://www.youtube.com/results?search_query=Prabhuva+Nee+Sannidhi+song", "l": ""}, {"id": "ex35", "t": "Nee Prema Naa Jeevitham", "y": "https://www.youtube.com/results?search_query=Nee+Prema+Naa+Jeevitham+song", "l": ""}, {"id": "ex36", "t": "Yesayya Naa Rakshakuda", "y": "https://www.youtube.com/results?search_query=Yesayya+Naa+Rakshakuda+song", "l": ""}, {"id": "ex37", "t": "Naa Hrudayam Nee Kosam", "y": "https://www.youtube.com/results?search_query=Naa+Hrudayam+Nee+Kosam+song", "l": ""}, {"id": "ex38", "t": "Yehova Naa Kapari", "y": "https://www.youtube.com/results?search_query=Yehova+Naa+Kapari+telugu+song", "l": ""}, {"id": "ex39", "t": "Nee Sannidhi Naaku Chaalu", "y": "https://www.youtube.com/results?search_query=Nee+Sannidhi+Naaku+Chaalu+song", "l": ""}, {"id": "ex40", "t": "Yesayya Nee Dayalo", "y": "https://www.youtube.com/results?search_query=Yesayya+Nee+Dayalo+telugu+christian+song", "l": ""}, {"id": "ex41", "t": "Naa Jeevitham Nee Sannidhi", "y": "https://www.youtube.com/results?search_query=Naa+Jeevitham+Nee+Sannidhi+song", "l": ""}, {"id": "ex42", "t": "Yehova Naa Rakshaka", "y": "https://www.youtube.com/results?search_query=Yehova+Naa+Rakshaka+telugu+song", "l": ""}, {"id": "ex43", "t": "Nee Prema Nannu Kappindi", "y": "https://www.youtube.com/results?search_query=Nee+Prema+Nannu+Kappindi+song", "l": ""}, {"id": "ex44", "t": "Yesu Naa Gathi", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Gathi+song", "l": ""}, {"id": "ex45", "t": "Naa Hrudayamlo Yesu", "y": "https://www.youtube.com/results?search_query=Naa+Hrudayamlo+Yesu+song", "l": ""}, {"id": "ex46", "t": "Prabhuva Nee Dayalo", "y": "https://www.youtube.com/results?search_query=Prabhuva+Nee+Dayalo+song", "l": ""}, {"id": "ex47", "t": "Nee Sannidhi Naa Anandam", "y": "https://www.youtube.com/results?search_query=Nee+Sannidhi+Naa+Anandam+song", "l": ""}, {"id": "ex48", "t": "Yesayya Naa Jeevitham", "y": "https://www.youtube.com/results?search_query=Yesayya+Naa+Jeevitham+song", "l": ""}, {"id": "ex49", "t": "Naa Jeevitha Sathyam", "y": "https://www.youtube.com/results?search_query=Naa+Jeevitha+Sathyam+song", "l": ""}, {"id": "ex50", "t": "Yehova Naa Balamu", "y": "https://www.youtube.com/results?search_query=Yehova+Naa+Balamu+song", "l": ""}, {"id": "ex51", "t": "Nee Prema Naa Raksha", "y": "https://www.youtube.com/results?search_query=Nee+Prema+Naa+Raksha+song", "l": ""}, {"id": "ex52", "t": "Yesu Naa Sahayakuda", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Sahayakuda+song", "l": ""}, {"id": "ex53", "t": "Naa Jeevitha Deepika", "y": "https://www.youtube.com/results?search_query=Naa+Jeevitha+Deepika+song", "l": ""}, {"id": "ex54", "t": "Nee Sannidhi Naa Jeevitham", "y": "https://www.youtube.com/results?search_query=Nee+Sannidhi+Naa+Jeevitham+song", "l": ""}, {"id": "ex55", "t": "Yesayya Naa Balamu", "y": "https://www.youtube.com/results?search_query=Yesayya+Naa+Balamu+song", "l": ""}, {"id": "ex56", "t": "Naa Hrudayam Nee Sannidhi", "y": "https://www.youtube.com/results?search_query=Naa+Hrudayam+Nee+Sannidhi+song", "l": ""}, {"id": "ex57", "t": "Yehova Naa Sahayam", "y": "https://www.youtube.com/results?search_query=Yehova+Naa+Sahayam+song", "l": ""}, {"id": "ex58", "t": "Nee Prema Naa Anandam", "y": "https://www.youtube.com/results?search_query=Nee+Prema+Naa+Anandam+song", "l": ""}, {"id": "ex59", "t": "Yesayya Nee Sannidhi", "y": "https://www.youtube.com/results?search_query=Yesayya+Nee+Sannidhi+telugu+song", "l": ""}, {"id": "ex60", "t": "Naa Jeevitham Nee Dayalo", "y": "https://www.youtube.com/results?search_query=Naa+Jeevitham+Nee+Dayalo+song", "l": ""}, {"id": "ex61", "t": "Yesu Naa Sathyam", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Sathyam+song", "l": ""}, {"id": "ex62", "t": "Prabhuva Nee Sannidhi Naku Chaalu", "y": "https://www.youtube.com/results?search_query=Prabhuva+Nee+Sannidhi+Naku+Chaalu+song", "l": ""}, {"id": "ex63", "t": "Yesayya Naa Jeevitha Deepam", "y": "https://www.youtube.com/results?search_query=Yesayya+Naa+Jeevitha+Deepam+song", "l": ""}, {"id": "ex64", "t": "Yesu Naa Kapari", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Kapari+song", "l": ""}, {"id": "ex65", "t": "Prabhuva Nee Krupa", "y": "https://www.youtube.com/results?search_query=Prabhuva+Nee+Krupa+song", "l": ""}, {"id": "ex66", "t": "Yesayya Naa Dayalo", "y": "https://www.youtube.com/results?search_query=Yesayya+Naa+Dayalo+song", "l": ""}, {"id": "ex67", "t": "Yehova Naa Gathi", "y": "https://www.youtube.com/results?search_query=Yehova+Naa+Gathi+song", "l": ""}, {"id": "ex68", "t": "Yesu Naa Anandam", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Anandam+song", "l": ""}, {"id": "ex69", "t": "Prabhuva Nee Prema", "y": "https://www.youtube.com/results?search_query=Prabhuva+Nee+Prema+song", "l": ""}, {"id": "ex70", "t": "Yesayya Naa Jeevitham Yesu", "y": "https://www.youtube.com/results?search_query=Yesayya+Naa+Jeevitham+Yesu+song", "l": ""}, {"id": "ex71", "t": "Yehova Naa Jeevitham", "y": "https://www.youtube.com/results?search_query=Yehova+Naa+Jeevitham+song", "l": ""}, {"id": "ex72", "t": "Yesu Naa Rakshana", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Rakshana+song", "l": ""}, {"id": "ex73", "t": "Yesayya Naa Prema", "y": "https://www.youtube.com/results?search_query=Yesayya+Naa+Prema+song", "l": ""}, {"id": "ex74", "t": "Yehova Naa Margam", "y": "https://www.youtube.com/results?search_query=Yehova+Naa+Margam+song", "l": ""}, {"id": "ex75", "t": "Yesu Naa Jeevitha Sathyam", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Jeevitha+Sathyam+song", "l": ""}, {"id": "ex76", "t": "Prabhuva Nee Raksha", "y": "https://www.youtube.com/results?search_query=Prabhuva+Nee+Raksha+song", "l": ""}, {"id": "ex77", "t": "Yehova Naa Anandam", "y": "https://www.youtube.com/results?search_query=Yehova+Naa+Anandam+song", "l": ""}, {"id": "ex78", "t": "Yesu Naa Jeevitha Margam", "y": "https://www.youtube.com/results?search_query=Yesu+Naa+Jeevitha+Margam+song", "l": ""}];
+var S=(function(){
+  var saved=localStorage.getItem('ns7');
+  if(saved&&saved!=='[]')return JSON.parse(saved);
+  // First time — load default songs
+  localStorage.setItem('ns7',JSON.stringify(DEFAULT_SONGS));
+  return JSON.parse(JSON.stringify(DEFAULT_SONGS));
+})();
 var F=JSON.parse(localStorage.getItem('nf7')||'[]');
 var C=parseInt(localStorage.getItem('nc7')||'-1');
 var dark=localStorage.getItem('dm7')!=='false';
@@ -1970,12 +1990,17 @@ function play(i,nav){
   var fr=document.getElementById('ytf'),ph=document.getElementById('nvph');
   document.getElementById('nowCard').style.display='block';
   if(id){
-    // APK WebView compatible YouTube embed
     fr.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin='+encodeURIComponent(window.location.origin);
     fr.style.display='block';
     ph.style.display='none';
+    var sp=document.getElementById('ytSearchPanel');if(sp)sp.style.display='none';
+  } else if(s.y&&s.y.indexOf('youtube.com/results')>=0){
+    fr.style.display='none';fr.src='';ph.style.display='flex';
+    showYtSearchPanel(i,s);
+  } else {
+    fr.style.display='none';fr.src='';ph.style.display='flex';
+    var sp2=document.getElementById('ytSearchPanel');if(sp2)sp2.style.display='none';
   }
-  else{fr.style.display='none';fr.src='';ph.style.display='flex';}
   document.getElementById('nowTitle').textContent=s.t;
   document.getElementById('ytBtn').href=s.y||'#';
   // Multiple download options - popup menu
@@ -5167,167 +5192,4 @@ function loadBVNotes(){
     list.innerHTML=saved.length?saved.map(function(n,i){
       var d=document.createElement('div');
       d.style.cssText='display:flex;align-items:center;gap:6px;padding:5px;background:rgba(255,255,255,0.05);border-radius:8px;';
-      var aud=document.createElement('audio');
-      aud.src=n.url;aud.controls=true;aud.style.cssText='flex:1;height:28px;';
-      var dBtn=document.createElement('button');
-      dBtn.textContent='🗑';dBtn.style.cssText='background:none;border:none;color:var(--red);cursor:pointer;font-size:0.9rem;';
-      (function(k,j){dBtn.onclick=function(){deleteBVN(k,j);};})(key,i);
-      d.appendChild(aud);d.appendChild(dBtn);
-      return d.outerHTML;
-    }).join(''):'<div style="color:var(--sub);font-size:0.75rem;">No notes yet</div>';
-  }catch(e){}
-}
-function deleteBVN(key,idx){
-  try{var a=JSON.parse(localStorage.getItem(key)||'[]');a.splice(idx,1);localStorage.setItem(key,JSON.stringify(a));loadBVNotes();}catch(e){}
-}
-function bVNoteRecord(){
-  var btn=document.getElementById('bVNRecBtn');
-  var status=document.getElementById('bVNStatus');
-  if(_bvnRec&&_bvnRec.state==='recording'){
-    _bvnRec.stop();
-    if(btn){btn.textContent='🎤 Record';btn.style.background='var(--red)';}
-    return;
-  }
-  navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
-    _bvnChunks=[];
-    _bvnRec=new MediaRecorder(stream);
-    _bvnRec.ondataavailable=function(e){if(e.data.size>0)_bvnChunks.push(e.data);};
-    _bvnRec.onstop=function(){
-      var blob=new Blob(_bvnChunks,{type:'audio/webm'});
-      var url=URL.createObjectURL(blob);
-      var ref=document.getElementById('notesRef')?document.getElementById('notesRef').textContent:'';
-      var key='bvn_'+ref.replace(/\s/g,'_');
-      try{
-        var saved=JSON.parse(localStorage.getItem(key)||'[]');
-        saved.push({url:url,time:new Date().toLocaleTimeString()});
-        localStorage.setItem(key,JSON.stringify(saved));
-      }catch(e){}
-      loadBVNotes();
-      stream.getTracks().forEach(function(t){t.stop();});
-      toast('✅ Voice note saved!');
-    };
-    _bvnRec.start();
-    if(btn){btn.textContent='⏹ Stop';btn.style.background='#e53935';}
-    if(status)status.textContent='Recording...';
-    toast('🎤 Recording started...');
-  }).catch(function(){toast('⚠️ Microphone permission అవసరం');});
-}
-
-
-function moveSong(idx, dir){
-  var newIdx = idx + dir;
-  if(newIdx < 0 || newIdx >= S.length) return;
-  var tmp = S[idx];
-  S[idx] = S[newIdx];
-  S[newIdx] = tmp;
-  // Update current playing index
-  if(C === idx) C = newIdx;
-  else if(C === newIdx) C = idx;
-  localStorage.setItem('ns7', JSON.stringify(S));
-  localStorage.setItem('nc7', C);
-  renderList();
-  // Scroll to moved song
-  setTimeout(function(){
-    var items = document.querySelectorAll('.song-item');
-    if(items[newIdx]) items[newIdx].scrollIntoView({behavior:'smooth', block:'nearest'});
-  }, 50);
-}
-
-
-function bulkImport(){
-  var raw=document.getElementById('bulkInput').value.trim();
-  if(!raw){toast('⚠️ ఏమీ రాయలేదు!');return;}
-  var lines=raw.split('\n').filter(function(l){return l.trim();});
-  var added=0,skipped=0;
-  lines.forEach(function(line){
-    // Support: Name | videoId  OR  Name | full-youtube-url
-    var parts=line.split('|');
-    if(parts.length<2){skipped++;return;}
-    var name=parts[0].trim();
-    var vidRaw=parts[1].trim();
-    if(!name||!vidRaw){skipped++;return;}
-    // Extract video ID
-    var vid=ytId(vidRaw)||vidRaw;
-    var url=vid.startsWith('http')?vid:'https://www.youtube.com/watch?v='+vid;
-    // Avoid duplicates by title
-    var exists=S.some(function(s){return s.t.toLowerCase()===name.toLowerCase();});
-    if(exists){skipped++;return;}
-    var id='s'+(Date.now()+added);
-    S.push({id:id,t:name,y:url,l:''});
-    added++;
-  });
-  localStorage.setItem('ns7',JSON.stringify(S));
-  renderList();
-  document.getElementById('bulkInput').value='';
-  toast('✅ '+added+' songs added! '+skipped+' skipped.');
-  if(added>0)go('list');
-}
-
-// ═══ TOAST ═══
-var _t;
-function toast(m){var el=document.getElementById('toast');el.textContent=m;el.classList.add('on');clearTimeout(_t);_t=setTimeout(function(){el.classList.remove('on');},2500);}
-
-// ═══ INIT ═══
-window.onload=function(){
-  if(!dark)document.body.classList.add('light');
-  document.getElementById('darkBtn').textContent=dark?'☀️ Light':'🌙 Dark';
-  updateDateTime();setInterval(updateDateTime,30000);
-  var p=getDayPromise();
-  document.getElementById('promiseText').textContent=p.t;
-  document.getElementById('promiseRef').textContent='— '+p.r;
-  getWeatherLocation();
-  initDS();renderList();renderFav();render244(SONGS244);
-  initHome();
-  vrInit();
-
-  // Request Microphone + Location permissions on startup
-  setTimeout(function(){
-    if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
-      navigator.mediaDevices.getUserMedia({audio:true})
-      .then(function(s){s.getTracks().forEach(function(t){t.stop();});})
-      .catch(function(){});
-    }
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(function(){},function(){},{timeout:5000});
-    }
-  },2500);
-
-  // Block WebIntoApp popup ads
-  setInterval(function(){
-    // Remove any popup overlays from WebIntoApp
-    document.querySelectorAll('iframe').forEach(function(el){
-      var src=el.src||'';
-      if(src.includes('webintoapp')||src.includes('advert')||src.includes('popup')){
-        el.remove();
-      }
-    });
-    // Remove overlay divs
-    document.querySelectorAll('div').forEach(function(el){
-      var z=parseInt(window.getComputedStyle(el).zIndex)||0;
-      var pos=window.getComputedStyle(el).position;
-      if(z>9000&&pos==='fixed'&&el.id!=='toast'&&el.id!=='dlMenu'&&el.id!=='splash'){
-        // Check if it's an ad (has external links or images from ad networks)
-        var html=el.innerHTML||'';
-        if(html.includes('webintoapp')||html.includes('advert')){
-          el.remove();
-        }
-      }
-    });
-  },3000);
-
-  // ═══ SPLASH HIDE — guaranteed ═══
-  function hideSplash(){
-    var sp=document.getElementById('splash');
-    if(sp){sp.style.opacity='0';setTimeout(function(){sp.style.display='none';},700);}
-  }
-  // Hide after 2.2s (bar animation = 2s)
-  setTimeout(hideSplash, 2200);
-  // Failsafe — force hide after 4s no matter what
-  setTimeout(function(){
-    var sp=document.getElementById('splash');
-    if(sp){sp.style.display='none';}
-  }, 4000);
-};
-</script>
-</body>
-</html>
+      var aud=documen
