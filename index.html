@@ -861,97 +861,20 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <div style="display:flex;gap:6px;margin-bottom:10px;">
       <button id="aiChatTab" onclick="aiSetMode('chat')" style="flex:1;padding:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.78rem;">💬 Chat</button>
       <button id="aiImgTab" onclick="aiSetMode('image')" style="flex:1;padding:8px;background:var(--deep);border:1px solid var(--border);color:var(--sub);border-radius:10px;cursor:pointer;font-size:0.78rem;">🎨 Image</button>
-      <button id="aiAudioTab" onclick="aiSetMode('audio')" style="flex:1;padding:8px;background:var(--deep);border:1px solid var(--border);color:var(--sub);border-radius:10px;cursor:pointer;font-size:0.78rem;">🎵 Audio</button>
+      
     </div>
 
     <!-- Chat Model Selector -->
     <div id="aiChatModelDiv" style="margin-bottom:10px;">
       <label style="color:var(--sub);font-size:0.72rem;">🤖 Chat Model:</label>
       <select id="aiModelSelect" style="width:100%;margin-top:4px;background:var(--deep);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:10px;font-size:0.8rem;outline:none;">
-        <optgroup label="🥇 OpenAI GPT-5 — Most Powerful">
-          <option value="gpt-5.4" selected>GPT-5.4 — Most Powerful 👑</option>
-          <option value="gpt-5.4-pro">GPT-5.4 Pro</option>
-          <option value="gpt-5.3-chat">GPT-5.3 Chat</option>
-          <option value="gpt-5.3-codex">GPT-5.3 Codex 💻</option>
-          <option value="gpt-5.2-pro">GPT-5.2 Pro</option>
-          <option value="gpt-5">GPT-5</option>
-          <option value="gpt-5-mini">GPT-5 Mini</option>
-          <option value="gpt-5-nano">GPT-5 Nano ⚡</option>
+        <optgroup label="⚡ Fast — 1500/day free">
+          <option value="gemini-2.0-flash" selected>Gemini 2.0 Flash ⚡ Default</option>
+          <option value="gemini-1.5-flash">Gemini 1.5 Flash ⚡</option>
         </optgroup>
-        <optgroup label="🥇 OpenAI GPT-4">
-          <option value="gpt-4o">GPT-4o ⭐</option>
-          <option value="gpt-4o-mini">GPT-4o Mini ✅</option>
-        </optgroup>
-        <optgroup label="🥈 Anthropic Claude">
-          <option value="claude-sonnet-4">Claude Sonnet 4</option>
-          <option value="claude-sonnet-4-5">Claude Sonnet 4.5</option>
-          <option value="claude-3-7-sonnet">Claude 3.7 Sonnet</option>
-          <option value="claude-3-5-sonnet">Claude 3.5 Sonnet</option>
-        </optgroup>
-        <optgroup label="🤖 xAI Grok">
-          <option value="x-ai/grok-4.20-beta">Grok 4.20 Beta 🔥</option>
-          <option value="x-ai/grok-4-1-fast">Grok 4.1 Fast ⚡</option>
-          <option value="x-ai/grok-3">Grok 3</option>
-          <option value="x-ai/grok-3-mini">Grok 3 Mini</option>
-          <option value="x-ai/grok-2">Grok 2</option>
-        </optgroup>
-        <optgroup label="🦙 Meta Llama">
-          <option value="meta-llama/llama-4-maverick">Llama 4 Maverick 🔥</option>
-          <option value="meta-llama/llama-4-scout">Llama 4 Scout</option>
-          <option value="meta-llama/llama-3.3-70b-instruct">Llama 3.3 70B</option>
-          <option value="meta-llama/llama-3.1-70b-instruct">Llama 3.1 70B</option>
-          <option value="meta-llama/llama-3.1-8b-instruct">Llama 3.1 8B ⚡</option>
-        </optgroup>
-        <optgroup label="🔵 Google Gemini">
-          <option value="google/gemini-3.1-pro-preview">Gemini 3.1 Pro 🔥</option>
-          <option value="google/gemini-3-pro-preview">Gemini 3 Pro</option>
-          <option value="google/gemini-3-flash-preview">Gemini 3 Flash</option>
-          <option value="google/gemini-3.1-flash-lite-preview">Gemini 3.1 Flash Lite ⚡</option>
-          <option value="google/gemini-2.5-pro">Gemini 2.5 Pro</option>
-          <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
-          <option value="google/gemini-2.0-flash">Gemini 2.0 Flash</option>
-        </optgroup>
-        <optgroup label="🧠 DeepSeek — Best Reasoning">
-          <option value="deepseek/deepseek-r1">DeepSeek R1 🧠</option>
-          <option value="deepseek/deepseek-v3">DeepSeek V3</option>
-          <option value="deepseek/deepseek-chat">DeepSeek Chat</option>
-        </optgroup>
-        <optgroup label="🌐 Mistral AI">
-          <option value="mistralai/mistral-large">Mistral Large</option>
-          <option value="mistralai/mistral-small">Mistral Small ⚡</option>
-          <option value="mistralai/mixtral-8x7b-instruct">Mixtral 8x7B</option>
-          <option value="mistralai/codestral">Codestral 💻 Code</option>
-        </optgroup>
-        <optgroup label="🔮 Qwen (Alibaba)">
-          <option value="qwen/qwen3.5-397b-a17b">Qwen 3.5 397B — Huge</option>
-          <option value="qwen/qwq-32b">QwQ 32B — Reasoning</option>
-          <option value="qwen/qwen3-max">Qwen 3 Max</option>
-          <option value="qwen/qwen3-235b-a22b">Qwen 3 235B</option>
-        </optgroup>
-        <optgroup label="🌙 Moonshot / Kimi">
-          <option value="moonshotai/kimi-k2">Kimi K2 — Multilingual</option>
-          <option value="moonshotai/kimi-k2-instruct">Kimi K2 Instruct</option>
-        </optgroup>
-        <optgroup label="💻 Code Models — Best for Programming">
-          <option value="mistralai/codestral">Codestral 💻 — Best Code</option>
-          <option value="gpt-5.3-codex">GPT-5.3 Codex 💻</option>
-          <option value="deepseek/deepseek-coder-v2">DeepSeek Coder V2</option>
-          <option value="meta-llama/codellama-70b-instruct">CodeLlama 70B</option>
-          <option value="qwen/qwen2.5-coder-32b-instruct">Qwen 2.5 Coder 32B</option>
-        </optgroup>
-        <optgroup label="🔍 Perplexity — Web Search (Latest)">
-          <option value="perplexity/sonar-pro">Sonar Pro 🔥 — Web Search</option>
-          <option value="perplexity/sonar-reasoning-pro">Sonar Reasoning Pro 🧠</option>
-          <option value="perplexity/sonar-reasoning">Sonar Reasoning</option>
-          <option value="perplexity/llama-3.1-sonar-large-128k-online">Sonar Large Online 🌐</option>
-          <option value="perplexity/llama-3.1-sonar-small-128k-online">Sonar Small Online ⚡</option>
-        </optgroup>
-        <optgroup label="⚡ Other Models">
-          <option value="microsoft/phi-4">Microsoft Phi-4</option>
-          <option value="microsoft/phi-4-reasoning">Phi-4 Reasoning 🧠</option>
-          <option value="nvidia/llama-3.1-nemotron-70b-instruct">NVIDIA Nemotron 70B</option>
-          <option value="cohere/command-r-plus">Cohere Command R+</option>
-          <option value="cohere/command-r7b-12-2024">Cohere Command R7B ⚡</option>
+        <optgroup label="🧠 Powerful — 50/day free">
+          <option value="gemini-1.5-pro">Gemini 1.5 Pro 🧠</option>
+          <option value="gemini-2.5-pro-preview-05-06">Gemini 2.5 Pro 🔥 Latest</option>
         </optgroup>
       </select>
     </div>
@@ -960,34 +883,13 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <div id="aiImgModelDiv" style="display:none;margin-bottom:10px;">
       <label style="color:var(--sub);font-size:0.72rem;">🎨 Image Model:</label>
       <select id="aiImgModelSelect" style="width:100%;margin-top:4px;background:var(--deep);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:10px;font-size:0.8rem;outline:none;">
-        <optgroup label="🥇 OpenAI GPT Image">
-          <option value="gpt-image-1.5" selected>GPT Image 1.5 — Best 👑</option>
-          <option value="gpt-image-1">GPT Image 1</option>
-          <option value="gpt-image-1-mini">GPT Image 1 Mini ⚡</option>
-          <option value="dall-e-3">DALL-E 3 ⭐</option>
-          <option value="dall-e-2">DALL-E 2</option>
-        </optgroup>
-        <optgroup label="🔵 Google Imagen">
-          <option value="google/imagen-4.0-ultra">Imagen 4 Ultra 🔥</option>
-          <option value="google/imagen-4.0-preview">Imagen 4</option>
-          <option value="google/imagen-4.0-fast">Imagen 4 Fast ⚡</option>
-        </optgroup>
-        <optgroup label="🍌 Google Nano Banana">
-          <option value="gemini-3.1-flash-image-preview">Gemini 3.1 Flash Image</option>
-          <option value="gemini-3-pro-image-preview">Gemini 3 Pro Image</option>
-          <option value="gemini-2.5-flash-image-preview">Gemini 2.5 Flash Image</option>
-        </optgroup>
-        <optgroup label="⚡ FLUX (Black Forest Labs)">
-          <option value="black-forest-labs/flux.2-pro">FLUX.2 Pro 🔥</option>
-          <option value="black-forest-labs/flux.2-max">FLUX.2 Max</option>
-          <option value="black-forest-labs/flux.2-flex">FLUX.2 Flex</option>
-          <option value="black-forest-labs/flux.1-kontext-pro">FLUX.1 Kontext (Edit)</option>
-          <option value="black-forest-labs/flux.1-schnell">FLUX.1 Schnell ⚡</option>
-          <option value="flux-1.1-pro">FLUX 1.1 Pro</option>
-        </optgroup>
-        <optgroup label="🎨 Stable Diffusion">
-          <option value="stabilityai/stable-diffusion-3-medium">SD 3 Medium</option>
-          <option value="stabilityai/stable-diffusion-xl-base-1.0">SDXL Base 1.0</option>
+        <optgroup label="🎨 Pollinations.ai — 100% Free Forever">
+          <option value="flux" selected>FLUX — Best Quality ⭐ Default</option>
+          <option value="flux-realism">FLUX Realism — Photo Realistic</option>
+          <option value="flux-cablyai">FLUX CablyAI — Creative</option>
+          <option value="flux-anime">FLUX Anime — Anime Style</option>
+          <option value="flux-3d">FLUX 3D — 3D Style</option>
+          <option value="turbo">Turbo — Fastest ⚡</option>
         </optgroup>
       </select>
       <div style="margin-top:8px;">
@@ -997,42 +899,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div id="aiImgResult" style="margin-top:10px;text-align:center;"></div>
     </div>
 
-    <!-- Audio Analyze Section -->
-    <div id="aiAudioSection" style="display:none;margin-bottom:10px;">
-      <div style="background:rgba(100,180,255,0.08);border:1px solid rgba(100,180,255,0.3);border-radius:12px;padding:14px;">
-        <div style="color:#4db8ff;font-weight:700;margin-bottom:4px;">🎵 Audio Tools</div>
-
-        <!-- Tab buttons inside audio -->
-        <div style="display:flex;gap:6px;margin-bottom:12px;">
-          <button onclick="aiAudioTab('record')" id="audRecTab" style="flex:1;padding:7px;background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.78rem;font-weight:700;">🎙️ Record & Transcribe</button>
-          <button onclick="aiAudioTab('upload')" id="audUpTab" style="flex:1;padding:7px;background:var(--deep);border:1px solid var(--border);color:var(--sub);border-radius:8px;cursor:pointer;font-size:0.78rem;">📁 Play Audio</button>
-        </div>
-
-        <!-- Record & Transcribe -->
-        <div id="audRecSection">
-          <div style="color:var(--sub);font-size:0.75rem;margin-bottom:8px;">మాట్లాడు — AI Telugu లో transcribe చేసి answer ఇస్తుంది</div>
-          <button id="audRecBtn" onclick="startAudioRecord()" style="width:100%;background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;border:none;padding:12px;border-radius:12px;cursor:pointer;font-size:0.9rem;font-weight:700;">🔴 Record Start చేయి</button>
-          <div id="audRecStatus" style="color:var(--gold);font-size:0.78rem;margin-top:6px;text-align:center;"></div>
-          <div id="audTranscript" style="display:none;margin-top:8px;background:rgba(0,0,0,0.3);border-radius:8px;padding:10px;color:var(--text);font-size:0.85rem;line-height:1.6;"></div>
-        </div>
-
-        <!-- Play Audio -->
-        <div id="audUpSection" style="display:none;">
-          <div style="color:var(--sub);font-size:0.75rem;margin-bottom:8px;">Audio file upload చేసి play చేయవచ్చు</div>
-          <button onclick="aiUploadAudio()" style="width:100%;background:rgba(100,180,255,0.15);border:1px solid rgba(100,180,255,0.4);color:#4db8ff;padding:10px;border-radius:10px;cursor:pointer;font-size:0.85rem;">📁 Audio File Upload</button>
-          <div id="aiAudioPreview" style="display:none;margin-top:10px;">
-            <audio id="aiAudioPlayer" controls style="width:100%;border-radius:8px;"></audio>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
-              <div id="aiAudioName" style="color:var(--gold);font-size:0.78rem;flex:1;"></div>
-              <button onclick="aiDeleteAudio()" style="background:rgba(192,57,43,0.3);border:1px solid var(--red);color:var(--red2);padding:4px 10px;border-radius:8px;cursor:pointer;font-size:0.75rem;">🗑️ Delete</button>
-            </div>
-          </div>
-          <div style="margin-top:8px;background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.3);border-radius:8px;padding:8px;color:rgba(255,200,0,0.8);font-size:0.75rem;">
-            ℹ️ Audio content AI కి వినిపించలేము — Browser limitation. Audio text గా type చేస్తే Chat లో analyze చేయగలను!
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div id="aiMessages2" style="min-height:280px;max-height:420px;overflow-y:auto;margin-bottom:8px;">
       <div class="ai-msg bot">నమస్కారం! 🙏 Bible గురించి, యేసు గురించి, క్రైస్తవ విశ్వాసం గురించి ఏమైనా అడగండి!</div>
@@ -1338,7 +1205,7 @@ function printLyrics(){
   if(C<0||!S[C]||!S[C].l){toast('⚠️ Lyrics లేవు!');return;}
   var s=S[C];
   var w=window.open('','_blank');
-  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+s.t+'</title><style>body{font-family:sans-serif;padding:30px;max-width:600px;margin:0 auto;line-height:2;}h1{color:#c0392b;margin-bottom:20px;}pre{white-space:pre-wrap;font-size:1rem;}</style></head><body><h1>✝ '+s.t+'</h1><pre>'+s.l+'</pre><p style="margin-top:20px;color:#999;font-size:0.8rem;">© 2026 Vicky — యేసు పాటలు</p><script>window.onload=function(){window.print();}<\/script></body></html>');
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+s.t+'</title><style>body{font-family:sans-serif;padding:30px;max-width:600px;margin:0 auto;line-height:2;}h1{color:#c0392b;margin-bottom:20px;}pre{white-space:pre-wrap;font-size:1rem;}</style></head><body><h1>✝ '+s.t+'</h1><pre>'+s.l+'</pre><p style="margin-top:20px;color:#999;font-size:0.8rem;">© 2026 Vicky — యేసు పాటలు</p><scr'+'ipt>window.onload=function(){window.print();}<\/script></body></html>');
   w.document.close();
 }
 
@@ -2225,49 +2092,26 @@ function extractPDFText(typedArray, fileName, prev){
 function aiSetMode(mode){
   var chatTab=document.getElementById('aiChatTab');
   var imgTab=document.getElementById('aiImgTab');
-  var audioTab=document.getElementById('aiAudioTab');
   var chatModel=document.getElementById('aiChatModelDiv');
   var imgModel=document.getElementById('aiImgModelDiv');
   var imgSection=document.getElementById('aiImgSection');
-  var audioSection=document.getElementById('aiAudioSection');
   var msgs=document.getElementById('aiMessages2');
-  var inputArea=document.querySelector('.ai-input-area');
-
-  var activeStyle='background:linear-gradient(135deg,var(--red),var(--gold));color:#000;border:none;font-weight:700;';
-  var inactiveStyle='background:var(--deep);border:1px solid var(--border);color:var(--sub);';
-
-  chatTab.style.cssText=chatTab.style.cssText.replace(/background:[^;]+;|color:[^;]+;|border:[^;]+;|font-weight:[^;]+;/g,'');
-  imgTab.style.cssText=imgTab.style.cssText.replace(/background:[^;]+;|color:[^;]+;|border:[^;]+;|font-weight:[^;]+;/g,'');
-  if(audioTab)audioTab.style.cssText=audioTab.style.cssText.replace(/background:[^;]+;|color:[^;]+;|border:[^;]+;|font-weight:[^;]+;/g,'');
 
   if(mode==='chat'){
     chatTab.style.background='linear-gradient(135deg,var(--red),var(--gold))';
     chatTab.style.color='#000';chatTab.style.fontWeight='700';chatTab.style.border='none';
-    imgTab.style.background='var(--deep)';imgTab.style.color='var(--sub)';
-    if(audioTab){audioTab.style.background='var(--deep)';audioTab.style.color='var(--sub)';}
+    imgTab.style.background='var(--deep)';imgTab.style.color='var(--sub)';imgTab.style.fontWeight='normal';
     if(chatModel)chatModel.style.display='block';
     if(imgModel)imgModel.style.display='none';
     if(imgSection)imgSection.style.display='none';
-    if(audioSection)audioSection.style.display='none';
     if(msgs)msgs.style.display='flex';
   } else if(mode==='image'){
     imgTab.style.background='linear-gradient(135deg,#6a0dad,#c0392b)';
     imgTab.style.color='#fff';imgTab.style.fontWeight='700';imgTab.style.border='none';
-    chatTab.style.background='var(--deep)';chatTab.style.color='var(--sub)';
-    if(audioTab){audioTab.style.background='var(--deep)';audioTab.style.color='var(--sub)';}
+    chatTab.style.background='var(--deep)';chatTab.style.color='var(--sub)';chatTab.style.fontWeight='normal';
     if(chatModel)chatModel.style.display='none';
     if(imgModel)imgModel.style.display='block';
     if(imgSection)imgSection.style.display='block';
-    if(audioSection)audioSection.style.display='none';
-    if(msgs)msgs.style.display='none';
-  } else if(mode==='audio'){
-    if(audioTab){audioTab.style.background='linear-gradient(135deg,#0066cc,#4db8ff)';audioTab.style.color='#fff';audioTab.style.fontWeight='700';audioTab.style.border='none';}
-    chatTab.style.background='var(--deep)';chatTab.style.color='var(--sub)';
-    imgTab.style.background='var(--deep)';imgTab.style.color='var(--sub)';
-    if(chatModel)chatModel.style.display='none';
-    if(imgModel)imgModel.style.display='none';
-    if(imgSection)imgSection.style.display='none';
-    if(audioSection)audioSection.style.display='block';
     if(msgs)msgs.style.display='none';
   }
 }
@@ -2279,10 +2123,10 @@ async function aiGenerateImage(){
   var result=document.getElementById('aiImgResult');
   result.innerHTML='<div style="color:var(--gold);padding:20px;text-align:center;">⏳ Image generating...<br><small>10-20 seconds పట్టవచ్చు</small></div>';
   try{
-    // Pollinations.ai — 100% free, no key, no account!
+    var model=document.getElementById('aiImgModelSelect').value||'flux';
     var encoded=encodeURIComponent(prompt);
     var seed=Math.floor(Math.random()*99999);
-    var imgUrl='https://image.pollinations.ai/prompt/'+encoded+'?width=512&height=512&seed='+seed+'&nologo=true&enhance=true';
+    var imgUrl='https://image.pollinations.ai/prompt/'+encoded+'?model='+model+'&width=512&height=512&seed='+seed+'&nologo=true&enhance=true';
     
     // Load image
     var img=new Image();
@@ -2302,182 +2146,15 @@ async function aiGenerateImage(){
 
 // Audio Upload & Analyze
 var aiAudioBase64=null;
-function aiUploadAudio(){
-  var inp=document.createElement('input');
-  inp.type='file';inp.accept='audio/*,video/mp4';
-  inp.onchange=function(){
-    var file=inp.files[0];if(!file)return;
-    var rd=new FileReader();
-    rd.onload=function(e){
-      aiAudioBase64=e.target.result;
-      var player=document.getElementById('aiAudioPlayer');
-      var preview=document.getElementById('aiAudioPreview');
-      var name=document.getElementById('aiAudioName');
-      if(player){player.src=aiAudioBase64;preview.style.display='block';}
-      if(name)name.textContent='🎵 '+file.name+' ('+Math.round(file.size/1024)+'KB)';
-      toast('✅ Audio ready! Question type చేసి Analyze చేయి');
-    };
-    rd.readAsDataURL(file);
-  };
-  inp.click();
-}
 
-function aiAudioTab(tab){
-  var recTab=document.getElementById('audRecTab');
-  var upTab=document.getElementById('audUpTab');
-  var recSec=document.getElementById('audRecSection');
-  var upSec=document.getElementById('audUpSection');
-  if(tab==='record'){
-    recTab.style.background='linear-gradient(135deg,#c0392b,#e74c3c)';recTab.style.color='#fff';recTab.style.border='none';
-    upTab.style.background='var(--deep)';upTab.style.color='var(--sub)';
-    recSec.style.display='block';upSec.style.display='none';
-  } else {
-    upTab.style.background='linear-gradient(135deg,#0066cc,#4db8ff)';upTab.style.color='#fff';upTab.style.border='none';
-    recTab.style.background='var(--deep)';recTab.style.color='var(--sub)';
-    recSec.style.display='none';upSec.style.display='block';
-  }
-}
 
-var audRecording=false;
-var audSpeechRec=null;
-function startAudioRecord(){
-  var btn=document.getElementById('audRecBtn');
-  var status=document.getElementById('audRecStatus');
-  var transcript=document.getElementById('audTranscript');
 
-  if(audSpeechRec&&audRecording){
-    audSpeechRec.stop();
-    return;
-  }
 
-  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SR){toast('⚠️ Chrome browser use చేయి');return;}
 
-  audSpeechRec=new SR();
-  audSpeechRec.lang='te-IN';
-  audSpeechRec.continuous=true;
-  audSpeechRec.interimResults=true;
 
-  audSpeechRec.onstart=function(){
-    audRecording=true;
-    btn.textContent='⏹ Stop చేయి';
-    btn.style.background='rgba(192,57,43,0.5)';
-    status.textContent='🔴 Recording...';
-    transcript.style.display='block';
-    transcript.textContent='మాట్లాడు...';
-  };
 
-  var finalText='';
-  audSpeechRec.onresult=function(e){
-    var interim='';
-    for(var i=e.resultIndex;i<e.results.length;i++){
-      if(e.results[i].isFinal) finalText+=e.results[i][0].transcript+' ';
-      else interim+=e.results[i][0].transcript;
-    }
-    transcript.textContent=(finalText+interim)||'మాట్లాడు...';
-  };
 
-  audSpeechRec.onend=function(){
-    audRecording=false;
-    btn.textContent='🔴 Record Start చేయి';
-    btn.style.background='linear-gradient(135deg,#c0392b,#e74c3c)';
-    status.textContent='';
-    audSpeechRec=null;
-    if(finalText.trim()){
-      // Send to AI for analysis
-      document.getElementById('aiInput2').value=finalText.trim();
-      aiSetMode('chat');
-      setTimeout(sendAI2,300);
-      toast('✅ Transcribed! AI కి పంపుతోంది...');
-    }
-  };
 
-  audSpeechRec.onerror=function(e){
-    audRecording=false;
-    btn.textContent='🔴 Record Start చేయి';
-    btn.style.background='linear-gradient(135deg,#c0392b,#e74c3c)';
-    status.textContent='⚠️ Error: '+e.error;
-    audSpeechRec=null;
-  };
-
-  audSpeechRec.start();
-}
-
-function aiDeleteAudio(){
-  aiAudioBase64=null;
-  var player=document.getElementById('aiAudioPlayer');
-  var preview=document.getElementById('aiAudioPreview');
-  var result=document.getElementById('aiAudioResult');
-  if(player){player.src='';}
-  if(preview){preview.style.display='none';}
-  if(result){result.style.display='none';result.textContent='';}
-  document.getElementById('aiAudioName').textContent='';
-  document.getElementById('aiAudioQuestion').value='';
-  toast('🗑️ Audio deleted!');
-}
-
-async function aiAnalyzeAudio(){
-  var q=document.getElementById('aiAudioQuestion').value.trim();
-  var result=document.getElementById('aiAudioResult');
-  result.style.display='block';
-
-  if(!aiAudioBase64){
-    result.textContent='⚠️ Audio file upload చేయి!';
-    return;
-  }
-
-  result.innerHTML='<span style="opacity:0.6">⏳ Transcribing audio...</span>';
-
-  try{
-    if(typeof puter==='undefined')throw new Error('Puter not loaded');
-
-    // Use Whisper for transcription
-    var audioBlob=await fetch(aiAudioBase64).then(r=>r.blob());
-    var transcribed='';
-
-    try{
-      // Try Whisper transcription
-      var transRes=await puter.ai.txt2speech&&puter.ai.transcribe
-        ?await puter.ai.transcribe(audioBlob)
-        :null;
-      if(transRes&&transRes.text){
-        transcribed=transRes.text;
-      }
-    }catch(te){}
-
-    // Build prompt
-    var prompt='';
-    if(transcribed){
-      prompt='The following is a transcription of an audio file:\n\n"'+transcribed+'"\n\n';
-      prompt+=q?q:'ఈ audio లో ఏమి చెప్పారో Telugu లో summarize చేయి. అర్థాన్ని కూడా explain చేయి.';
-    } else {
-      // No transcription — ask AI to help based on filename/question
-      prompt=q?q:'Audio transcription available కాలేదు. కానీ మీరు ఏ audio గురించి అడుగుతున్నారో చెప్పండి, నేను help చేస్తాను.';
-      prompt+=' Answer in Telugu.';
-    }
-
-    var res=await puter.ai.chat(
-      [{role:'system',content:'You are a helpful Telugu assistant. Answer in Telugu language.'},{role:'user',content:prompt}],
-      {model:'gpt-4o-mini'}
-    );
-
-    var txt='';
-    if(typeof res==='string')txt=res;
-    else if(res&&res.message&&res.message.content){
-      var mc=res.message.content;
-      txt=typeof mc==='string'?mc:(Array.isArray(mc)?mc.map(function(x){return x.text||'';}).join(''):String(mc));
-    }
-
-    if(transcribed){
-      result.innerHTML='<div style="color:var(--gold);font-size:0.75rem;margin-bottom:6px;">📝 Transcript: '+transcribed.substring(0,100)+'...</div>'+renderMarkdown(txt);
-    } else {
-      result.innerHTML=renderMarkdown(txt);
-    }
-
-  }catch(e){
-    result.textContent='⚠️ '+e.message;
-  }
-}
 
 // Voice Input — Auto language detect, continuous
 var aiSpeechRec=null;
@@ -2700,7 +2377,9 @@ async function sendAI2(){
   }
 
   try{
-    var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key='+GEMINI_KEY,{
+    var selectedModel=document.getElementById('aiModelSelect').value||'gemini-2.0-flash';
+    localStorage.setItem('aiModel',selectedModel);
+    var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+selectedModel+':generateContent?key='+GEMINI_KEY,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -2873,7 +2552,7 @@ var DS=[
 నీవు నాకిచ్చే మహిమ ఎదుట
 ఇవి ఎన్నతగినవి కావే  ||సుగుణాల||`},
 
-  {id:'d5',t:'స్థిరపరచువాడవు',y:'https://youtu.be/fGqYj1IjMr0',l:`స్థిరపరచువాడవు బలపరచువాడవు
+  {id:'d5',t:'స్థిరపరచువాడవు',y:'https://youtu.be/pnTaewOmizE?si=BL3olnUljPuz9POr',l:`స్థిరపరచువాడవు బలపరచువాడవు
 పడిపోయిన చోటే నిలబట్టువాడవు
 ఘనపరచువాడవు హెచ్చించువాడవు
 మా పక్షము నిలిచి జయమిచ్చువాడవు (2)
