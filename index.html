@@ -360,7 +360,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 .vr-btn.stop{background:linear-gradient(135deg,var(--red),var(--red2));}
 .vr-speed{background:var(--deep);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:8px;font-size:0.78rem;outline:none;}
 </style>
-<script src="https://js.puter.com/v2/"></script>
+
 </head>
 <body>
 
@@ -1000,21 +1000,37 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <!-- Audio Analyze Section -->
     <div id="aiAudioSection" style="display:none;margin-bottom:10px;">
       <div style="background:rgba(100,180,255,0.08);border:1px solid rgba(100,180,255,0.3);border-radius:12px;padding:14px;">
-        <div style="color:#4db8ff;font-weight:700;margin-bottom:8px;">🎵 Audio / Voice File Analyze</div>
-        <div style="color:var(--sub);font-size:0.78rem;margin-bottom:12px;">Audio file upload చేయి — AI Telugu లో summarize చేస్తుంది</div>
-        <button onclick="aiUploadAudio()" style="width:100%;background:linear-gradient(135deg,rgba(100,180,255,0.2),rgba(100,180,255,0.1));border:1px solid rgba(100,180,255,0.5);color:#4db8ff;padding:12px;border-radius:12px;cursor:pointer;font-size:0.9rem;font-weight:700;">🎙️ Audio File Upload చేయి</button>
-        <div id="aiAudioPreview" style="display:none;margin-top:10px;">
-          <audio id="aiAudioPlayer" controls style="width:100%;border-radius:8px;"></audio>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
-            <div id="aiAudioName" style="color:var(--gold);font-size:0.78rem;flex:1;"></div>
-            <button onclick="aiDeleteAudio()" style="background:rgba(192,57,43,0.3);border:1px solid var(--red);color:var(--red2);padding:4px 10px;border-radius:8px;cursor:pointer;font-size:0.75rem;">🗑️ Delete</button>
+        <div style="color:#4db8ff;font-weight:700;margin-bottom:4px;">🎵 Audio Tools</div>
+
+        <!-- Tab buttons inside audio -->
+        <div style="display:flex;gap:6px;margin-bottom:12px;">
+          <button onclick="aiAudioTab('record')" id="audRecTab" style="flex:1;padding:7px;background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.78rem;font-weight:700;">🎙️ Record & Transcribe</button>
+          <button onclick="aiAudioTab('upload')" id="audUpTab" style="flex:1;padding:7px;background:var(--deep);border:1px solid var(--border);color:var(--sub);border-radius:8px;cursor:pointer;font-size:0.78rem;">📁 Play Audio</button>
+        </div>
+
+        <!-- Record & Transcribe -->
+        <div id="audRecSection">
+          <div style="color:var(--sub);font-size:0.75rem;margin-bottom:8px;">మాట్లాడు — AI Telugu లో transcribe చేసి answer ఇస్తుంది</div>
+          <button id="audRecBtn" onclick="startAudioRecord()" style="width:100%;background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;border:none;padding:12px;border-radius:12px;cursor:pointer;font-size:0.9rem;font-weight:700;">🔴 Record Start చేయి</button>
+          <div id="audRecStatus" style="color:var(--gold);font-size:0.78rem;margin-top:6px;text-align:center;"></div>
+          <div id="audTranscript" style="display:none;margin-top:8px;background:rgba(0,0,0,0.3);border-radius:8px;padding:10px;color:var(--text);font-size:0.85rem;line-height:1.6;"></div>
+        </div>
+
+        <!-- Play Audio -->
+        <div id="audUpSection" style="display:none;">
+          <div style="color:var(--sub);font-size:0.75rem;margin-bottom:8px;">Audio file upload చేసి play చేయవచ్చు</div>
+          <button onclick="aiUploadAudio()" style="width:100%;background:rgba(100,180,255,0.15);border:1px solid rgba(100,180,255,0.4);color:#4db8ff;padding:10px;border-radius:10px;cursor:pointer;font-size:0.85rem;">📁 Audio File Upload</button>
+          <div id="aiAudioPreview" style="display:none;margin-top:10px;">
+            <audio id="aiAudioPlayer" controls style="width:100%;border-radius:8px;"></audio>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+              <div id="aiAudioName" style="color:var(--gold);font-size:0.78rem;flex:1;"></div>
+              <button onclick="aiDeleteAudio()" style="background:rgba(192,57,43,0.3);border:1px solid var(--red);color:var(--red2);padding:4px 10px;border-radius:8px;cursor:pointer;font-size:0.75rem;">🗑️ Delete</button>
+            </div>
+          </div>
+          <div style="margin-top:8px;background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.3);border-radius:8px;padding:8px;color:rgba(255,200,0,0.8);font-size:0.75rem;">
+            ℹ️ Audio content AI కి వినిపించలేము — Browser limitation. Audio text గా type చేస్తే Chat లో analyze చేయగలను!
           </div>
         </div>
-        <div style="margin-top:10px;">
-          <input id="aiAudioQuestion" type="text" placeholder="Audio గురించి ఏమి అడగాలి? (e.g. ఈ audio summarize చేయి)" style="width:100%;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px;font-size:0.85rem;font-family:inherit;outline:none;box-sizing:border-box;">
-        </div>
-        <button onclick="aiAnalyzeAudio()" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#0066cc,#4db8ff);color:#fff;border:none;padding:12px;border-radius:12px;font-size:0.9rem;font-weight:700;cursor:pointer;">🔍 Audio Analyze చేయి</button>
-        <div id="aiAudioResult" style="margin-top:10px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;display:none;color:var(--text);font-size:0.85rem;line-height:1.7;"></div>
       </div>
     </div>
 
@@ -2261,19 +2277,26 @@ async function aiGenerateImage(){
   var prompt=document.getElementById('aiImgPrompt').value.trim();
   if(!prompt){toast('⚠️ Image prompt రాయి!');return;}
   var result=document.getElementById('aiImgResult');
-  var model=document.getElementById('aiImgModelSelect').value||'dall-e-3';
-  result.innerHTML='<div style="color:var(--gold);padding:20px;">⏳ Image generating...</div>';
+  result.innerHTML='<div style="color:var(--gold);padding:20px;text-align:center;">⏳ Image generating...<br><small>10-20 seconds పట్టవచ్చు</small></div>';
   try{
-    if(typeof puter==='undefined')throw new Error('Puter not loaded');
-    var res=await puter.ai.txt2img(prompt,false,{model:model});
-    if(res&&res.src){
-      result.innerHTML='<img src="'+res.src+'" style="max-width:100%;border-radius:12px;border:1px solid var(--gold);">'
-        +'<br><a href="'+res.src+'" download="yesupatalu_img.png" style="display:inline-block;margin-top:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;padding:8px 16px;border-radius:10px;font-weight:700;text-decoration:none;font-size:0.82rem;">⬇️ Download</a>';
-    } else {
-      result.innerHTML='<div style="color:var(--red);">⚠️ Image generate కాలేదు. మళ్ళీ try చేయి</div>';
-    }
+    // Pollinations.ai — 100% free, no key, no account!
+    var encoded=encodeURIComponent(prompt);
+    var seed=Math.floor(Math.random()*99999);
+    var imgUrl='https://image.pollinations.ai/prompt/'+encoded+'?width=512&height=512&seed='+seed+'&nologo=true&enhance=true';
+    
+    // Load image
+    var img=new Image();
+    img.onload=function(){
+      result.innerHTML='<img src="'+imgUrl+'" style="max-width:100%;border-radius:12px;border:1px solid var(--gold);">'
+        +'<br><a href="'+imgUrl+'" download="yesupatalu_img.jpg" target="_blank" style="display:inline-block;margin-top:8px;background:linear-gradient(135deg,var(--red),var(--gold));color:#000;padding:8px 16px;border-radius:10px;font-weight:700;text-decoration:none;font-size:0.82rem;">⬇️ Download</a>'
+        +'<br><small style="color:var(--sub);font-size:0.7rem;">Powered by Pollinations.ai — Free!</small>';
+    };
+    img.onerror=function(){
+      result.innerHTML='<div style="color:var(--red);">⚠️ Image generate కాలేదు. మళ్ళీ try చేయి.</div>';
+    };
+    img.src=imgUrl;
   }catch(e){
-    result.innerHTML='<div style="color:var(--red);">⚠️ Error: '+e.message+'</div>';
+    result.innerHTML='<div style="color:var(--red);">⚠️ '+e.message+'</div>';
   }
 }
 
@@ -2297,6 +2320,87 @@ function aiUploadAudio(){
     rd.readAsDataURL(file);
   };
   inp.click();
+}
+
+function aiAudioTab(tab){
+  var recTab=document.getElementById('audRecTab');
+  var upTab=document.getElementById('audUpTab');
+  var recSec=document.getElementById('audRecSection');
+  var upSec=document.getElementById('audUpSection');
+  if(tab==='record'){
+    recTab.style.background='linear-gradient(135deg,#c0392b,#e74c3c)';recTab.style.color='#fff';recTab.style.border='none';
+    upTab.style.background='var(--deep)';upTab.style.color='var(--sub)';
+    recSec.style.display='block';upSec.style.display='none';
+  } else {
+    upTab.style.background='linear-gradient(135deg,#0066cc,#4db8ff)';upTab.style.color='#fff';upTab.style.border='none';
+    recTab.style.background='var(--deep)';recTab.style.color='var(--sub)';
+    recSec.style.display='none';upSec.style.display='block';
+  }
+}
+
+var audRecording=false;
+var audSpeechRec=null;
+function startAudioRecord(){
+  var btn=document.getElementById('audRecBtn');
+  var status=document.getElementById('audRecStatus');
+  var transcript=document.getElementById('audTranscript');
+
+  if(audSpeechRec&&audRecording){
+    audSpeechRec.stop();
+    return;
+  }
+
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){toast('⚠️ Chrome browser use చేయి');return;}
+
+  audSpeechRec=new SR();
+  audSpeechRec.lang='te-IN';
+  audSpeechRec.continuous=true;
+  audSpeechRec.interimResults=true;
+
+  audSpeechRec.onstart=function(){
+    audRecording=true;
+    btn.textContent='⏹ Stop చేయి';
+    btn.style.background='rgba(192,57,43,0.5)';
+    status.textContent='🔴 Recording...';
+    transcript.style.display='block';
+    transcript.textContent='మాట్లాడు...';
+  };
+
+  var finalText='';
+  audSpeechRec.onresult=function(e){
+    var interim='';
+    for(var i=e.resultIndex;i<e.results.length;i++){
+      if(e.results[i].isFinal) finalText+=e.results[i][0].transcript+' ';
+      else interim+=e.results[i][0].transcript;
+    }
+    transcript.textContent=(finalText+interim)||'మాట్లాడు...';
+  };
+
+  audSpeechRec.onend=function(){
+    audRecording=false;
+    btn.textContent='🔴 Record Start చేయి';
+    btn.style.background='linear-gradient(135deg,#c0392b,#e74c3c)';
+    status.textContent='';
+    audSpeechRec=null;
+    if(finalText.trim()){
+      // Send to AI for analysis
+      document.getElementById('aiInput2').value=finalText.trim();
+      aiSetMode('chat');
+      setTimeout(sendAI2,300);
+      toast('✅ Transcribed! AI కి పంపుతోంది...');
+    }
+  };
+
+  audSpeechRec.onerror=function(e){
+    audRecording=false;
+    btn.textContent='🔴 Record Start చేయి';
+    btn.style.background='linear-gradient(135deg,#c0392b,#e74c3c)';
+    status.textContent='⚠️ Error: '+e.error;
+    audSpeechRec=null;
+  };
+
+  audSpeechRec.start();
 }
 
 function aiDeleteAudio(){
@@ -2561,78 +2665,72 @@ async function sendAI2(){
   msgs.appendChild(bm);
   msgs.scrollTop=msgs.scrollHeight;
 
-  // Detect language of question
-  var isEnglish=/^[a-zA-Z0-9\s\?\!\.,\-\'\"]+$/.test(q.trim());
-  var langInstruction=isEnglish
-    ?'Answer in English language.'
-    :'Answer in Telugu language (తెలుగులో జవాబు ఇవ్వు).';
+  // Get Gemini key from localStorage
+  var GEMINI_KEY=localStorage.getItem('geminiKey')||'';
+  if(!GEMINI_KEY){
+    bm.innerHTML='🔑 <b>Gemini API Key కావాలి!</b><br><small>కింద "🔑 API Key" click చేసి key enter చేయి</small>';
+    msgs.scrollTop=msgs.scrollHeight;
+    showAIKeySetup();
+    return;
+  }
 
-  var isBible=/(bible|బైబిల్|yesu|jesus|యేసు|god|దేవుడు|pray|ప్రార్థన|church|క్రైస్తవ|verse|కీర్తన|john|genesis|matthew|luke|mark|acts|paul)/i.test(q);
+  // Detect language
+  var isEnglish=/^[a-zA-Z0-9\s\?\!\.\,\-\'\"\/\(\)]+$/.test(q.trim());
+  var langInstr=isEnglish?'Answer in English.':'తెలుగులో జవాబు ఇవ్వు (Answer in Telugu).';
+  var isBible=/(bible|బైబిల్|yesu|jesus|యేసు|god|దేవుడు|pray|ప్రార్థన|church|verse|కీర్తన|john|genesis|matthew|luke|mark|acts)/i.test(q);
+  var sysPrompt='You are a helpful AI assistant. '+langInstr+(isBible?' You are also a Christian Bible expert. Add one Bible verse when relevant.':'')+' Remember conversation context.';
 
-  var systemMsg='You are a helpful AI assistant. '
-    +langInstruction
-    +(isBible?' You are also a Christian Bible expert. Add one relevant Bible verse at end when answering Bible/Christian questions.':'')
-    +' Be concise, accurate and helpful. Remember the entire conversation context.';
-
-  // Add PDF content to current message
+  // Build conversation history
   var userMsg=q;
   if(aiPDFText){userMsg+='\n\nFile content:\n'+aiPDFText;}
 
-  // Build messages with full history for memory
-  var messages=[{role:'system',content:systemMsg}];
-
-  // Add conversation history (last 10 exchanges)
-  var historyToSend=aiChatHistory.slice(-20);
-  historyToSend.forEach(function(h){messages.push(h);});
-
+  // Build Gemini contents array with history
+  var contents=[];
+  // Add history
+  aiChatHistory.slice(-10).forEach(function(h){
+    contents.push({role:h.role==='assistant'?'model':'user',parts:[{text:h.content}]});
+  });
   // Add current message
   if(aiPhoto){
     var base64=aiPhoto.split(',')[1];
     var mtype=aiPhoto.split(';')[0].split(':')[1];
-    messages.push({role:'user',content:[
-      {type:'image_url',image_url:{url:'data:'+mtype+';base64,'+base64}},
-      {type:'text',text:userMsg}
-    ]});
+    contents.push({role:'user',parts:[{text:userMsg},{inline_data:{mime_type:mtype,data:base64}}]});
   } else {
-    messages.push({role:'user',content:userMsg});
+    contents.push({role:'user',parts:[{text:userMsg}]});
   }
 
   try{
-    if(typeof puter==='undefined') throw new Error('Puter not loaded');
-
-    var selectedModel=document.getElementById('aiModelSelect').value||'gpt-5.4';
-    localStorage.setItem('aiModel',selectedModel);
-
-    var res=await puter.ai.chat(messages,{model:selectedModel});
-
-    // Parse response — different models return different formats
-    var txt='';
-    if(typeof res==='string'){txt=res;}
-    else if(res&&res.message&&res.message.content){
-      var mc=res.message.content;
-      if(typeof mc==='string')txt=mc;
-      else if(Array.isArray(mc))txt=mc.map(function(x){return x.text||x.content||'';}).join('');
-      else txt=String(mc);
-    } else if(res&&res.content){
-      var rc=res.content;
-      if(typeof rc==='string')txt=rc;
-      else if(Array.isArray(rc))txt=rc.map(function(x){return x.text||'';}).join('');
-    } else if(res&&res.text){txt=res.text;}
-    else if(res&&res.choices&&res.choices[0]){txt=res.choices[0].message&&res.choices[0].message.content||'';}
-    else{txt=JSON.stringify(res);}
-
-    if(txt&&txt.length>5){
-      bm.innerHTML=renderMarkdown(txt);
-      // Save to history for memory
+    var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key='+GEMINI_KEY,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        system_instruction:{parts:[{text:sysPrompt}]},
+        contents:contents,
+        generationConfig:{maxOutputTokens:600,temperature:0.7}
+      })
+    });
+    var data=await res.json();
+    if(data.error){
+      // Quota exceeded — show helpful message
+      if(data.error.code===429){
+        bm.textContent='⏳ Daily limit reached! రేపు try చేయి (రోజు 1500 free requests). లేదా కొత్త Gemini key తీసుకో.';
+      } else {
+        bm.textContent='⚠️ '+data.error.message;
+      }
+      msgs.scrollTop=msgs.scrollHeight;
+      return;
+    }
+    var txt=data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts&&data.candidates[0].content.parts[0]&&data.candidates[0].content.parts[0].text;
+    if(txt&&txt.trim().length>5){
+      bm.innerHTML=renderMarkdown(txt.trim());
       aiChatHistory.push({role:'user',content:userMsg});
-      aiChatHistory.push({role:'assistant',content:txt});
-      // Keep last 20 messages only
+      aiChatHistory.push({role:'assistant',content:txt.trim()});
       if(aiChatHistory.length>40)aiChatHistory=aiChatHistory.slice(-40);
     } else {
-      throw new Error('empty response');
+      bm.textContent='⚠️ జవాబు రాలేదు. మళ్ళీ try చేయి.';
     }
   }catch(e){
-    bm.textContent='⚠️ '+e.message;
+    bm.textContent='⚠️ Internet check చేయి: '+e.message;
   }
 
   aiPhoto=null;aiPDFText=null;
@@ -2642,7 +2740,6 @@ async function sendAI2(){
   if(fprev){fprev.style.display='none';fprev.textContent='';}
   msgs.scrollTop=msgs.scrollHeight;
 }
-
 function prevC(){if(curCI>1)readChap(curCI-1);else if(curBI>0){curBI--;readChap(curBL[curBI].c);}}
 function nextC(){var b=curBL[curBI];if(curCI<b.c)readChap(curCI+1);else if(curBI<curBL.length-1){curBI++;readChap(1);}}
 
