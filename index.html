@@ -390,72 +390,34 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <h1>🎵 యేసు పాటలు</h1>
     <div class="nav-top-btns">
       <button class="contact-btn" onclick="go('contact')" style="background:linear-gradient(135deg,#25d366,#128c3e);">📞 Contact</button>
-      <button class="jesus-btn" onclick="go('jesus')">✝ Jesus</button>
-      <button class="help-btn" onclick="go('help')">❓</button>
-      <button class="help-btn" onclick="go('ai')" style="background:rgba(245,197,24,0.15);border-color:var(--gold);color:var(--gold);">🤖 AI</button>
       <button class="dark-toggle" id="darkBtn" onclick="toggleDark()">☀️ Light</button>
     </div>
   </div>
   <div class="nav-btns">
     <button id="nb-home" class="active" onclick="go('home')">🏠</button>
     <button id="nb-bible" onclick="go('bible')">📖 Bible</button>
-    <button id="nb-links" onclick="go('links')">🔗 Links</button>
     <button id="nb-list" onclick="go('list')">🎵 Songs</button>
-    <button id="nb-s244" onclick="go('s244')">🎼 244</button>
     <button id="nb-fav" onclick="go('fav')">❤️ Favs</button>
-    <button id="nb-hist" onclick="go('hist')">🕐 History</button>
-    <button id="nb-pdf" onclick="go('pdf')">📄 PDF</button>
-    <button id="nb-add" onclick="go('add')">➕ Add</button>
   </div>
 </nav>
 
 <!-- HOME -->
 <div id="homePage" class="page active">
+
+  <!-- Banner -->
   <div id="welcomeCard" class="welcome-card">
-
-    <!-- Real 4K background image — picks best available -->
-    <div id="bannerBg" style="position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;
-      background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80');
-      transition:opacity 0.8s;"></div>
-
-    <!-- Dark overlay to keep text readable -->
-    <div style="position:absolute;inset:0;z-index:1;
-      background:linear-gradient(180deg,
-        rgba(0,0,0,0.55) 0%,
-        rgba(30,0,0,0.45) 40%,
-        rgba(0,0,0,0.75) 85%,
-        rgba(0,0,0,0.92) 100%);"></div>
-
-    <!-- Gold top border -->
-    <div style="position:absolute;top:0;left:0;right:0;height:3px;z-index:3;
-      background:linear-gradient(90deg,transparent 0%,#f5c518 30%,#c0392b 50%,#f5c518 70%,transparent 100%);"></div>
-
-    <!-- Bottom border -->
-    <div style="position:absolute;bottom:0;left:0;right:0;height:1px;z-index:3;
-      background:linear-gradient(90deg,transparent,rgba(245,197,24,0.4),transparent);"></div>
-
-    <!-- Change bg button -->
+    <div id="bannerBg" style="position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80');transition:opacity 0.8s;"></div>
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.8) 100%);"></div>
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,transparent,#f5c518 30%,#c0392b 50%,#f5c518 70%,transparent);"></div>
     <button onclick="changeBanner()" style="position:absolute;top:10px;right:10px;z-index:4;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:4px 10px;border-radius:20px;font-size:0.68rem;cursor:pointer;">🖼️ Change</button>
-
-    <!-- Sparkles -->
-    <div style="position:absolute;top:15%;left:8%;width:3px;height:3px;background:#f5c518;border-radius:50%;box-shadow:0 0 8px #f5c518;animation:blink 2s infinite;z-index:2;"></div>
-    <div style="position:absolute;top:22%;right:10%;width:2px;height:2px;background:#fff;border-radius:50%;box-shadow:0 0 6px #fff;animation:blink 3s infinite 1s;z-index:2;"></div>
-    <div style="position:absolute;bottom:30%;left:15%;width:2px;height:2px;background:#f5c518;border-radius:50%;box-shadow:0 0 5px #f5c518;animation:blink 2.5s infinite 0.5s;z-index:2;"></div>
-
-    <!-- Content -->
-    <div style="position:relative;z-index:4;">
-      <div class="wicon" style="text-shadow:0 0 30px rgba(245,197,24,0.6),0 0 60px rgba(192,57,43,0.4);">✝</div>
-      <h2 style="text-shadow:0 2px 8px rgba(0,0,0,0.9);">యేసు పాటలు కి స్వాగతం!</h2>
-      <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:8px 0 6px;flex-wrap:wrap;">
-        <span style="background:rgba(192,57,43,0.4);backdrop-filter:blur(8px);border:1px solid rgba(192,57,43,0.6);color:#ffaa88;padding:3px 10px;border-radius:20px;font-size:0.72rem;">🎵 Songs</span>
-        <span style="background:rgba(245,197,24,0.2);backdrop-filter:blur(8px);border:1px solid rgba(245,197,24,0.4);color:#f5c518;padding:3px 10px;border-radius:20px;font-size:0.72rem;">📖 Bible</span>
-        <span style="background:rgba(100,100,255,0.2);backdrop-filter:blur(8px);border:1px solid rgba(100,100,255,0.4);color:#aab4ff;padding:3px 10px;border-radius:20px;font-size:0.72rem;">🤖 AI</span>
-        <span style="background:rgba(0,200,83,0.15);backdrop-filter:blur(8px);border:1px solid rgba(0,200,83,0.3);color:#69f0ae;padding:3px 10px;border-radius:20px;font-size:0.72rem;">🔊 Voice</span>
-      </div>
-      <p style="margin-top:6px;text-shadow:0 1px 4px rgba(0,0,0,0.9);">YouTube video + Lyrics కలిసి చూడవచ్చు<br><span style="font-size:0.72rem;opacity:0.65;">Telugu Christian Songs • యేసు పాటలు</span></p>
-      <button class="start-btn" onclick="go('list')">🎵 Songs చూడు</button>
+    <div style="position:relative;z-index:4;text-align:center;padding:20px 16px;">
+      <div style="font-size:2.5rem;text-shadow:0 0 30px rgba(245,197,24,0.6);">✝</div>
+      <h2 style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.9);margin:8px 0 4px;font-size:1.3rem;">యేసు పాటలు</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:0.78rem;margin:0;">Telugu Christian Songs • Bible • AI</p>
     </div>
   </div>
+
+  <!-- Now playing (hidden by default) -->
   <div class="now-card" id="nowCard" style="display:none">
     <div class="video-container">
       <div class="no-video-ph" id="nvph"><div style="font-size:3rem">🎵</div></div>
@@ -482,9 +444,91 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div class="lyrics-body" id="lyrBody"></div>
     </div>
   </div>
+
+  <!-- Main Grid — All features -->
+  <div style="padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+
+    <!-- Songs -->
+    <div onclick="go('list')" style="background:linear-gradient(135deg,#1a0505,#3d0a0a);border:1px solid rgba(192,57,43,0.5);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">🎵</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Songs</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Telugu Christian</div>
+    </div>
+
+    <!-- Bible -->
+    <div onclick="go('bible')" style="background:linear-gradient(135deg,#0a1a05,#1a3d0a);border:1px solid rgba(0,150,50,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">📖</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Bible</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Telugu + English</div>
+    </div>
+
+    <!-- 244 Songs -->
+    <div onclick="go('s244')" style="background:linear-gradient(135deg,#1a0a00,#3d2000);border:1px solid rgba(245,197,24,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">🎼</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">244 Songs</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Hosanna Collection</div>
+    </div>
+
+    <!-- AI -->
+    <div onclick="go('ai')" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3d);border:1px solid rgba(100,100,255,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">🤖</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">AI Chat</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">10 Free AIs</div>
+    </div>
+
+    <!-- Favorites -->
+    <div onclick="go('fav')" style="background:linear-gradient(135deg,#1a0510,#3d0a20);border:1px solid rgba(255,50,100,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">❤️</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Favorites</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">నచ్చిన పాటలు</div>
+    </div>
+
+    <!-- Links -->
+    <div onclick="go('links')" style="background:linear-gradient(135deg,#001a1a,#003d3d);border:1px solid rgba(0,200,200,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">🔗</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Links</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Christian Resources</div>
+    </div>
+
+    <!-- History -->
+    <div onclick="go('hist')" style="background:linear-gradient(135deg,#1a1000,#3d2800);border:1px solid rgba(200,150,0,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">🕐</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">History</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">చదివిన Bible</div>
+    </div>
+
+    <!-- Add Song -->
+    <div onclick="go('add')" style="background:linear-gradient(135deg,#001a0a,#003d20);border:1px solid rgba(0,200,100,0.3);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">➕</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Add Song</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">కొత్త పాట add</div>
+    </div>
+
+    <!-- Jesus -->
+    <div onclick="go('jesus')" style="background:linear-gradient(135deg,#1a0808,#3d1010);border:1px solid rgba(192,57,43,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">✝</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Jesus</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Life & Teachings</div>
+    </div>
+
+    <!-- Bible Quiz -->
+    <div onclick="go('bibleQuiz')" style="background:linear-gradient(135deg,#0a001a,#1a003d);border:1px solid rgba(180,100,255,0.35);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">✝️</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Bible Quiz</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Test Your Knowledge</div>
+    </div>
+
+    <!-- Mind Games -->
+    <div onclick="go('mindGames')" style="background:linear-gradient(135deg,#001a1a,#003a3a);border:1px solid rgba(0,220,180,0.35);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:6px;">🧠</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.92rem;">Mind Games</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Free Brain Games</div>
+    </div>
+
+  </div>
+
   <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు • Jesus Songs</div>
 </div>
-
 <!-- SONGS -->
 <div id="listPage" class="page">
   <div class="tabs">
@@ -511,14 +555,14 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <div class="ql-card" onclick="showFolder('lyrics')"><div class="qi">🎼</div><h3>Lyrics Sites</h3><p>Christian lyrics</p></div>
       <div class="ql-card" onclick="showFolder('testimonies')"><div class="qi">🙏</div><h3>Testimonies</h3><p>Telugu testimony channels</p></div>
       <div class="ql-card" onclick="showFolder('shortfilms')"><div class="qi">🎬</div><h3>Short Films</h3><p>Christian short films</p></div>
-      <div class="ql-card" onclick="go('contact')"><div class="qi">📞</div><h3>Contact Vicky</h3><p>Call, WhatsApp, Email</p></div>
+      <div class="ql-card" onclick="showFolder('prayer')"><div class="qi">✝️</div><h3>Prayer Resources</h3><p>ప్రార్థన సహాయం</p></div>
     </div>
     <p class="section-title">⚡ Quick Links</p>
     <div class="ql-grid">
       <a class="ql-card" href="https://sajeevavahini.com/telugubible/" target="_blank"><div class="qi">📚</div><h3>Telugu Bible</h3><p>Sajeeva Vahini</p></a>
       <a class="ql-card" href="https://www.bible.com" target="_blank"><div class="qi">✝</div><h3>YouVersion</h3><p>Bible App</p></a>
-      <a class="ql-card" href="https://newpipe.net" target="_blank"><div class="qi">⬇️</div><h3>NewPipe</h3><p>YouTube download</p></a>
-      <a class="ql-card" href="https://www.instagram.com/mr_venka_tesh" target="_blank"><div class="qi">📸</div><h3>Instagram</h3><p>@mr_venka_tesh</p></a>
+      <a class="ql-card" href="https://www.biblegateway.com/devotionals/morning-and-evening/today/" target="_blank"><div class="qi">📅</div><h3>Daily Devotion</h3><p>రోజువారీ భక్తి</p></a>
+      <a class="ql-card" href="https://www.biblegateway.com/passage/?search=John+3&version=TELUGU" target="_blank"><div class="qi">🔍</div><h3>Bible Search</h3><p>వాక్యం వెతకండి</p></a>
     </div>
   </div>
   <div id="folderView" style="display:none">
@@ -535,16 +579,6 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <div class="testament-grid">
       <div class="test-card" onclick="showT('OT')"><div class="ti">📜</div><h3>పాత నిబంధన</h3><p>Old Testament • 39 Books</p></div>
       <div class="test-card" onclick="showT('NT')"><div class="ti">✝</div><h3>క్రొత్త నిబంధన</h3><p>New Testament • 27 Books</p></div>
-    </div>
-    <!-- Telugu Reader buttons -->
-    <p style="color:var(--gold);font-size:0.85rem;margin-bottom:8px;">📖 Telugu Bible Reader — Click చేయండి</p>
-    <div class="testament-grid">
-      <div class="test-card" onclick="showBReader('OT')" style="background:linear-gradient(135deg,#002200,#003300);border-color:#27ae60;">
-        <div class="ti">📜</div><h3 style="color:#2ecc71;">OT Reader</h3><p style="color:#27ae60;">పాత నిబంధన Telugu</p>
-      </div>
-      <div class="test-card" onclick="showBReader('NT')" style="background:linear-gradient(135deg,#000d1a,#001a33);border-color:#3498db;">
-        <div class="ti" style="color:#3498db;">✝</div><h3 style="color:#3498db;">NT Reader</h3><p style="color:#2980b9;">క్రొత్త నిబంధన Telugu</p>
-      </div>
     </div>
   </div>
   <div id="bBooks" style="display:none"><button class="back-btn" onclick="bBack('home')">← Back</button><h3 id="bTestTitle" class="bible-section-title"></h3><div class="books-grid" id="booksGrid"></div></div>
@@ -830,7 +864,7 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
     <div class="contact-btns">
       <a class="cbtn cbtn-call" href="tel:+916383833990">📞 Call చేయండి</a>
       <a class="cbtn cbtn-wa" href="https://wa.me/916383833990?text=Hi%20Vicky%2C%20యేసు%20పాటలు%20app%20నుండి%20మాట్లాడుతున్నాం" target="_blank">💬 WhatsApp Message</a>
-      <a class="cbtn cbtn-mail" href="mailto:nbhagyavenkatesh@gmail.com?subject=యేసు పాటలు App నుండి&body=Hello Vicky! మీ యేసు పాటలు app నుండి contact అవుతున్నాం. 🙏" target="_blank">📧 Email పంపండి</a>
+      <a class="cbtn cbtn-mail" href="/cdn-cgi/l/email-protection#99f7fbf1f8fee0f8effcf7f2f8edfceaf1d9fef4f8f0f5b7faf6f4a6eaecfbf3fcfaeda479293679281e792921792818b979293379292779290679292b792818b9d8e9e9b979293179281879291b792938792926bffbf6fde0a4d1fcf5f5f6b9cff0faf2e0b8b9792937792819b979293679281e792921792818b979293379292779290679292b792818b9f8e9e9b979293179281879291b792938792926b9faf6f7edf8faedb979291c79292c79281879293d79281879293179281479293179292779291bb7b969060016" target="_blank">📧 Email పంపండి</a>
       <a class="cbtn cbtn-ig" href="https://www.instagram.com/mr_venka_tesh" target="_blank">📸 Instagram Follow</a>
     </div>
   </div>
@@ -838,6 +872,193 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 </div>
 
 
+
+<!-- BIBLE QUIZ PAGE -->
+<div id="bibleQuizPage" class="page">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#0a001a,#1a003d);border:1px solid rgba(180,100,255,0.4);border-radius:18px;padding:14px 16px;margin-bottom:12px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:2rem;">✝️</div>
+    <div style="flex:1;">
+      <h2 style="color:var(--gold);font-size:1rem;margin-bottom:2px;">Bible Quiz</h2>
+      <p style="color:var(--sub);font-size:0.72rem;">బైబిల్ జ్ఞానం test చేసుకో!</p>
+    </div>
+    <div style="text-align:right;">
+      <div style="color:rgba(180,100,255,0.9);font-size:0.68rem;">Total played</div>
+      <div id="qzTotalPlayed" style="color:var(--gold);font-weight:700;font-size:1rem;">0</div>
+    </div>
+  </div>
+
+  <!-- Tab nav -->
+  <div style="display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;">
+    <button onclick="qzTab('play')" id="qzt-play" class="tab active" style="white-space:nowrap;flex-shrink:0;">▶ Play</button>
+    <button onclick="qzTab('history')" id="qzt-history" class="tab" style="white-space:nowrap;flex-shrink:0;">📋 History</button>
+    <button onclick="qzTab('ai')" id="qzt-ai" class="tab" style="white-space:nowrap;flex-shrink:0;">🌐 Online Q</button>
+  </div>
+
+  <!-- TAB: PLAY -->
+  <div id="qzPanel-play">
+    <div id="quizStart">
+      <!-- Mode select -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;">
+        <p style="color:var(--gold);font-size:0.82rem;font-weight:700;margin-bottom:10px;">📚 Book filter:</p>
+        <select id="qzBookFilter" style="width:100%;padding:10px;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.85rem;outline:none;margin-bottom:10px;">
+          <option value="all">అన్నీ — All Books</option>
+          <option value="ot">పాత నిబంధన — Old Testament</option>
+          <option value="nt">క్రొత్త నిబంధన — New Testament</option>
+          <option value="genesis">ఆదికాండము — Genesis</option>
+          <option value="exodus">నిర్గమకాండము — Exodus</option>
+          <option value="psalms">కీర్తనలు — Psalms</option>
+          <option value="proverbs">సామెతలు — Proverbs</option>
+          <option value="isaiah">యెషయా — Isaiah</option>
+          <option value="matthew">మత్తయి — Matthew</option>
+          <option value="john">యోహాను — John</option>
+          <option value="acts">అపొస్తలుల కార్యములు — Acts</option>
+          <option value="romans">రోమీయులు — Romans</option>
+          <option value="revelation">ప్రకటన — Revelation</option>
+        </select>
+        <p style="color:var(--gold);font-size:0.82rem;font-weight:700;margin-bottom:10px;">🎯 Level:</p>
+        <div style="display:flex;gap:6px;">
+          <button onclick="qzSetLevel('easy')" id="qzlv-easy" style="flex:1;background:linear-gradient(135deg,#1a5c2a,#27ae60);color:#fff;border:2px solid #27ae60;padding:10px 4px;border-radius:10px;font-size:0.78rem;font-weight:700;cursor:pointer;">🟢 Easy</button>
+          <button onclick="qzSetLevel('medium')" id="qzlv-medium" style="flex:1;background:var(--card);color:var(--sub);border:2px solid var(--border);padding:10px 4px;border-radius:10px;font-size:0.78rem;font-weight:700;cursor:pointer;">🟡 Medium</button>
+          <button onclick="qzSetLevel('hard')" id="qzlv-hard" style="flex:1;background:var(--card);color:var(--sub);border:2px solid var(--border);padding:10px 4px;border-radius:10px;font-size:0.78rem;font-weight:700;cursor:pointer;">🔴 Hard</button>
+          <button onclick="qzSetLevel('mixed')" id="qzlv-mixed" style="flex:1;background:var(--card);color:var(--sub);border:2px solid var(--border);padding:10px 4px;border-radius:10px;font-size:0.78rem;font-weight:700;cursor:pointer;">🎲 Mix</button>
+        </div>
+      </div>
+      <div style="background:rgba(245,197,24,0.07);border:1px solid rgba(245,197,24,0.18);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:0.75rem;color:var(--sub);line-height:1.7;">
+        📖 <b style="color:var(--gold);">500+ questions</b> — never repeat same batch twice<br>
+        ⏱️ 15 seconds per question • 🏆 Score + reference shown<br>
+        📋 History saved • 📄 PDF download available
+      </div>
+      <button onclick="startQuiz()" style="width:100%;background:linear-gradient(135deg,#4a007a,#9c27b0);color:#fff;border:none;padding:15px;border-radius:14px;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(156,39,176,0.4);">✝ Quiz Start చేయి!</button>
+    </div>
+
+    <!-- Quiz playing area -->
+    <div id="quizArea" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px;">
+        <div>
+          <span id="quizProgress" style="color:var(--gold);font-size:0.82rem;font-weight:700;"></span>
+          <span id="qzBookTag" style="margin-left:8px;background:rgba(180,100,255,0.2);color:rgba(200,150,255,0.9);font-size:0.65rem;padding:2px 8px;border-radius:10px;"></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="color:var(--sub);font-size:0.75rem;">Score: <b id="quizScore" style="color:var(--gold);">0</b></span>
+          <div id="quizTimer" style="background:var(--red);color:#fff;padding:3px 12px;border-radius:20px;font-size:0.85rem;font-weight:700;min-width:38px;text-align:center;transition:background 0.3s;">15</div>
+        </div>
+      </div>
+      <!-- Timer bar -->
+      <div style="background:rgba(255,255,255,0.08);border-radius:4px;height:4px;margin-bottom:12px;overflow:hidden;">
+        <div id="qzTimerBar" style="height:100%;background:linear-gradient(90deg,var(--gold),var(--red));border-radius:4px;width:100%;transition:width 1s linear;"></div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--rborder);border-radius:16px;padding:16px;margin-bottom:12px;">
+        <div id="quizQ" style="color:var(--text);font-size:0.93rem;line-height:1.75;font-weight:600;"></div>
+        <div id="qzRef" style="margin-top:8px;color:rgba(180,100,255,0.7);font-size:0.72rem;"></div>
+      </div>
+      <div id="quizOptions" style="display:flex;flex-direction:column;gap:8px;"></div>
+      <div id="qzExplain" style="display:none;background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.3);border-radius:12px;padding:12px;margin-top:10px;font-size:0.8rem;color:#7ec8a0;line-height:1.6;"></div>
+    </div>
+
+    <!-- Result -->
+    <div id="quizResult" style="display:none;text-align:center;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 20px;">
+        <div id="quizEmoji" style="font-size:3.5rem;margin-bottom:10px;"></div>
+        <h3 id="quizResultTitle" style="color:var(--gold);margin-bottom:6px;font-size:1.1rem;"></h3>
+        <p id="quizResultMsg" style="color:var(--sub);font-size:0.82rem;margin-bottom:16px;line-height:1.6;"></p>
+        <div style="background:rgba(180,100,255,0.1);border-radius:14px;padding:14px;margin-bottom:14px;">
+          <div style="color:var(--sub);font-size:0.72rem;margin-bottom:4px;">Final Score</div>
+          <span id="quizFinalScore" style="color:var(--gold);font-size:2rem;font-weight:700;"></span>
+          <span id="quizMaxScore" style="color:var(--sub);font-size:0.9rem;"></span>
+        </div>
+        <div id="qzResultBreakdown" style="text-align:left;background:var(--deep);border-radius:12px;padding:10px;margin-bottom:14px;max-height:220px;overflow-y:auto;font-size:0.78rem;"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+          <button onclick="resetQuiz()" style="background:linear-gradient(135deg,#4a007a,#9c27b0);color:#fff;border:none;padding:11px 18px;border-radius:12px;font-weight:700;cursor:pointer;font-size:0.85rem;">🔄 మళ్ళీ ఆడు</button>
+          <button onclick="qzDownloadPDF()" style="background:linear-gradient(135deg,#8b0000,#c0392b);color:#fff;border:none;padding:11px 18px;border-radius:12px;font-weight:700;cursor:pointer;font-size:0.85rem;">📄 PDF Download</button>
+          <button onclick="go('home')" style="background:var(--btn-bg);border:1px solid var(--border);color:var(--gold);padding:11px 18px;border-radius:12px;font-weight:700;cursor:pointer;font-size:0.85rem;">🏠 Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: HISTORY -->
+  <div id="qzPanel-history" style="display:none;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span style="color:var(--gold);font-size:0.88rem;font-weight:700;">📋 Quiz History</span>
+      <button onclick="qzClearHistory()" style="background:rgba(192,57,43,0.15);border:1px solid var(--red);color:var(--red);padding:5px 12px;border-radius:10px;font-size:0.72rem;cursor:pointer;">🗑 Clear</button>
+    </div>
+    <div id="qzHistoryList" style="display:flex;flex-direction:column;gap:8px;"></div>
+    <div id="qzHistoryEmpty" style="text-align:center;padding:40px;color:var(--sub);">
+      <div style="font-size:2.5rem;margin-bottom:8px;">📭</div>
+      <p>ఇంకా quiz ఆడలేదు!<br>Play చేయి — history ఇక్కడ కనిపిస్తుంది.</p>
+    </div>
+  </div>
+
+  <!-- TAB: ONLINE AI Q -->
+  <div id="qzPanel-ai" style="display:none;">
+    <div style="background:linear-gradient(135deg,#001a0a,#003020);border:1px solid rgba(39,174,96,0.4);border-radius:14px;padding:14px;margin-bottom:12px;">
+      <div style="color:#7ec8a0;font-size:0.82rem;font-weight:700;margin-bottom:4px;">🌐 Internet-Powered Questions</div>
+      <div style="color:var(--sub);font-size:0.72rem;line-height:1.6;">Claude AI నుండి fresh questions వస్తాయి — internet అవసరం. Topic select చేసి generate చేయి!</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;">
+      <p style="color:var(--gold);font-size:0.82rem;margin-bottom:8px;">Topic చెప్పు / Enter topic:</p>
+      <input id="qzAiTopic" type="text" placeholder="e.g. Sermon on the Mount, Apostle Paul, Creation..." style="width:100%;padding:11px;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.85rem;outline:none;margin-bottom:8px;font-family:inherit;">
+      <select id="qzAiCount" style="width:100%;padding:10px;background:var(--deep);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.85rem;outline:none;margin-bottom:10px;">
+        <option value="5">5 questions</option>
+        <option value="10" selected>10 questions</option>
+        <option value="15">15 questions</option>
+        <option value="20">20 questions</option>
+      </select>
+      <button onclick="qzGenerateOnline()" id="qzAiBtn" style="width:100%;background:linear-gradient(135deg,#006633,#27ae60);color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;font-size:0.9rem;cursor:pointer;">🌐 Generate Questions</button>
+    </div>
+    <div id="qzAiStatus" style="text-align:center;color:var(--sub);font-size:0.8rem;padding:10px;display:none;">
+      <div style="font-size:1.5rem;animation:pulse 1s infinite;">⏳</div>
+      <div id="qzAiStatusTxt">Generating...</div>
+    </div>
+    <div id="qzAiPreview" style="display:none;">
+      <div style="color:var(--gold);font-size:0.85rem;font-weight:700;margin-bottom:8px;" id="qzAiPreviewTitle"></div>
+      <div id="qzAiQList" style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;max-height:250px;overflow-y:auto;"></div>
+      <button onclick="qzStartAiQuiz()" style="width:100%;background:linear-gradient(135deg,#4a007a,#9c27b0);color:#fff;border:none;padding:13px;border-radius:12px;font-weight:700;font-size:0.9rem;cursor:pointer;">▶ ఈ Questions తో Quiz Start చేయి!</button>
+    </div>
+  </div>
+
+  <div class="copyright" style="margin-top:16px;">© 2026 <span>Vicky</span> — యేసు పాటలు</div>
+</div>
+
+<!-- MIND GAMES PAGE -->
+<div id="mindGamesPage" class="page">
+  <div style="background:linear-gradient(135deg,#001a1a,#003a3a);border:1px solid rgba(0,220,180,0.4);border-radius:18px;padding:16px;margin-bottom:14px;text-align:center;">
+    <div style="font-size:2.5rem;margin-bottom:8px;">🧠</div>
+    <h2 style="color:var(--gold);margin-bottom:4px;">Free Mind Games</h2>
+    <p style="color:var(--sub);font-size:0.78rem;">Brain sharp చేసుకో! • Sharpen your mind!</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+    <div onclick="openMindGame('memory')" style="background:linear-gradient(135deg,#1a0a2e,#2d1550);border:1px solid rgba(156,39,176,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2.2rem;margin-bottom:7px;">🃏</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Memory Cards</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">జ్ఞాపక శక్తి</div>
+    </div>
+    <div onclick="openMindGame('numbers')" style="background:linear-gradient(135deg,#001a1a,#003030);border:1px solid rgba(0,200,200,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2.2rem;margin-bottom:7px;">🔢</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Number Match</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">సంఖ్య జ్ఞాపకం</div>
+    </div>
+    <div onclick="openMindGame('word')" style="background:linear-gradient(135deg,#1a1000,#302000);border:1px solid rgba(245,197,24,0.35);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2.2rem;margin-bottom:7px;">📝</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Word Unscramble</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">Bible words</div>
+    </div>
+    <div onclick="openMindGame('math')" style="background:linear-gradient(135deg,#001a0a,#003018);border:1px solid rgba(39,174,96,0.4);border-radius:14px;padding:16px;cursor:pointer;text-align:center;">
+      <div style="font-size:2.2rem;margin-bottom:7px;">➗</div>
+      <div style="color:var(--gold);font-weight:700;font-size:0.88rem;">Quick Math</div>
+      <div style="color:var(--sub);font-size:0.7rem;margin-top:2px;">మెదడు లెక్కలు</div>
+    </div>
+  </div>
+
+  <!-- Game Area -->
+  <div id="mgArea" style="display:none;">
+    <button onclick="closeMindGame()" class="back-btn">← Back</button>
+    <div id="mgContent"></div>
+  </div>
+  <div class="copyright">© 2026 <span>Vicky</span> — యేసు పాటలు</div>
+</div>
 
 <!-- AI PAGE -->
 <div id="aiPage" class="page">
@@ -1067,15 +1288,15 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
 <button class="fab" id="fab" onclick="go('add')">➕</button>
 <div id="toast"></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══ BIBLE DATA ═══
 var OT=[{n:"ఆదికాండము",e:"Genesis",c:50,id:"GEN"},{n:"నిర్గమకాండము",e:"Exodus",c:40,id:"EXO"},{n:"లేవీయకాండము",e:"Leviticus",c:27,id:"LEV"},{n:"సంఖ్యాకాండము",e:"Numbers",c:36,id:"NUM"},{n:"ద్వితీయోపదేశకాండము",e:"Deuteronomy",c:34,id:"DEU"},{n:"యెహోషువ",e:"Joshua",c:24,id:"JOS"},{n:"న్యాయాధిపతులు",e:"Judges",c:21,id:"JDG"},{n:"రూతు",e:"Ruth",c:4,id:"RUT"},{n:"1 సమూయేలు",e:"1 Samuel",c:31,id:"1SA"},{n:"2 సమూయేలు",e:"2 Samuel",c:24,id:"2SA"},{n:"1 రాజులు",e:"1 Kings",c:22,id:"1KI"},{n:"2 రాజులు",e:"2 Kings",c:25,id:"2KI"},{n:"1 దినవృత్తాంతములు",e:"1 Chronicles",c:29,id:"1CH"},{n:"2 దినవృత్తాంతములు",e:"2 Chronicles",c:36,id:"2CH"},{n:"ఎజ్రా",e:"Ezra",c:10,id:"EZR"},{n:"నెహెమ్యా",e:"Nehemiah",c:13,id:"NEH"},{n:"ఎస్తేరు",e:"Esther",c:10,id:"EST"},{n:"యోబు",e:"Job",c:42,id:"JOB"},{n:"కీర్తనలు",e:"Psalms",c:150,id:"PSA"},{n:"సామెతలు",e:"Proverbs",c:31,id:"PRO"},{n:"ప్రసంగి",e:"Ecclesiastes",c:12,id:"ECC"},{n:"పరమగీతము",e:"Song of Solomon",c:8,id:"SNG"},{n:"యెషయా",e:"Isaiah",c:66,id:"ISA"},{n:"యిర్మియా",e:"Jeremiah",c:52,id:"JER"},{n:"విలాపవాక్యములు",e:"Lamentations",c:5,id:"LAM"},{n:"యెహెజ్కేలు",e:"Ezekiel",c:48,id:"EZK"},{n:"దానియేలు",e:"Daniel",c:12,id:"DAN"},{n:"హోషేయ",e:"Hosea",c:14,id:"HOS"},{n:"యోవేలు",e:"Joel",c:3,id:"JOL"},{n:"ఆమోసు",e:"Amos",c:9,id:"AMO"},{n:"ఓబద్యా",e:"Obadiah",c:1,id:"OBA"},{n:"యోనా",e:"Jonah",c:4,id:"JON"},{n:"మీకా",e:"Micah",c:7,id:"MIC"},{n:"నహూము",e:"Nahum",c:3,id:"NAM"},{n:"హబక్కూకు",e:"Habakkuk",c:3,id:"HAB"},{n:"జెఫన్యా",e:"Zephaniah",c:3,id:"ZEP"},{n:"హగ్గయి",e:"Haggai",c:2,id:"HAG"},{n:"జెకర్యా",e:"Zechariah",c:14,id:"ZEC"},{n:"మలాకీ",e:"Malachi",c:4,id:"MAL"}];
 var NT=[{n:"మత్తయి",e:"Matthew",c:28,id:"MAT"},{n:"మార్కు",e:"Mark",c:16,id:"MRK"},{n:"లూకా",e:"Luke",c:24,id:"LUK"},{n:"యోహాను",e:"John",c:21,id:"JHN"},{n:"అపొస్తలుల కార్యములు",e:"Acts",c:28,id:"ACT"},{n:"రోమీయులకు",e:"Romans",c:16,id:"ROM"},{n:"1 కొరింథీయులకు",e:"1 Corinthians",c:16,id:"1CO"},{n:"2 కొరింథీయులకు",e:"2 Corinthians",c:13,id:"2CO"},{n:"గలతీయులకు",e:"Galatians",c:6,id:"GAL"},{n:"ఎఫెసీయులకు",e:"Ephesians",c:6,id:"EPH"},{n:"ఫిలిప్పీయులకు",e:"Philippians",c:4,id:"PHP"},{n:"కొలొస్సయులకు",e:"Colossians",c:4,id:"COL"},{n:"1 థెస్సలొనీకయులకు",e:"1 Thessalonians",c:5,id:"1TH"},{n:"2 థెస్సలొనీకయులకు",e:"2 Thessalonians",c:3,id:"2TH"},{n:"1 తిమోతికి",e:"1 Timothy",c:6,id:"1TI"},{n:"2 తిమోతికి",e:"2 Timothy",c:4,id:"2TI"},{n:"తీతుకు",e:"Titus",c:3,id:"TIT"},{n:"ఫిలేమోనుకు",e:"Philemon",c:1,id:"PHM"},{n:"హెబ్రీయులకు",e:"Hebrews",c:13,id:"HEB"},{n:"యాకోబు",e:"James",c:5,id:"JAS"},{n:"1 పేతురు",e:"1 Peter",c:5,id:"1PE"},{n:"2 పేతురు",e:"2 Peter",c:3,id:"2PE"},{n:"1 యోహాను",e:"1 John",c:5,id:"1JN"},{n:"2 యోహాను",e:"2 John",c:1,id:"2JN"},{n:"3 యోహాను",e:"3 John",c:1,id:"3JN"},{n:"యూదా",e:"Jude",c:1,id:"JUD"},{n:"ప్రకటన",e:"Revelation",c:22,id:"REV"}];
 
 var READER_SITES={OT:[{n:'ఆదికాండము',url:'https://sajeevavahini.com/telugubible/index.aspx?b=1&c=1'},{n:'నిర్గమకాండము',url:'https://sajeevavahini.com/telugubible/index.aspx?b=2&c=1'},{n:'కీర్తనలు',url:'https://sajeevavahini.com/telugubible/index.aspx?b=19&c=1'},{n:'సామెతలు',url:'https://sajeevavahini.com/telugubible/index.aspx?b=20&c=1'},{n:'యెషయా',url:'https://sajeevavahini.com/telugubible/index.aspx?b=23&c=1'}],NT:[{n:'మత్తయి',url:'https://sajeevavahini.com/telugubible/index.aspx?b=40&c=1'},{n:'యోహాను',url:'https://sajeevavahini.com/telugubible/index.aspx?b=43&c=1'},{n:'అపొస్తలుల కార్యములు',url:'https://sajeevavahini.com/telugubible/index.aspx?b=44&c=1'},{n:'రోమీయులకు',url:'https://sajeevavahini.com/telugubible/index.aspx?b=45&c=1'},{n:'ప్రకటన',url:'https://sajeevavahini.com/telugubible/index.aspx?b=66&c=1'}]};
 
-var FOLDERS={lyrics:[{qi:'🎼',n:'Christian Lyricz',p:'Telugu lyrics',url:'https://christianlyricz.com/'},{qi:'🎵',n:'Hosanna Songs (240)',p:'హోసన్నా lyrics',url:'https://www.christiandatahouse.com/p/hosanna-all-songs.html?m=1'},{qi:'🕊️',n:'Songs of Zion',p:'Zion songs',url:'https://songsofzion.org/'},{qi:'⛪',n:'Way to Church',p:'Church resources',url:'https://waytochurch.com/'}],testimonies:[{qi:'🙏',n:'Brother Joshi',p:'Telugu testimonies',url:'https://youtube.com/@brotherjoshi2876'},{qi:'💡',n:'Lamp Ministries',p:'Lamp Ministries',url:'https://youtube.com/@lampministries'},{qi:'✝',n:'Telugu Testimonies',p:'Telugu Christian',url:'https://youtube.com/@teluguchristiantestimonies1945'},{qi:'🔥',n:'Elisha Eliya',p:'Elisha Eliya',url:'https://youtube.com/@elishaeliya'}],shortfilms:[{qi:'🎬',n:'AAG Team Works',p:'Christian short films',url:'https://youtube.com/@aagteamworks'},{qi:'⛪',n:'JCC Church Official',p:'JCC Church',url:'https://youtube.com/@jcchurchofficial'},{qi:'🤝',n:'We With God',p:'We With God',url:'https://youtube.com/@wewithgod'},{qi:'🕊️',n:'Prabhu Deevena',p:'Prabhu Deevena',url:'https://youtube.com/@prabhudeevena'}]};
-var FOLDER_TITLES={lyrics:'🎼 Lyrics Sites',testimonies:'🙏 Testimonies',shortfilms:'🎬 Short Films'};
+var FOLDERS={lyrics:[{qi:'🎼',n:'Christian Lyricz',p:'Telugu lyrics',url:'https://christianlyricz.com/'},{qi:'🎵',n:'Hosanna Songs (240)',p:'హోసన్నా lyrics',url:'https://www.christiandatahouse.com/p/hosanna-all-songs.html?m=1'},{qi:'🕊️',n:'Songs of Zion',p:'Zion songs',url:'https://songsofzion.org/'},{qi:'⛪',n:'Way to Church',p:'Church resources',url:'https://waytochurch.com/'}],testimonies:[{qi:'🙏',n:'Brother Joshi',p:'Telugu testimonies',url:'https://youtube.com/@brotherjoshi2876'},{qi:'💡',n:'Lamp Ministries',p:'Lamp Ministries',url:'https://youtube.com/@lampministries'},{qi:'✝',n:'Telugu Testimonies',p:'Telugu Christian',url:'https://youtube.com/@teluguchristiantestimonies1945'},{qi:'🔥',n:'Elisha Eliya',p:'Elisha Eliya',url:'https://youtube.com/@elishaeliya'}],shortfilms:[{qi:'🎬',n:'AAG Team Works',p:'Christian short films',url:'https://youtube.com/@aagteamworks'},{qi:'⛪',n:'JCC Church Official',p:'JCC Church',url:'https://youtube.com/@jcchurchofficial'},{qi:'🤝',n:'We With God',p:'We With God',url:'https://youtube.com/@wewithgod'},{qi:'🕊️',n:'Prabhu Deevena',p:'Prabhu Deevena',url:'https://youtube.com/@prabhudeevena'}],prayer:[{qi:'🙏',n:'24/7 Prayer',p:'24/7 ప్రార్థన',url:'https://www.24-7prayer.com/'},{qi:'✝️',n:'Telugu Prayer Songs',p:'ప్రార్థన పాటలు',url:'https://youtube.com/results?search_query=telugu+christian+prayer+songs'},{qi:'📖',n:'Daily Devotional',p:'రోజువారీ భక్తి',url:'https://www.biblegateway.com/devotionals/morning-and-evening/today/'},{qi:'🕊️',n:'Prayers for All',p:'అందరికోసం ప్రార్థన',url:'https://www.praywithme.com/'}]};
+var FOLDER_TITLES={lyrics:'🎼 Lyrics Sites',testimonies:'🙏 Testimonies',shortfilms:'🎬 Short Films',prayer:'✝️ Prayer Resources'};
 
 var PROMISES=[{t:"యెహోవా నా కాపరి, నాకు లేమి కలుగదు.",r:"కీర్తన 23:1"},{t:"నేను నిన్ను విడువను, నిన్ను వదలిపోను.",r:"హెబ్రీయులు 13:5"},{t:"నేను నీకు మేలు చేయుటకే నా ఆలోచనలు.",r:"యిర్మియా 29:11"},{t:"ప్రభువు నా వెలుగు, నా రక్షణ; నేను ఎవనికి భయపడుదును?",r:"కీర్తన 27:1"},{t:"నీ మార్గమును యెహోవాకు అప్పగించుము, ఆయనయందు నమ్మికయుంచుము.",r:"కీర్తన 37:5"},{t:"నీ సమస్త చింతలను ఆయనమీద వేయుము, ఆయన మీకు పోషించును.",r:"1 పేతురు 5:7"},{t:"యేసు చెప్పెను నేనే మార్గమును సత్యమును జీవమును అయి యున్నాను.",r:"యోహాను 14:6"},{t:"ఆయన యందు బలము పొందుచు సమస్తమును చేయగలను.",r:"ఫిలిప్పీ 4:13"},{t:"దేవుడు ప్రేమ స్వరూపి.",r:"1 యోహాను 4:8"},{t:"యెహోవా నాకు సహాయకుడు, నేను భయపడను.",r:"హెబ్రీయులు 13:6"},{t:"సొంత వివేచనమీద ఆనుకొనకు, నీ సర్వమార్గములలో ఆయనను అనుసరించుము.",r:"సామెతలు 3:5-6"},{t:"నా కృప నీకు చాలును, బలహీనత యందే నా శక్తి సంపూర్ణమగును.",r:"2 కొరింథీ 12:9"},{t:"ఆయన వాక్యము దీపము, ఆయన ఉపదేశము వెలుగు.",r:"సామెతలు 6:23"},{t:"ఆనందముగా ఉండుడి, నిరంతరము ప్రార్థన చేయుడి.",r:"1 థెస్స 5:16-17"},{t:"యెహోవా నీకు ముందు నడచువాడు, ఆయన నీతో ఉంటాడు.",r:"ద్వితీయ 31:8"},{t:"మంచిని చేయుటయందు విసుకబడకుడి, తగిన కాలమందు మీరు కోయుదురు.",r:"గలతీ 6:9"},{t:"నా బలమునకు మూలమైన యెహోవాను నేను ప్రేమించెదను.",r:"కీర్తన 18:1"},{t:"ప్రార్థనలో నిలుకడగా ఉండుడి, కృతజ్ఞతాస్తుతులు చేయుచు మేల్కొనుడి.",r:"కొలొస్స 4:2"},{t:"దేవుని యందు నమ్మిక యుంచువాడు ఎవరైనను సిగ్గుపడడు.",r:"రోమీయులు 10:11"},{t:"నీవు నన్ను వెదికితివి నాలో ఉన్నావు, నీ కుడి చేయి నన్ను పట్టుకుంది.",r:"యెషయా 41:13"}];
 
@@ -1175,7 +1396,7 @@ function go(p){
   document.querySelectorAll('.nav-btns button').forEach(function(x){x.classList.remove('active');});
   document.getElementById(p+'Page').classList.add('active');
   var nb=document.getElementById('nb-'+p);if(nb)nb.classList.add('active');
-  document.getElementById('fab').classList.toggle('off',['add','bible','links','contact','help','s244','jesus','ai','hist'].includes(p));
+  document.getElementById('fab').classList.toggle('off',['add','bible','links','contact','help','s244','jesus','ai','hist','bibleQuiz','mindGames'].includes(p));
   if(p==='hist')renderHistory();
   if(p==='list')renderList();
   if(p==='fav')renderFav();
@@ -2837,6 +3058,750 @@ function viewBiblePDF(url){
   openLinkPDF();
 }
 
+// ═══ BIBLE QUIZ — MEGA UPGRADE ═══
+var QDB = {
+  genesis:[
+    {q:"ఆదికాండము 1:1 — సృష్టి మొదటి వాక్యం?",o:["దేవుడు వెలుతురు చేశాడు","ఆదిలో దేవుడు భూమ్యాకాశాలు సృజించాడు","మనిషిని దేవుడు సృష్టించాడు","ఆకాశం నీళ్ళు విడదీశాడు"],a:1,ref:"ఆది 1:1",exp:"ఆదికాండము మొదటి వాక్యం — Creation foundation."},
+    {q:"ఆది 1 — దేవుడు మనిషిని ఏ రోజు సృష్టించాడు?",o:["3వ రోజు","4వ రోజు","5వ రోజు","6వ రోజు"],a:3,ref:"ఆది 1:26-27",exp:"6వ రోజు దేవుడు మనిషిని తన సారూప్యంలో సృష్టించాడు."},
+    {q:"ఆది 2 — ఆదాముని ఏ మట్టి నుండి చేశాడు?",o:["బంగారు మట్టి","నీటి మట్టి","భూమి మట్టి / Dust of ground","సముద్రపు మట్టి"],a:2,ref:"ఆది 2:7",exp:"దేవుడు భూమి మట్టి తీసుకుని మనిషిని చేసి జీవశ్వాస ఊదాడు."},
+    {q:"ఆది 2 — ఏదెను తోటలో నిషేధించబడిన వృక్షం?",o:["జీవ వృక్షం","జ్ఞానవృక్షం / Tree of knowledge","అంజూరం చెట్టు","ద్రాక్ష తీగ"],a:1,ref:"ఆది 2:17",exp:"మంచి చెడ్డల జ్ఞానవృక్షం ఫలం తినవద్దని ఆజ్ఞ."},
+    {q:"ఆది 3 — హవ్వను పాపానికి ఏది ప్రలోభపెట్టింది?",o:["ఆదాము","సింహం","పాము / Serpent","దేవదూత"],a:2,ref:"ఆది 3:1-4",exp:"పాము హవ్వతో మాట్లాడి దేవుని ఆజ్ఞ మీరేలా చేసింది."},
+    {q:"ఆది 4 — కయీను హేబెలును ఎందుకు చంపాడు?",o:["భూమి వివాదం","దేవుడు హేబెలు అర్పణ అంగీకరించాడు","ఆహారం కోసం","ఆస్తి కోసం"],a:1,ref:"ఆది 4:4-8",exp:"దేవుడు హేబెలు అర్పణను అంగీకరించాడు — అసూయతో కయీను హేబెలును చంపాడు."},
+    {q:"ఆది 9 — జలప్రళయం తర్వాత దేవుడు ఏ గుర్తు ఇచ్చాడు?",o:["చంద్రుడు","ఇంద్రధనుస్సు / Rainbow","నక్షత్రాలు","అగ్ని స్తంభం"],a:1,ref:"ఆది 9:13",exp:"ఇంద్రధనుస్సు — దేవుని నిబంధన గుర్తు."},
+    {q:"ఆది 11 — బాబేలు గోపురం ఎందుకు కట్టారు?",o:["దేవుని దగ్గరికి వెళ్ళడానికి","స్వర్గం చేరుకోవడానికి","వర్షం నుండి కాపాడుకోవడానికి","పేరు సంపాదించుకోవడానికి"],a:1,ref:"ఆది 11:4",exp:"గర్వంతో గోపురం కట్టారు — దేవుడు భాషలు చెదరగొట్టాడు."},
+    {q:"ఆది 12 — అబ్రాహాముకు దేవుడు ఏమని పిలిచాడు?",o:["ఊర్ కు వెళ్ళు","కనాను దేశానికి వెళ్ళు","ఐగుప్తు వెళ్ళు","సీనాయి వెళ్ళు"],a:1,ref:"ఆది 12:1",exp:"నీ దేశం వదిలి నేను చూపించే దేశానికి వెళ్ళు — Abrahamic covenant మొదలు."},
+    {q:"ఆది 17 — అబ్రాహాముకు మొదట ఏ పేరు ఉంది?",o:["అమ్రాము","అబ్రాము / Abram","అబ్దేలు","అజరేలు"],a:1,ref:"ఆది 17:5",exp:"అబ్రాహాముకు మొదటి పేరు అబ్రాము — దేవుడు అనేక జనులకు తండ్రి అర్థం వచ్చేలా మార్చాడు."},
+    {q:"ఆది 22 — అబ్రాహాము యిస్సాకును ఏ పర్వతంపై అర్పించాలని వెళ్ళాడు?",o:["హోరేబు","సీనాయి","మోరియా / Moriah","కార్మేలు"],a:2,ref:"ఆది 22:2",exp:"మోరియా పర్వతం — తర్వాత Solomon దేవాలయం కట్టిన చోటే."},
+    {q:"ఆది 37 — యోసేపును సోదరులు ఎంతకు అమ్మారు?",o:["10 వెండి నాణేలు","20 వెండి నాణేలు","30 వెండి నాణేలు","50 వెండి నాణేలు"],a:1,ref:"ఆది 37:28",exp:"యోసేపును ఇష్మాయేలీయులకు 20 వెండి నాణేలకు అమ్మారు."},
+    {q:"ఆది 41 — ఫరో ఎన్ని కలలు కన్నాడు?",o:["1","2","3","4"],a:1,ref:"ఆది 41:1-7",exp:"ఫరోకు రెండు కలలు — 7 లావుపాటి ఆవులు + 7 మంచి కంకులు."},
+    {q:"ఆది 7 — శుద్ధమైన జంతువులు ఎన్ని జతలు ఓడలో తీసుకున్నాడు?",o:["2 జతలు","4 జతలు","7 జతలు","14 జతలు"],a:2,ref:"ఆది 7:2",exp:"శుద్ధమైన జంతువులు 7 జతలు, అశుద్ధమైనవి 2 జతలు."},
+    {q:"ఆది 2 — దేవుడు హవ్వను ఏమి నుండి చేశాడు?",o:["మట్టి నుండి","ఆదాము పక్కటెముక నుండి","నీటి నుండి","తన చేత్తో"],a:1,ref:"ఆది 2:22",exp:"దేవుడు ఆదాము పక్కటెముక తీసుకుని హవ్వను సృష్టించాడు."},
+  ],
+  exodus:[
+    {q:"నిర్గమ 2 — మోషే ఎక్కడ దొరికాడు?",o:["అడవిలో","నదిలో పెట్టె లో","పర్వతంలో","ఇంట్లో"],a:1,ref:"నిర్గ 2:3",exp:"మోషే తల్లి నైలు నదిలో గుంజు పెట్టెలో పెట్టింది — ఫరో కూతురు కనుగొంది."},
+    {q:"నిర్గమ 3 — మోషేకు దేవుడు ఎక్కడ కనిపించాడు?",o:["కలలో","మేఘ స్తంభంలో","మండుతున్న పొద / Burning bush","నదిలో"],a:2,ref:"నిర్గ 3:2",exp:"హోరేబు పర్వతంలో అగ్నిలో మండే పొద — కానీ భస్మం కాలేదు."},
+    {q:"నిర్గమ 7-12 — పది తెగుళ్ళలో మొదటిది?",o:["కప్పలు","నీరు రక్తంగా మారడం","మిడతలు","చీకటి"],a:1,ref:"నిర్గ 7:20",exp:"నైలు నదిలోని నీరు రక్తంగా మారింది — మొదటి తెగులు."},
+    {q:"నిర్గమ 12 — పస్కా పండుగలో ఏ జంతు రక్తం తలుపులకు పూసారు?",o:["గొర్రె / Lamb","మేక","ఎద్దు","పావురం"],a:0,ref:"నిర్గ 12:7",exp:"పస్కా గొర్రె రక్తం తలుపు పరళ్ళకు పూసారు — మరణదూత దాటిపోయాడు."},
+    {q:"నిర్గమ 14 — ఎర్ర సముద్రం ఎవరు చీల్చాడు?",o:["ఆరోను","యెహోషువ","మోషే / Moses","కాలేబు"],a:2,ref:"నిర్గ 14:21",exp:"మోషే కర్ర చాపగా దేవుడు బలమైన గాలితో సముద్రాన్ని చీల్చాడు."},
+    {q:"నిర్గమ 16 — అరణ్యంలో ఇశ్రాయేలీయులకు ఏ ఆహారం ఇచ్చాడు?",o:["బ్రెడ్","మన్నా / Manna","ద్రాక్ష","అంజూరం"],a:1,ref:"నిర్గ 16:14-15",exp:"మన్నా — పొద్దున్నే మంచు వలె దిగేది, తేనె రుచి ఉండేది."},
+    {q:"నిర్గమ 20 — 10 ఆజ్ఞలలో మొదటిది?",o:["విగ్రహాలు చేయకు","విశ్రాంతి దినం పాటించు","తల్లిదండ్రులు గౌరవించు","నాకు ముందు వేరే దేవుళ్ళు ఉండకూడదు"],a:3,ref:"నిర్గ 20:3",exp:"మొదటి ఆజ్ఞ — నాకు ముందు వేరే దేవుళ్ళు ఉండకూడదు."},
+    {q:"నిర్గమ 32 — మోషే పర్వతంపై ఉండగా ప్రజలు ఏ విగ్రహం చేశారు?",o:["ఆవు విగ్రహం","పాము విగ్రహం","బంగారు దూడ / Golden calf","బాల్ విగ్రహం"],a:2,ref:"నిర్గ 32:4",exp:"ఆరోను బంగారు దూడ చేశాడు — మోషే రాళ్ళ పలకలు పగలకొట్టాడు."},
+    {q:"నిర్గమ 3 — దేవుడు తన పేరు ఏమని చెప్పాడు?",o:["యెహోవా","ఎల్ షద్దాయి","నేనే నేను / I AM WHO I AM","అల్ హా"],a:2,ref:"నిర్గ 3:14",exp:"I AM WHO I AM — యెహోవా అనే పేరు ఇక్కడ వెల్లడైంది."},
+    {q:"నిర్గమ 25 — సాక్ష్యపు మందసం (Ark of Covenant) ఎందుకు చేయమని చెప్పాడు?",o:["రాజు కూర్చోవడానికి","దేవుడు ఉండే స్థలంగా","ఆహారం దాచడానికి","యుద్ధంలో మోయడానికి"],a:1,ref:"నిర్గ 25:22",exp:"దేవుడు మందసం మీద నుండి మాట్లాడతానని చెప్పాడు — అది ఆయన సన్నిధి స్థలం."},
+  ],
+  psalms:[
+    {q:"కీర్తన 23:1 — 'యెహోవా నా కాపరి' రాసింది ఎవరు?",o:["సొలొమోను","ఆసాపు","మోషే","దావీదు / David"],a:3,ref:"కీర్త 23:1",exp:"దావీదు రాసిన అతి ప్రసిద్ధ కీర్తన — The LORD is my shepherd."},
+    {q:"కీర్తన 119 — బైబిల్ లో అతి పెద్ద అధ్యాయం?",o:["కీర్తన 119","కీర్తన 150","యోహాను 11","ఆది 1"],a:0,ref:"కీర్త 119",exp:"కీర్తన 119 — 176 వచనాలు, అతి పెద్ద అధ్యాయం."},
+    {q:"కీర్తన 117 — బైబిల్ లో అతి చిన్న అధ్యాయం?",o:["కీర్తన 117","కీర్తన 1","ఫిలేమోను","3 యోహాను"],a:0,ref:"కీర్త 117",exp:"కీర్తన 117 — కేవలం 2 వచనాలు."},
+    {q:"కీర్తన 22 — 'నా దేవా నన్నేల విడిచితివి' ఇది ఎవరికి ముందే రాశారు?",o:["దావీదు — యేసు గురించి ప్రవచనం","ఆసాపు — తన బాధ","సొలొమోను — రాజ్యం","మోషే — ప్రజల గురించి"],a:0,ref:"కీర్త 22:1",exp:"దావీదు రాసిన Messianic Psalm — యేసు సిలువ మాటలు ముందే ఉన్నాయి."},
+    {q:"కీర్తన 46:1 — 'దేవుడు మన ఆశ్రయమూ బలమూ' రాసింది ఎవరు?",o:["దావీదు","కోరహు కుమారులు / Sons of Korah","సొలొమోను","హేమాను"],a:1,ref:"కీర్త 46:1",exp:"కోరహు కుమారులు రాసిన కీర్తన."},
+    {q:"కీర్తన 1 — ధన్యుడు ఎవరు?",o:["ధనవంతుడు","దుష్టుల సంఘంలో నడవనివాడు","రాజు","పురోహితుడు"],a:1,ref:"కీర్త 1:1",exp:"దుష్టుల ఉపదేశం అనుసరించని, పాపుల మార్గంలో నిలువని, అపహాస్యకులతో కూర్చోని వాడు ధన్యుడు."},
+    {q:"కీర్తన 119:105 — 'నీ వాక్యము నా కాలుకు...' ఏమి?",o:["బాట","దీపము / Lamp","జలము","బాగు"],a:1,ref:"కీర్త 119:105",exp:"నీ వాక్యము నా కాలుకు దీపము, నా త్రోవకు వెలుతురు."},
+    {q:"కీర్తన 51 — దావీదు ఈ కీర్తన ఎందుకు రాశాడు?",o:["జయం తర్వాత","బత్షెబా పాపం తర్వాత పశ్చాత్తాపంతో","ఆలయం కట్టిన తర్వాత","రాజుగా అభిషేకించిన తర్వాత"],a:1,ref:"కీర్త 51:1",exp:"నాతాను ప్రవక్త బత్షెబా విషయం గురించి వచ్చిన తర్వాత దావీదు రాసిన పశ్చాత్తాప కీర్తన."},
+  ],
+  proverbs:[
+    {q:"సామె 1:7 — జ్ఞానపు మొదలు ఏది?",o:["ప్రేమ","విద్య","యెహోవా భయము / Fear of the LORD","సంపద"],a:2,ref:"సామె 1:7",exp:"యెహోవాయందు భయభక్తులు కలిగి ఉండటం జ్ఞానానికి మొదలు."},
+    {q:"సామె 3:5 — 'నీ స్వబుద్ధిపై ఆధారపడకు' అని ఏమి చేయమంటుంది?",o:["ఎల్లప్పుడూ చదువు","నీ హృదయపూర్వకంగా యెహోవాను నమ్ము","పెద్దవారిని అడుగు","ప్రార్థించు"],a:1,ref:"సామె 3:5",exp:"నీ సర్వహృదయంతో దేవుని నమ్ము, నీ స్వబుద్ధిపై ఆధారపడకు."},
+    {q:"సామె 31 — ఆదర్శ స్త్రీ వర్ణన ఏ అధ్యాయంలో ఉంది?",o:["సామె 30","సామె 31","సామె 29","సామె 28"],a:1,ref:"సామె 31:10",exp:"సామె 31 — సుగుణవతి స్త్రీ గురించి వర్ణన."},
+    {q:"సామె 16:18 — గర్వానికి ముందు ఏమి వస్తుంది?",o:["సంపద","నాశనం / Destruction","ఘన్తా","శాంతి"],a:1,ref:"సామె 16:18",exp:"గర్వానికి ముందు నాశనం, అహంకారానికి ముందు పడిపోవడం వస్తుంది."},
+  ],
+  isaiah:[
+    {q:"యెష 7:14 — 'కన్య గర్భం ధరించి కుమారుని కంటుంది' ఆ కుమారుని పేరు?",o:["యేసు","ఇమ్మానుయేలు / Immanuel","మెస్సయ్య","క్రీస్తు"],a:1,ref:"యెష 7:14",exp:"Immanuel — దేవుడు మనతో ఉన్నాడు అని అర్థం."},
+    {q:"యెష 53 — Suffering Servant ఎవరి గురించి?",o:["మోషే","యెషయా","యేసు / Jesus","యెరెమ్యా"],a:2,ref:"యెష 53:5",exp:"700+ BC లో రాశాడు — యేసు సిలువ గురించిన స్పష్టమైన ప్రవచనం."},
+    {q:"యెష 40:31 — 'యెహోవా కోసం ఆశించువారు' ఏమి పొందుతారు?",o:["ధనం","శాంతి","నవీన బలము / New strength","రాజ్యం"],a:2,ref:"యెష 40:31",exp:"వారు డేగలవలె రెక్కలు చాపుదురు, పరుగెత్తి అలసిపోరు."},
+    {q:"యెష 9:6 — 'ఒక శిశువు మనకు పుట్టాడు' — ఆ శిశువుకు ఎన్ని పేర్లు చెప్పాడు?",o:["2","3","4","5"],a:2,ref:"యెష 9:6",exp:"అద్భుతకరమైన ఆలోచనకర్త, బలమైన దేవుడు, నిత్యమైన తండ్రి, సమాధానపు అధిపతి — 4 పేర్లు."},
+  ],
+  matthew:[
+    {q:"మత్తయి 1 — యేసు వంశావళిలో మొత్తం ఎన్ని తరాలు?",o:["28","42","36","50"],a:1,ref:"మత్తయి 1:17",exp:"అబ్రాహాము నుండి క్రీస్తు వరకు 42 తరాలు (3x14)."},
+    {q:"మత్తయి 3 — యేసుకు బాప్తిస్మం ఎవరు ఇచ్చాడు?",o:["పేతురు","యోహాను బాప్తిస్తు / John Baptist","ఆరోను","జెకర్యా"],a:1,ref:"మత్తయి 3:13",exp:"యోహాను బాప్తిస్తు యెర్దాను నదిలో బాప్తిస్మం ఇచ్చాడు."},
+    {q:"మత్తయి 4 — యేసు అరణ్యంలో ఎన్ని రోజులు ఉపవాసముండాడు?",o:["20","30","40","50"],a:2,ref:"మత్తయి 4:2",exp:"40 రోజులు 40 రాత్రులు ఉపవాసముండిన తర్వాత సాతాను శోధించాడు."},
+    {q:"మత్తయి 5:3 — మొదటి Beatitude?",o:["శాంతికర్తలు","శుభ్రహృదయులు","దీనులు / Poor in spirit","దుఃఖించువారు"],a:2,ref:"మత్తయి 5:3",exp:"ఆత్మలో దీనులు ధన్యులు — పరలోక రాజ్యం వారిది."},
+    {q:"మత్తయి 6 — ప్రభువు ప్రార్థన ఎంత వచనాలలో ఉంది?",o:["3","4","5","6"],a:3,ref:"మత్తయి 6:9-13",exp:"Our Father ప్రార్థనలో 5 వచనాలు — 6 విన్నపాలు."},
+    {q:"మత్తయి 14 — నీటిపై నడిచిన శిష్యుడు?",o:["యోహాను","యాకోబు","పేతురు / Peter","అందెయ"],a:2,ref:"మత్తయి 14:29",exp:"పేతురు నీటిలో నడిచాడు — విశ్వాసం తగ్గగా మునగబోయాడు."},
+    {q:"మత్తయి 27 — యూదా ఎంత డబ్బుకు యేసుని అప్పగించాడు?",o:["10 వెండి","20 వెండి","30 వెండి నాణేలు","50 వెండి"],a:2,ref:"మత్తయి 27:3",exp:"30 వెండి నాణేలు — జెకర్యా 11:12 ప్రవచనం."},
+    {q:"మత్తయి 28 — మహా సేన (Great Commission) ఏమి చెప్తుంది?",o:["ప్రార్థించండి","ఉపవసించండి","అన్ని జాతులను శిష్యులుగా చేయండి","జెరూసలేంలో ఉండండి"],a:2,ref:"మత్తయి 28:19",exp:"వెళ్ళి అన్ని జాతులను శిష్యులుగా చేయుడి — బాప్తిస్మం ఇవ్వండి."},
+  ],
+  john:[
+    {q:"యోహాను 1:1 — 'ఆదిలో వాక్యం ఉండెను' వాక్యం ఎవరు?",o:["మోషే","దూతలు","యేసు / The Word","పవిత్రాత్మ"],a:2,ref:"యోహాను 1:1,14",exp:"వాక్యం దేవుడు, వాక్యం మాంసధారి అయ్యాడు — యేసు దైవత్వం."},
+    {q:"యోహాను 2 — యేసు మొదటి అద్భుతం?",o:["అంధుడు చూసాడు","నీటిని ద్రాక్షారసంగా / Water to wine","అయిదువేలకు అన్నం","లాజరు లేవడం"],a:1,ref:"యోహాను 2:11",exp:"కానా పెళ్ళిలో నీటిని ద్రాక్షారసంగా మార్చడం — యేసు మొదటి గుర్తు."},
+    {q:"యోహాను 3:16 — ఈ వచనం ఎందుకు ప్రసిద్ధి?",o:["అతి పెద్ద వచనం","Gospel in a nutshell — రక్షణ","మొదటి ప్రవచనం","యేసు పేరు మొదటిసారి"],a:1,ref:"యోహాను 3:16",exp:"దేవుడు లోకమును ప్రేమించెను — మొత్తం రక్షణ సందేశం ఒక వచనంలో."},
+    {q:"యోహాను 4 — యేసు సమరయ స్త్రీతో ఎక్కడ మాట్లాడాడు?",o:["మందిరంలో","బావి దగ్గర / Jacob's well","నది ఒడ్డున","పర్వతంపై"],a:1,ref:"యోహాను 4:6",exp:"యాకోబు బావి దగ్గర — జీవజలం గురించి చెప్పాడు."},
+    {q:"యోహాను 11 — లాజరు ఎన్ని రోజులు సమాధిలో?",o:["1","2","3","4"],a:3,ref:"యోహాను 11:39",exp:"లాజరు నాలుగు రోజులు సమాధిలో ఉన్నాడు."},
+    {q:"యోహాను 14:6 — 'నేనే మార్గమును సత్యమును జీవమును' ఎవరు చెప్పారు?",o:["పేతురు","పౌలు","బాప్తిస్తు","యేసు / Jesus"],a:3,ref:"యోహాను 14:6",exp:"I am the Way, Truth, Life — నా ద్వారా తప్ప తండ్రి దగ్గరికి రారు."},
+    {q:"యోహాను 20 — పునరుత్థానం తర్వాత యేసుని మొదట చూసింది?",o:["పేతురు","యాకోబు","మగ్దలేనే మరియ / Mary Magdalene","యోహాను"],a:2,ref:"యోహాను 20:14-16",exp:"మగ్దలేనే మరియ — రబ్బూనీ అని పిలిచింది."},
+    {q:"యోహాను 15 — 'నేనే ద్రాక్ష తీగను మీరు...' ఏమి?",o:["మూలాలు","కొమ్మలు / Branches","ఆకులు","పండ్లు"],a:1,ref:"యోహాను 15:5",exp:"నేనే ద్రాక్ష తీగను, మీరు కొమ్మలు — నాలో నిలిచి ఉంటే ఫలిస్తారు."},
+  ],
+  acts:[
+    {q:"అపొ 2 — పెంతెకొస్తు రోజున ఏమి జరిగింది?",o:["యేసు వెనక్కి వచ్చాడు","ఆలయం కూలింది","పరిశుద్ధాత్మ వచ్చాడు / Holy Spirit came","పేతురు మరణించాడు"],a:2,ref:"అపొ 2:1-4",exp:"బలమైన గాలి, అగ్ని నాలుకలు — అన్య భాషలలో మాట్లాడారు."},
+    {q:"అపొ 2 — పెంతెకొస్తు రోజున ఎంత మంది బాప్తిస్మం పొందారు?",o:["1000","2000","3000","5000"],a:2,ref:"అపొ 2:41",exp:"3000 మంది — పేతురు ప్రసంగం తర్వాత."},
+    {q:"అపొ 9 — పౌలు మారుమనస్సు ఎక్కడ పొందాడు?",o:["జెరూసలేం","ఐగుప్తులో","దమస్కు దారిలో / Damascus","అంతియొకయలో"],a:2,ref:"అపొ 9:3-5",exp:"దమస్కు దారిలో పరలోక వెలుతురు పడింది."},
+    {q:"అపొ 16 — పౌలు ఫిలిప్పీ జైలు నుండి ఎలా విడుదల?",o:["పేతురు సహాయం","ప్రభువు దూత","భూకంపం / Earthquake","రాజు ఆజ్ఞ"],a:2,ref:"అపొ 16:26",exp:"అర్ధరాత్రి ప్రార్థన పాట — భూకంపం వచ్చి గొళ్ళెలు విడిపోయాయి."},
+    {q:"అపొ 1 — యేసు ఆరోహణమయిన తర్వాత అక్కడ ఎంత మంది ఉన్నారు?",o:["12","72","120","500"],a:2,ref:"అపొ 1:15",exp:"120 మంది ప్రార్థన కోసం కూడారు."},
+  ],
+  romans:[
+    {q:"రోమా 1:16 — సువార్త ఎందుకు శక్తిమంతమైనది?",o:["పాత సందేశం","విశ్వసించు వారికి రక్షణకు దేవుని శక్తి","యూదులకు మాత్రమే","రాజులు చెప్పారు"],a:1,ref:"రోమా 1:16",exp:"సువార్త దేవుని శక్తి — మొదటి యూదులకు, తర్వాత అన్య జాతులకు."},
+    {q:"రోమా 3:23 — అందరూ ఏ పరిస్థితిలో?",o:["మంచివారు","పాపం చేసి దేవుని మహిమకు తక్కువవారు","రక్షింపబడ్డారు","ప్రవక్తలు"],a:1,ref:"రోమా 3:23",exp:"All have sinned and fall short — రక్షణ అవసరత."},
+    {q:"రోమా 6:23 — పాపము వేతనం ఏది?",o:["శాంతి","ఆనందం","మరణం / Death","సంపద"],a:2,ref:"రోమా 6:23",exp:"పాపము వేతనం మరణం — దేవుని వరమో నిత్యజీవము."},
+    {q:"రోమా 8:28 — దేవుని ప్రేమించువారికి సమస్తమూ?",o:["కష్టాలు రావు","తొందరగా అయిపోతాయి","శుభమునకే కలిసి పని చేస్తాయి / Work for good","ధనం వస్తుంది"],a:2,ref:"రోమా 8:28",exp:"దేవుని ప్రేమించే వారికి సమస్తమూ శుభమునకే."},
+    {q:"రోమా 10:9 — రక్షింపబడాలంటే?",o:["మంచి పనులు","దేవాలయానికి వెళ్ళాలి","నోటితో యేసు ప్రభువని + హృదయంతో నమ్మాలి","మాత్రమే బాప్తిస్మం"],a:2,ref:"రోమా 10:9",exp:"నోటితో అంగీకరించి హృదయంలో నమ్మితే రక్షింపబడతావు."},
+    {q:"రోమా 12:1 — జీవించు బలులుగా అర్పించమంటున్నది ఏమి?",o:["డబ్బు","సమయం","శరీరాలు / Bodies as living sacrifices","కలలు"],a:2,ref:"రోమా 12:1",exp:"మీ శరీరాలను జీవించు పరిశుద్ధ హితమైన బలులుగా నర్పించండి."},
+  ],
+  revelation:[
+    {q:"ప్రక 1 — 7 ఆసియా చర్చిలలో మొదటిది?",o:["స్ముర్న","పెర్గమా","ఎఫెసు / Ephesus","లవొదికయ"],a:2,ref:"ప్రక 2:1",exp:"ఎఫెసు చర్చికి మొదటి లేఖ — మొదటి ప్రేమ వదిలావని మందలించడం."},
+    {q:"ప్రక 4 — పరలోకంలో సింహాసనం చుట్టూ ఎంత మంది పెద్దలు?",o:["7","12","24","72"],a:2,ref:"ప్రక 4:4",exp:"24 పెద్దలు తెల్లని వస్త్రాలు ధరించి కూర్చున్నారు."},
+    {q:"ప్రక 7 — ముద్ర వేయబడ్డ సంఖ్య?",o:["12,000","72,000","144,000","1,00,00,000"],a:2,ref:"ప్రక 7:4",exp:"144,000 — 12 గోత్రాల నుండి 12,000 చొప్పున."},
+    {q:"ప్రక 13 — మృగం సంఖ్య?",o:["444","555","666","777"],a:2,ref:"ప్రక 13:18",exp:"666 — మనిషి సంఖ్య, మృగం గుర్తు."},
+    {q:"ప్రక 22 — బైబిల్ చివరి మాటలు?",o:["ఆమేన్","ప్రభువు రా! / Come Lord Jesus","అల్లెలూయా","హల్లెలూయా"],a:1,ref:"ప్రక 22:20",exp:"Come, Lord Jesus! — అమేన్."},
+    {q:"ప్రక 21 — క్రొత్త యెరూషలేము వర్ణనలో నగరం ఏ ఆకారంలో ఉంది?",o:["వృత్తాకారం","త్రికోణం","చతురస్రాకారం / Cube / Square","దీర్ఘచతురస్రం"],a:2,ref:"ప్రక 21:16",exp:"12,000 స్తాదియాలు — cube ఆకారంలో, దాదాపు 1,400 మైళ్ళు."},
+  ]
+};
+
+// ── EXTRA QUESTION BANKS — added for variety ──
+var QDB_EXTRA = [
+  // GENESIS extra
+  {q:"ఆది 5 — మరణం చూడకుండా దేవుడు తీసుకున్న వ్యక్తి?",o:["నోవాహు","ఎనోకు / Enoch","మెతూషెలహు","లెమెకు"],a:1,ref:"ఆది 5:24",book:"genesis",level:"medium",exp:"ఎనోకు 365 సంవత్సరాలు జీవించాడు — దేవుడు అతడిని తీసుకుపోయాడు."},
+  {q:"ఆది 19 — లోతు భార్య ఏమైంది?",o:["వెళ్ళిపోయింది","ఆకాశానికి వెళ్ళింది","ఉప్పు స్తంభమైంది / Salt pillar","చనిపోయింది"],a:2,ref:"ఆది 19:26",book:"genesis",level:"easy",exp:"వెనక్కి చూసింది — ఉప్పు స్తంభమైంది."},
+  {q:"ఆది 25 — ఎసావు జ్యేష్ఠత హక్కు ఏమిటికి అమ్మాడు?",o:["వెండికి","ఆహారానికి / A bowl of stew","భూమికి","ఆటకి"],a:1,ref:"ఆది 25:33",book:"genesis",level:"medium",exp:"ఎసావు పప్పు చారుకి జ్యేష్ఠత హక్కు అమ్మాడు."},
+  {q:"ఆది 28 — యాకోబు కలలో ఏమి చూశాడు?",o:["నది","మేఘాలు","సీతాకోక చిలుక","పరలోకానికి నిచ్చెన / Ladder to heaven"],a:3,ref:"ఆది 28:12",book:"genesis",level:"easy",exp:"బేతేలులో యాకోబు నిచ్చెన కల కన్నాడు."},
+  {q:"ఆది 50 — యోసేపు ఐగుప్తులో ఎంత సంవత్సరాలు జీవించాడు?",o:["80","100","110","120"],a:2,ref:"ఆది 50:26",book:"genesis",level:"hard",exp:"యోసేపు 110 సంవత్సరాలు జీవించాడు."},
+  // EXODUS extra
+  {q:"నిర్గమ 20 — 10 ఆజ్ఞలలో మొదటి ఆజ్ఞ?",o:["తల్లిదండ్రులను గౌరవించు","దొంగతనం చేయకు","నాకు తప్ప వేరే దేవుళ్ళు నీకు ఉండకూడదు","విగ్రహాలు చేయకు"],a:2,ref:"నిర్గమ 20:3",book:"exodus",level:"easy",exp:"మొదటి ఆజ్ఞ — ఇతర దేవుళ్ళు ఉండకూడదు."},
+  {q:"నిర్గమ 3 — మోషేకు దేవుడు ఏ రూపంలో దర్శనమిచ్చాడు?",o:["మేఘంలో","మంటలో","మండే ముళ్ళపొద / Burning bush","గాలిలో"],a:2,ref:"నిర్గమ 3:2",book:"exodus",level:"easy",exp:"హోరేబు పర్వతం వద్ద మండే ముళ్ళపొదలో దేవుడు దర్శనమిచ్చాడు."},
+  {q:"నిర్గమ 14 — ఎర్ర సముద్రం ఎలా దాటారు?",o:["పడవలలో","వంతెన మీద","నీళ్ళు రెండుగా చీలి / Waters parted","ఈత కొట్టి"],a:2,ref:"నిర్గమ 14:21-22",book:"exodus",level:"easy",exp:"మోషే కర్ర చాచాడు — నీళ్ళు రెండుగా చీలాయి."},
+  {q:"నిర్గమ 32 — మోషే పర్వతంపై ఉన్నప్పుడు ప్రజలు ఏమి చేశారు?",o:["ప్రార్థించారు","పాటలు పాడారు","బంగారు దూడ చేసి పూజించారు / Golden calf","యుద్ధం చేశారు"],a:2,ref:"నిర్గమ 32:4",book:"exodus",level:"medium",exp:"అహరోను బంగారు దూడ చేశాడు — ప్రజలు పూజించారు."},
+  // PSALMS extra
+  {q:"కీర్తన 91 — 'ఆయన నిన్ను _____ నుండి కాపాడతాడు'?",o:["శత్రువుల నుండి","వేటగాడి ఉరి నుండి / Snare of the fowler","వ్యాధి నుండి","అన్నింటి నుండి"],a:1,ref:"కీర్తన 91:3",book:"psalms",level:"medium",exp:"వేటగాడి ఉరి నుండి, భయంకర వ్యాధి నుండి కాపాడతాడు."},
+  {q:"కీర్తన 1 — ధన్యుడైన మనిషి ఏమి చేయడు?",o:["ప్రార్థించడు","దేవున్ని వెదకడు","దుష్టుల ఆలోచనలో నడవడు / Walk in counsel of wicked","పాటలు పాడడు"],a:2,ref:"కీర్తన 1:1",book:"psalms",level:"easy",exp:"దుష్టుల మాటలో నడవడు, పాపుల దారిలో నిలబడదు, అపహాసకుల కూర్చొననేరదు."},
+  {q:"కీర్తన 46 — 'దేవుడు మన _____ దిక్కు, బలము'?",o:["రాజు","రక్షకుడు","ఆశ్రయము / Refuge","వెలుతురు"],a:2,ref:"కీర్తన 46:1",book:"psalms",level:"easy",exp:"దేవుడు మన ఆశ్రయము, బలము — కష్ట సమయాలలో నమ్మకమైన సహాయకుడు."},
+  {q:"కీర్తన 100 — ఈ కీర్తన మొదటి మాటలు?",o:["ప్రభువు నా కాపరి","సమస్త భూమీ జయధ్వని చేయుడి / Shout to the Lord","ప్రభువు నా వెలుతురు","ఆయన నన్ను కాపాడతాడు"],a:1,ref:"కీర్తన 100:1",book:"psalms",level:"medium",exp:"Make a joyful noise — సంతోషంతో ప్రభువుకు స్తుతించండి."},
+  // PROVERBS extra
+  {q:"సామె 3:5 — 'నీ సొంత తెలివిపై _____ ఆనుకోకు'?",o:["దేవుని","మీద","వెకిలివానిని","నిను నీవు"],a:3,ref:"సామె 3:5",book:"proverbs",level:"easy",exp:"నీ మనస్సారా ప్రభువునే ఆశ్రయించు — నీ సొంత తెలివిపై ఆనుకోకు."},
+  {q:"సామె 22:6 — పిల్లలకు సంబంధించి ఏ ఆజ్ఞ?",o:["వారిని దేవాలయానికి పంపు","వారిని చదివించు","వారు నడవాల్సిన దారిలో వారికి శిక్షణ ఇవ్వు / Train child in the way","వారిని ప్రేమించు"],a:2,ref:"సామె 22:6",book:"proverbs",level:"medium",exp:"బాల్యంలో నేర్పితే వయసులో తప్పుకోరు."},
+  // ISAIAH extra
+  {q:"యెష 40:3 — 'అరణ్యంలో _____ మార్గం సిద్ధపరచు'?",o:["దేవుని","ప్రభువు / Lord","ఇశ్రాయేలు","ఆత్మ"],a:1,ref:"యెష 40:3",book:"isaiah",level:"medium",exp:"యోహాను బాప్తిస్తు ప్రభువు మార్గం సిద్ధపరిచాడు — నెరవేరిన ప్రవచనం."},
+  {q:"యెష 7:14 — ఏ ప్రవచనం యేసు జననాన్ని సూచిస్తుంది?",o:["కన్య గర్భం ధరించి కుమారుని కనును / Virgin shall conceive","పర్వతాలు కదలిపోతాయి","జలప్రళయం వస్తుంది","రాజు వస్తున్నాడు"],a:0,ref:"యెష 7:14",book:"isaiah",level:"medium",exp:"ఇమ్మానుయేలు — దేవుడు మనతో ఉన్నాడు."},
+  // MATTHEW extra
+  {q:"మత్తయి 1 — యేసు వంశావళి ఎవరి నుండి మొదలవుతుంది?",o:["నోవాహు","మోషే","అబ్రాహాము / Abraham","ఆదాము"],a:2,ref:"మత్తయి 1:1",book:"matthew",level:"easy",exp:"అబ్రాహాము కుమారుడు, దావీదు కుమారుడు అయిన యేసు క్రీస్తు వంశావళి."},
+  {q:"మత్తయి 6 — ప్రభువు ప్రార్థన ఏ అధ్యాయంలో?",o:["మత్తయి 4","మత్తయి 5","మత్తయి 6","మత్తయి 7"],a:2,ref:"మత్తయి 6:9-13",book:"matthew",level:"easy",exp:"Our Father — ప్రభు ప్రార్థన మత్తయి 6 లో ఉంది."},
+  {q:"మత్తయి 21 — యేసు జెరూసలేమ్ లోకి ఏ జంతువుపై వచ్చాడు?",o:["గుర్రంపై","ఒంటెపై","గాడిద పిల్లపై / Donkey's colt","ఎద్దుపై"],a:2,ref:"మత్తయి 21:7",book:"matthew",level:"easy",exp:"రాజు వినమ్రుడై గాడిదపై వచ్చాడు — జెకర్యా ప్రవచనం నెరవేరింది."},
+  {q:"మత్తయి 27 — యేసు సిలువపై ఏ సమయంలో ప్రాణం వదిలాడు?",o:["3వ గంటకు","6వ గంటకు","9వ గంటకు / 9th hour","12వ గంటకు"],a:2,ref:"మత్తయి 27:46",book:"matthew",level:"medium",exp:"9వ గంటకు (3pm) యేసు ప్రాణం వదిలాడు."},
+  // JOHN extra
+  {q:"యోహా 4 — యేసు ఏ స్త్రీతో మాట్లాడాడు?",o:["మగ్దలేనే మరియ","మార్త","సమరయ స్త్రీ / Samaritan woman","మరియ"],a:2,ref:"యోహా 4:7",book:"john",level:"easy",exp:"సమరయ స్త్రీతో బావి వద్ద మాట్లాడాడు — జీవజలం గురించి."},
+  {q:"యోహా 10 — 'నేనే మంచి కాపరిని' అని యేసు ఏమి చెప్పాడు?",o:["గొర్రెలకు తిండి ఇస్తాను","శత్రువులను తరిమాను","గొర్రెల కొరకు ప్రాణం పెడతాను / Lays down life","వాటిని అమ్ముతాను"],a:2,ref:"యోహా 10:11",book:"john",level:"easy",exp:"మంచి కాపరి గొర్రెల కొరకు ప్రాణం పెడతాడు."},
+  {q:"యోహా 15 — 'నేను _____, మీరు కొమ్మలు'?",o:["కాపరిని","రాజును","ద్రాక్ష తీగను / Vine","రక్షకుడను"],a:2,ref:"యోహా 15:5",book:"john",level:"easy",exp:"నేను ద్రాక్ష తీగను, మీరు కొమ్మలు — నాలో ఉంటే ఫలిస్తారు."},
+  {q:"యోహా 20 — పునరుత్థాన యేసును మొదట చూసిన వ్యక్తి?",o:["పేతురు","యోహాను","మగ్దలేనే మరియ / Mary Magdalene","తోమా"],a:2,ref:"యోహా 20:14-16",book:"john",level:"medium",exp:"మగ్దలేనే మరియ సమాధి వద్ద యేసును మొదట చూసింది."},
+  {q:"యోహా 21 — పేతురు యేసుకు ఎన్నిసార్లు ప్రేమ చెప్పాడు?",o:["1","2","3","4"],a:2,ref:"యోహా 21:15-17",book:"john",level:"medium",exp:"3 సార్లు — 3 సార్లు తిరస్కరించినందుకు 3 సార్లు ప్రేమ అడిగాడు."},
+  // ACTS extra
+  {q:"అపొ 1 — యేసు స్వర్గారోహణ ఎక్కడ జరిగింది?",o:["గెత్సేమనేలో","జెరూసలేంలో","ఒలీవ పర్వతంపై / Mount of Olives","గలిలయలో"],a:2,ref:"అపొ 1:12",book:"acts",level:"medium",exp:"ఒలీవ పర్వతం నుండి యేసు ఆరోహణ అయ్యాడు."},
+  {q:"అపొ 2 — పెంతెకొస్తుకు ముందు ఎగువ గదిలో ఎంతమంది ఉన్నారు?",o:["70","100","120","144"],a:2,ref:"అపొ 1:15",book:"acts",level:"medium",exp:"120 మంది ఒకసభగా కూర్చుని ప్రార్థించారు."},
+  {q:"అపొ 16 — పౌలు పరిచారక బృందంలో తిమోతిని ఎక్కడ చేర్చాడు?",o:["అంతియొకయలో","అలెగ్జాండ్రియాలో","లుస్తల / Lystra","కొరింథులో"],a:2,ref:"అపొ 16:1",book:"acts",level:"hard",exp:"లుస్తలో తిమోతిని పౌలు తన సహచరుడిగా తీసుకున్నాడు."},
+  {q:"అపొ 12 — పేతురు చెరసాల నుండి ఎలా విడుదలయ్యాడు?",o:["తాళం తెరుచుకుంది","దేవదూత విడుదల చేశాడు / Angel freed him","శిష్యులు రక్షించారు","భూకంపం వచ్చింది"],a:1,ref:"అపొ 12:7-10",book:"acts",level:"easy",exp:"దేవదూత వచ్చి గొలుసులు తెంచాడు — తలుపులు అప్పుగిల్లాయి."},
+  // ROMANS extra
+  {q:"రోమా 12:2 — 'ఈ లోకానుసారంగా _____ పొందకుడి'?",o:["ప్రేమ","సంతోషం","మార్పు / Conformed","జ్ఞానం"],a:2,ref:"రోమా 12:2",book:"romans",level:"medium",exp:"లోకానుసారంగా మార్పు పొందకుడి — మనస్సు మారడం ద్వారా రూపాంతరం పొందుడి."},
+  {q:"రోమా 8:1 — 'క్రీస్తు యేసులో ఉన్నవారికి _____ ఏమీ లేదు'?",o:["భయం","పాపం","శిక్ష / Condemnation","చావు"],a:2,ref:"రోమా 8:1",book:"romans",level:"easy",exp:"క్రీస్తు యేసులో ఉన్నవారికి ఏ శిక్షా విధించబడదు."},
+  {q:"రోమా 5:8 — 'మనమింకా పాపులుగా ఉండగా క్రీస్తు మనకోసం _____ చేశాడు'?",o:["ప్రార్థించాడు","జయించాడు","మరణించాడు / Died","వచ్చాడు"],a:2,ref:"రోమా 5:8",book:"romans",level:"easy",exp:"దేవుడు మనపట్ల తన ప్రేమ చూపాడు — మనం పాపులుగా ఉండగా క్రీస్తు మరణించాడు."},
+  // REVELATION extra
+  {q:"ప్రక 2 — ఏ చర్చికి 'మొదటి ప్రేమ వదిలావు' అని చెప్పారు?",o:["స్ముర్న","పెర్గమ","ఎఫెసు / Ephesus","తుయతైర"],a:2,ref:"ప్రక 2:4",book:"revelation",level:"medium",exp:"ఎఫెసు చర్చి మంచి పనులు చేసింది కానీ మొదటి ప్రేమ వదిలింది."},
+  {q:"ప్రక 20 — సైతాను ఎంత సంవత్సరాలు బంధించబడతాడు?",o:["100","500","1000 / Thousand years","Forever"],a:2,ref:"ప్రక 20:2",book:"revelation",level:"medium",exp:"1000 సంవత్సరాలు సైతాను అగాధంలో బంధించబడతాడు."},
+  {q:"ప్రక 21 — క్రొత్త యెరూషలేము గోడ ఏ రాతితో కట్టబడింది?",o:["బంగారంతో","వెండితో","యాస్పరుతో / Jasper","పచ్చరాయితో"],a:2,ref:"ప్రక 21:18",book:"revelation",level:"hard",exp:"నగర గోడ యాస్పరుతో కట్టబడింది — నగరం స్వచ్ఛమైన బంగారంతో ఉంది."},
+  // GENERAL KNOWLEDGE
+  {q:"పాత నిబంధన ప్రవక్తలలో 'ఏడుపు ప్రవక్త' ఎవరు?",o:["యెషయా","యెహెజ్కేలు","యిర్మీయా / Jeremiah","దానియేలు"],a:2,ref:"విలాపవాక్యములు",book:"isaiah",level:"medium",exp:"యిర్మీయా జెరూసలేం పతనాన్ని చూసి విలపించాడు — విలాపవాక్యములు రాశాడు."},
+  {q:"'నేను ఆల్ఫా ఒమేగను' అని ఎవరు చెప్పారు? / Who said 'I am Alpha and Omega'?",o:["దేవదూత","పేతురు","పౌలు","ప్రభువు దేవుడు / Lord God"],a:3,ref:"ప్రక 1:8",book:"revelation",level:"medium",exp:"ఆల్ఫా ఒమేగ — మొదటి చివరి అక్షరాలు — దేవుడు మొదటి చివరి."},
+  {q:"బైబిల్ లో మొట్టమొదటి అద్భుతం? / First miracle in Bible?",o:["కాన పెళ్ళి","ఎర్ర సముద్రం","సృష్టి / Creation","లాజరు పునరుత్థానం"],a:2,ref:"ఆది 1:1",book:"genesis",level:"medium",exp:"సృష్టి అత్యంత గొప్ప అద్భుతం — ఏమీ లేకుండా అన్నీ చేశాడు."},
+  {q:"దావీదు రాజు రాజధాని నగరం? / David's capital city?",o:["హెబ్రోను","బేర్షెబా","జెరూసలేం / Jerusalem","సమారియా"],a:2,ref:"2 సమూ 5:7",book:"ot",level:"easy",exp:"దావీదు జెరూసలేం తీసుకుని దాని పేరు 'దావీదు నగరం' అన్నాడు."},
+  {q:"సొలొమోను దేవాలయం కట్టడానికి ఎన్ని సంవత్సరాలు పట్టింది?",o:["3","5","7","10"],a:2,ref:"1 రాజు 6:38",book:"ot",level:"hard",exp:"7 సంవత్సరాలు — అత్యంత గొప్ప దేవాలయం."},
+  {q:"నెబుకద్నెజరు ఎంతమంది యువకులను అగ్ని కొలిమిలో వేశాడు?",o:["2","3","4","5"],a:1,ref:"దానియేలు 3:19-23",book:"ot",level:"easy",exp:"షద్రకు మేషకు అబేద్నెగో — 3 మంది అగ్నిలో, 4వ వ్యక్తి కనిపించాడు."},
+  {q:"సమ్సోను బలము ఎక్కడ ఉంది? / Samson's strength was in?",o:["చేతులలో","కళ్ళలో","జుట్టులో / Hair","హృదయంలో"],a:2,ref:"న్యాయ 16:17",book:"ot",level:"easy",exp:"సమ్సోను తల ఒక్కరోజు కూడా క్షవరం కాలేదు — నజీరు ప్రతిజ్ఞ."},
+  {q:"రూతు పుస్తకంలో బోయజు ఎవరు? / Who is Boaz in Ruth?",o:["శత్రువు","రూతు తండ్రి","గోయేలు / Kinsman redeemer","రాజు"],a:2,ref:"రూతు 2:1",book:"ot",level:"medium",exp:"బోయజు రూతుకు గోయేలు — తర్వాత యేసు మన గోయేలు."},
+  {q:"'నాకు ప్రభువు వలె చేయుము' అని ఎవరు అన్నారు? / Who said 'Do to me as the Lord has done'?",o:["రూతు / Ruth","ఎస్తేరు","మరియ","దెబోరా"],a:0,ref:"రూతు 1:17",book:"ot",level:"hard",exp:"రూతు నయోమితో అన్నది — విధేయత చూపింది."},
+  {q:"ఎస్తేరు ఎందుకు రాజు దగ్గరికి వెళ్ళింది? / Why did Esther go to the king?",o:["భోజనానికి","ఆటకి","యూదులను రక్షించడానికి / Save the Jews","ఆస్తి కోసం"],a:2,ref:"ఎస్తేరు 4:16",book:"ot",level:"easy",exp:"'నాశనమైతే నాశనమవుతాను' — ఎస్తేరు ధైర్యంగా వెళ్ళింది."},
+  {q:"'ఇది కొరకే నీవు రాజ్యానికి వచ్చావు' ఎవరి గురించి చెప్పారు?",o:["మరియ","రూతు","దెబోరా","ఎస్తేరు / Esther"],a:3,ref:"ఎస్తేరు 4:14",book:"ot",level:"medium",exp:"మొర్దెకై ఎస్తేరుతో అన్నాడు — ఈ సమయం కోసమే నీవు రాజ్యానికి వచ్చావు."},
+  {q:"యోహాను ఒంట్లో ఏ ఆహారం తింటాడు? / John the Baptist ate what?",o:["మీనం + రొట్టె","మన్నా + నీళ్ళు","మిడతలు + అడవి తేనె / Locusts and wild honey","పళ్ళు + నీళ్ళు"],a:2,ref:"మత్తయి 3:4",book:"matthew",level:"medium",exp:"యోహాను బాప్తిస్తు అరణ్యంలో మిడతలు, అడవి తేనె తింటాడు."},
+  {q:"'విశ్వాసము వినడం వల్ల కలుగుతుంది' ఏ వాక్యం?",o:["రోమా 1:17","రోమా 8:28","రోమా 10:17","రోమా 12:2"],a:2,ref:"రోమా 10:17",book:"romans",level:"medium",exp:"వినడం — దేవుని వాక్యం వినడం ద్వారా విశ్వాసం కలుగుతుంది."},
+  {q:"గెలీలయ సముద్రానికి వేరే పేరు? / Sea of Galilee is also called?",o:["మెడిటెరేనియన్","ఎర్ర సముద్రం","తిబెర్యా సముద్రం / Sea of Tiberias","మృత సముద్రం"],a:2,ref:"యోహా 6:1",book:"john",level:"hard",exp:"తిబెర్యా సముద్రం, కిన్నెరేతు, గెనేసరేతు — వేర్వేరు పేర్లు."},
+  {q:"క్రీస్తు జననాన్ని మొదట ఎవరికి వర్తమానం వచ్చింది? / Who first heard of Jesus' birth?",o:["జ్ఞానులకు","హేరోదుకు","కాపరులకు / Shepherds","యాజకులకు"],a:2,ref:"లూకా 2:8-10",book:"matthew",level:"easy",exp:"కాపరులకు దేవదూతలు వర్తమానం ఇచ్చారు."},
+  {q:"యేసు శిష్యులలో పన్ను వసూలు చేసిన వాడు? / Tax collector turned disciple?",o:["పేతురు","ఫిలిప్పు","నికోలావు","మత్తయి / Matthew"],a:3,ref:"మత్తయి 9:9",book:"matthew",level:"easy",exp:"మత్తయి — సుంకరుడు, ఆయన సువార్త రాశాడు."},
+  {q:"మొదట పిలువబడ్డ శిష్యులు ఎవరు? / First disciples called?",o:["మత్తయి + తోమా","పేతురు + అంద్రెయ / Peter and Andrew","యాకోబు + యోహాను","ఫిలిప్పు + బర్తొలొమయ్య"],a:1,ref:"మత్తయి 4:18-20",book:"matthew",level:"medium",exp:"పేతురు, అంద్రెయ — చేపలు పట్టేవారు — 'నన్ను వెంబడించండి' అని పిలిచాడు."},
+  {q:"యేసు శిష్యులలో కవలలు ఎవరు? / Which disciple was called the Twin?",o:["పేతురు","యాకోబు","తోమా / Thomas (Didymus)","మత్తయి"],a:2,ref:"యోహా 11:16",book:"john",level:"hard",exp:"తోమా అంటే హీబ్రూలో 'కవల' — దిదుమస్ అంటే గ్రీకులో కూడా అదే."},
+  {q:"యేసు ఏ రోజు మృతుల్లో నుండి లేచాడు? / Which day did Jesus rise?",o:["శుక్రవారం","శనివారం","ఆదివారం / Sunday (First day)","సోమవారం"],a:2,ref:"మత్తయి 28:1",book:"matthew",level:"easy",exp:"వారంలో మొదటి రోజు — ఆదివారం ఉదయం యేసు లేచాడు."},
+  {q:"'నేనే జీవం, పునరుత్థానం' ఏ వాక్యం?",o:["యోహా 3:16","యోహా 6:35","యోహా 11:25","యోహా 14:6"],a:2,ref:"యోహా 11:25",book:"john",level:"medium",exp:"లాజరు సమాధి వద్ద యేసు చెప్పాడు — నన్ను నమ్మిన వాడు మరణించినా జీవిస్తాడు."},
+];
+
+// ── QDB_EXTRA2 — 370 more questions for 500+ total ──
+var QDB_EXTRA2 = [
+// GENESIS 50 questions
+{q:"ఆది 1 — దేవుడు ఆకాశమండలం ఏ రోజు సృష్టించాడు?",o:["1వ రోజు","2వ రోజు","3వ రోజు","4వ రోజు"],a:1,ref:"ఆది 1:6",book:"genesis",level:"easy",exp:"రెండవ రోజు ఆకాశమండలం విభజించాడు."},
+{q:"ఆది 1 — దేవుడు సూర్య చంద్రులు ఏ రోజు చేశాడు?",o:["2వ రోజు","3వ రోజు","4వ రోజు","5వ రోజు"],a:2,ref:"ఆది 1:16",book:"genesis",level:"easy",exp:"4వ రోజు సూర్యుడు, చంద్రుడు, నక్షత్రాలు."},
+{q:"ఆది 1 — చేపలు పక్షులు ఏ రోజు?",o:["3వ రోజు","4వ రోజు","5వ రోజు","6వ రోజు"],a:2,ref:"ఆది 1:20",book:"genesis",level:"easy",exp:"5వ రోజు సముద్రజీవులు పక్షులు."},
+{q:"ఆది 2 — ఏదెను తోటలో నాలుగు నదులు ఏవి?",o:["నైలు యూఫ్రటీస్ టైగ్రీస్ జోర్డాన్","పీషోను గీహోను హిద్దెకెలు ఫ్రాతు","గంగా సింధు నైలు ఫ్రాతు","పీషోను నైలు టైగ్రీస్ జోర్డాన్"],a:1,ref:"ఆది 2:11-14",book:"genesis",level:"hard",exp:"పీషోను, గీహోను, హిద్దెకెలు (టైగ్రీస్), ఫ్రాతు (యూఫ్రటీస్)."},
+{q:"ఆది 3 — ఆదాము హవ్వలు పాపం చేసిన తర్వాత ఏమి చేశారు?",o:["పారిపోయారు","అరిచారు","అత్తిచెట్టు ఆకులతో దుస్తులు కుట్టుకున్నారు","నిద్రపోయారు"],a:2,ref:"ఆది 3:7",book:"genesis",level:"medium",exp:"తమ నగ్నత చూసుకుని అత్తి ఆకులు కుట్టి కప్పుకున్నారు."},
+{q:"ఆది 4 — కయీనుకు సంరక్షణ కోసం దేవుడు ఏమి ఇచ్చాడు?",o:["ఆయుధం","సైన్యం","గుర్తు / Mark","అదృశ్య రక్షణ"],a:2,ref:"ఆది 4:15",book:"genesis",level:"medium",exp:"దేవుడు కయీనుకు గుర్తు పెట్టాడు — ఎవరైనా చంపకుండా."},
+{q:"ఆది 5 — మెతూషెలహు ఎన్ని సంవత్సరాలు జీవించాడు?",o:["700","800","900","969"],a:3,ref:"ఆది 5:27",book:"genesis",level:"medium",exp:"మెతూషెలహు 969 సంవత్సరాలు — బైబిల్ లో అతి ఎక్కువ కాలం జీవించినవాడు."},
+{q:"ఆది 6 — నోవాహు ఓడ ఎంత పొడవు?",o:["100 మూరలు","200 మూరలు","300 మూరలు","400 మూరలు"],a:2,ref:"ఆది 6:15",book:"genesis",level:"hard",exp:"300 మూరలు పొడవు, 50 వెడల్పు, 30 ఎత్తు."},
+{q:"ఆది 7 — వర్షం ఎన్ని రోజులు కురిసింది?",o:["20","40","60","80"],a:1,ref:"ఆది 7:12",book:"genesis",level:"easy",exp:"40 రోజులు రాత్రింబగళ్ళు వర్షం కురిసింది."},
+{q:"ఆది 8 — నోవాహు ఓడ ఏ పర్వతంపై ఆగింది?",o:["సీనాయి","హెర్మోను","అరారాత్ / Ararat","కార్మేలు"],a:2,ref:"ఆది 8:4",book:"genesis",level:"medium",exp:"అరారాత్ పర్వతంపై ఏడవ నెల పదిహేడవ రోజు."},
+{q:"ఆది 11 — బాబేలు గోపురం కట్టినప్పుడు ఏమైంది?",o:["పిడుగు పడింది","దేవుడు భాషలు చెదరగొట్టాడు / Confused languages","వరదలు వచ్చాయి","దేవుడు అగ్ని పంపాడు"],a:1,ref:"ఆది 11:7",book:"genesis",level:"easy",exp:"దేవుడు భాషలు కలిపాడు — జనులు చెదిరిపోయారు."},
+{q:"ఆది 13 — అబ్రాముకు లోతుకు ఎందుకు విడిపోయారు?",o:["విభేదాల వల్ల","మేత భూమి చాలడం లేదు / Grazing land shortage","యుద్ధం వల్ల","దేవుడు చెప్పాడు"],a:1,ref:"ఆది 13:6",book:"genesis",level:"medium",exp:"ఇద్దరి మందలు చాలా పెద్దవయ్యాయి — ఒకే చోట సరిపోలేదు."},
+{q:"ఆది 14 — అబ్రాహాము ఎంత మంది ప్రత్యేక సైనికులతో లోతుని రక్షించాడు?",o:["100","200","318","500"],a:2,ref:"ఆది 14:14",book:"genesis",level:"hard",exp:"318 మంది ప్రత్యేక సేవకులు."},
+{q:"ఆది 15 — అబ్రాహాముతో దేవుడు నిబంధన చేసినప్పుడు ఏ సంకేతాలు వచ్చాయి?",o:["ఇంద్రధనుస్సు","అగ్ని బాటలు / Smoking torch and fire","మేఘ స్తంభం","వర్షం"],a:1,ref:"ఆది 15:17",book:"genesis",level:"hard",exp:"పొగ కాగడా, మంటల జ్వాల — బైబిల్ మొదటి నిబంధన."},
+{q:"ఆది 16 — హాగరు కుమారుడు పేరు?",o:["ఇస్సాకు","ఇస్మాయేలు / Ishmael","మిద్యాను","ఎదోము"],a:1,ref:"ఆది 16:11",book:"genesis",level:"easy",exp:"దేవదూత హాగరుకు ఇస్మాయేలు పేరు పెట్టమన్నాడు."},
+{q:"ఆది 18 — సారా ఎందుకు నవ్వింది?",o:["సంతోషంతో","దేవదూతలు చూసి","కుమారుడు పుట్టడని విని / Too old for child","యాత్రకు వెళ్తారని"],a:2,ref:"ఆది 18:12",book:"genesis",level:"medium",exp:"వయసు మళ్ళిన తర్వాత కుమారుడు కలుగుతాడని విని నవ్వింది."},
+{q:"ఆది 21 — ఇస్సాకు పేరు అర్థం?",o:["దేవుని వరం","నవ్వు / Laughter","ప్రశాంతత","శక్తి"],a:1,ref:"ఆది 21:6",book:"genesis",level:"medium",exp:"ఇస్సాకు = నవ్వు — సారా నవ్వినందుకు ఆ పేరు."},
+{q:"ఆది 24 — ఇస్సాకుకు భార్యను అబ్రాహాము ఎలా తెప్పించాడు?",o:["తానే వెళ్ళాడు","పొరుగు వారి నుండి","సేవకుడిని పంపాడు / Sent servant","దేవుడే పంపాడు"],a:2,ref:"ఆది 24:2",book:"genesis",level:"medium",exp:"అబ్రాహాము పెద్ద సేవకుడిని అరాంకు పంపాడు."},
+{q:"ఆది 24 — రిబ్కా అందం చూసి ఇస్సాకు ఏం చేశాడు?",o:["పాటపాడాడు","ఆనందించాడు","తల్లి గుడారంలోకి తీసుకువెళ్ళి ప్రేమించాడు","విందు ఇచ్చాడు"],a:2,ref:"ఆది 24:67",book:"genesis",level:"hard",exp:"ఇస్సాకు రిబ్కాను తల్లి గుడారంలో తీసుకుపోయి భార్యగా ప్రేమించాడు."},
+{q:"ఆది 25 — ఏసావు ఏ పని చేస్తాడు?",o:["వ్యవసాయం","వడ్రంగి","వేట / Hunter","మత్స్యకారుడు"],a:2,ref:"ఆది 25:27",book:"genesis",level:"easy",exp:"ఏసావు నేర్పరి వేటగాడు, యాకోబు గుడారాల మనిషి."},
+{q:"ఆది 27 — యాకోబు తండ్రి ఇస్సాకును ఎలా మోసం చేశాడు?",o:["ఏసావు పేరు చెప్పాడు","ఏసావు బట్టలు వేసుకున్నాడు / Wore Esau's clothes","ఏసావు గొంతు నటించాడు","దూరంగా ఉన్నాడు"],a:1,ref:"ఆది 27:15",book:"genesis",level:"medium",exp:"ఏసావు వాసన ఉన్న బట్టలు, చేతులకు చర్మం వేసుకుని మోసం చేశాడు."},
+{q:"ఆది 29 — యాకోబు రాహేలు కోసం ఎంత కాలం పని చేశాడు?",o:["3 సంవత్సరాలు","5 సంవత్సరాలు","7 సంవత్సరాలు","14 సంవత్సరాలు"],a:2,ref:"ఆది 29:20",book:"genesis",level:"medium",exp:"7 సంవత్సరాలు — కానీ లేయాను ఇచ్చాడు, మళ్ళీ 7 సంవత్సరాలు పని చేశాడు."},
+{q:"ఆది 30 — యాకోబుకు ఎంత మంది కుమారులు ఉన్నారు?",o:["10","11","12","13"],a:2,ref:"ఆది 35:22",book:"genesis",level:"easy",exp:"12 కుమారులు — ఇశ్రాయేలు 12 గోత్రాలకు పూర్వికులు."},
+{q:"ఆది 32 — యాకోబు ఏ నదీ వద్ద దేవదూతతో పోరాడాడు?",o:["జోర్డాన్","నైలు","యబ్బోకు / Jabbok","ఫ్రాతు"],a:2,ref:"ఆది 32:22",book:"genesis",level:"hard",exp:"యబ్బోకు వద్ద తెల్లవారువరకు పోరాడాడు — పేరు ఇశ్రాయేలు అయింది."},
+{q:"ఆది 35 — దేవుడు యాకోబుకు ఏమి పేరు పెట్టాడు?",o:["ఇస్మాయేలు","అబ్రాహాము","ఇశ్రాయేలు / Israel","ఇస్సాకు"],a:2,ref:"ఆది 35:10",book:"genesis",level:"easy",exp:"ఇశ్రాయేలు = దేవుడితో పోరాడినవాడు."},
+{q:"ఆది 37 — యోసేపు ఏ రంగు అంగీ వేసుకున్నాడు?",o:["తెలుపు","నీలం","అనేక రంగులు / Many colors","ఎరుపు"],a:2,ref:"ఆది 37:3",book:"genesis",level:"easy",exp:"యాకోబు ప్రత్యేకంగా యోసేపుకు రంగురంగుల అంగీ ఇచ్చాడు."},
+{q:"ఆది 37 — యోసేపు సోదరులు అతన్ని ఏ గుంతలో వేశారు?",o:["నీళ్ళ గుంత","ఎండుబావి / Dry pit","మట్టి గుంత","అడవి గుంత"],a:1,ref:"ఆది 37:24",book:"genesis",level:"medium",exp:"నీళ్ళు లేని ఎండు బావిలో వేశారు."},
+{q:"ఆది 39 — ఐగుప్తులో యోసేపు ఏ పదవిలో పెట్టారు?",o:["సేవకుడు","సైనికుడు","పోతీఫరు ఇంటి అధికారి / Chief of Potiphar's house","వంటవాడు"],a:2,ref:"ఆది 39:4",book:"genesis",level:"medium",exp:"యోసేపు నమ్మకమైనవాడు కాబట్టి పోతీఫరు ఇంటిపై అధికారి చేశాడు."},
+{q:"ఆది 39 — యోసేపు చెరసాలలో ఎందుకు పడ్డాడు?",o:["దొంగతనం","పోతీఫరు భార్య అబద్ధపు ఆరోపణ / False accusation","హత్య","పారిపోవడం"],a:1,ref:"ఆది 39:20",book:"genesis",level:"medium",exp:"పోతీఫరు భార్య అబద్ధంగా ఆరోపించింది — యోసేపు సత్యంగా ఉన్నాడు."},
+{q:"ఆది 40 — చెరసాలలో యోసేపు ఎవరి కలలు వివరించాడు?",o:["ఫరో కలలు","వంటవాడు పానీయకారుడు / Butler and baker","సైనికుల కలలు","రాజభటుల కలలు"],a:1,ref:"ఆది 40:5",book:"genesis",level:"medium",exp:"రాజ పానీయకారుడు, రాజ వంటవాడు — వీరి కలలు వివరించాడు."},
+{q:"ఆది 41 — ఫరో కలలో ఏడు లావు ఆవులు ఏ నదిలో నుండి వచ్చాయి?",o:["జోర్డాన్","ఫ్రాతు","నైలు / Nile","టైగ్రీస్"],a:2,ref:"ఆది 41:2",book:"genesis",level:"medium",exp:"నైలు నది నుండి ఏడు లావు అందమైన ఆవులు వచ్చాయి."},
+{q:"ఆది 41 — ఐగుప్తులో 7 సంవత్సరాల కరవు సమయంలో ఆహారం ఎవరు నిల్వ చేశాడు?",o:["ఫరో","పోతీఫరు","యోసేపు / Joseph","అంద్రెయ"],a:2,ref:"ఆది 41:48",book:"genesis",level:"easy",exp:"యోసేపు 7 సుభిక్ష సంవత్సరాల్లో ఆహారం నిల్వ చేశాడు."},
+{q:"ఆది 42 — కరవులో యాకోబు కుమారులు ఐగుప్తుకు ఎందుకు వెళ్ళారు?",o:["వ్యాపారానికి","యోసేపుని చూడడానికి","గోధుమ కొనుగోలుకు / Buy grain","ఆశ్రయం కోసం"],a:2,ref:"ఆది 42:3",book:"genesis",level:"easy",exp:"కరవు వల్ల గోధుమ కొనుగోలుకు ఐగుప్తుకు వెళ్ళారు."},
+{q:"ఆది 45 — యోసేపు తమ్ముళ్ళకు తనను తాను చూపించుకున్నప్పుడు ఏమి చేశాడు?",o:["కోపమయ్యాడు","ఏడ్చాడు / Wept","నవ్వాడు","మాట్లాడలేదు"],a:1,ref:"ఆది 45:2",book:"genesis",level:"easy",exp:"యోసేపు బిగ్గరగా ఏడ్చాడు — ఐగుప్తీయులు విన్నారు."},
+{q:"ఆది 47 — యాకోబు ఐగుప్తులో ఎంత కాలం జీవించాడు?",o:["5 సంవత్సరాలు","10 సంవత్సరాలు","17 సంవత్సరాలు","20 సంవత్సరాలు"],a:2,ref:"ఆది 47:28",book:"genesis",level:"hard",exp:"యాకోబు 17 సంవత్సరాలు ఐగుప్తులో జీవించాడు."},
+// EXODUS 30 questions
+{q:"నిర్గమ 1 — ఫరో ఇశ్రాయేలీయుల మగ పిల్లలను ఏమి చేయమన్నాడు?",o:["బానిసలు చేయి","చంపించు / Kill newborn boys","బహిష్కరించు","బంధించు"],a:1,ref:"నిర్గమ 1:16",book:"exodus",level:"medium",exp:"మగ పిల్లలు పుట్టగానే నైలులో పడవేయమని ఆజ్ఞ."},
+{q:"నిర్గమ 2 — మోషే అమ్మ ఆయన్ని రక్షించడానికి ఏమి చేసింది?",o:["పారిపోయింది","పెద్ద పెద్దవారికి చెప్పింది","జమ్ముడు బుట్టలో పెట్టి నైలులో వదిలింది / Basket in Nile","రాజు దగ్గరికి వెళ్ళింది"],a:2,ref:"నిర్గమ 2:3",book:"exodus",level:"easy",exp:"జమ్ముడు బుట్ట తయారు చేసి, పూసి, నైలు నది ఒడ్డున ఉన్న జమ్ముడు చెట్ల మధ్య పెట్టింది."},
+{q:"నిర్గమ 2 — మోషేను ఎవరు దత్తత తీసుకున్నారు?",o:["ఫరో భార్య","ఫరో కుమారి / Pharaoh's daughter","ఫరో అమ్మ","ఫరో అక్క"],a:1,ref:"నిర్గమ 2:5",book:"exodus",level:"easy",exp:"ఫరో కుమార్తె నైలులో స్నానానికి వచ్చి బుట్ట చూసి మోషేని దత్తత తీసుకుంది."},
+{q:"నిర్గమ 2 — మోషే ఎందుకు మిద్యాను దేశానికి పారిపోయాడు?",o:["కరవు వల్ల","ఐగుప్తీయుని చంపినందుకు / Killed Egyptian","ఫరో కోపం వల్ల","పారిపోమని దేవుడు చెప్పినందుకు"],a:1,ref:"నిర్గమ 2:12",book:"exodus",level:"medium",exp:"ఒక ఐగుప్తీయుడు ఇశ్రాయేలీయుని కొడుతుంటే మోషే చంపి ఇసుకలో దాచాడు."},
+{q:"నిర్గమ 3 — మండే ముళ్ళపొద ఉన్న పర్వతానికి పేరు?",o:["సీనాయి","కార్మేలు","హోరేబు / Horeb","హెర్మోను"],a:2,ref:"నిర్గమ 3:1",book:"exodus",level:"medium",exp:"హోరేబు — దేవుని పర్వతం."},
+{q:"నిర్గమ 3 — దేవుడు తన పేరు ఏమని చెప్పాడు?",o:["యెహోవా","ఎల్ షడ్డాయి","నేనే నేనైనవాడను / I AM WHO I AM","ఆది అంత్యుడు"],a:2,ref:"నిర్గమ 3:14",book:"exodus",level:"medium",exp:"ఇశ్రాయేలీయులకు నేనైనవాడు నన్ను పంపాడని చెప్పు."},
+{q:"నిర్గమ 4 — మోషే ప్రసంగం చేయలేనని చెప్పినప్పుడు దేవుడు ఎవర్ని సహాయకుడిగా పంపాడు?",o:["కాలేబు","యెహోషువ","అహరోను / Aaron","మిర్యాము"],a:2,ref:"నిర్గమ 4:14",book:"exodus",level:"easy",exp:"అహరోను మోషే సోదరుడు — అతడు మాట్లాడతాడు."},
+{q:"నిర్గమ 7 — మొదటి తెగులు ఏమిటి?",o:["కప్పల తెగులు","నీళ్ళు రక్తంగా మారడం / Water to blood","మిడతల తెగులు","గాయాల తెగులు"],a:1,ref:"నిర్గమ 7:20",book:"exodus",level:"easy",exp:"నైలు నీళ్ళు రక్తంగా మారాయి — మొదటి తెగులు."},
+{q:"నిర్గమ 8 — రెండవ తెగులు ఏమిటి?",o:["దోమలు","కప్పలు / Frogs","నల్లులు","జంతువుల మరణం"],a:1,ref:"నిర్గమ 8:2",book:"exodus",level:"medium",exp:"కప్పలు ఐగుప్తు అంతటా వ్యాపించాయి."},
+{q:"నిర్గమ 9 — ఆరవ తెగులు ఏమిటి?",o:["మిడతలు","వ్యాధులు","గాయాలు / Boils","చీకటి"],a:2,ref:"నిర్గమ 9:9",book:"exodus",level:"hard",exp:"మనుషులకు జంతువులకు చీముతో నిండిన గాయాలు."},
+{q:"నిర్గమ 10 — తొమ్మిదవ తెగులు ఏమిటి?",o:["మిడతలు","చీకటి / Darkness","మంచు","మొదటి సంతానం చావు"],a:1,ref:"నిర్గమ 10:21",book:"exodus",level:"medium",exp:"మూడు రోజులు చీకటి — 9వ తెగులు."},
+{q:"నిర్గమ 12 — పాస్కా గొర్రెపిల్ల రక్తం ఎక్కడ పూయాలి?",o:["నేలపై","తలుపు గడప నిలువు పట్టెలపై / Doorposts and lintel","గోడలపై","ఇంటి పైకప్పుపై"],a:1,ref:"నిర్గమ 12:7",book:"exodus",level:"medium",exp:"నిలువు పట్టెలు, గడప పై — రక్తం చూసి దేవుడు దాటుకుంటాడు."},
+{q:"నిర్గమ 15 — ఎర్ర సముద్రం దాటిన తర్వాత మిర్యాము ఏమి చేసింది?",o:["ఏడ్చింది","ప్రార్థించింది","తంబురతో నాట్యం చేసి పాటపాడింది / Danced with tambourine","నిద్రపోయింది"],a:2,ref:"నిర్గమ 15:20",book:"exodus",level:"medium",exp:"మోషే అక్క మిర్యాము స్త్రీలతో తంబుర వాయిస్తూ నాట్యం చేసింది."},
+{q:"నిర్గమ 16 — మన్నా ఎంత కాలం ఉంటుంది?",o:["1 రోజు / 1 day only","3 రోజులు","7 రోజులు","30 రోజులు"],a:0,ref:"నిర్గమ 16:19",book:"exodus",level:"medium",exp:"మన్నా ఆ రోజే తినాలి — నాలుగో రోజు నాటిది పాడవుతుంది, విశ్రాంతి రోజు తప్ప."},
+{q:"నిర్గమ 17 — మోషే చేతులు పట్టుకున్నప్పుడు ఏమైంది?",o:["వర్షం వచ్చింది","ఇశ్రాయేలు గెలిచింది / Israel prevailed","మన్నా వచ్చింది","నీళ్ళు వచ్చాయి"],a:1,ref:"నిర్గమ 17:11",book:"exodus",level:"medium",exp:"మోషే చేతులు పైకెత్తినప్పుడు ఇశ్రాయేలు గెలుస్తుంది, దించినప్పుడు ఓడుతుంది."},
+{q:"నిర్గమ 19 — సీనాయి పర్వతంపై ఏమి కనిపించింది?",o:["ఇంద్రధనుస్సు","పొగ, అగ్ని, భూకంపం / Smoke fire earthquake","మేఘం మాత్రమే","నక్షత్రాలు"],a:1,ref:"నిర్గమ 19:18",book:"exodus",level:"medium",exp:"పర్వతం పొగతో నిండింది, అగ్ని, భూకంపం — దేవుని ప్రత్యక్షత."},
+{q:"నిర్గమ 20 — సబ్బాతు ఆజ్ఞ ఏది?",o:["4వ ఆజ్ఞ / 4th commandment","5వ ఆజ్ఞ","6వ ఆజ్ఞ","7వ ఆజ్ఞ"],a:0,ref:"నిర్గమ 20:8",book:"exodus",level:"medium",exp:"విశ్రాంతి దినాన్ని పవిత్రంగా ఉంచు — 4వ ఆజ్ఞ."},
+{q:"నిర్గమ 20 — 'తల్లిదండ్రులను గౌరవించు' ఏ ఆజ్ఞ?",o:["4వ","5వ / 5th","6వ","7వ"],a:1,ref:"నిర్గమ 20:12",book:"exodus",level:"medium",exp:"5వ ఆజ్ఞ — తల్లిదండ్రులను గౌరవిస్తే నీ జీవితం పొడవుగా ఉంటుంది."},
+{q:"నిర్గమ 25 — నిబంధన మందసం ఏమి చేయబడింది?",o:["రాగి","వెండి","బంగారం పూసిన తుమ్మ చెక్క / Acacia overlaid gold","ఇనుము"],a:2,ref:"నిర్గమ 25:10",book:"exodus",level:"hard",exp:"తుమ్మ చెక్కతో చేసి లోపల బయట బంగారం పూశారు."},
+{q:"నిర్గమ 33 — మోషే ఏమి చూడాలని అడిగాడు?",o:["ఇశ్రాయేలు భూమి","దేవుని ముఖం / God's glory","పరలోకం","స్వర్గం"],a:1,ref:"నిర్గమ 33:18",book:"exodus",level:"medium",exp:"మోషే 'నీ మహిమ నాకు చూపించు' అన్నాడు."},
+// PSALMS 30 questions
+{q:"కీర్తన 2 — 'నేను నేటి నీకు తండ్రినైతిని' ఏ సందర్భం?",o:["నోవాహు","దావీదు","మెస్సయ్య అభిషేకం / Messianic","సొలొమోను"],a:2,ref:"కీర్తన 2:7",book:"psalms",level:"hard",exp:"మెస్సయ్య ప్రవచనం — అపొ 13:33 లో నెరవేరింది."},
+{q:"కీర్తన 8 — 'నీ పేరు సమస్త భూమిలో ఎంత ఘనత కలది' ఎవరు రాశారు?",o:["సొలొమోను","ఆసాపు","దావీదు / David","మోషే"],a:2,ref:"కీర్తన 8:1",book:"psalms",level:"easy",exp:"దావీదు రాశాడు — దేవుని నామమహిమ పాట."},
+{q:"కీర్తన 19 — 'ఆకాశాలు దేవుని మహిమను చాటుతున్నాయి' ఎవరు రాశారు?",o:["ఆసాపు","మోషే","దావీదు / David","హేమాను"],a:2,ref:"కీర్తన 19:1",book:"psalms",level:"easy",exp:"దావీదు రాశాడు — సృష్టి దేవుని మహిమ చూపుతుంది."},
+{q:"కీర్తన 22 — 'నా పరిసరమందు శ్వానములు' ఎవరికి సూచిస్తుంది?",o:["దావీదుకు","యెషయాకు","క్రీస్తు సిలువకు / Christ's crucifixion","నోవాహుకు"],a:2,ref:"కీర్తన 22:16",book:"psalms",level:"hard",exp:"యేసు సిలువ బాధలు — 'చేతులు పాదాలు గుచ్చారు'."},
+{q:"కీర్తన 24 — 'భూమి దేవునిది దానిలో నిండినవన్నీ' ఎవరు రాశారు?",o:["సొలొమోను","ఆసాపు","దావీదు / David","మోషే"],a:2,ref:"కీర్తన 24:1",book:"psalms",level:"easy",exp:"దావీదు రాశాడు — భూమి యెహోవాది."},
+{q:"కీర్తన 34 — 'ప్రభువు విరిగిన హృదయం గలవారి దగ్గరలో ఉన్నాడు' ఏ వాక్యం?",o:["కీర్తన 34:15","కీర్తన 34:18","కీర్తన 34:19","కీర్తన 34:22"],a:1,ref:"కీర్తన 34:18",book:"psalms",level:"medium",exp:"విరిగిన హృదయం గలవారికి, నలిగిన ఆత్మ గలవారికి దేవుడు రక్షిస్తాడు."},
+{q:"కీర్తన 37 — 'ప్రభువున్ను నమ్ము — అతడు నీ _____ నెరవేరుస్తాడు'?",o:["కోర్కెలు / Desires","ప్రార్థనలు","కలలు","లక్ష్యాలు"],a:0,ref:"కీర్తన 37:4",book:"psalms",level:"easy",exp:"ప్రభువులో ఆనందంగా ఉండు — అతడు నీ హృదయ కోర్కెలు నెరవేరుస్తాడు."},
+{q:"కీర్తన 51 — దావీదు ఈ కీర్తన ఏ పాపం తర్వాత రాశాడు?",o:["హత్య","అబద్ధం","బత్షెబాతో పాపం / Bathsheba sin","విగ్రహారాధన"],a:2,ref:"కీర్తన 51:1",book:"psalms",level:"medium",exp:"బత్షెబాతో పాపం, ఊరియా హత్య తర్వాత నాతాను ఆయన్ని మందలించాడు."},
+{q:"కీర్తన 73 — 'నేను అవిచారంగా ఉంటే పశువువలె ఉన్నాను' ఎవరు రాశారు?",o:["దావీదు","ఆసాపు / Asaph","కోరహు కుమారులు","మోషే"],a:1,ref:"కీర్తన 73:22",book:"psalms",level:"hard",exp:"ఆసాపు రాశాడు — దుష్టులు వర్ధిల్లడం చూసి కలతపడ్డాడు."},
+{q:"కీర్తన 90 — 'మన సంవత్సరాలు _____ సంవత్సరాలు' ఎవరు రాశారు?",o:["70/80 / 70 or 80 years — Moses","100","50","60"],a:0,ref:"కీర్తన 90:10",book:"psalms",level:"medium",exp:"మోషే రాశాడు — మనుషుల ఆయువు 70-80 సంవత్సరాలు."},
+{q:"కీర్తన 91 — 'ఆయన నిన్ను తన రెక్కల క్రింద దాచుకుంటాడు' ఏ జంతువు రూపకం?",o:["సింహం","ఈగిల్ / Eagle","కపోతం","పెద్ద పులి"],a:1,ref:"కీర్తన 91:4",book:"psalms",level:"medium",exp:"ఈగిల్ రెక్కల రూపకం — రక్షణ, ఆశ్రయం."},
+{q:"కీర్తన 103 — 'తూర్పు పడమర ఎంత దూరమో' అని ఏ విషయం?",o:["దేవుని మహిమ","మన పాపాలు తొలగించబడ్డాయి / Sins removed","దేవుని ప్రేమ","జ్ఞాపకం"],a:1,ref:"కీర్తన 103:12",book:"psalms",level:"medium",exp:"తూర్పు పడమర ఎంత దూరమో మన పాపాలు అంత దూరంగా తీసివేశాడు."},
+{q:"కీర్తన 121 — 'నా సహాయం _____ నుండి వస్తుంది'?",o:["పర్వతాల నుండి","ప్రభువు నుండి / Lord who made heaven and earth","అడవి నుండి","జలాల నుండి"],a:1,ref:"కీర్తన 121:2",book:"psalms",level:"easy",exp:"ఆకాశభూమి చేసిన ప్రభువు నుండి."},
+{q:"కీర్తన 136 — ఈ కీర్తనలో ప్రతి చరణంలో వచ్చే మాటలు?",o:["ప్రభువు గొప్పవాడు","ఆయన కృప నిత్యకాలం / His steadfast love endures","దేవుడు రాజు","హల్లెలూయా"],a:1,ref:"కీర్తన 136:1",book:"psalms",level:"medium",exp:"'ఆయన కృప నిత్యకాలమూ ఉంటుంది' — 26 సార్లు."},
+{q:"కీర్తన 139 — 'నీవు నన్ను తెలుసుకున్నావు' ఇది ఏ విషయం గురించి?",o:["జ్ఞానం","ప్రేమ","దేవుడు సర్వవిద్యాపరుడు / God's omniscience","దేవుడు సర్వశక్తిమంతుడు"],a:2,ref:"కీర్తన 139:1",book:"psalms",level:"medium",exp:"దేవుడు మన కూర్చోవడం, లేవడం, ఆలోచనలు తెలుసుకుంటాడు."},
+{q:"కీర్తన 150 — ఇందులో ఏ ఏ వాయిద్యాలు పేర్కొన్నారు?",o:["తంబూర మాత్రమే","వీణ మాత్రమే","తుత, వీణ, తంబురము, తాళాలు / Multiple instruments","పిల్లన గ్రోవి మాత్రమే"],a:2,ref:"కీర్తన 150:3-5",book:"psalms",level:"hard",exp:"అన్ని వాయిద్యాలతో దేవున్ని స్తుతించండి — చివరి కీర్తన."},
+// MATTHEW extra 25 questions
+{q:"మత్తయి 2 — జ్ఞానులు యేసుకు ఏ కానుకలు తెచ్చారు?",o:["బంగారం వెండి అగరు","బంగారం సాంబ్రాణి గోపారసం / Gold frankincense myrrh","బట్టలు బంగారం నూనె","అన్నీ విలువైనవి"],a:1,ref:"మత్తయి 2:11",book:"matthew",level:"easy",exp:"బంగారం, సాంబ్రాణి, గోపారసం — మూడు కానుకలు."},
+{q:"మత్తయి 3 — యోహాను బాప్తిస్తు ఏ నదిలో బాప్తిస్మం ఇచ్చాడు?",o:["నైలు","ఫ్రాతు","జోర్డాన్ / Jordan","కిషోను"],a:2,ref:"మత్తయి 3:6",book:"matthew",level:"easy",exp:"జోర్డాన్ నదిలో — పాపముల క్షమాపణకు."},
+{q:"మత్తయి 4 — యేసు మొదట ఏ శిష్యులను పిలిచాడు?",o:["తోమా మత్తయి","యాకోబు యోహాను","పేతురు అంద్రెయ / Peter and Andrew","ఫిలిప్పు బర్తొలొమయ్య"],a:1,ref:"మత్తయి 4:18",book:"matthew",level:"easy",exp:"పేతురు, అంద్రెయ — చేపలు వేస్తుండగా పిలిచాడు."},
+{q:"మత్తయి 5 — 'పేద ఆత్మలు ధన్యులు' అని ఏమి వాగ్దానం?",o:["భూమి స్వతంత్రిస్తారు","దయ పొందుతారు","పరలోక రాజ్యం వారిది / Kingdom of heaven","దేవుని చూస్తారు"],a:2,ref:"మత్తయి 5:3",book:"matthew",level:"medium",exp:"దీనులు ధన్యులు — పరలోక రాజ్యం వారిది."},
+{q:"మత్తయి 5 — 'దుఃఖించేవారు ధన్యులు' వాగ్దానం ఏమిటి?",o:["పరలోకం","ఆదరింపబడతారు / Comforted","భూమి పొందుతారు","దేవుని కుమారులంటారు"],a:1,ref:"మత్తయి 5:4",book:"matthew",level:"medium",exp:"వారు ఆదరింపబడతారు."},
+{q:"మత్తయి 6 — ఉపవాసం గురించి ఏమి చెప్పాడు?",o:["అందరికి చెప్పాలి","రహస్యంగా చేయాలి / In secret","ఆలయంలో చేయాలి","వేసవిలో చేయాలి"],a:1,ref:"మత్తయి 6:17",book:"matthew",level:"medium",exp:"ఉపవాసం రహస్యంగా — మొహం కడుక్కో, తల అభిషేకించుకో."},
+{q:"మత్తయి 7 — 'అడగండి ఇవ్వబడుతుంది' ఏ అధ్యాయంలో?",o:["మత్తయి 5","మత్తయి 6","మత్తయి 7","మత్తయి 8"],a:2,ref:"మత్తయి 7:7",book:"matthew",level:"easy",exp:"Ask — Seek — Knock: అడగండి, వెదకండి, తట్టండి."},
+{q:"మత్తయి 7 — 'ఇరుకైన ద్వారం' ఏ విషయం?",o:["ఆలయ ద్వారం","జెరూషలేం ద్వారం","జీవానికి వెళ్ళే మార్గం / Way to life","స్వర్గం ద్వారం"],a:2,ref:"మత్తయి 7:13",book:"matthew",level:"medium",exp:"ఇరుకైన ద్వారం జీవానికి — వెడల్పైన ద్వారం నాశనానికి."},
+{q:"మత్తయి 8 — యేసు 100 మంది అధికారి సేవకుని ఎలా బాగుచేశాడు?",o:["తాకి","ఒక మాట చెప్పి / Just his word","ప్రార్థించి","నీళ్ళు ఇచ్చి"],a:1,ref:"మత్తయి 8:13",book:"matthew",level:"medium",exp:"యేసు 'వెళ్ళు నీ నమ్మకం అంత అవుగాక' అన్నాడు — ఆ గంటే సేవకుడు బాగయ్యాడు."},
+{q:"మత్తయి 9 — యేసు పక్షవాతగలవానికి మొదట ఏమి చేశాడు?",o:["నడవమన్నాడు","పాపాలు క్షమించాడు / Forgave sins first","తాకాడు","ప్రార్థించాడు"],a:1,ref:"మత్తయి 9:2",book:"matthew",level:"medium",exp:"'నీ పాపాలు క్షమించబడ్డాయి' — ముందు పాపక్షమాపణ."},
+{q:"మత్తయి 10 — యేసు 12 మందిని పంపినప్పుడు ఏమి తీసుకోవద్దన్నాడు?",o:["నీళ్ళు","ఆహారం","వెండి బంగారు తాంబ్రు / Gold silver copper","బట్టలు"],a:2,ref:"మత్తయి 10:9",book:"matthew",level:"medium",exp:"బంగారం, వెండి, రాగి తీసుకోవద్దు — దేవుడు సరఫరా చేస్తాడు."},
+{q:"మత్తయి 11 — 'యోహాను కంటే గొప్పవాడు ఎవడు లేడు' అని ఎవరు చెప్పారు?",o:["పేతురు","యోహాను బాప్తిస్తు","యేసు / Jesus","దేవుడు"],a:2,ref:"మత్తయి 11:11",book:"matthew",level:"medium",exp:"యేసు యోహాను గురించి చెప్పాడు."},
+{q:"మత్తయి 13 — 'స్వర్గ రాజ్యం దాగిన నిధివంటిది' ఏ ఉపమానం?",o:["విత్తనం","పిండి","పొలంలో దాగిన నిధి / Hidden treasure","సంచి"],a:2,ref:"మత్తయి 13:44",book:"matthew",level:"medium",exp:"పొలంలో దాచిన నిధి — దానిని కొనడానికి అన్నీ అమ్మాడు."},
+{q:"మత్తయి 14 — పేతురు నీళ్ళపై నడవడం ఏ అధ్యాయంలో?",o:["మత్తయి 12","మత్తయి 13","మత్తయి 14","మత్తయి 15"],a:2,ref:"మత్తయి 14:29",book:"matthew",level:"easy",exp:"పేతురు నీళ్ళపై నడిచాడు — భయపడి మునిగాడు."},
+{q:"మత్తయి 16 — 'నీవు క్రీస్తువు జీవదేవుని కుమారుడవు' అని ఎవరు చెప్పారు?",o:["యోహాను","తోమా","పేతురు / Peter","యాకోబు"],a:2,ref:"మత్తయి 16:16",book:"matthew",level:"easy",exp:"పేతురు — ఈ నేల మీద నేను నా సంఘం కడతాను."},
+{q:"మత్తయి 17 — రూపాంతర సంఘటనలో ఎవరు ప్రత్యక్షమయ్యారు?",o:["అబ్రాహాము ఇస్సాకు","మోషే ఎలీయా / Moses and Elijah","దావీదు సొలొమోను","నోవాహు ఎనోకు"],a:1,ref:"మత్తయి 17:3",book:"matthew",level:"medium",exp:"మోషే, ఎలీయా — పాత నిబంధన ధర్మసత్రము ప్రవక్తలు."},
+{q:"మత్తయి 18 — ఎంత సార్లు క్షమించాలని పేతురు అడిగాడు?",o:["3","5","7","70x7"],a:3,ref:"మత్తయి 18:22",book:"matthew",level:"medium",exp:"70x7 = 490 — అంటే ఎల్లప్పుడు క్షమించు."},
+{q:"మత్తయి 19 — 'ధనవంతుడు స్వర్గరాజ్యంలో ప్రవేశించడం ఎంత కష్టం'?",o:["వ్యాకూలం","ఊట సూది కన్ను / Eye of needle","అగాధం","నదీ ప్రవాహం"],a:1,ref:"మత్తయి 19:24",book:"matthew",level:"medium",exp:"ఒంటె సూది కన్నులో వెళ్ళడం కంటే కష్టం."},
+{q:"మత్తయి 22 — అన్నిటికంటే గొప్ప ఆజ్ఞ ఏమిటి?",o:["విశ్రాంతి పాటించు","10 ఆజ్ఞలు పాటించు","ప్రభువైన దేవుణ్ణి ప్రేమించు / Love God","దేవాలయానికి వెళ్ళు"],a:2,ref:"మత్తయి 22:37",book:"matthew",level:"easy",exp:"మొత్తం మనసు, ఆత్మ, శక్తితో దేవుణ్ణి ప్రేమించు."},
+{q:"మత్తయి 23 — 'వేదమార్గులు బోధకులు నాశనం' అని ఏ అధ్యాయం?",o:["మత్తయి 21","మత్తయి 22","మత్తయి 23","మత్తయి 24"],a:2,ref:"మత్తయి 23:13",book:"matthew",level:"medium",exp:"7 శాపాలు — పరిసయ్యులు వేదమార్గులు."},
+{q:"మత్తయి 24 — 'అంత్య కాలపు గుర్తులు' ఏ అధ్యాయంలో?",o:["మత్తయి 22","మత్తయి 23","మత్తయి 24","మత్తయి 25"],a:2,ref:"మత్తయి 24:3",book:"matthew",level:"easy",exp:"అంత్య కాలపు గుర్తులు — యుద్ధాలు, కరవులు, భూకంపాలు."},
+{q:"మత్తయి 25 — 10 కన్యల ఉపమానంలో ఎంత మంది తెలివైనవారు?",o:["3","4","5","6"],a:2,ref:"మత్తయి 25:2",book:"matthew",level:"easy",exp:"5 తెలివైన, 5 తెలివిలేని కన్యలు."},
+{q:"మత్తయి 26 — యేసు రొట్టె తీసుకుని ఏమి చెప్పాడు?",o:["ఇది నా రక్తం","ఇది నా శరీరం / This is my body","ఇది నిబంధన","ఇది పాపక్షమాపణ"],a:1,ref:"మత్తయి 26:26",book:"matthew",level:"easy",exp:"'ఇది నా శరీరం' — ప్రభు భోజన సంస్కారం."},
+{q:"మత్తయి 27 — పిలాతు యేసుని విడుదల చేయడానికి ఏమి చేశాడు?",o:["అడిగాడు","కోపమయ్యాడు","చేతులు కడుక్కున్నాడు / Washed his hands","నిరాకరించాడు"],a:2,ref:"మత్తయి 27:24",book:"matthew",level:"medium",exp:"నేను ఈ నిర్దోషి రక్తానికి నిమిత్తం లేను — చేతులు కడుక్కున్నాడు."},
+// JOHN extra 25 questions
+{q:"యోహా 1 — 'వాక్యం దేవుడయ్యాడు' ఏ వాక్యం?",o:["యోహా 1:1","యోహా 1:14","యోహా 1:18","యోహా 1:3"],a:1,ref:"యోహా 1:14",book:"john",level:"medium",exp:"వాక్యం శరీరధారి అయ్యాడు — మనమధ్య నివసించాడు."},
+{q:"యోహా 2 — కానా పెళ్ళిలో నీళ్ళు ద్రాక్షారసంగా మార్చిన సంఘటన ఏ సందర్భం?",o:["యేసు పరిచారకుల అడిగాడు","మరియ అడిగింది / Mary asked","శిష్యులు అడిగారు","పెళ్ళికొడుకు అడిగాడు"],a:1,ref:"యోహా 2:3",book:"john",level:"medium",exp:"మరియ 'వారికి ద్రాక్షారసం లేదు' అంది."},
+{q:"యోహా 3 — 'పై నుండి జన్మించకపోతే' ఎవరికి చెప్పాడు?",o:["పేతురుకి","యూదాకి","నికొదేమికి / Nicodemus","లాజరుకి"],a:2,ref:"యోహా 3:3",book:"john",level:"easy",exp:"నికొదేము — రాత్రి యేసు దగ్గరికి వచ్చిన పరిసయ్యుడు."},
+{q:"యోహా 4 — సమరయ స్త్రీకి యేసు ఎంత భర్తలు అని చెప్పాడు?",o:["3","4","5","6"],a:2,ref:"యోహా 4:18",book:"john",level:"medium",exp:"5 భర్తలు ఉన్నారు, ఇప్పుడు ఉన్నవాడు భర్త కాదు."},
+{q:"యోహా 5 — బేత్సయిద కోలం వద్ద ఎంత కాలం రోగి ఉన్నాడు?",o:["10 సంవత్సరాలు","20 సంవత్సరాలు","38 సంవత్సరాలు","50 సంవత్సరాలు"],a:2,ref:"యోహా 5:5",book:"john",level:"medium",exp:"38 సంవత్సరాలు — యేసు అతన్ని బాగుచేశాడు."},
+{q:"యోహా 6 — 5000 మందిని తినిపించిన తర్వాత ఎంత మిగిలింది?",o:["4 బుట్టలు","8 బుట్టలు","12 బుట్టలు","20 బుట్టలు"],a:2,ref:"యోహా 6:13",book:"john",level:"medium",exp:"12 బుట్టలు ముక్కలు మిగిలాయి."},
+{q:"యోహా 8 — 'నీకు పాపం చేయకు' అని ఎవరికి యేసు చెప్పాడు?",o:["సమరయ స్త్రీకి","జబ్బులు ఉన్నవారికి","వ్యభిచారిణికి / Woman caught in adultery","శిష్యులకి"],a:2,ref:"యోహా 8:11",book:"john",level:"medium",exp:"వ్యభిచారంలో పట్టుబడిన స్త్రీ — 'నేనూ నిన్ను శిక్షించను — పాపం మానుకో'."},
+{q:"యోహా 9 — పుట్టుకతో అంధుడైన వ్యక్తిని యేసు ఎలా బాగుచేశాడు?",o:["చేత్తో తాకి","ప్రార్థించి","మట్టి కలిపిన పరకు / Clay on eyes","ఒక మాట చెప్పి"],a:2,ref:"యోహా 9:6",book:"john",level:"medium",exp:"నేల మీద ఉమ్మి మట్టి కలిపి పరకు రాసి, షిలోహ చెరువులో కడుక్కోమన్నాడు."},
+{q:"యోహా 10 — 'నేనే ద్వారమును' ఏ సందర్భం?",o:["గొర్రెల ద్వారం / Gate for sheep","యెరూషలేం ద్వారం","స్వర్గ ద్వారం","పరలోక ద్వారం"],a:0,ref:"యోహా 10:7",book:"john",level:"medium",exp:"గొర్రెలకు నేనే ద్వారం — నన్ను ద్వారా వస్తే రక్షింపబడతారు."},
+{q:"యోహా 11 — లాజరు బతికించబడిన సంఘటనలో యేసు ఏమి చేశాడు?",o:["చేత్తో తాకాడు","ప్రార్థించి పిలిచాడు / Prayed and called out","ఏడ్చి పిలిచాడు","మాట్లాడలేదు"],a:1,ref:"యోహా 11:43",book:"john",level:"medium",exp:"యేసు ఏడ్చాడు — తర్వాత 'లాజరూ బయటికి రా' అని పిలిచాడు."},
+{q:"యోహా 12 — మరియ యేసు పాదాలకు అభిషేకం చేయడానికి ఏ పరిమళ తైలం ఉపయోగించింది?",o:["జైతూను నూనె","ఒక రత్తెలు విలువైన జటామాంసి నూనె / Costly nard","సాంబ్రాణి నూనె","మూలికలు"],a:1,ref:"యోహా 12:3",book:"john",level:"hard",exp:"ఒక రత్తెలు (పౌండ్) విలువైన జటామాంసి — ఇల్లు సువాసనతో నిండింది."},
+{q:"యోహా 13 — 'యజమాని సేవకుడి కంటే గొప్పవాడు కాదు' ఏ సందర్భంలో?",o:["సిలువ ముందు","పాద ప్రక్షాళన తర్వాత / After foot washing","ప్రభు భోజనం తర్వాత","ప్రార్థన తర్వాత"],a:1,ref:"యోహా 13:16",book:"john",level:"medium",exp:"యేసు శిష్యుల పాదాలు కడిగిన తర్వాత వినయం గురించి చెప్పాడు."},
+{q:"యోహా 14 — 'పరాక్లేతుడు' అంటే ఎవరు?",o:["యేసు","దేవుడు","పరిశుద్ధాత్మ / Holy Spirit","దేవదూత"],a:2,ref:"యోహా 14:16",book:"john",level:"medium",exp:"తోడుగా ఉండే వేరే పరాక్లేతుడు — సత్యాత్మ."},
+{q:"యోహా 16 — పరిశుద్ధాత్మ వస్తే ఏమి చేస్తాడు?",o:["ఆహారం ఇస్తాడు","లోకాన్ని శిక్షిస్తాడు","పాపం నీతి తీర్పు విషయంలో లోకాన్ని ఒప్పిస్తాడు / Convict of sin","మాత్రమే ఆదరిస్తాడు"],a:2,ref:"యోహా 16:8",book:"john",level:"hard",exp:"పాపము, నీతి, తీర్పు విషయంలో లోకాన్ని ఒప్పిస్తాడు."},
+{q:"యోహా 17 — 'ప్రధాన యాజక ప్రార్థన' ఏ అధ్యాయంలో?",o:["యోహా 14","యోహా 15","యోహా 16","యోహా 17"],a:3,ref:"యోహా 17:1",book:"john",level:"medium",exp:"యేసు తన కొరకు, శిష్యుల కొరకు, నమ్మేవారి కొరకు ప్రార్థించాడు."},
+// ACTS extra 20 questions
+{q:"అపొ 3 — పేతురు యోహాను అందమైన ద్వారం వద్ద ఎవర్ని బాగుచేశారు?",o:["అంధుని","నిరోధకుని","కుంటివాడిని / Lame man","జ్వరంగల వాడిని"],a:2,ref:"అపొ 3:6",book:"acts",level:"easy",exp:"'వెండి బంగారం నా దగ్గర లేదు — యేసు పేరట నడువు'."},
+{q:"అపొ 4 — పేతురు యోహాను ఎంత మందిని పరివర్తన చేయడం ద్వారా జనాభా పెరిగింది?",o:["2000","4000","5000","8000"],a:2,ref:"అపొ 4:4",book:"acts",level:"medium",exp:"వారి మాటలు విన్న చాలామంది నమ్మారు — సుమారు 5000 మంది."},
+{q:"అపొ 5 — అననీయ సప్ఫీర ఎందుకు మరణించారు?",o:["వ్యాధి వల్ల","అబద్ధం వల్ల / Lying to God","హత్య వల్ల","శాపం వల్ల"],a:1,ref:"అపొ 5:3-5",book:"acts",level:"medium",exp:"భూమి బహుమానం గురించి పరిశుద్ధాత్మకు అబద్ధం చెప్పారు."},
+{q:"అపొ 6 — మొదటి సంఘంలో ఎంత మంది సేవకులను నియమించారు?",o:["3","5","7","10"],a:2,ref:"అపొ 6:3",book:"acts",level:"medium",exp:"7 మంది — ఆత్మతో జ్ఞానంతో నిండిన వారిని ఎంచుకున్నారు."},
+{q:"అపొ 8 — ఫిలిప్పు ఎవర్ని బాప్తిస్మం ఇచ్చాడు?",o:["సమరయ రాజుకి","ఇథియోపియా నపుంసకుడికి / Ethiopian eunuch","కొర్నేలియుకి","సైప్రసు నివాసికి"],a:1,ref:"అపొ 8:38",book:"acts",level:"medium",exp:"ఇథియోపియా రాణి కందకే ధనాగారిని ఫిలిప్పు బాప్తిస్మం ఇచ్చాడు."},
+{q:"అపొ 10 — కొర్నేలియుడు ఏ జాతి?",o:["యూదు","గ్రీకు","రోమన్ / Roman","ఇథియోపియన్"],a:2,ref:"అపొ 10:1",book:"acts",level:"medium",exp:"ఇటలీ దళ సేనాపతి — మొదటి అన్యజాతి నమ్మకుడు."},
+{q:"అపొ 13 — పౌలు బర్నబాల మొదటి మిషన్ యాత్ర ఎక్కడ నుండి?",o:["జెరూషలేం","కొరింతు","అంతియొకయ / Antioch","ఎఫెసు"],a:2,ref:"అపొ 13:1",book:"acts",level:"medium",exp:"అంతియొకయ సంఘం నుండి పరిశుద్ధాత్మ వేరుపరచాడు."},
+{q:"అపొ 14 — లుస్తలో పౌలు పరిగె బెట్టించాడు — ఎందుకు?",o:["బహిష్కరణ వల్ల","యూదుల రాళ్ళ వేత వల్ల / Stoned by Jews","రోమన్ శిక్ష వల్ల","అనారోగ్యం వల్ల"],a:1,ref:"అపొ 14:19",book:"acts",level:"medium",exp:"యూదులు రాళ్ళు వేసి పట్టణం బయట వదిలారు — చనిపోయాడని అనుకున్నారు."},
+{q:"అపొ 16 — పౌలు సీల జైలు నుండి ఎలా విడుదలయ్యారు?",o:["తాళం తెరుచుకుంది","జైలర్ తెరిచాడు","భూకంపం వల్ల / Earthquake","దేవదూత వల్ల"],a:2,ref:"అపొ 16:26",book:"acts",level:"easy",exp:"అర్ధరాత్రి పాటపాడుతున్నారు — భూకంపం, తలుపులు తెరుచుకున్నాయి."},
+{q:"అపొ 17 — పౌలు 'అజ్ఞాత దేవునికి' ప్రసంగించిన నగరం?",o:["కొరింతు","రోమ్","ఏథెన్స్ / Athens","ఎఫెసు"],a:2,ref:"అపొ 17:22",book:"acts",level:"medium",exp:"ఏరియోపాగు వద్ద — అజ్ఞాత దేవుడు యేసే అని ప్రకటించాడు."},
+{q:"అపొ 18 — పౌలు కొరింతులో ఎంత కాలం ఉన్నాడు?",o:["6 నెలలు","1 సంవత్సరం","1.5 సంవత్సరాలు / 18 months","3 సంవత్సరాలు"],a:2,ref:"అపొ 18:11",book:"acts",level:"hard",exp:"18 నెలలు — కొరింతులో నివసించి బోధించాడు."},
+{q:"అపొ 19 — ఎఫెసులో పరిశుద్ధాత్మ ఫలితంగా ఏమైంది?",o:["అద్భుతాలు మాత్రమే","మాయమంత్రాల పుస్తకాలు కాల్చారు / Magic books burned","దేవాలయం కట్టారు","ఉపవాసం చేశారు"],a:1,ref:"అపొ 19:19",book:"acts",level:"medium",exp:"50,000 వెండి నాణేల విలువ మాయమంత్రం పుస్తకాలు కాల్చారు."},
+// ROMANS extra 15 questions
+{q:"రోమా 1 — 'సువార్త నాకు సిగ్గు కాదు' ఎందుకు?",o:["అది పురాతనం కాబట్టి","అది నమ్మిన ప్రతివారికి రక్షణకు దేవుని శక్తి / Power of God for salvation","అది పేదవారికి","అది సులభం కాబట్టి"],a:1,ref:"రోమా 1:16",book:"romans",level:"medium",exp:"సువార్త దేవుని శక్తి — యూదులకు ముందు, గ్రీకులకు కూడా."},
+{q:"రోమా 4 — 'విశ్వాసానికి తండ్రి' ఎవరు?",o:["మోషే","నోవాహు","అబ్రాహాము / Abraham","దావీదు"],a:2,ref:"రోమా 4:11",book:"romans",level:"medium",exp:"అబ్రాహాము నమ్మకం ద్వారా నీతిమంతుడయ్యాడు — విశ్వాసానికి తండ్రి."},
+{q:"రోమా 5 — 'ఒక మనిషి ద్వారా పాపం లోకంలో ప్రవేశించింది' ఆ మనిషి ఎవరు?",o:["కయీను","నోవాహు","ఆదాము / Adam","అబ్రాహాము"],a:2,ref:"రోమా 5:12",book:"romans",level:"easy",exp:"ఆదాము ద్వారా పాపం — క్రీస్తు ద్వారా నీతి."},
+{q:"రోమా 7 — పౌలు తన సంఘర్షణ ఏమని చెప్పాడు?",o:["సంపద పాపం","మంచి చేయాలనుకుంటాను, చెడు చేస్తాను / Want to do good, do evil","ప్రార్థన కష్టం","బోధించడం కష్టం"],a:1,ref:"రోమా 7:19",book:"romans",level:"medium",exp:"ఏ మంచి చేయాలనుకుంటానో అది చేయను — ఏ చెడు చేయకూడదో అది చేస్తాను."},
+{q:"రోమా 8 — 'వేరుపరచగలిగేది ఏది?' — ఆ జాబితాలో లేనిది?",o:["మరణం","తీర్పు / Judgment","కష్టాలు","పరలోక శక్తులు"],a:1,ref:"రోమా 8:38",book:"romans",level:"hard",exp:"మరణం, జీవం, దేవదూతలు, అధికారాలు, ఉన్నవి, రాబోయేవి — ఏదీ వేరు చేయలేదు."},
+{q:"రోమా 9 — 'కుమ్మరికి ఏ హక్కు?' అనే ఉపమానం ఏ విషయానికి?",o:["సృష్టి","దేవుని సార్వభౌమత్వం / God's sovereignty","మానవ ఎంపిక","ప్రార్థన"],a:1,ref:"రోమా 9:21",book:"romans",level:"hard",exp:"కుమ్మరి ఒకే మట్టి నుండి రెండు రకాల పాత్రలు చేయగలడు — దేవుడు అలాంటివాడు."},
+{q:"రోమా 11 — 'ఇశ్రాయేలు మొత్తం రక్షింపబడుతుంది' ఏ సత్యం?",o:["ప్రస్తుత సత్యం","భవిష్యత్ వాగ్దానం / Future promise","అసాధ్యం","సాంకేతిక అర్థం"],a:1,ref:"రోమా 11:26",book:"romans",level:"hard",exp:"అన్యులు పరిపూర్ణత వచ్చిన తర్వాత ఇశ్రాయేలు మొత్తం రక్షింపబడుతుంది."},
+{q:"రోమా 12:1 — 'మీ శరీరాలను _____ బలిగా అర్పించండి'?",o:["మృత","పరిశుద్ధ జీవ / Living holy","రక్త","ఆత్మ"],a:1,ref:"రోమా 12:1",book:"romans",level:"easy",exp:"పరిశుద్ధమైన జీవ బలి — ఇది మీ ఆత్మికమైన ఆరాధన."},
+// REVELATION extra 20 questions
+{q:"ప్రక 1 — యోహాను ఏ ద్వీపంలో ఉన్నాడు?",o:["కైప్రస్","క్రేతు","పత్మోసు / Patmos","రోడ్సు"],a:2,ref:"ప్రక 1:9",book:"revelation",level:"medium",exp:"పత్మోసు ద్వీపంలో — దేవుని వాక్యం, యేసు సాక్ష్యానికి."},
+{q:"ప్రక 1 — యోహాను ఏ రోజు ఆత్మలో ఉన్నాడు?",o:["సబ్బాతు","పాస్కా","ప్రభువు రోజు / Lord's day (Sunday)","పెంతెకొస్తు"],a:2,ref:"ప్రక 1:10",book:"revelation",level:"medium",exp:"ప్రభువు రోజు — ఆదివారం."},
+{q:"ప్రక 2 — స్ముర్న చర్చికి ఏ వాగ్దానం ఇచ్చారు?",o:["తెల్లని రాయి","జీవ కిరీటం / Crown of life","ఉదయ నక్షత్రం","దేవుని సింహాసనం"],a:1,ref:"ప్రక 2:10",book:"revelation",level:"medium",exp:"మరణం వరకు నమ్మకంగా ఉంటే జీవ కిరీటం ఇస్తాను."},
+{q:"ప్రక 3 — 'నేను ద్వారం దగ్గర నిలబడి తట్టుచున్నాను' ఏ చర్చికి?",o:["ఫిలదెల్ఫియా","సార్దీస్","లవొదికయ / Laodicea","తుయతైర"],a:2,ref:"ప్రక 3:20",book:"revelation",level:"medium",exp:"లవొదికయ చర్చి — చేత్తో పాటు హృదయ ద్వారం."},
+{q:"ప్రక 3 — 'వేడిగా కూడా లేవు, చల్లగా కూడా లేవు' ఏ చర్చి?",o:["ఎఫెసు","స్ముర్న","సార్దీస్","లవొదికయ / Laodicea"],a:3,ref:"ప్రక 3:16",book:"revelation",level:"easy",exp:"లవొదికయ — 'నువ్వు గోరు వెచ్చగా ఉన్నావు — నిన్ను నోట్లో నుండి ఉమ్మివేస్తాను'."},
+{q:"ప్రక 4 — పరలోకంలో నాలుగు జీవులకు ఎంత రెక్కలు?",o:["2","4","6","8"],a:2,ref:"ప్రక 4:8",book:"revelation",level:"medium",exp:"నాలుగు జీవులకు ఆరు రెక్కలు — 'పరిశుద్ధుడు పరిశుద్ధుడు పరిశుద్ధుడు'."},
+{q:"ప్రక 5 — 'గొర్రెపిల్ల తప్ప ఎవరూ పొత్తెం తెరవలేదు' ఎందుకు?",o:["చాలా బరువు","ఎవరూ తగినవారు కాదు / None worthy","అది రహస్యం","భయంతో"],a:1,ref:"ప్రక 5:4",book:"revelation",level:"medium",exp:"యోహాను ఏడ్చాడు — దావీదు సింహం, చంపబడిన గొర్రెపిల్ల మాత్రమే తగినవాడు."},
+{q:"ప్రక 6 — మొదటి ముద్ర తెరిచినప్పుడు ఏ రంగు గుర్రం వచ్చింది?",o:["తెలుపు / White","ఎరుపు","నలుపు","బూడిద"],a:0,ref:"ప్రక 6:2",book:"revelation",level:"medium",exp:"తెల్ల గుర్రం — విజేత."},
+{q:"ప్రక 8 — నాలుగు బూరాలలో మొదటిది ఏమి?",o:["సముద్రం రక్తమైంది","అగ్ని వడగళ్ళు / Hail and fire","సూర్యుడు చీకటయ్యాడు","నక్షత్రం పడింది"],a:1,ref:"ప్రక 8:7",book:"revelation",level:"hard",exp:"అగ్ని, వడగళ్ళు, రక్తం కలిసి పడ్డాయి — 1/3 భూమి కాలింది."},
+{q:"ప్రక 12 — స్త్రీ అంటే ఎవరు?",o:["మరియ","సంఘం / Church/Israel","హవ్వ","మగ్దలేనే మరియ"],a:1,ref:"ప్రక 12:1",book:"revelation",level:"hard",exp:"సూర్యంతో కప్పబడిన స్త్రీ — ఇశ్రాయేలు లేదా సంఘం."},
+{q:"ప్రక 14 — 144,000 మందికి ఏ గుర్తు ఉంది?",o:["మృగపు గుర్తు","ఇంద్రధనుస్సు","తండ్రి పేరు నొసటన / Father's name on forehead","సిలువ"],a:2,ref:"ప్రక 14:1",book:"revelation",level:"medium",exp:"గొర్రెపిల్ల, తండ్రి పేరు వారి నొసటమీద రాయబడింది."},
+{q:"ప్రక 16 — హర్మగిద్దోను అర్మగెద్దోను ఏ విషయం?",o:["పట్టణం పేరు","అంతిమ యుద్ధస్థలం / Final battle","నది పేరు","పర్వతం పేరు"],a:1,ref:"ప్రక 16:16",book:"revelation",level:"medium",exp:"హర్మగిద్దోను — అంతిమ మహా యుద్ధ స్థలం."},
+{q:"ప్రక 19 — 'హల్లెలూయా' పరలోకంలో ఎంత సార్లు?",o:["1","2","4","7"],a:2,ref:"ప్రక 19:1-6",book:"revelation",level:"hard",exp:"4 సార్లు హల్లెలూయా — 19వ అధ్యాయంలో."},
+{q:"ప్రక 20 — మొదటి పునరుత్థానం అంటే?",o:["అందరూ లేచడం","మృతులలో నుండి ధన్యులు లేచడం / First resurrection of blessed","యేసు పునరుత్థానం","లాజరు పునరుత్థానం"],a:1,ref:"ప్రక 20:6",book:"revelation",level:"hard",exp:"మొదటి పునరుత్థానంలో పాల్గొన్నవారు ధన్యులు — రెండవ మరణం వారిపై అధికారం లేదు."},
+{q:"ప్రక 21 — క్రొత్త యెరూషలేం పన్నెండు ద్వారాలపై ఏమి రాయబడింది?",o:["దేవుని పేర్లు","12 శిష్యుల పేర్లు","12 గోత్రాల పేర్లు / 12 tribes","12 ప్రవక్తల పేర్లు"],a:2,ref:"ప్రక 21:12",book:"revelation",level:"medium",exp:"ఇశ్రాయేలు 12 గోత్రాల పేర్లు."},
+// OT GENERAL extra 30 questions
+{q:"యెహోషువ 1 — 'దృఢంగా ధైర్యంగా ఉండు' ఎవరికి చెప్పారు?",o:["మోషేకు","అహరోనుకు","యెహోషువకు / Joshua","కాలేబుకు"],a:2,ref:"యెహోషువ 1:6",book:"ot",level:"easy",exp:"మోషే తర్వాత యెహోషువకు నాయకత్వం వచ్చింది."},
+{q:"యెహోషువ 6 — యెరికో ముట్టడిలో ఎంత రోజులు సైన్యం చుట్టింది?",o:["3","5","7","10"],a:2,ref:"యెహోషువ 6:3",book:"ot",level:"easy",exp:"7 రోజులు — 7వ రోజు 7 సార్లు — బూరాలు ఊదాయి — ప్రాకారాలు కూలాయి."},
+{q:"న్యాయాధిపతులు 4 — ఇశ్రాయేలు మొదటి స్త్రీ న్యాయాధిపతి?",o:["రూతు","హన్న","మిర్యాము","దెబోరా / Deborah"],a:3,ref:"న్యాయ 4:4",book:"ot",level:"medium",exp:"దెబోరా — ప్రవక్తి, న్యాయాధిపతి, యుద్ధంలో బారాకుతో పోరాడింది."},
+{q:"1 సమూ 1 — హన్న ఏడ్చినందుకు ఏలీ ఏమని అనుకున్నాడు?",o:["దుఃఖమని","భర్త మరణించాడని","మత్తుగా ఉందని / Drunk","రోగిష్టిగా ఉందని"],a:2,ref:"1 సమూ 1:13",book:"ot",level:"medium",exp:"హన్న పెదవులు కదిలాయి కానీ శబ్దం లేదు — ఏలీ మత్తుగా ఉందని అనుకున్నాడు."},
+{q:"1 సమూ 3 — సమూయేలు తన జీవితంలో మొదటి పిలుపు ఎంత సార్లు?",o:["1","2","3","4"],a:2,ref:"1 సమూ 3:4-8",book:"ot",level:"medium",exp:"3 సార్లు — సమూయేలు ఏలీ పిలిచాడనుకుని వెళ్ళాడు — 4వ సారి దేవుడు వివరంగా చెప్పాడు."},
+{q:"1 రాజు 3 — సొలొమోను దేవుని అడిగినది ఏమిటి?",o:["ధనం","శత్రువులపై జయం","జ్ఞానం / Wisdom","దీర్ఘాయువు"],a:2,ref:"1 రాజు 3:9",book:"ot",level:"easy",exp:"వివేకమైన మనస్సు — ప్రజలకు న్యాయం తీర్చడానికి."},
+{q:"1 రాజు 17 — ఎలీయాకు అరణ్యంలో ఎవరు ఆహారం తెచ్చింది?",o:["పావురాళ్ళు","కాకులు / Ravens","దూతలు","ఒంటెలు"],a:1,ref:"1 రాజు 17:6",book:"ot",level:"easy",exp:"కాకులు రొట్టె మాంసం తెచ్చాయి — ఉదయం సాయంకాలం."},
+{q:"1 రాజు 18 — కార్మేలు పర్వతంపై ఎలీయా బాల్ ప్రవక్తలను ఓడించాడు — అగ్ని ఎలా వచ్చింది?",o:["ఎలీయా అగ్ని రాజేశాడు","దేవుడు స్వయంగా","ప్రార్థన తర్వాత పరలోకపు అగ్ని / Fire from heaven","మెరుపు"],a:2,ref:"1 రాజు 18:38",book:"ot",level:"medium",exp:"యెహోవా అగ్ని వెలువడి దహన బలి, కట్టెలు, రాళ్ళు, మట్టి, నీరు కాల్చింది."},
+{q:"2 రాజు 2 — ఎలీయా ఏమై పోయాడు?",o:["నదిలో మునిగి","చనిపోయి","అగ్ని రథంలో పరలోకానికి వెళ్ళాడు / Chariot of fire","అడవిలో","దేవుడు తీసుకున్నాడు"],a:2,ref:"2 రాజు 2:11",book:"ot",level:"easy",exp:"అగ్ని రథం అగ్ని గుర్రాలు వచ్చి ఎలీయాను పరలోకానికి తీసుకెళ్ళాయి."},
+{q:"యోబు 1 — యోబు ఎన్ని మంది కుమారులు కుమార్తెలు ఉన్నారు?",o:["5 కుమారులు 3 కుమార్తెలు","7 కుమారులు 3 కుమార్తెలు / 7 sons 3 daughters","10 కుమారులు 5 కుమార్తెలు","3 కుమారులు 7 కుమార్తెలు"],a:1,ref:"యోబు 1:2",book:"ot",level:"medium",exp:"7 కుమారులు 3 కుమార్తెలు — అన్నీ పోయాయి."},
+{q:"నీతిమంతుడు అయిన యోబుకు ఎవరు ఆరోపణ చేసింది?",o:["యోబు భార్య","యోబు మిత్రులు","సైతాను / Satan","దేవదూత"],a:2,ref:"యోబు 1:9",book:"ot",level:"medium",exp:"సైతాను — 'లాభం కోసమే యోబు నిన్ను భయపడతాడు'."},
+{q:"యిర్మీయా 29:11 — 'నేను మీ గురించి ఆలోచిస్తున్నాను' వాగ్దానం ఎవరికి?",o:["మోషేకు","దావీదుకు","బాబిలోను చెరలో ఉన్న ఇశ్రాయేలీయులకు / Exiles in Babylon","అందరికీ"],a:2,ref:"యిర్మీయా 29:11",book:"isaiah",level:"medium",exp:"బాబిలోను చెరలో ఉన్న ఇశ్రాయేలీయులకు — 'మీకు శాంతి భవిష్యత్తు ఉంటుంది'."},
+{q:"దానియేలు 1 — దానియేలు ఏ ఆహారం తిరస్కరించాడు?",o:["పళ్ళు","ఐగుప్తు ఆహారం","రాజ ఆహారం మద్యం / King's food and wine","ఇశ్రాయేలు ఆహారం"],a:2,ref:"దానియేలు 1:8",book:"ot",level:"easy",exp:"తన్ను తాను అపవిత్రపరచుకోవద్దని రాజ ఆహారం తిరస్కరించాడు."},
+{q:"దానియేలు 2 — నెబుకద్నెజరు కలలో బొమ్మ ఏ లోహంతో ప్రారంభం?",o:["వెండి","ఇనుము","బంగారం / Gold","రాగి"],a:2,ref:"దానియేలు 2:32",book:"ot",level:"medium",exp:"బంగారు తల — బాబిలోన్ సామ్రాజ్యం."},
+{q:"హోషేయ — 'జ్ఞానం లేకుండా నా ప్రజలు నశిస్తారు' ఏ పుస్తకంలో?",o:["ఆమోసు","మీకా","హోషేయ / Hosea","మలాకీ"],a:2,ref:"హోషేయ 4:6",book:"ot",level:"medium",exp:"హోషేయ 4:6 — జ్ఞానం తిరస్కరించారు."},
+{q:"యోనా ఎంత రోజులు నినెవే పరిచర్య చేశాడు?",o:["1","3","7","40"],a:1,ref:"యోనా 3:3",book:"ot",level:"medium",exp:"నినెవే 3 రోజుల ప్రయాణం — మొదటి రోజే ప్రకటించడం మొదలుపెట్టాడు."},
+{q:"మలాకీ — 'కట్నాలు తెండి గిడ్డంగి నింపండి' ఏ వాగ్దానం?",o:["ధైర్యం","ఆరోగ్యం","పదికి పది రెట్లు / Open windows of heaven","రక్షణ"],a:2,ref:"మలాకీ 3:10",book:"ot",level:"medium",exp:"పదో వంతు తెండి — పరలోక కిటికీలు తెరిచి దీవనలు కుమ్మరిస్తాను."},
+{q:"ఎజ్రా ఐదు ముఖ్యమైన పని ఏమిటి?",o:["యుద్ధం","దేవాలయ పునర్నిర్మాణం / Temple rebuilding","విగ్రహ నాశనం","రాజు అనుమతి తీసుకోవడం","సంఘ స్థాపన"],a:1,ref:"ఎజ్రా 1:1",book:"ot",level:"medium",exp:"పర్షియా రాజు సైరసు దేవాలయ నిర్మాణానికి అనుమతించాడు."},
+{q:"నెహెమ్యా ఎన్ని రోజులలో జెరూషలేం ప్రాకారాలు నిర్మించాడు?",o:["30","52","70","100"],a:1,ref:"నెహెమ్యా 6:15",book:"ot",level:"medium",exp:"52 రోజులలో — శత్రువుల మధ్య నిర్మించారు."},
+{q:"జెకర్యా 9:9 — 'నీ రాజు నీ దగ్గరికి వస్తున్నాడు' ఏ జంతువుపై?",o:["గుర్రంపై","ఒంటెపై","గాడిదపై / Donkey","ఎద్దుపై"],a:2,ref:"జెకర్యా 9:9",book:"ot",level:"medium",exp:"న్యాయపూర్వకుడై, రక్షించేవాడై, వినమ్రుడై గాడిదపై వచ్చాడు — మత్తయి 21 లో నెరవేరింది."},
+];
+
+var QDB_FLAT=(function(){
+  var all=[];
+  Object.keys(QDB).forEach(function(book){
+    QDB[book].forEach(function(q,i){all.push(Object.assign({},q,{book:book,_id:book+'_'+i}));});
+  });
+  QDB_EXTRA.forEach(function(q,i){all.push(Object.assign({},q,{_id:'extra_'+i}));});
+  QDB_EXTRA2.forEach(function(q,i){all.push(Object.assign({},q,{_id:'extra2_'+i}));});
+  return all;
+})();
+
+var _qzSeenKey='qzSeenIds_v2';
+function qzGetSeen(){try{return JSON.parse(localStorage.getItem(_qzSeenKey)||'{}');}catch(e){return {};}}
+function qzMarkSeen(ids){var s=qzGetSeen();ids.forEach(function(id){s[id]=1;});try{localStorage.setItem(_qzSeenKey,JSON.stringify(s));}catch(e){}}
+function qzResetSeen(){localStorage.removeItem(_qzSeenKey);}
+
+function qzGetPool(bookFilter,level){
+  var pool;
+  var otBooks=['genesis','exodus','psalms','proverbs','isaiah'];
+  var ntBooks=['matthew','john','acts','romans','revelation'];
+  if(bookFilter==='all')pool=QDB_FLAT.slice();
+  else if(bookFilter==='ot')pool=QDB_FLAT.filter(function(q){return otBooks.includes(q.book);});
+  else if(bookFilter==='nt')pool=QDB_FLAT.filter(function(q){return ntBooks.includes(q.book);});
+  else pool=QDB_FLAT.filter(function(q){return q.book===bookFilter;});
+  if(pool.length===0)pool=QDB_FLAT.slice();
+  if(level&&level!=='mixed')pool=pool.filter(function(q){return q.level===level;});
+  if(pool.length<5)pool=QDB_FLAT.slice();
+  var seen=qzGetSeen();
+  var unseen=pool.filter(function(q){return!seen[q._id];});
+  if(unseen.length<10){qzResetSeen();unseen=pool;}
+  return unseen.sort(function(){return Math.random()-0.5;});
+}
+
+var quizState={level:'easy',questions:[],idx:0,score:0,timer:null,maxTime:15,sessionAnswers:[],startTime:null,bookFilter:'all',aiMode:false,aiQuestions:[]};
+var qzSelectedLevel='easy';
+
+function qzSetLevel(l){
+  qzSelectedLevel=l;
+  ['easy','medium','hard','mixed'].forEach(function(lv){
+    var btn=document.getElementById('qzlv-'+lv);if(!btn)return;
+    var bg={easy:'linear-gradient(135deg,#1a5c2a,#27ae60)',medium:'linear-gradient(135deg,#7d4e00,#f39c12)',hard:'linear-gradient(135deg,#8b0000,#c0392b)',mixed:'linear-gradient(135deg,#2c0070,#7b1fa2)'};
+    if(lv===l){btn.style.background=bg[lv];btn.style.color='#fff';btn.style.borderColor='transparent';}
+    else{btn.style.background='var(--card)';btn.style.color='var(--sub)';btn.style.borderColor='var(--border)';}
+  });
+}
+
+function startQuiz(){
+  var bookFilter=document.getElementById('qzBookFilter').value;
+  quizState.bookFilter=bookFilter;quizState.level=qzSelectedLevel;quizState.aiMode=false;
+  var pool=qzGetPool(bookFilter,qzSelectedLevel);
+  quizState.questions=pool.slice(0,Math.min(15,pool.length));
+  qzMarkSeen(quizState.questions.map(function(q){return q._id;}));
+  quizState.idx=0;quizState.score=0;quizState.sessionAnswers=[];quizState.startTime=new Date();
+  quizState.maxTime={easy:20,medium:15,hard:10,mixed:15}[quizState.level]||15;
+  document.getElementById('quizStart').style.display='none';
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizArea').style.display='block';
+  showQuizQ();
+}
+
+function qzStartAiQuiz(){
+  quizState.aiMode=true;quizState.questions=quizState.aiQuestions;
+  quizState.idx=0;quizState.score=0;quizState.sessionAnswers=[];quizState.startTime=new Date();quizState.maxTime=15;
+  qzTab('play');
+  document.getElementById('quizStart').style.display='none';
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizArea').style.display='block';
+  showQuizQ();
+}
+
+function showQuizQ(){
+  var q=quizState.questions[quizState.idx];
+  document.getElementById('quizProgress').textContent='Q '+(quizState.idx+1)+' / '+quizState.questions.length;
+  document.getElementById('quizScore').textContent=quizState.score;
+  var bkNames={genesis:'ఆది',exodus:'నిర్గమ',psalms:'కీర్తనలు',proverbs:'సామె',isaiah:'యెషయా',matthew:'మత్తయి',john:'యోహాను',acts:'అపొ',romans:'రోమా',revelation:'ప్రక',online:'🌐 AI'};
+  var bTag=document.getElementById('qzBookTag');if(bTag)bTag.textContent=q.book?('📖 '+(bkNames[q.book]||q.book)):'';
+  document.getElementById('quizQ').textContent=q.q;
+  var rEl=document.getElementById('qzRef');if(rEl)rEl.textContent=q.ref?('📍 '+q.ref):'';
+  var ex=document.getElementById('qzExplain');if(ex)ex.style.display='none';
+  var opts=document.getElementById('quizOptions');opts.innerHTML='';
+  q.o.forEach(function(opt,i){
+    var btn=document.createElement('button');
+    btn.textContent=opt;
+    btn.style.cssText='background:var(--card);border:1.5px solid rgba(255,255,255,0.12);color:var(--text);padding:12px 14px;border-radius:12px;font-size:0.85rem;cursor:pointer;text-align:left;width:100%;transition:all 0.2s;line-height:1.5;';
+    btn.onclick=function(){answerQuiz(i,q.a,q);};
+    opts.appendChild(btn);
+  });
+  var t=quizState.maxTime;
+  var timerEl=document.getElementById('quizTimer');var barEl=document.getElementById('qzTimerBar');
+  if(timerEl)timerEl.textContent=t;if(barEl){barEl.style.width='100%';barEl.style.background='linear-gradient(90deg,var(--gold),var(--red))';}
+  clearInterval(quizState.timer);
+  quizState.timer=setInterval(function(){
+    t--;if(timerEl)timerEl.textContent=t;
+    if(barEl)barEl.style.width=(t/quizState.maxTime*100)+'%';
+    if(t<=5&&timerEl)timerEl.style.background='#8b0000';
+    if(t<=0){clearInterval(quizState.timer);answerQuiz(-1,q.a,q);}
+  },1000);
+}
+
+function answerQuiz(chosen,correct,q){
+  clearInterval(quizState.timer);
+  var opts=document.querySelectorAll('#quizOptions button');
+  var ok=(chosen===correct);
+  opts.forEach(function(b,i){
+    b.onclick=null;
+    if(i===correct){b.style.background='linear-gradient(135deg,#1a5c2a,#27ae60)';b.style.color='#fff';b.style.border='none';}
+    else if(i===chosen&&!ok){b.style.background='linear-gradient(135deg,#8b0000,#c0392b)';b.style.color='#fff';b.style.border='none';}
+  });
+  if(ok)quizState.score+=10;
+  if(q.exp){
+    var ex=document.getElementById('qzExplain');
+    if(ex){ex.textContent=(ok?'✅ Correct! ':'❌ Wrong! ')+q.exp;ex.style.display='block';ex.style.background=ok?'rgba(39,174,96,0.12)':'rgba(192,57,43,0.12)';ex.style.borderColor=ok?'rgba(39,174,96,0.4)':'rgba(192,57,43,0.4)';ex.style.color=ok?'#7ec8a0':'#e88';}
+  }
+  quizState.sessionAnswers.push({q:q.q,ref:q.ref||'',options:q.o,correct:q.a,chosen:chosen,ok:ok,book:q.book||''});
+  setTimeout(function(){
+    quizState.idx++;
+    var ex=document.getElementById('qzExplain');if(ex)ex.style.display='none';
+    if(quizState.idx<quizState.questions.length)showQuizQ();
+    else showQuizResult();
+  },1400);
+}
+
+function showQuizResult(){
+  clearInterval(quizState.timer);
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('quizResult').style.display='block';
+  var s=quizState.score;var total=quizState.questions.length*10;var pct=Math.round(s/total*100);
+  document.getElementById('quizFinalScore').textContent=s;
+  document.getElementById('quizMaxScore').textContent=' / '+total;
+  var e,t,m;
+  if(pct>=90){e='🏆';t='Bible Expert!';m='అద్భుతం! దేవుని వాక్యం చాలా బాగా తెలుసు!';}
+  else if(pct>=70){e='⭐';t='చాలా బాగుంది!';m='Bible knowledge బాగుంది — మరింత practice చేస్తే perfect!';}
+  else if(pct>=50){e='👍';t='Good job!';m='సగం దాటావు! Chapter by chapter చదువు!';}
+  else{e='📖';t='Practice చేయి!';m='Bible reading plan follow చేయి — John నుండి మొదలుపెట్టు!';}
+  document.getElementById('quizEmoji').textContent=e;
+  document.getElementById('quizResultTitle').textContent=t;
+  document.getElementById('quizResultMsg').textContent=m;
+  var bd=document.getElementById('qzResultBreakdown');
+  if(bd)bd.innerHTML=quizState.sessionAnswers.map(function(a,i){
+    return '<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);">'
+      +'<div style="color:'+(a.ok?'#7ec8a0':'#e88')+';font-size:0.72rem;">'+(a.ok?'✅':'❌')+' Q'+(i+1)+' — '+(a.ref||a.book)+'</div>'
+      +'<div style="color:var(--text);margin:2px 0;font-size:0.78rem;">'+a.q+'</div>'
+      +'<div style="color:var(--gold);font-size:0.7rem;">✔ '+a.options[a.correct]+'</div>'
+      +((!a.ok&&a.chosen>=0)?'<div style="color:#e88;font-size:0.7rem;">✘ '+a.options[a.chosen]+'</div>':'')
+      +'</div>';
+  }).join('');
+  qzSaveHistory({date:new Date().toLocaleString('te'),level:quizState.level,book:quizState.bookFilter,score:s,total:total,pct:pct,answers:quizState.sessionAnswers,aiMode:quizState.aiMode});
+  var hist=qzGetHistory();var el=document.getElementById('qzTotalPlayed');if(el)el.textContent=hist.length;
+}
+
+function resetQuiz(){
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizStart').style.display='block';
+}
+
+function qzSaveHistory(entry){var h=qzGetHistory();h.unshift(entry);if(h.length>50)h=h.slice(0,50);try{localStorage.setItem('bqHist3',JSON.stringify(h));}catch(e){}}
+function qzGetHistory(){try{return JSON.parse(localStorage.getItem('bqHist3')||'[]');}catch(e){return [];}}
+function qzClearHistory(){if(confirm('History delete చేయాలా?')){localStorage.removeItem('bqHist3');renderQzHistory();}}
+
+function renderQzHistory(){
+  var hist=qzGetHistory();
+  var list=document.getElementById('qzHistoryList');var empty=document.getElementById('qzHistoryEmpty');
+  if(!list)return;
+  if(hist.length===0){list.innerHTML='';if(empty)empty.style.display='block';return;}
+  if(empty)empty.style.display='none';
+  var bkMap={all:'అన్నీ',ot:'పాత నిబంధన',nt:'క్రొత్త నిబంధన',genesis:'ఆది',exodus:'నిర్గమ',psalms:'కీర్తనలు',proverbs:'సామె',isaiah:'యెషయా',matthew:'మత్తయి',john:'యోహాను',acts:'అపొ',romans:'రోమా',revelation:'ప్రక'};
+  list.innerHTML=hist.map(function(h,i){
+    var lc={easy:'#27ae60',medium:'#f39c12',hard:'#c0392b',mixed:'#9c27b0'}[h.level]||'#888';
+    return '<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">'
+      +'<span style="color:'+lc+';font-size:0.75rem;font-weight:700;">'+h.level.toUpperCase()+(h.aiMode?' 🌐':'')+' • '+(bkMap[h.book]||h.book)+'</span>'
+      +'<span style="color:var(--sub);font-size:0.68rem;">'+h.date+'</span>'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;gap:10px;">'
+      +'<div style="font-size:1.5rem;font-weight:700;color:var(--gold);">'+h.score+'<span style="color:var(--sub);font-size:0.8rem;"> / '+h.total+'</span></div>'
+      +'<div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px;height:8px;overflow:hidden;"><div style="width:'+h.pct+'%;height:100%;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:6px;"></div></div>'
+      +'<div style="color:var(--gold);font-weight:700;">'+h.pct+'%</div>'
+      +'</div>'
+      +'<button onclick="qzDownloadHistoryPDF('+i+')" style="margin-top:8px;background:rgba(192,57,43,0.15);border:1px solid var(--red);color:var(--red);padding:5px 12px;border-radius:8px;font-size:0.7rem;cursor:pointer;">📄 PDF</button>'
+      +'</div>';
+  }).join('');
+}
+
+function qzTab(tab){
+  ['play','history','ai'].forEach(function(t){
+    var p=document.getElementById('qzPanel-'+t);if(p)p.style.display=t===tab?'block':'none';
+    var b=document.getElementById('qzt-'+t);if(b)b.classList.toggle('active',t===tab);
+  });
+  if(tab==='history')renderQzHistory();
+}
+
+function qzGenerateOnline(){
+  var topic=document.getElementById('qzAiTopic').value.trim()||'Jesus Christ and his teachings';
+  var count=document.getElementById('qzAiCount').value;
+  var btn=document.getElementById('qzAiBtn');btn.disabled=true;btn.textContent='⏳ Generating...';
+  document.getElementById('qzAiStatus').style.display='block';
+  document.getElementById('qzAiStatusTxt').textContent='Claude AI నుండి questions తీసుకుంటున్నాం...';
+  document.getElementById('qzAiPreview').style.display='none';
+  var prompt='Generate exactly '+count+' Bible quiz multiple-choice questions about: "'+topic+'". Return ONLY valid JSON array, no markdown backticks, no preamble. Format: [{"q":"question","o":["opt1","opt2","opt3","opt4"],"a":0,"ref":"Book Ch:V","exp":"brief explanation"}]. The "a" is index 0-3 of correct answer. Make educationally rich questions with accurate Bible references.';
+  fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:prompt}]})})
+  .then(function(r){return r.json();})
+  .then(function(data){
+    var text=(data.content&&data.content[0]&&data.content[0].text)||'';
+    var clean=text.replace(/```json|```/g,'').trim();
+    var s=clean.indexOf('[');var e=clean.lastIndexOf(']');if(s>=0&&e>s)clean=clean.slice(s,e+1);
+    var qs=JSON.parse(clean);
+    if(!Array.isArray(qs)||qs.length===0)throw new Error('No questions returned');
+    quizState.aiQuestions=qs.map(function(q){return{q:q.q,o:q.o,a:parseInt(q.a)||0,ref:q.ref||topic,exp:q.exp||'',book:'online'};});
+    document.getElementById('qzAiStatus').style.display='none';
+    document.getElementById('qzAiPreview').style.display='block';
+    document.getElementById('qzAiPreviewTitle').textContent='✅ '+qs.length+' questions ready — "'+topic+'"';
+    document.getElementById('qzAiQList').innerHTML=qs.map(function(q,i){return '<div style="background:rgba(39,174,96,0.08);border:1px solid rgba(39,174,96,0.2);border-radius:8px;padding:8px 10px;font-size:0.75rem;color:var(--text);"><b style="color:var(--gold);">Q'+(i+1)+':</b> '+q.q+'<div style="color:rgba(180,100,255,0.8);font-size:0.68rem;margin-top:3px;">📍 '+(q.ref||'')+'</div></div>';}).join('');
+  })
+  .catch(function(err){document.getElementById('qzAiStatus').style.display='none';toast('⚠️ Internet error: '+err.message);})
+  .finally(function(){btn.disabled=false;btn.textContent='🌐 Generate Questions';});
+}
+
+function qzDownloadPDF(){qzMakePDF(quizState.sessionAnswers,quizState.score,quizState.questions.length*10,quizState.level,quizState.bookFilter);}
+function qzDownloadHistoryPDF(idx){var h=qzGetHistory()[idx];if(h)qzMakePDF(h.answers,h.score,h.total,h.level,h.book);}
+function qzMakePDF(answers,score,total,level,book){
+  var bkM={all:'All Books',ot:'Old Testament',nt:'New Testament',genesis:'Genesis',exodus:'Exodus',psalms:'Psalms',proverbs:'Proverbs',isaiah:'Isaiah',matthew:'Matthew',john:'John',acts:'Acts',romans:'Romans',revelation:'Revelation',online:'Online (AI)'};
+  var rows=(answers||[]).map(function(a,i){return '<tr><td style="padding:8px;color:#555;font-size:12px;">'+(i+1)+'</td><td style="padding:8px;font-size:12px;">'+a.q+'</td><td style="padding:8px;font-size:12px;color:#8b0000;">'+a.ref+'</td><td style="padding:8px;font-size:12px;color:#1a5c2a;font-weight:700;">'+a.options[a.correct]+'</td><td style="padding:8px;font-size:12px;color:'+(a.ok?'#27ae60':'#c0392b')+';font-weight:700;">'+(a.ok?'✅':'❌')+'</td></tr>';}).join('');
+  var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Bible Quiz</title><style>body{font-family:serif;margin:30px;color:#1a0a00;}h1{color:#8b0000;border-bottom:3px solid #f5c518;padding-bottom:10px;}table{width:100%;border-collapse:collapse;}th{background:#1a0a00;color:#f5c518;padding:10px;font-size:13px;text-align:left;}td{border-bottom:1px solid #eee;}.sum{background:#fff8f0;padding:16px;border-radius:10px;margin:16px 0;border-left:4px solid #c0392b;}</style></head><body><h1>✝ Bible Quiz Report — యేసు పాటలు</h1><div class="sum"><b>Book:</b> '+(bkM[book]||book)+' | <b>Level:</b> '+level+' | <b>Score:</b> '+score+' / '+total+' ('+Math.round(score/(total||1)*100)+'%)<br><b>Date:</b> '+new Date().toLocaleString()+'</div><table><tr><th>#</th><th>Question</th><th>Reference</th><th>Correct Answer</th><th>Result</th></tr>'+rows+'</table><div style="margin-top:20px;color:#888;font-size:11px;text-align:center;">© 2026 Vicky — యేసు పాటలు • Bible Quiz</div></body></html>';
+  var blob=new Blob([html],{type:'text/html'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='BibleQuiz_'+level+'_'+new Date().toLocaleDateString().replace(/\//g,'-')+'.html';a.click();
+  toast('📄 PDF ready! Downloads లో చూడు!');
+}
+
+// ═══ MIND GAMES ═══
+// ═══ MIND GAMES ═══
+function openMindGame(game){
+  document.getElementById('mgArea').style.display='block';
+  var c=document.getElementById('mgContent');
+  if(game==='memory')initMemoryGame(c);
+  else if(game==='numbers')initNumberGame(c);
+  else if(game==='word')initWordGame(c);
+  else if(game==='math')initMathGame(c);
+  document.querySelectorAll('.page.active')[0].scrollTop=0;
+}
+function closeMindGame(){document.getElementById('mgArea').style.display='none';}
+
+function initMemoryGame(c){
+  var emojis=['✝','🙏','📖','✨','🕊','⭐','🎵','💫'];
+  var cards=emojis.concat(emojis).sort(function(){return Math.random()-0.5;});
+  var flipped=[],matched=0,moves=0;
+  c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">🃏 Memory Cards</h3>'
+    +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Matching cards కనుగొనండి! Moves: <b id="mgMoves">0</b> | Pairs: <b id="mgPairs">0</b>/8</p>'
+    +'<div id="mgGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;"></div>';
+  var grid=document.getElementById('mgGrid');
+  cards.forEach(function(em,i){
+    var d=document.createElement('div');
+    d.dataset.idx=i;d.dataset.em=em;
+    d.style.cssText='background:var(--card);border:1.5px solid var(--border);border-radius:10px;height:64px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;transition:all 0.3s;';
+    d.textContent='?';
+    d.onclick=function(){
+      if(d.dataset.revealed||flipped.length===2)return;
+      d.textContent=em;d.style.background='rgba(245,197,24,0.15)';d.style.borderColor='var(--gold)';
+      d.dataset.revealed='1';flipped.push(d);
+      if(flipped.length===2){
+        moves++;document.getElementById('mgMoves').textContent=moves;
+        if(flipped[0].dataset.em===flipped[1].dataset.em){
+          flipped[0].style.background='rgba(39,174,96,0.2)';flipped[1].style.background='rgba(39,174,96,0.2)';
+          matched++;document.getElementById('mgPairs').textContent=matched;
+          flipped=[];
+          if(matched===8)setTimeout(function(){toast('🎉 Excellent! '+moves+' moves లో complete!');},300);
+        } else {
+          setTimeout(function(){
+            flipped.forEach(function(f){f.textContent='?';delete f.dataset.revealed;f.style.background='var(--card)';f.style.borderColor='var(--border)';});
+            flipped=[];
+          },900);
+        }
+      }
+    };
+    grid.appendChild(d);
+  });
+}
+
+function initNumberGame(c){
+  var seq=[],shown=false,input=[];
+  function newRound(len){
+    seq=[];for(var i=0;i<len;i++)seq.push(Math.floor(Math.random()*9)+1);
+    input=[];shown=false;
+    c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">🔢 Number Memory</h3>'
+      +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:12px;">Number sequence చూసి గుర్తు పెట్టుకో!</p>'
+      +'<div id="mgSeq" style="font-size:2rem;text-align:center;letter-spacing:14px;color:var(--gold);font-weight:700;background:var(--card);padding:20px;border-radius:14px;margin-bottom:12px;">'+seq.join(' ')+'</div>'
+      +'<button onclick="hideNumSeq()" style="width:100%;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;margin-bottom:10px;">✅ గుర్తు పెట్టుకున్నాను — Hide</button>';
+  }
+  window.hideNumSeq=function(){
+    document.getElementById('mgSeq').textContent='? ? ? ? ?'.slice(0,seq.length*2-1);
+    var p=c.querySelector('button');p.style.display='none';
+    var d=document.createElement('div');
+    d.innerHTML='<p style="color:var(--text);font-size:0.88rem;margin-bottom:8px;">Number pad:</p>'
+      +'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px;" id="mgPad"></div>'
+      +'<div id="mgInp" style="font-size:1.5rem;text-align:center;color:var(--gold);min-height:40px;letter-spacing:8px;margin-bottom:8px;"></div>'
+      +'<button onclick="checkNum()" style="width:100%;background:linear-gradient(135deg,#1a5c2a,#27ae60);color:#fff;border:none;padding:11px;border-radius:12px;font-weight:700;cursor:pointer;">✅ Check</button>';
+    c.appendChild(d);
+    var pad=document.getElementById('mgPad');
+    [1,2,3,4,5,6,7,8,9,'⌫',0,'✅'].forEach(function(n){
+      var b=document.createElement('button');
+      b.textContent=n;b.style.cssText='background:var(--card);border:1px solid var(--border);color:var(--text);padding:12px;border-radius:10px;font-size:1rem;cursor:pointer;';
+      b.onclick=function(){
+        if(n==='⌫'){input.pop();}
+        else if(n==='✅'){checkNum();}
+        else if(input.length<seq.length){input.push(n);}
+        document.getElementById('mgInp').textContent=input.join(' ');
+      };
+      pad.appendChild(b);
+    });
+  };
+  window.checkNum=function(){
+    var ok=input.join('')===seq.join('');
+    if(ok){toast('🎉 Correct! Next level...');setTimeout(function(){newRound(seq.length+1);},1000);}
+    else{toast('❌ Wrong! Answer: '+seq.join(' ')+' — Retry!');setTimeout(function(){newRound(seq.length);},1500);}
+  };
+  newRound(3);
+}
+
+function initWordGame(c){
+  var words=[
+    {w:'JESUS',h:'మన రక్షకుడు / Our Savior'},
+    {w:'MOSES',h:'10 ఆజ్ఞలు ఇచ్చిన నాయకుడు'},
+    {w:'DAVID',h:'రాజు + కవి — Psalms రాశాడు'},
+    {w:'BIBLE',h:'దేవుని వాక్యం / Word of God'},
+    {w:'CROSS',h:'యేసు మరణించిన చిహ్నం'},
+    {w:'PETER',h:'మొదటి శిష్యుడు / First disciple'},
+    {w:'GRACE',h:'దేవుని కృప / God\'s grace'},
+    {w:'FAITH',h:'విశ్వాసం / Belief in God'},
+    {w:'PSALM',h:'బైబిల్ కీర్తన పుస్తకం'},
+    {w:'ANGEL',h:'దేవదూత / Messenger of God'}
+  ];
+  var wi=0;words=words.sort(function(){return Math.random()-0.5;});
+  function showWord(){
+    if(wi>=words.length){c.innerHTML='<div style="text-align:center;padding:30px;"><div style="font-size:3rem;">🎉</div><h3 style="color:var(--gold);">అన్నీ complete చేశావు!</h3><button onclick="initWordGame(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:12px;margin-top:14px;cursor:pointer;font-weight:700;">🔄 Again</button></div>';return;}
+    var w=words[wi];
+    var scrambled=w.w.split('').sort(function(){return Math.random()-0.5;}).join('');
+    c.innerHTML='<h3 style="color:var(--gold);margin-bottom:8px;">📝 Word Unscramble</h3>'
+      +'<p style="color:var(--sub);font-size:0.78rem;margin-bottom:10px;">Hint: '+w.h+'</p>'
+      +'<div style="font-size:2rem;text-align:center;letter-spacing:10px;color:var(--text);background:var(--card);padding:18px;border-radius:14px;margin-bottom:12px;font-weight:700;">'+scrambled+'</div>'
+      +'<input id="wordInp" type="text" placeholder="Word type చేయి..." style="width:100%;padding:13px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:1rem;outline:none;margin-bottom:10px;text-transform:uppercase;">'
+      +'<div style="display:flex;gap:8px;">'
+      +'<button onclick="checkWord(\''+w.w+'\')" style="flex:1;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;">✅ Check</button>'
+      +'<button onclick="wi++;showWord()" style="background:var(--btn-bg);border:1px solid var(--border);color:var(--sub);padding:12px 16px;border-radius:12px;cursor:pointer;">Skip →</button>'
+      +'</div>'
+      +'<p style="color:var(--sub);font-size:0.75rem;margin-top:8px;">Word '+(wi+1)+' / '+words.length+'</p>';
+  }
+  window.checkWord=function(correct){
+    var inp=document.getElementById('wordInp').value.trim().toUpperCase();
+    if(inp===correct){toast('🎉 Correct! '+correct+' ✅');wi++;setTimeout(showWord,700);}
+    else{toast('❌ Wrong! Try again.');}
+  };
+  showWord();
+}
+
+function initMathGame(c){
+  var score=0,q=0,total=10,timer,t;
+  function newQ(){
+    if(q>=total){
+      c.innerHTML='<div style="text-align:center;padding:30px;"><div style="font-size:3rem;">🧮</div><h3 style="color:var(--gold);">Score: '+score+'/'+total+'</h3>'
+        +'<p style="color:var(--sub);font-size:0.85rem;margin:8px 0 16px;">'+(score>=7?'అద్భుతం! 🏆':'Practice చేయి! 📖')+'</p>'
+        +'<button onclick="initMathGame(document.getElementById(\'mgContent\'))" style="background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:12px;cursor:pointer;font-weight:700;">🔄 Again</button></div>';
+      return;
+    }
+    var ops=['+','-','×'];var op=ops[Math.floor(Math.random()*ops.length)];
+    var a,b,ans;
+    if(op==='+'){a=Math.floor(Math.random()*50)+1;b=Math.floor(Math.random()*50)+1;ans=a+b;}
+    else if(op==='-'){a=Math.floor(Math.random()*50)+10;b=Math.floor(Math.random()*a)+1;ans=a-b;}
+    else{a=Math.floor(Math.random()*12)+1;b=Math.floor(Math.random()*12)+1;ans=a*b;}
+    var opts=[ans];
+    while(opts.length<4){var r=ans+(Math.floor(Math.random()*10)-5);if(r>0&&!opts.includes(r))opts.push(r);}
+    opts=opts.sort(function(){return Math.random()-0.5;});
+    t=8;
+    c.innerHTML='<h3 style="color:var(--gold);margin-bottom:10px;">➗ Quick Math</h3>'
+      +'<div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="color:var(--sub);">Q '+(q+1)+'/'+total+'</span><span style="color:var(--gold);font-weight:700;">Score: '+score+'</span><div id="mgT" style="background:var(--red);color:#fff;padding:2px 10px;border-radius:20px;font-weight:700;">8</div></div>'
+      +'<div style="font-size:2rem;text-align:center;color:#fff;font-weight:700;background:var(--card);padding:22px;border-radius:16px;margin-bottom:14px;">'+a+' '+op+' '+b+' = ?</div>'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="mgOpts"></div>';
+    var og=document.getElementById('mgOpts');
+    opts.forEach(function(ov){
+      var b2=document.createElement('button');
+      b2.textContent=ov;b2.style.cssText='background:var(--card);border:1.5px solid var(--border);color:var(--text);padding:16px;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;';
+      b2.onclick=function(){
+        clearInterval(timer);
+        if(ov===ans){score++;b2.style.background='linear-gradient(135deg,#1a5c2a,#27ae60)';toast('✅ Correct!');}
+        else{b2.style.background='linear-gradient(135deg,#8b0000,#c0392b)';toast('❌ Answer: '+ans);}
+        b2.style.color='#fff';
+        og.querySelectorAll('button').forEach(function(x){x.onclick=null;});
+        q++;setTimeout(newQ,700);
+      };
+      og.appendChild(b2);
+    });
+    clearInterval(timer);
+    timer=setInterval(function(){
+      t--;var td=document.getElementById('mgT');if(td)td.textContent=t;
+      if(t<=0){clearInterval(timer);toast('⏰ Time out! Answer: '+ans);q++;setTimeout(newQ,700);}
+    },1000);
+  }
+  score=0;q=0;newQ();
+}
+
 // ═══ TOAST ═══
 var _t;
 function toast(m){var el=document.getElementById('toast');el.textContent=m;el.classList.add('on');clearTimeout(_t);_t=setTimeout(function(){el.classList.remove('on');},2500);}
@@ -2882,17 +3847,25 @@ window.onload=function(){
       if(z>9000&&pos==='fixed'&&el.id!=='toast'&&el.id!=='dlMenu'&&el.id!=='splash'){
         // Check if it's an ad (has external links or images from ad networks)
         var html=el.innerHTML||'';
-        if(html.includes('webintoapp')||html.includes('CLICK HERE')||html.includes('Convert your Website')){
+        if(html.includes('webintoapp')||html.includes('advert')){
           el.remove();
         }
       }
     });
-  },1000);
+  },3000);
 
-  setTimeout(function(){
+  // ═══ SPLASH HIDE — guaranteed ═══
+  function hideSplash(){
     var sp=document.getElementById('splash');
     if(sp){sp.style.opacity='0';setTimeout(function(){sp.style.display='none';},700);}
-  },2200);
+  }
+  // Hide after 2.2s (bar animation = 2s)
+  setTimeout(hideSplash, 2200);
+  // Failsafe — force hide after 4s no matter what
+  setTimeout(function(){
+    var sp=document.getElementById('splash');
+    if(sp){sp.style.display='none';}
+  }, 4000);
 };
 </script>
 </body>
