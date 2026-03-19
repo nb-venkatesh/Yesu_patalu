@@ -870,10 +870,10 @@ nav{background:var(--mid);border-bottom:2px solid var(--red);padding:8px 10px;po
       <select id="aiModelSelect" style="width:100%;margin-top:4px;background:var(--deep);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:10px;font-size:0.8rem;outline:none;">
         <optgroup label="⚡ Fast — 1500/day free">
           <option value="gemini-2.0-flash" selected>Gemini 2.0 Flash ⚡ Default</option>
-          <option value="gemini-1.5-flash">Gemini 1.5 Flash ⚡</option>
+          <option value="gemini-2.0-flash-lite">Gemini 2.0 Flash Lite ⚡ Fastest</option>
         </optgroup>
         <optgroup label="🧠 Powerful — 50/day free">
-          <option value="gemini-1.5-pro">Gemini 1.5 Pro 🧠</option>
+          <option value="gemini-1.5-pro-latest">Gemini 1.5 Pro 🧠</option>
           <option value="gemini-2.5-pro-preview-05-06">Gemini 2.5 Pro 🔥 Latest</option>
         </optgroup>
       </select>
@@ -1941,7 +1941,7 @@ function initAIKey(){
     if(box)box.style.display='block';
   }
   // Restore saved model
-  var savedModel=localStorage.getItem('aiModel')||'gpt-5.4';
+  var savedModel=localStorage.getItem('aiModel')||'gemini-2.0-flash';
   var sel=document.getElementById('aiModelSelect');
   if(sel){sel.value=savedModel;}
 }
