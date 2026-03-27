@@ -9,6 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="permissions-policy" content="microphone=*, geolocation=*, camera=*">
 <link rel="manifest" href="manifest.json">
+  
 <title>🎵 యేసు పాటలు</title>
 <!-- Google Fonts — Telugu + English -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9266,6 +9267,12 @@ window.onload=function(){
     });
   },3000);
 };
+                        
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch(err => console.log('Service Worker Error:', err));
+}
 </script>
 </div><!-- end mainContent -->
 </div><!-- end appBody -->
