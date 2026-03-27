@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "యేసు పాటలు",
-  "short_name": "పాటలు",
+  "name": "Jesus Telugu songs",
+  "short_name": "Yesu patalu",
   "description": "Telugu Christian Songs - యేసు క్రైస్తవ పాటలు",
   "start_url": "/",
   "display": "standalone",
@@ -21,5 +21,7 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
