@@ -8,6 +8,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="permissions-policy" content="microphone=*, geolocation=*, camera=*">
+
+  <meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
 <link rel="manifest" href="manifest.json">
 <title>🎵 యేసు పాటలు</title>
 <!-- Google Fonts — Telugu + English -->
@@ -9359,6 +9364,14 @@ window.onload=function(){
     });
   },3000);
 };
+
+            
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/Yesu_patalu/sw.js')
+        .then(() => console.log('SW Registered'))
+        .catch(err => console.log('SW Error:', err));
+}
+
 </script>
 </div><!-- end mainContent -->
 </div><!-- end appBody -->
